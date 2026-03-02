@@ -1,0 +1,203 @@
+/* ===== 戀愛世界共用 ===== */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --world-transition: all 0.3s ease;
+}
+
+/* ===== 戀愛世界主頁 ===== */
+body.world-home {
+  font-family: 'Noto Sans TC', sans-serif;
+  background: #111111;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+.world-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(17, 17, 17, 0.9);
+  backdrop-filter: blur(12px);
+}
+
+.world-nav-brand {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.world-nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.world-nav-links a {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  transition: var(--world-transition);
+  letter-spacing: 1px;
+}
+
+.world-nav-links a:hover {
+  color: #fff;
+}
+
+/* 世界主頁內容 */
+.world-main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 100px 24px 60px;
+}
+
+.world-hero {
+  text-align: center;
+  padding: 60px 0 48px;
+}
+
+.world-hero h1 {
+  font-size: 36px;
+  font-weight: 900;
+  margin-bottom: 12px;
+  letter-spacing: 2px;
+}
+
+.world-hero p {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 15px;
+}
+
+/* 世界觀卡片 */
+.world-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.world-card {
+  border-radius: 16px;
+  overflow: hidden;
+  transition: var(--world-transition);
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  position: relative;
+}
+
+.world-card:hover {
+  transform: translateY(-4px);
+}
+
+.world-card .card-cover {
+  width: 100%;
+  height: 200px;
+  background: #222;
+  overflow: hidden;
+}
+
+.world-card .card-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.world-card .card-cover .cover-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+}
+
+.world-card .card-body {
+  padding: 20px;
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: none;
+  border-radius: 0 0 16px 16px;
+}
+
+.world-card .card-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  opacity: 0.5;
+}
+
+.world-card .card-body h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.world-card .card-body p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.7;
+}
+
+/* 夜梟 hover 色 */
+.world-card.owl-card:hover {
+  box-shadow: 0 8px 32px rgba(76, 133, 76, 0.2);
+}
+.world-card.owl-card .card-label { color: #7CB97C; }
+
+/* 西曆 hover 色 */
+.world-card.era-card:hover {
+  box-shadow: 0 8px 32px rgba(196, 164, 106, 0.2);
+}
+.world-card.era-card .card-label { color: #C4A46A; }
+
+/* 渡鴉 hover 色 */
+.world-card.raven-card:hover {
+  box-shadow: 0 8px 32px rgba(180, 60, 60, 0.2);
+}
+.world-card.raven-card .card-label { color: #C85454; }
+
+/* 其他 hover 色 */
+.world-card.other-card:hover {
+  box-shadow: 0 8px 32px rgba(255, 210, 213, 0.2);
+}
+.world-card.other-card .card-label { color: #FFD2D5; }
+
+.world-footer {
+  text-align: center;
+  padding: 40px 24px;
+  margin-top: 60px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* RWD */
+@media (max-width: 768px) {
+  .world-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .world-hero h1 {
+    font-size: 28px;
+  }
+
+  .world-nav-links {
+    display: none;
+  }
+}

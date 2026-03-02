@@ -1,0 +1,564 @@
+/* ===== 夜梟部隊 — 軍事風格 ===== */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&family=Rajdhani:wght@400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --owl-bg: #0D1117;
+  --owl-surface: #161B22;
+  --owl-border: #30363D;
+  --owl-green: #4B8B3B;
+  --owl-green-light: #7CB97C;
+  --owl-green-dim: rgba(75, 139, 59, 0.15);
+  --owl-orange: #D18C32;
+  --owl-text: #E6EDF3;
+  --owl-text-dim: rgba(230, 237, 243, 0.5);
+  --owl-text-muted: rgba(230, 237, 243, 0.3);
+  --owl-radius: 8px;
+}
+
+body.owl-page {
+  font-family: 'Noto Sans TC', 'Rajdhani', sans-serif;
+  background: var(--owl-bg);
+  color: var(--owl-text);
+  min-height: 100vh;
+}
+
+/* 導覽 */
+.owl-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 14px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(13, 17, 23, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--owl-border);
+}
+
+.owl-nav-brand {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--owl-green-light);
+  text-decoration: none;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.owl-nav-links {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+}
+
+.owl-nav-links a {
+  font-size: 13px;
+  color: var(--owl-text-dim);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.owl-nav-links a:hover {
+  color: var(--owl-green-light);
+}
+
+/* 主內容 */
+.owl-main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 80px 24px 60px;
+}
+
+/* 部隊首頁 Header */
+.owl-header {
+  padding: 48px 0 40px;
+  border-bottom: 1px solid var(--owl-border);
+  margin-bottom: 40px;
+}
+
+.owl-header .classification {
+  display: inline-block;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--owl-orange);
+  background: rgba(209, 140, 50, 0.1);
+  border: 1px solid rgba(209, 140, 50, 0.3);
+  padding: 4px 12px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.owl-header h1 {
+  font-size: 32px;
+  font-weight: 900;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.owl-header h1 .icon {
+  font-size: 28px;
+}
+
+.owl-header .tagline {
+  color: var(--owl-text-dim);
+  font-size: 15px;
+}
+
+/* 簡報區塊 */
+.owl-briefing {
+  background: var(--owl-surface);
+  border: 1px solid var(--owl-border);
+  border-radius: var(--owl-radius);
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.owl-briefing .section-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--owl-green-light);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--owl-border);
+}
+
+.owl-briefing p {
+  color: var(--owl-text-dim);
+  font-size: 15px;
+  line-height: 1.9;
+  margin-bottom: 12px;
+}
+
+.owl-briefing p:last-child {
+  margin-bottom: 0;
+}
+
+/* 資訊網格 */
+.owl-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.owl-info-item {
+  background: var(--owl-surface);
+  border: 1px solid var(--owl-border);
+  border-radius: var(--owl-radius);
+  padding: 16px;
+}
+
+.owl-info-item .label {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--owl-text-muted);
+  margin-bottom: 4px;
+}
+
+.owl-info-item .value {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--owl-text);
+}
+
+/* 書籤/分頁 */
+.owl-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--owl-border);
+  padding-bottom: 0;
+}
+
+.owl-tab {
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--owl-text-dim);
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+.owl-tab:hover {
+  color: var(--owl-text);
+}
+
+.owl-tab.active {
+  color: var(--owl-green-light);
+  border-bottom-color: var(--owl-green-light);
+}
+
+.owl-tab-content {
+  display: none;
+}
+
+.owl-tab-content.active {
+  display: block;
+}
+
+/* 成員列表 */
+.owl-member-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.owl-member-card {
+  background: var(--owl-surface);
+  border: 1px solid var(--owl-border);
+  border-radius: var(--owl-radius);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--owl-text);
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.owl-member-card:hover {
+  border-color: var(--owl-green);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(75, 139, 59, 0.15);
+}
+
+.owl-member-card .member-img {
+  width: 100%;
+  height: 240px;
+  background: #1c2128;
+  overflow: hidden;
+}
+
+.owl-member-card .member-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.owl-member-card .member-img .img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  color: rgba(255, 255, 255, 0.1);
+}
+
+.owl-member-card .member-info {
+  padding: 14px 16px;
+}
+
+.owl-member-card .member-rank {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--owl-green-light);
+  margin-bottom: 4px;
+}
+
+.owl-member-card .member-name {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.owl-member-card .member-role {
+  font-size: 13px;
+  color: var(--owl-text-dim);
+  margin-top: 2px;
+}
+
+/* ===== 角色檔案頁 ===== */
+.owl-file-header {
+  padding: 48px 0 32px;
+  margin-bottom: 32px;
+}
+
+.owl-file-header .file-number {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--owl-text-muted);
+  margin-bottom: 4px;
+}
+
+.owl-file-header h1 {
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.owl-file-header .codename {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 14px;
+  color: var(--owl-green-light);
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+
+/* 角色主視覺 */
+.owl-profile-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+.owl-profile-img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: var(--owl-radius);
+  overflow: hidden;
+  border: 1px solid var(--owl-border);
+  background: var(--owl-surface);
+}
+
+.owl-profile-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.owl-profile-img .img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  color: rgba(255, 255, 255, 0.1);
+}
+
+/* 角色資料表 */
+.owl-data-table {
+  width: 100%;
+}
+
+.owl-data-table .data-section-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--owl-green-light);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--owl-border);
+}
+
+.owl-data-row {
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(48, 54, 61, 0.5);
+  font-size: 14px;
+}
+
+.owl-data-row .data-label {
+  width: 100px;
+  flex-shrink: 0;
+  font-weight: 700;
+  color: var(--owl-text-dim);
+  font-size: 13px;
+}
+
+.owl-data-row .data-value {
+  color: var(--owl-text);
+  line-height: 1.6;
+}
+
+/* 長文區塊 */
+.owl-section {
+  background: var(--owl-surface);
+  border: 1px solid var(--owl-border);
+  border-radius: var(--owl-radius);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.owl-section .section-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--owl-green-light);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--owl-border);
+}
+
+.owl-section p {
+  color: var(--owl-text-dim);
+  font-size: 15px;
+  line-height: 1.9;
+  margin-bottom: 12px;
+}
+
+.owl-section p:last-child {
+  margin-bottom: 0;
+}
+
+/* 圖片集 */
+.owl-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.owl-gallery .gallery-item {
+  aspect-ratio: 3/4;
+  border-radius: var(--owl-radius);
+  overflow: hidden;
+  border: 1px solid var(--owl-border);
+  background: #1c2128;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.owl-gallery .gallery-item:hover {
+  border-color: var(--owl-green);
+}
+
+.owl-gallery .gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 影片區 */
+.owl-video {
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 9/16;
+  border-radius: var(--owl-radius);
+  overflow: hidden;
+  border: 1px solid var(--owl-border);
+  margin: 16px 0;
+}
+
+.owl-video iframe,
+.owl-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 故事集 */
+.owl-story-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.owl-story-item {
+  display: block;
+  padding: 16px;
+  background: rgba(75, 139, 59, 0.05);
+  border: 1px solid var(--owl-border);
+  border-radius: var(--owl-radius);
+  text-decoration: none;
+  color: var(--owl-text);
+  transition: all 0.3s ease;
+}
+
+.owl-story-item:hover {
+  border-color: var(--owl-green);
+  background: rgba(75, 139, 59, 0.1);
+}
+
+.owl-story-item .story-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.owl-story-item .story-date {
+  font-size: 12px;
+  color: var(--owl-text-muted);
+}
+
+.owl-story-item .story-preview {
+  font-size: 14px;
+  color: var(--owl-text-dim);
+  margin-top: 8px;
+  line-height: 1.7;
+}
+
+/* 返回 */
+.owl-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--owl-text-dim);
+  text-decoration: none;
+  margin-bottom: 20px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.owl-back:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--owl-text);
+}
+
+/* Footer */
+.owl-footer {
+  text-align: center;
+  padding: 40px 24px;
+  margin-top: 48px;
+  border-top: 1px solid var(--owl-border);
+  font-size: 12px;
+  color: var(--owl-text-muted);
+}
+
+/* RWD */
+@media (max-width: 768px) {
+  .owl-profile-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .owl-profile-img {
+    max-width: 280px;
+  }
+
+  .owl-member-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .owl-nav-links {
+    display: none;
+  }
+
+  .owl-header h1 {
+    font-size: 24px;
+  }
+}

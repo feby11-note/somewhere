@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐦‍⬛</text></svg>">
+  <title>渡鴉</title>
+  <link rel="stylesheet" href="../../css/raven.css">
+</head>
+<body class="raven-page">
+
+  <nav class="rv-nav">
+    <a href="../index.html" class="rv-nav-brand">◁ 戀愛世界</a>
+    <ul class="rv-nav-links">
+      <li><a href="jiang-huan.html">姜煥</a></li>
+      <li><a href="lin-hao.html">林昊</a></li>
+      <li><a href="song-chiye.html">宋馳夜</a></li>
+    </ul>
+  </nav>
+
+  <div class="rv-main">
+
+    <div class="rv-header">
+      <div class="rv-label">CLASSIFIED ORGANIZATION</div>
+      <h1>渡 鴉</h1>
+      <p class="tagline">沉默是唯一的信條。死亡是最終的語言。</p>
+    </div>
+
+    <!-- 書籤 -->
+    <div class="rv-tabs">
+      <button class="rv-tab active" onclick="switchRvTab('overview')">組織概述</button>
+      <button class="rv-tab" onclick="switchRvTab('laws')">三律法</button>
+      <button class="rv-tab" onclick="switchRvTab('members')">成員</button>
+    </div>
+
+    <!-- 組織概述 -->
+    <div id="rv-tab-overview" class="rv-tab-content active">
+      <div class="rv-box">
+        <div class="box-title">Organization Overview</div>
+        <p>
+          渡鴉——地下世界最令人聞風喪膽的殺手組織。
+          在這裡描述組織的背景、歷史、運作方式⋯⋯
+        </p>
+      </div>
+    </div>
+
+    <!-- 三律法 -->
+    <div id="rv-tab-laws" class="rv-tab-content">
+      <div class="rv-box">
+        <div class="box-title">The Three Laws / 三律法</div>
+        <p>組織內所有成員必須遵守的三條鐵律。違者，死。</p>
+
+        <div class="rv-law-list">
+          <div class="rv-law-item">
+            <div class="law-number">FIRST LAW / 第一律</div>
+            <p>（在這裡寫第一條律法的內容）</p>
+          </div>
+          <div class="rv-law-item">
+            <div class="law-number">SECOND LAW / 第二律</div>
+            <p>（在這裡寫第二條律法的內容）</p>
+          </div>
+          <div class="rv-law-item">
+            <div class="law-number">THIRD LAW / 第三律</div>
+            <p>（在這裡寫第三條律法的內容）</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 成員 -->
+    <div id="rv-tab-members" class="rv-tab-content">
+      <div class="rv-box">
+        <div class="box-title">Members / 成員</div>
+        <p>每位成員皆以鳥名為代號。點擊查看完整檔案。</p>
+      </div>
+
+      <div class="rv-char-grid">
+
+        <a href="jiang-huan.html" class="rv-char-card">
+          <div class="char-img">
+            <div class="img-placeholder">🐦‍⬛</div>
+          </div>
+          <div class="char-info">
+            <div class="char-codename">Codename: 鶇</div>
+            <div class="char-name">姜煥</div>
+          </div>
+        </a>
+
+        <a href="lin-hao.html" class="rv-char-card">
+          <div class="char-img">
+            <div class="img-placeholder">🐦‍⬛</div>
+          </div>
+          <div class="char-info">
+            <div class="char-codename">Codename: 喜鵲</div>
+            <div class="char-name">林昊</div>
+          </div>
+        </a>
+
+        <a href="song-chiye.html" class="rv-char-card">
+          <div class="char-img">
+            <div class="img-placeholder">🐦‍⬛</div>
+          </div>
+          <div class="char-info">
+            <div class="char-codename">Codename: 隼</div>
+            <div class="char-name">宋馳夜</div>
+          </div>
+        </a>
+
+        <div class="rv-char-card unreleased">
+          <div class="char-img">
+            <div class="img-placeholder">？</div>
+          </div>
+          <div class="char-info">
+            <div class="char-codename">Codename: 朱雀</div>
+            <div class="char-name">？？？</div>
+          </div>
+        </div>
+
+        <div class="rv-char-card unreleased">
+          <div class="char-img">
+            <div class="img-placeholder">？</div>
+          </div>
+          <div class="char-info">
+            <div class="char-codename">Codename: 禿鷹</div>
+            <div class="char-name">？？？</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="rv-footer">
+    RAVEN — CLASSIFIED
+  </footer>
+
+  <script>
+    function switchRvTab(tabName) {
+      document.querySelectorAll('.rv-tab-content').forEach(function(el) {
+        el.classList.remove('active');
+      });
+      document.querySelectorAll('.rv-tab').forEach(function(el) {
+        el.classList.remove('active');
+      });
+      document.getElementById('rv-tab-' + tabName).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>

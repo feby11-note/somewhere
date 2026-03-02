@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦉</text></svg>">
+  <title>夜梟部隊</title>
+  <link rel="stylesheet" href="../../css/owl.css">
+</head>
+<body class="owl-page">
+
+  <nav class="owl-nav">
+    <a href="../index.html" class="owl-nav-brand">◁ 戀愛世界</a>
+    <ul class="owl-nav-links">
+      <li><a href="jack.html">傑克</a></li>
+      <li><a href="kane.html">凱恩</a></li>
+      <li><a href="leo.html">里歐</a></li>
+      <li><a href="theo.html">席奧</a></li>
+    </ul>
+  </nav>
+
+  <div class="owl-main">
+
+    <div class="owl-header">
+      <div class="classification">CLASSIFIED — LEVEL 4</div>
+      <h1><span class="icon">🦉</span> 夜梟部隊</h1>
+      <p class="tagline">Night Owl Squadron — 在黑暗中行動，在夜色中守望。</p>
+    </div>
+
+    <!-- 書籤 -->
+    <div class="owl-tabs">
+      <button class="owl-tab active" onclick="switchTab('overview')">部隊簡介</button>
+      <button class="owl-tab" onclick="switchTab('floors')">樓層介紹</button>
+      <button class="owl-tab" onclick="switchTab('history')">部隊歷史</button>
+      <button class="owl-tab" onclick="switchTab('members')">部隊成員</button>
+    </div>
+
+    <!-- 部隊簡介 -->
+    <div id="tab-overview" class="owl-tab-content active">
+      <div class="owl-briefing">
+        <div class="section-label">Briefing / 部隊簡介</div>
+        <p>
+          夜梟部隊是隸屬於特種作戰司令部的秘密部隊，專門執行高風險任務。
+          這裡是你填入部隊介紹的地方。
+        </p>
+      </div>
+
+      <div class="owl-info-grid">
+        <div class="owl-info-item">
+          <div class="label">隸屬</div>
+          <div class="value">特種作戰司令部</div>
+        </div>
+        <div class="owl-info-item">
+          <div class="label">編制人數</div>
+          <div class="value">4 人</div>
+        </div>
+        <div class="owl-info-item">
+          <div class="label">行動代號</div>
+          <div class="value">Night Owl</div>
+        </div>
+        <div class="owl-info-item">
+          <div class="label">機密等級</div>
+          <div class="value">Level 4</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 樓層介紹 -->
+    <div id="tab-floors" class="owl-tab-content">
+      <div class="owl-briefing">
+        <div class="section-label">Floor Layout / 樓層介紹</div>
+        <p>你可以在這裡介紹部隊基地的各樓層。</p>
+        <p>例如：B1 — 武器庫、1F — 大廳與任務簡報室、2F — 隊員宿舍⋯⋯</p>
+      </div>
+    </div>
+
+    <!-- 部隊歷史 -->
+    <div id="tab-history" class="owl-tab-content">
+      <div class="owl-briefing">
+        <div class="section-label">History / 部隊歷史</div>
+        <p>你可以在這裡撰寫部隊的成立經過、重大事件等。</p>
+      </div>
+    </div>
+
+    <!-- 部隊成員 -->
+    <div id="tab-members" class="owl-tab-content">
+      <div class="owl-briefing">
+        <div class="section-label">Personnel / 部隊成員</div>
+        <p>點擊成員卡片查看完整檔案。</p>
+      </div>
+
+      <div class="owl-member-grid">
+
+        <a href="jack.html" class="owl-member-card">
+          <div class="member-img">
+            <!-- <img src="../../images/owl/jack-thumb.jpg" alt="傑克"> -->
+            <div class="img-placeholder">👤</div>
+          </div>
+          <div class="member-info">
+            <div class="member-rank">CAPTAIN / 上尉</div>
+            <div class="member-name">傑克</div>
+            <div class="member-role">隊長</div>
+          </div>
+        </a>
+
+        <a href="kane.html" class="owl-member-card">
+          <div class="member-img">
+            <div class="img-placeholder">👤</div>
+          </div>
+          <div class="member-info">
+            <div class="member-rank">LIEUTENANT / 中尉</div>
+            <div class="member-name">凱恩</div>
+            <div class="member-role">副隊長</div>
+          </div>
+        </a>
+
+        <a href="leo.html" class="owl-member-card">
+          <div class="member-img">
+            <div class="img-placeholder">👤</div>
+          </div>
+          <div class="member-info">
+            <div class="member-rank">SERGEANT / 中士</div>
+            <div class="member-name">里歐</div>
+            <div class="member-role">隊員</div>
+          </div>
+        </a>
+
+        <a href="theo.html" class="owl-member-card">
+          <div class="member-img">
+            <div class="img-placeholder">👤</div>
+          </div>
+          <div class="member-info">
+            <div class="member-rank">EX-LIEUTENANT</div>
+            <div class="member-name">席奧</div>
+            <div class="member-role">前副隊長 → 黑市管理者</div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="owl-footer">
+    <p>NIGHT OWL SQUADRON — CLASSIFIED DOCUMENT</p>
+  </footer>
+
+  <script>
+    function switchTab(tabName) {
+      // 隱藏所有 tab 內容
+      document.querySelectorAll('.owl-tab-content').forEach(function(el) {
+        el.classList.remove('active');
+      });
+      // 移除所有 tab 按鈕的 active
+      document.querySelectorAll('.owl-tab').forEach(function(el) {
+        el.classList.remove('active');
+      });
+      // 顯示選中的 tab
+      document.getElementById('tab-' + tabName).classList.add('active');
+      // 標記按鈕
+      event.target.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>

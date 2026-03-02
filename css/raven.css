@@ -1,0 +1,501 @@
+/* ===== 渡鴉 — 暗黑殺手風 ===== */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&family=Rajdhani:wght@400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --rv-bg: #0A0A0A;
+  --rv-surface: #111111;
+  --rv-border: #222222;
+  --rv-red: #8B2020;
+  --rv-red-light: #C85454;
+  --rv-red-dim: rgba(139, 32, 32, 0.15);
+  --rv-text: #E8E8E8;
+  --rv-text-dim: rgba(232, 232, 232, 0.5);
+  --rv-text-muted: rgba(232, 232, 232, 0.25);
+  --rv-accent: #C85454;
+  --rv-radius: 2px;
+}
+
+body.raven-page {
+  font-family: 'Noto Sans TC', 'Rajdhani', sans-serif;
+  background: var(--rv-bg);
+  color: var(--rv-text);
+  min-height: 100vh;
+}
+
+/* 導覽 */
+.rv-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 14px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rv-border);
+}
+
+.rv-nav-brand {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--rv-red-light);
+  text-decoration: none;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.rv-nav-links {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+}
+
+.rv-nav-links a {
+  font-size: 13px;
+  color: var(--rv-text-dim);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.rv-nav-links a:hover {
+  color: var(--rv-red-light);
+}
+
+/* 主內容 */
+.rv-main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 80px 24px 60px;
+}
+
+/* Header */
+.rv-header {
+  padding: 48px 0 40px;
+  border-bottom: 1px solid var(--rv-red);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.rv-header .rv-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--rv-red-light);
+  margin-bottom: 12px;
+}
+
+.rv-header h1 {
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: 8px;
+  margin-bottom: 8px;
+}
+
+.rv-header .tagline {
+  color: var(--rv-text-dim);
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+/* 書籤 */
+.rv-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--rv-border);
+}
+
+.rv-tab {
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--rv-text-muted);
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+  margin-bottom: -1px;
+  transition: all 0.3s ease;
+  font-family: 'Noto Sans TC', sans-serif;
+  letter-spacing: 1px;
+}
+
+.rv-tab:hover {
+  color: var(--rv-text-dim);
+}
+
+.rv-tab.active {
+  color: var(--rv-red-light);
+  border-bottom-color: var(--rv-red);
+}
+
+.rv-tab-content {
+  display: none;
+}
+
+.rv-tab-content.active {
+  display: block;
+}
+
+/* 區塊 */
+.rv-box {
+  background: var(--rv-surface);
+  border: 1px solid var(--rv-border);
+  border-radius: var(--rv-radius);
+  padding: 24px;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.rv-box .box-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--rv-red-light);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rv-border);
+}
+
+.rv-box p {
+  color: var(--rv-text-dim);
+  font-size: 15px;
+  line-height: 1.9;
+  margin-bottom: 12px;
+}
+
+.rv-box p:last-child {
+  margin-bottom: 0;
+}
+
+/* 律法區塊 */
+.rv-law-list {
+  counter-reset: law;
+  margin-top: 16px;
+}
+
+.rv-law-item {
+  counter-increment: law;
+  padding: 16px;
+  border: 1px solid var(--rv-border);
+  border-left: 3px solid var(--rv-red);
+  margin-bottom: 12px;
+  background: rgba(139, 32, 32, 0.05);
+}
+
+.rv-law-item .law-number {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--rv-red-light);
+  margin-bottom: 6px;
+}
+
+.rv-law-item p {
+  color: var(--rv-text-dim);
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+
+/* 角色列表 */
+.rv-char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.rv-char-card {
+  background: var(--rv-surface);
+  border: 1px solid var(--rv-border);
+  border-radius: var(--rv-radius);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--rv-text);
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.rv-char-card:hover {
+  border-color: var(--rv-red);
+  box-shadow: 0 4px 20px rgba(139, 32, 32, 0.2);
+  transform: translateY(-2px);
+}
+
+.rv-char-card .char-img {
+  width: 100%;
+  height: 240px;
+  background: #0f0f0f;
+  overflow: hidden;
+}
+
+.rv-char-card .char-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rv-char-card .char-img .img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  color: rgba(255, 255, 255, 0.05);
+}
+
+.rv-char-card .char-info {
+  padding: 14px 16px;
+}
+
+.rv-char-card .char-codename {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--rv-red-light);
+  margin-bottom: 4px;
+}
+
+.rv-char-card .char-name {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.rv-char-card.unreleased {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.rv-char-card.unreleased .char-info::after {
+  content: '— 尚未公開 —';
+  display: block;
+  font-size: 12px;
+  color: var(--rv-text-muted);
+  margin-top: 6px;
+}
+
+/* ===== 角色檔案頁 ===== */
+.rv-file-header {
+  padding: 48px 0 32px;
+  text-align: center;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--rv-red);
+}
+
+.rv-file-header .file-codename {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--rv-red-light);
+  margin-bottom: 8px;
+}
+
+.rv-file-header h1 {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 4px;
+}
+
+.rv-file-header .file-subtitle {
+  font-size: 13px;
+  color: var(--rv-text-muted);
+  margin-top: 4px;
+  letter-spacing: 2px;
+}
+
+/* 角色主視覺 */
+.rv-profile-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+.rv-profile-img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: var(--rv-radius);
+  overflow: hidden;
+  border: 1px solid var(--rv-border);
+  background: var(--rv-surface);
+}
+
+.rv-profile-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rv-profile-img .img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  color: rgba(255, 255, 255, 0.05);
+}
+
+/* 資料表 */
+.rv-data-table .data-section-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--rv-red-light);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rv-border);
+}
+
+.rv-data-row {
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(34, 34, 34, 0.8);
+  font-size: 14px;
+}
+
+.rv-data-row .data-label {
+  width: 80px;
+  flex-shrink: 0;
+  font-weight: 700;
+  color: var(--rv-text-muted);
+  font-size: 13px;
+}
+
+.rv-data-row .data-value {
+  color: var(--rv-text-dim);
+  line-height: 1.6;
+}
+
+/* 圖片集 */
+.rv-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.rv-gallery .gallery-item {
+  aspect-ratio: 3/4;
+  border-radius: var(--rv-radius);
+  overflow: hidden;
+  border: 1px solid var(--rv-border);
+  background: #0f0f0f;
+}
+
+.rv-gallery .gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 故事集 */
+.rv-story-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.rv-story-item {
+  padding: 16px;
+  border: 1px solid var(--rv-border);
+  border-left: 2px solid var(--rv-red);
+  background: rgba(139, 32, 32, 0.03);
+}
+
+.rv-story-item .story-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.rv-story-item .story-date {
+  font-size: 12px;
+  color: var(--rv-text-muted);
+}
+
+.rv-story-item .story-preview {
+  font-size: 14px;
+  color: var(--rv-text-dim);
+  margin-top: 8px;
+  line-height: 1.8;
+}
+
+/* 返回 */
+.rv-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--rv-text-dim);
+  text-decoration: none;
+  margin-bottom: 20px;
+  padding: 6px 12px;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.rv-back:hover {
+  background: var(--rv-red-dim);
+  color: var(--rv-red-light);
+}
+
+/* Footer */
+.rv-footer {
+  text-align: center;
+  padding: 40px 24px;
+  margin-top: 48px;
+  border-top: 1px solid var(--rv-border);
+  font-size: 12px;
+  color: var(--rv-text-muted);
+  letter-spacing: 3px;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+/* RWD */
+@media (max-width: 768px) {
+  .rv-profile-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .rv-profile-img {
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  .rv-char-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rv-nav-links {
+    display: none;
+  }
+
+  .rv-header h1 {
+    font-size: 28px;
+  }
+}

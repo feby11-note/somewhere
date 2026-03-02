@@ -1,0 +1,533 @@
+/* ===== 西曆130年 — 古風大陸 ===== */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&family=Noto+Serif+TC:wght@400;700;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --era-bg: #F5EFE0;
+  --era-surface: #FFFDF7;
+  --era-border: #D4C5A0;
+  --era-border-light: #E8DFC8;
+  --era-gold: #8B7332;
+  --era-gold-light: #C4A46A;
+  --era-gold-dim: rgba(139, 115, 50, 0.1);
+  --era-brown: #5C4A28;
+  --era-text: #3D3425;
+  --era-text-dim: #7A6E5D;
+  --era-text-muted: #A89E8C;
+  --era-red: #8B3A3A;
+  --era-radius: 4px;
+}
+
+body.era-page {
+  font-family: 'Noto Serif TC', 'Noto Sans TC', serif;
+  background: var(--era-bg);
+  color: var(--era-text);
+  min-height: 100vh;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 40px,
+      rgba(212, 197, 160, 0.15) 40px,
+      rgba(212, 197, 160, 0.15) 41px
+    );
+}
+
+/* 導覽 */
+.era-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 14px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(245, 239, 224, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--era-border-light);
+}
+
+.era-nav-brand {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--era-gold);
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+
+.era-nav-links {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+}
+
+.era-nav-links a {
+  font-size: 13px;
+  color: var(--era-text-dim);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.era-nav-links a:hover {
+  color: var(--era-gold);
+}
+
+/* 主內容 */
+.era-main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 80px 24px 60px;
+}
+
+/* Header */
+.era-header {
+  padding: 48px 0 40px;
+  border-bottom: 2px solid var(--era-border);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.era-header .era-label {
+  display: inline-block;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--era-gold);
+  margin-bottom: 12px;
+}
+
+.era-header h1 {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--era-brown);
+  margin-bottom: 8px;
+}
+
+.era-header .tagline {
+  color: var(--era-text-dim);
+  font-size: 15px;
+  font-style: italic;
+}
+
+/* 書籤/分頁 */
+.era-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 24px;
+  border-bottom: 2px solid var(--era-border);
+}
+
+.era-tab {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--era-text-muted);
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.3s ease;
+  font-family: 'Noto Serif TC', serif;
+}
+
+.era-tab:hover {
+  color: var(--era-text);
+}
+
+.era-tab.active {
+  color: var(--era-gold);
+  border-bottom-color: var(--era-gold);
+}
+
+.era-tab-content {
+  display: none;
+}
+
+.era-tab-content.active {
+  display: block;
+}
+
+/* 卷軸區塊 */
+.era-scroll-box {
+  background: var(--era-surface);
+  border: 1px solid var(--era-border-light);
+  border-radius: var(--era-radius);
+  padding: 32px;
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.era-scroll-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--era-gold-light), transparent);
+  border-radius: 2px;
+}
+
+.era-scroll-box .scroll-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--era-gold);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--era-border-light);
+}
+
+.era-scroll-box p {
+  color: var(--era-text-dim);
+  font-size: 15px;
+  line-height: 2;
+  margin-bottom: 12px;
+}
+
+.era-scroll-box p:last-child {
+  margin-bottom: 0;
+}
+
+/* 地域卡片 */
+.era-region-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.era-region-card {
+  background: var(--era-surface);
+  border: 1px solid var(--era-border-light);
+  border-radius: var(--era-radius);
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.era-region-card:hover {
+  border-color: var(--era-gold-light);
+  box-shadow: 0 4px 16px rgba(139, 115, 50, 0.1);
+}
+
+.era-region-card .region-icon {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.era-region-card h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--era-brown);
+  margin-bottom: 6px;
+}
+
+.era-region-card p {
+  font-size: 13px;
+  color: var(--era-text-muted);
+  line-height: 1.7;
+}
+
+/* 角色列表 */
+.era-char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.era-char-card {
+  background: var(--era-surface);
+  border: 1px solid var(--era-border-light);
+  border-radius: var(--era-radius);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--era-text);
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.era-char-card:hover {
+  border-color: var(--era-gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(139, 115, 50, 0.12);
+}
+
+.era-char-card .char-img {
+  width: 100%;
+  height: 240px;
+  background: var(--era-border-light);
+  overflow: hidden;
+}
+
+.era-char-card .char-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.era-char-card .char-img .img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  color: var(--era-border);
+}
+
+.era-char-card .char-info {
+  padding: 14px 16px;
+}
+
+.era-char-card .char-origin {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--era-gold);
+  margin-bottom: 4px;
+}
+
+.era-char-card .char-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--era-brown);
+}
+
+.era-char-card .char-desc {
+  font-size: 13px;
+  color: var(--era-text-muted);
+  margin-top: 4px;
+}
+
+/* 未發佈標記 */
+.era-char-card.unreleased {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.era-char-card.unreleased .char-info::after {
+  content: '— 尚未發佈 —';
+  display: block;
+  font-size: 12px;
+  color: var(--era-text-muted);
+  font-style: italic;
+  margin-top: 6px;
+}
+
+/* ===== 角色檔案頁 ===== */
+.era-file-header {
+  padding: 48px 0 32px;
+  text-align: center;
+  margin-bottom: 32px;
+  border-bottom: 2px solid var(--era-border);
+}
+
+.era-file-header .file-origin {
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: var(--era-gold);
+  margin-bottom: 8px;
+}
+
+.era-file-header h1 {
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--era-brown);
+  margin-bottom: 4px;
+}
+
+.era-file-header .file-subtitle {
+  font-size: 14px;
+  color: var(--era-text-dim);
+  font-style: italic;
+}
+
+/* 角色主視覺 */
+.era-profile-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+.era-profile-img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: var(--era-radius);
+  overflow: hidden;
+  border: 2px solid var(--era-border);
+  background: var(--era-surface);
+}
+
+.era-profile-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.era-profile-img .img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  color: var(--era-border);
+}
+
+/* 資料表 */
+.era-data-table .data-section-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--era-gold);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--era-border-light);
+}
+
+.era-data-row {
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--era-border-light);
+  font-size: 14px;
+}
+
+.era-data-row .data-label {
+  width: 80px;
+  flex-shrink: 0;
+  font-weight: 700;
+  color: var(--era-text-muted);
+  font-size: 13px;
+}
+
+.era-data-row .data-value {
+  color: var(--era-text);
+  line-height: 1.6;
+}
+
+/* 圖片集 */
+.era-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.era-gallery .gallery-item {
+  aspect-ratio: 3/4;
+  border-radius: var(--era-radius);
+  overflow: hidden;
+  border: 1px solid var(--era-border-light);
+  background: var(--era-border-light);
+}
+
+.era-gallery .gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 故事集 */
+.era-story-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.era-story-item {
+  padding: 16px 20px;
+  background: var(--era-surface);
+  border: 1px solid var(--era-border-light);
+  border-left: 3px solid var(--era-gold-light);
+  border-radius: 0 var(--era-radius) var(--era-radius) 0;
+}
+
+.era-story-item .story-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--era-brown);
+  margin-bottom: 4px;
+}
+
+.era-story-item .story-date {
+  font-size: 12px;
+  color: var(--era-text-muted);
+}
+
+.era-story-item .story-preview {
+  font-size: 14px;
+  color: var(--era-text-dim);
+  margin-top: 8px;
+  line-height: 1.9;
+}
+
+/* 返回 */
+.era-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--era-text-dim);
+  text-decoration: none;
+  margin-bottom: 20px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.era-back:hover {
+  background: var(--era-gold-dim);
+  color: var(--era-gold);
+}
+
+/* Footer */
+.era-footer {
+  text-align: center;
+  padding: 40px 24px;
+  margin-top: 48px;
+  border-top: 2px solid var(--era-border);
+  font-size: 12px;
+  color: var(--era-text-muted);
+  letter-spacing: 2px;
+}
+
+/* RWD */
+@media (max-width: 768px) {
+  .era-profile-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .era-profile-img {
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  .era-char-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .era-nav-links {
+    display: none;
+  }
+
+  .era-header h1 {
+    font-size: 26px;
+  }
+
+  .era-tabs {
+    overflow-x: auto;
+  }
+}
