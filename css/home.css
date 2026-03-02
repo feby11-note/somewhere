@@ -181,7 +181,7 @@ body {
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
 }
 
-/* ===== 角色卡輪播 ===== */
+/* ===== 角色卡 ===== */
 .carousel-label {
   font-size: 16px;
   color: #FFFFFF;
@@ -191,8 +191,6 @@ body {
   font-weight: 700;
 }
 
-
-/* 角色卡 */
 .char-card {
   flex-shrink: 0;
   width: 220px;
@@ -236,12 +234,13 @@ body {
   color: rgba(74, 85, 104, 0.7);
 }
 
-/* ===== 角色卡輪播 ===== */
+/* ===== 輪播區域 ===== */
 .carousel-area {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto 8px;
   position: relative;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0 0 8px;
   padding: 0 60px;
 }
 
@@ -270,7 +269,7 @@ body {
   display: none;
 }
 
-/* 箭頭 */
+/* ===== 箭頭 ===== */
 .carousel-btn {
   display: none;
   position: absolute;
@@ -303,17 +302,6 @@ body {
 
 .carousel-btn-right {
   right: 4px;
-}
-
-/* 電腦版 */
-@media (min-width: 769px) {
-  .carousel-btn {
-    display: flex;
-  }
-
-  .carousel-track {
-    cursor: default;
-  }
 }
 
 /* ===== 底部 About 區 ===== */
@@ -410,7 +398,7 @@ body {
 
 /* 電腦版 */
 @media (min-width: 769px) {
-  
+  .carousel-btn {
     display: flex;
   }
 
@@ -418,13 +406,21 @@ body {
     cursor: default;
     padding: 0 8px;
   }
+}
 
 /* 平板 & 手機 */
 @media (max-width: 768px) {
-  .carousel-area { padding: 0; }
+  .carousel-area {
+    padding: 0;
+    /* width / left / transform 會被重新覆蓋 */
+    width: 100%;
+    left: auto;
+    transform: none;
+  }
+  /* 以下不變 */
   .carousel-track { padding: 0 20px; }
   .carousel-btn { display: none !important; }
-  
+
   .container { padding: 44px 20px 32px; }
 
   .site-title { font-size: 22px; letter-spacing: 5px; margin-bottom: 14px; }
