@@ -4,94 +4,134 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💌</text></svg>">
-  <title>首頁</title>
-  <link rel="stylesheet" href="css/index.css">
+  <title>Lovelots</title>
+  <link rel="stylesheet" href="css/home-a.css">
 </head>
-<body class="home-page">
+<body>
 
-  <!-- 背景微光 -->
-  <div class="home-bg">
-    <div class="glow glow-1"></div>
-    <div class="glow glow-2"></div>
+  <!-- 背景泡泡 -->
+  <div class="bg-decor">
+    <div class="bubble bubble-1"></div>
+    <div class="bubble bubble-2"></div>
+    <div class="bubble bubble-3"></div>
+    <div class="bubble bubble-4"></div>
   </div>
 
-  <div class="home-container">
-
-    <!-- 頭像 -->
-    <div class="home-avatar">
-      <!-- 換成你的圖：<img src="images/home/avatar.jpg" alt="頭像"> -->
-      <div class="avatar-placeholder">💌</div>
-    </div>
+  <div class="container">
 
     <!-- 標題 -->
-    <h1 class="home-title">你的名字</h1>
-    <p class="home-subtitle">your subtitle here</p>
+    <h1 class="site-title">✦ Lovelots ✦</h1>
+    <p class="site-subtitle">where stories begin</p>
 
-    <!-- 連結按鈕 -->
-    <div class="home-links">
-      <a href="https://www.threads.net/@你的帳號" target="_blank" class="home-link-btn">
-        <span class="btn-icon">🔗</span> Threads
+    <!-- 頭像 -->
+    <div class="avatar">
+      <!-- <img src="images/home/avatar.jpg" alt="頭像"> -->
+      <div class="placeholder">💌</div>
+    </div>
+
+    <!-- 社群連結 -->
+    <div class="social-row">
+      <a href="https://www.threads.com/@feby.feby11" target="_blank" class="social-btn">
+        🔗 Threads
       </a>
-      <a href="https://floze.com/你的連結" target="_blank" class="home-link-btn">
-        <span class="btn-icon">💬</span> Floze
-      </a>
-      <a href="notes/index.html" class="home-link-btn">
-        <span class="btn-icon">📖</span> 電子男友研究筆記
-      </a>
-      <a href="world/index.html" class="home-link-btn">
-        <span class="btn-icon">🌍</span> 戀愛世界
+      <a href="https://app.floze.ai/creator/cmh3md3th00hwl7029tzdo9rx/?locale=tw" target="_blank" class="social-btn">
+        💬 Floze
       </a>
     </div>
 
-    <div class="home-divider"></div>
-
-    <!-- 角色預覽 -->
-    <p class="home-section-title">你 將 會 遇 見 誰 呢 ⋯ ⋯ ？</p>
-
-    <div class="home-character-grid">
-      <a href="world/owl/jack.html" class="home-char-card">
-        <div class="char-img">
-          <!-- <img src="images/owl/jack-thumb.jpg" alt="傑克"> -->
-          <div class="img-placeholder">🦉</div>
-        </div>
-        <span class="char-name">傑克</span>
-      </a>
-      <a href="world/owl/kane.html" class="home-char-card">
-        <div class="char-img">
-          <div class="img-placeholder">🦉</div>
-        </div>
-        <span class="char-name">凱恩</span>
-      </a>
-      <a href="world/owl/leo.html" class="home-char-card">
-        <div class="char-img">
-          <div class="img-placeholder">🦉</div>
-        </div>
-        <span class="char-name">里歐</span>
-      </a>
-      <a href="world/raven/jiang-huan.html" class="home-char-card">
-        <div class="char-img">
-          <div class="img-placeholder">🐦‍⬛</div>
-        </div>
-        <span class="char-name">姜煥</span>
-      </a>
-      <a href="world/era130/zhugelei.html" class="home-char-card">
-        <div class="char-img">
-          <div class="img-placeholder">⚔️</div>
-        </div>
-        <span class="char-name">卓格勒</span>
-      </a>
+    <!-- 導覽 -->
+    <div class="nav-links">
+      <a href="notes/index.html" class="nav-btn">📖 電子男友研究筆記</a>
+      <a href="world/index.html" class="nav-btn">🌍 戀愛世界</a>
     </div>
 
-    <!-- 關於 -->
-    <div class="home-about">
+    <!-- About -->
+    <div class="about-box">
       <h3>ABOUT</h3>
       <p>
-        這裡是我的小小世界——收錄了 AI 角色扮演的知識筆記，以及我創作的角色與故事。歡迎慢慢探索。
+        這裡是我的小小世界。收錄了 AI 角色扮演的知識筆記，以及我創作的角色與他們的故事。歡迎慢慢探索 ♡
       </p>
     </div>
 
-    <div class="home-footer">
-      <p>© 2025 ✿</p>
+    <div class="divider"></div>
+
+    <!-- 角色輪播 -->
+    <p class="section-label">你 會 遇 見 誰 呢 ？</p>
+
+    <div class="carousel-wrapper">
+      <div class="carousel-track">
+        <!-- 第一組（實際角色） -->
+        <a href="world/owl/jack.html" class="char-card">
+          <div class="card-img"><div class="img-placeholder">🦉</div></div>
+          <span class="card-name">傑克</span>
+        </a>
+        <a href="world/owl/kane.html" class="char-card">
+          <div class="card-img"><div class="img-placeholder">🦉</div></div>
+          <span class="card-name">凱恩</span>
+        </a>
+        <a href="world/owl/leo.html" class="char-card">
+          <div class="card-img"><div class="img-placeholder">🦉</div></div>
+          <span class="card-name">里歐</span>
+        </a>
+        <a href="world/raven/jiang-huan.html" class="char-card">
+          <div class="card-img"><div class="img-placeholder">🐦‍⬛</div></div>
+          <span class="card-name">姜煥</span>
+        </a>
+        <a href="world/raven/lin-hao.html" class="char-card">
+          <div class="card-img"><div class="img-placeholder">🐦‍⬛</div></div>
+          <span class="card-name">林昊</span>
+        </a>
+        <a href="world/raven/song-chiye.html" class="char-card">
+          <div class="card-img"><div class="img-placeholder">🐦‍⬛</div></div>
+          <span class="card-name">宋馳夜</span>
+        </a>
+        <a href="world/era130/zhugelei.html" class="char-card">
+          <div class="card-img"><div class="img-placeholder">⚔️</div></div>
+          <span class="card-name">卓格勒</span>
+        </a>
+        <a href="world/era130/hessel.html" class="char-card">
+          <div class="card-img"><div class="img-placeholder">⚔️</div></div>
+          <span class="card-name">赫塞爾</span>
+        </a>
+
+        <!-- 第二組（複製一份讓輪播無縫） -->
+        <a href="world/owl/jack.html" class="char-card">
+          <div class="card-img"><div class="img-placeholder">🦉</div></div>
+          <span class="card-name">傑克</span>
+        </a>
+        <a href="world/owl/kane.html" class="char-card">
+          <div class="card-img"><div class="img-placeholder">🦉</div></div>
+          <span class="card-name">凱恩</span>
+        </a>
+        <a href="world/owl/leo.html" class="char-card">
+          <div class="card-img"><div class="img-placeholder">🦉</div></div>
+          <span class="card-name">里歐</span>
+        </a>
+        <a href="world/raven/jiang-huan.html" class="char-card">
+          <div class="card-img"><div class="img-placeholder">🐦‍⬛</div></div>
+          <span class="card-name">姜煥</span>
+        </a>
+        <a href="world/raven/lin-hao.html" class="char-card">
+          <div class="card-img"><div class="img-placeholder">🐦‍⬛</div></div>
+          <span class="card-name">林昊</span>
+        </a>
+        <a href="world/raven/song-chiye.html" class="char-card">
+          <div class="card-img"><div class="img-placeholder">🐦‍⬛</div></div>
+          <span class="card-name">宋馳夜</span>
+        </a>
+        <a href="world/era130/zhugelei.html" class="char-card">
+          <div class="card-img"><div class="img-placeholder">⚔️</div></div>
+          <span class="card-name">卓格勒</span>
+        </a>
+        <a href="world/era130/hessel.html" class="char-card">
+          <div class="card-img"><div class="img-placeholder">⚔️</div></div>
+          <span class="card-name">赫塞爾</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>© 2025 Lovelots ♡</p>
     </div>
 
   </div>
