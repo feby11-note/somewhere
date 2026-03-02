@@ -1,100 +1,66 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💌</text></svg>">
-  <title>首頁</title>
-  <link rel="stylesheet" href="css/home.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moonlight Archive</title>
+<link rel="stylesheet" href="test/home.css">
 </head>
-<body class="home-page">
 
-  <!-- 背景微光 -->
-  <div class="home-bg">
-    <div class="glow glow-1"></div>
-    <div class="glow glow-2"></div>
+<body>
+
+<div class="bg-glow glow1"></div>
+<div class="bg-glow glow2"></div>
+
+<div class="container">
+
+  <!-- 標題 -->
+  <h1 class="main-title">Moonlight Archive</h1>
+  <p class="subtitle">A Portal To Fictional Lovers</p>
+
+  <!-- 頭像 -->
+  <div class="avatar">
+    <img src="images/avatar.jpg" alt="avatar">
   </div>
 
-  <div class="home-container">
+  <!-- 社群 -->
+  <div class="social-row">
+    <a href="https://www.threads.com/@feby.feby11" target="_blank" class="social-card">
+      Threads
+    </a>
 
-    <!-- 頭像 -->
-    <div class="home-avatar">
-      <!-- 換成你的圖：<img src="images/home/avatar.jpg" alt="頭像"> -->
-      <div class="avatar-placeholder">💌</div>
-    </div>
-
-    <!-- 標題 -->
-    <h1 class="home-title">你的名字</h1>
-    <p class="home-subtitle">your subtitle here</p>
-
-    <!-- 連結按鈕 -->
-    <div class="home-links">
-      <a href="https://www.threads.net/@你的帳號" target="_blank" class="home-link-btn">
-        <span class="btn-icon">🔗</span> Threads
-      </a>
-      <a href="https://floze.com/你的連結" target="_blank" class="home-link-btn">
-        <span class="btn-icon">💬</span> Floze
-      </a>
-      <a href="notes/index.html" class="home-link-btn">
-        <span class="btn-icon">📖</span> 電子男友研究筆記
-      </a>
-      <a href="world/index.html" class="home-link-btn">
-        <span class="btn-icon">🌍</span> 戀愛世界
-      </a>
-    </div>
-
-    <div class="home-divider"></div>
-
-    <!-- 角色預覽 -->
-    <p class="home-section-title">你 將 會 遇 見 誰 呢 ⋯ ⋯ ？</p>
-
-    <div class="home-character-grid">
-      <a href="world/owl/jack.html" class="home-char-card">
-        <div class="char-img">
-          <!-- <img src="images/owl/jack-thumb.jpg" alt="傑克"> -->
-          <div class="img-placeholder">🦉</div>
-        </div>
-        <span class="char-name">傑克</span>
-      </a>
-      <a href="world/owl/kane.html" class="home-char-card">
-        <div class="char-img">
-          <div class="img-placeholder">🦉</div>
-        </div>
-        <span class="char-name">凱恩</span>
-      </a>
-      <a href="world/owl/leo.html" class="home-char-card">
-        <div class="char-img">
-          <div class="img-placeholder">🦉</div>
-        </div>
-        <span class="char-name">里歐</span>
-      </a>
-      <a href="world/raven/jiang-huan.html" class="home-char-card">
-        <div class="char-img">
-          <div class="img-placeholder">🐦‍⬛</div>
-        </div>
-        <span class="char-name">姜煥</span>
-      </a>
-      <a href="world/era130/zhugelei.html" class="home-char-card">
-        <div class="char-img">
-          <div class="img-placeholder">⚔️</div>
-        </div>
-        <span class="char-name">卓格勒</span>
-      </a>
-    </div>
-
-    <!-- 關於 -->
-    <div class="home-about">
-      <h3>ABOUT</h3>
-      <p>
-        這裡是我的小小世界——收錄了 AI 角色扮演的知識筆記，以及我創作的角色與故事。歡迎慢慢探索。
-      </p>
-    </div>
-
-    <div class="home-footer">
-      <p>© 2025 ✿</p>
-    </div>
-
+    <a href="https://app.floze.ai/creator/cmh3md3th00hwl7029tzdo9rx/?locale=tw" target="_blank" class="social-card">
+      Floze
+    </a>
   </div>
+
+  <!-- About -->
+  <div class="about">
+    這裡收藏了我創作的戀愛角色與世界觀。
+    如果你願意停下來，或許會遇見命中注定的他。
+  </div>
+
+  <!-- 最新角色 -->
+  <h2 class="section-title">Latest Characters</h2>
+
+  <div class="card-scroll">
+    <div class="card-track">
+      <div class="char-card">Jack</div>
+      <div class="char-card">Kane</div>
+      <div class="char-card">Leo</div>
+      <div class="char-card">Jiang Huan</div>
+      <div class="char-card">Zhugele</div>
+
+      <!-- 複製一份讓動畫無縫 -->
+      <div class="char-card">Jack</div>
+      <div class="char-card">Kane</div>
+      <div class="char-card">Leo</div>
+      <div class="char-card">Jiang Huan</div>
+      <div class="char-card">Zhugele</div>
+    </div>
+  </div>
+
+</div>
 
 </body>
 </html>
