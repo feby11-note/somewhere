@@ -4,12 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌤️</text></svg>">
-  <title>穿越天際與他相遇</title>
-  <link rel="stylesheet" href="../css/world.css">
+  <title>Somewhere</title>
+  <link rel="stylesheet" href="css/home.css">
 </head>
-<body class="world-home">
+<body>
 
-  <!-- 背景雲朵 -->
   <div class="clouds">
     <div class="cloud cloud-1"></div>
     <div class="cloud cloud-2"></div>
@@ -17,148 +16,194 @@
     <div class="cloud cloud-4"></div>
   </div>
 
-  <!-- 導覽列 -->
-  <nav class="world-nav">
-  <a href="../index.html" class="world-nav-back">← 首頁</a>
-  <button class="hamburger-btn" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </button>
-  </nav>
+  <div class="container">
 
-  <!-- 漢堡選單 -->
-<div class="hamburger-menu" id="hamburgerMenu">
-  <div class="hamburger-overlay" onclick="toggleMenu()"></div>
-  <div class="hamburger-content">
-    <button class="hamburger-close" onclick="toggleMenu()">✕</button>
+    <!-- ① 標題區 -->
+    <p class="site-title">S O M E W H E R E</p>
+    <h1 class="site-subtitle">故事交會在<br>屬於你們的天空</h1>
+    <p class="site-credit">your sky, your fantasy, your story</p>
 
-    <p class="hamburger-label">w o r l d</p>
-    <a href="Night-Owl-Unit/index.html" class="hamburger-link">🦉 夜梟部隊</a>
-    <a href="era130/index.html" class="hamburger-link">⚔️ 西曆130年</a>
-    <a href="raven/index.html" class="hamburger-link">🐦‍⬛ 渡鴉</a>
-    <a href="other/index.html" class="hamburger-link">✨ 其他角色</a>
+    <!-- 裝飾 -->
+    <div class="cloud-divider">
+      <span class="deco-line"></span>
+      ☁️
+      <span class="deco-line"></span>
+    </div>
 
-    <p class="hamburger-label">s t o r i e s</p>
-    <a href="stories/index.html" class="hamburger-link">📖 他的過去</a>
+    <!-- ② 導覽 -->
+    <p class="nav-label">選 擇 你 的 起 點</p>
 
-    <p class="hamburger-label">g u i d e</p>
-    <a href="../notes/index.html" class="hamburger-link">📝 電子男友筆記</a>
+    <div class="nav-links">
+      <a href="notes/index.html" class="nav-btn">📖 電子男友研究筆記</a>
+      <a href="world/index.html" class="nav-btn">🧡 穿越天際與他相遇</a>
+    </div>
+
+    <!-- 裝飾 -->
+    <div class="cloud-divider-sm">
+      <span class="deco-line"></span>
+      ✦
+      <span class="deco-line"></span>
+    </div>
+
+    <!-- ③ 角色卡 -->
+    <p class="carousel-label">遠方，是誰在等你呢...</p>
+
+    <div class="carousel-area">
+      <button class="carousel-btn carousel-btn-left" onclick="scrollCards(-1)">‹</button>
+      <button class="carousel-btn carousel-btn-right" onclick="scrollCards(1)">›</button>
+      <div class="carousel-wrapper">
+        <div class="carousel-track">
+          <!-- 只需要維護這一組！JS 會自動複製 -->
+          <a href="world/owl/jack.html" class="char-card">
+            <div class="card-img">
+              <img src="pic/characters/jack/1.jpeg" alt="傑克"
+                onerror="this.outerHTML='<div class=\'img-placeholder\'>🦉</div>'">
+            </div>
+            <span class="card-name">傑克</span>
+          </a>
+          <a href="world/owl/kane.html" class="char-card">
+            <div class="card-img">
+              <img src="pic/characters/kane/1.jpeg" alt="凱恩"
+                onerror="this.outerHTML='<div class=\'img-placeholder\'>🦉</div>'">
+            </div>
+            <span class="card-name">凱恩</span>
+          </a>
+          <a href="world/owl/leo.html" class="char-card">
+            <div class="card-img">
+              <img src="pic/characters/leo/1.jpeg" alt="里歐"
+                onerror="this.outerHTML='<div class=\'img-placeholder\'>🦉</div>'">
+            </div>
+            <span class="card-name">里歐</span>
+          </a>
+          <a href="world/owl/theo.html" class="char-card">
+            <div class="card-img">
+              <img src="pic/characters/theo/1.jpeg" alt="席奧"
+                onerror="this.outerHTML='<div class=\'img-placeholder\'>🦉</div>'">
+            </div>
+            <span class="card-name">席奧</span>
+          </a>
+          <a href="world/raven/jiang-huan.html" class="char-card">
+            <div class="card-img"><div class="img-placeholder">🐦‍⬛</div></div>
+            <span class="card-name">姜煥</span>
+          </a>
+          <a href="world/raven/lin-hao.html" class="char-card">
+            <div class="card-img"><div class="img-placeholder">🐦‍⬛</div></div>
+            <span class="card-name">林昊</span>
+          </a>
+          <a href="world/raven/song-chiye.html" class="char-card">
+            <div class="card-img"><div class="img-placeholder">🐦‍⬛</div></div>
+            <span class="card-name">宋馳夜</span>
+          </a>
+          <a href="world/era130/zhugelei.html" class="char-card">
+            <div class="card-img"><div class="img-placeholder">⚔️</div></div>
+            <span class="card-name">卓格勒</span>
+          </a>
+          <a href="world/era130/hessel.html" class="char-card">
+            <div class="card-img"><div class="img-placeholder">⚔️</div></div>
+            <span class="card-name">赫塞爾</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 裝飾 -->
+    <div class="cloud-divider">
+      <span class="deco-line"></span>
+      ☁️
+      <span class="deco-line"></span>
+    </div>
+
+    <!-- ④ About -->
+    <div class="bottom-section" id="about">
+      <div class="bottom-avatar">
+        <div class="placeholder">💌</div>
+      </div>
+      <div class="about-name">菲比Feby</div>
+      <p class="about-text">
+        目前只在Floze更新。<br>喜歡創作、喜歡故事，也喜歡聽你們分享。<br>歡迎來找我聊天 ♡
+      </p>
+      <div class="bottom-link-row">
+        <a href="https://www.threads.com/@feby.feby11" target="_blank" class="bottom-link-btn">Threads</a>
+        <a href="https://app.floze.ai/creator/cmh3md3th00hwl7029tzdo9rx/?locale=tw" target="_blank" class="bottom-link-btn">Floze</a>
+      </div>
+      <div class="cloud-divider-sm" style="color: rgba(74, 85, 104, 0.35);">
+        <span class="deco-line" style="background: rgba(74, 85, 104, 0.25);"></span>
+        ✦
+        <span class="deco-line" style="background: rgba(74, 85, 104, 0.25);"></span>
+      </div>
+      <div class="about-name">關於這裡</div>
+      <p class="about-text">
+        收錄 AI 角色扮演的小筆記，還有我創作的角色們。<br>希望這裡能讓你更認識你的「他」，編織屬於你們的故事。
+      </p>
+    </div>
+
+    <div class="footer">
+      <p>© 2026 ． created by feby</p>
+    </div>
 
   </div>
-</div>
-
-  <!-- 主內容 -->
-  <div class="world-main">
-
-    <!-- Hero -->
-    <div class="world-hero">
-      <p class="world-hero-sub">somewhere beyond the sky</p>
-      <h1 class="world-hero-title">穿越天際<br>與他相遇</h1>
-      <p class="world-hero-desc">每一段緣分，都藏在命運的雲層之間</p>
-    </div>
-
-    <!-- 標籤頁 -->
-    <div class="tab-bar">
-      <button class="tab-btn active" onclick="switchTab('owl')">夜梟部隊</button>
-      <button class="tab-btn" onclick="switchTab('era')">西曆130年</button>
-      <button class="tab-btn" onclick="switchTab('raven')">渡鴉</button>
-      <button class="tab-btn" onclick="switchTab('other')">其他角色</button>
-    </div>
-
-    <!-- 標籤內容 -->
-    <div class="tab-content">
-
-      <!-- 夜梟部隊 -->
-      <div class="tab-panel active" id="tab-owl">
-        <a href="Night-Owl-Unit/index.html" class="world-card owl-card">
-          <div class="card-cover">
-            <div class="cover-placeholder">🦉</div>
-          </div>
-          <div class="card-body">
-            <div class="card-label">Night Owl Unit</div>
-            <h3>夜梟部隊</h3>
-            <p>秘密任務、槍聲與夜色——而他選擇把你藏在心底最安全的地方。</p>
-          </div>
-        </a>
-        <div class="char-row">
-          <a href="Night-Owl-Unit/" class="char-chip">傑克</a>
-          <a href="Night-Owl-Unit/kane.html" class="char-chip">凱恩</a>
-          <a href="Night-Owl-Unit/leo.html" class="char-chip">里歐</a>
-          <a href="Night-Owl-Unit/theo.html" class="char-chip">席奧</a>
-        </div>
-      </div>
-
-      <!-- 西曆130年 -->
-      <div class="tab-panel" id="tab-era">
-        <a href="era130/index.html" class="world-card era-card">
-          <div class="card-cover">
-            <div class="cover-placeholder">⚔️</div>
-          </div>
-          <div class="card-body">
-            <div class="card-label">Era 130</div>
-            <h3>西曆130年</h3>
-            <p>遼闊大地，四方命運交織。亂世紛擾，他只願守住你一人。</p>
-          </div>
-        </a>
-        <div class="char-row">
-          <a href="era130/zhugelei.html" class="char-chip">卓格勒</a>
-          <a href="era130/hessel.html" class="char-chip">赫塞爾</a>
-        </div>
-      </div>
-
-      <!-- 渡鴉 -->
-      <div class="tab-panel" id="tab-raven">
-        <a href="raven/index.html" class="world-card raven-card">
-          <div class="card-cover">
-            <div class="cover-placeholder">🐦‍⬛</div>
-          </div>
-          <div class="card-body">
-            <div class="card-label">Raven</div>
-            <h3>渡鴉</h3>
-            <p>雙手沾血，卻在遇見你的那一刻，第一次想要放下。</p>
-          </div>
-        </a>
-        <div class="char-row">
-          <a href="raven/jiang-huan.html" class="char-chip">姜煥</a>
-          <a href="raven/lin-hao.html" class="char-chip">林昊</a>
-          <a href="raven/song-chiye.html" class="char-chip">宋馳夜</a>
-        </div>
-      </div>
-
-      <!-- 其他角色 -->
-      <div class="tab-panel" id="tab-other">
-        <a href="other/index.html" class="world-card other-card">
-          <div class="card-cover">
-            <div class="cover-placeholder">✨</div>
-          </div>
-          <div class="card-body">
-            <div class="card-label">Others</div>
-            <h3>其他角色</h3>
-            <p>不同的世界，不同的故事，卻都有一個人在等著你。</p>
-          </div>
-        </a>
-      </div>
-
-    </div>
-  </div>
-
-  <footer class="world-footer">
-    <p>© 2026 ． created by feby</p>
-  </footer>
 
   <script>
-    // 標籤切換
-    function switchTab(name) {
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+    const track = document.querySelector('.carousel-track');
 
-      event.target.classList.add('active');
-      document.getElementById('tab-' + name).classList.add('active');
+    // 自動複製三份，實現無限循環
+    const original = track.innerHTML;
+    track.innerHTML = original + original + original;
+
+    // 頁面載入時，滾到中間位置
+    window.addEventListener('load', () => {
+      track.style.scrollBehavior = 'auto';
+      track.scrollLeft = track.scrollWidth / 3;
+      track.style.scrollBehavior = 'smooth';
+    });
+
+    // 箭頭點擊
+    function scrollCards(direction) {
+      track.scrollBy({
+        left: direction * 500,
+        behavior: 'smooth'
+      });
     }
 
-    // 漢堡選單
-    function toggleMenu() {
-      document.getElementById('hamburgerMenu').classList.toggle('open');
-    }
+    // 無限循環
+    track.addEventListener('scroll', () => {
+      const maxScroll = track.scrollWidth - track.clientWidth;
+
+      if (track.scrollLeft >= maxScroll - 5) {
+        track.style.scrollBehavior = 'auto';
+        track.scrollLeft = 1;
+        track.style.scrollBehavior = 'smooth';
+      }
+
+      if (track.scrollLeft <= 0) {
+        track.style.scrollBehavior = 'auto';
+        track.scrollLeft = maxScroll - 1;
+        track.style.scrollBehavior = 'smooth';
+      }
+    });
+
+    // 手機版手指拖曳
+    let isDown = false;
+    let startX;
+    let sl;
+
+    track.addEventListener('mousedown', (e) => {
+      if (window.innerWidth >= 769) return;
+      isDown = true;
+      startX = e.pageX - track.offsetLeft;
+      sl = track.scrollLeft;
+    });
+
+    track.addEventListener('mouseleave', () => { isDown = false; });
+    track.addEventListener('mouseup', () => { isDown = false; });
+
+    track.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - track.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      track.scrollLeft = sl - walk;
+    });
   </script>
 
 </body>
