@@ -1202,6 +1202,12 @@
   </footer>
 
   <script>
+    // 如果網址有 #members，自動切到 部隊成員 標籤
+    if (window.location.hash === '#members') {
+    const btn = document.querySelector('[onclick*="members"]');
+    if (btn) btn.click();
+    }
+
     const tagline = '// In darkness we move. In silence we strike.';
     let charIndex = 0;
     const tlEl = document.getElementById('tagline');
