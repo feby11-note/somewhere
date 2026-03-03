@@ -606,13 +606,16 @@
     @media (max-width: 680px) {
       .profile-layout { grid-template-columns: 1fr; }
       .profile-img {
-      position: static;
-      max-width: 260px;
-      margin: 0 auto;
-    }
+        position: static;
+        max-width: 260px;
+        margin: 0 auto;
+      }
       .pf-grid.col4 { grid-template-columns: 1fr 1fr; }
       .pf-cell.span4 { grid-column: span 2; }
-      .nav-links { display: none; }   /* ← 這行刪掉 */
+      .nav-links a {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.45rem;
+      }
     }
 
     @media (max-width: 420px) {
