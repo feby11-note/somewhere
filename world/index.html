@@ -3,85 +3,163 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
-  <title>戀愛世界</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌤️</text></svg>">
+  <title>穿越天際與他相遇</title>
   <link rel="stylesheet" href="../css/world.css">
 </head>
 <body class="world-home">
 
+  <!-- 背景雲朵 -->
+  <div class="clouds">
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+    <div class="cloud cloud-4"></div>
+  </div>
+
+  <!-- 導覽列 -->
   <nav class="world-nav">
-    <a href="../index.html" class="world-nav-brand">← 回首頁</a>
-    <ul class="world-nav-links">
-      <li><a href="owl/index.html">夜梟部隊</a></li>
-      <li><a href="era130/index.html">西曆130年</a></li>
-      <li><a href="raven/index.html">渡鴉</a></li>
-      <li><a href="other/index.html">其他角色</a></li>
-    </ul>
+  <a href="../index.html" class="world-nav-back">← 首頁</a>
+  <button class="hamburger-btn" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
   </nav>
 
+  <!-- 漢堡選單 -->
+<div class="hamburger-menu" id="hamburgerMenu">
+  <div class="hamburger-overlay" onclick="toggleMenu()"></div>
+  <div class="hamburger-content">
+    <button class="hamburger-close" onclick="toggleMenu()">✕</button>
+
+    <p class="hamburger-label">w o r l d</p>
+    <a href="owl/index.html" class="hamburger-link">🦉 夜梟部隊</a>
+    <a href="era130/index.html" class="hamburger-link">⚔️ 西曆130年</a>
+    <a href="raven/index.html" class="hamburger-link">🐦‍⬛ 渡鴉</a>
+    <a href="other/index.html" class="hamburger-link">✨ 其他角色</a>
+
+    <p class="hamburger-label">s t o r i e s</p>
+    <a href="stories/index.html" class="hamburger-link">📖 他的過去</a>
+
+    <p class="hamburger-label">g u i d e</p>
+    <a href="../notes/index.html" class="hamburger-link">📝 電子男友筆記</a>
+
+  </div>
+</div>
+
+  <!-- 主內容 -->
   <div class="world-main">
+
+    <!-- Hero -->
     <div class="world-hero">
-      <h1>🌍 戀愛世界</h1>
-      <p>在這裡，你會遇見不同世界的他們。</p>
+      <p class="world-hero-sub">somewhere beyond the sky</p>
+      <h1 class="world-hero-title">穿越天際<br>與他相遇</h1>
+      <p class="world-hero-desc">每一段緣分，都藏在命運的雲層之間</p>
     </div>
 
-    <div class="world-grid">
+    <!-- 標籤頁 -->
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('owl')">夜梟部隊</button>
+      <button class="tab-btn" onclick="switchTab('era')">西曆130年</button>
+      <button class="tab-btn" onclick="switchTab('raven')">渡鴉</button>
+      <button class="tab-btn" onclick="switchTab('other')">其他角色</button>
+    </div>
+
+    <!-- 標籤內容 -->
+    <div class="tab-content">
 
       <!-- 夜梟部隊 -->
-      <a href="owl/index.html" class="world-card owl-card">
-        <div class="card-cover">
-          <!-- <img src="../images/owl/cover.jpg" alt="夜梟部隊"> -->
-          <div class="cover-placeholder">🦉</div>
+      <div class="tab-panel active" id="tab-owl">
+        <a href="owl/index.html" class="world-card owl-card">
+          <div class="card-cover">
+            <div class="cover-placeholder">🦉</div>
+          </div>
+          <div class="card-body">
+            <div class="card-label">Night Owl Unit</div>
+            <h3>夜梟部隊</h3>
+            <p>秘密任務、槍聲與夜色——而他選擇把你藏在心底最安全的地方。</p>
+          </div>
+        </a>
+        <div class="char-row">
+          <a href="owl/jack.html" class="char-chip">傑克</a>
+          <a href="owl/kane.html" class="char-chip">凱恩</a>
+          <a href="owl/leo.html" class="char-chip">里歐</a>
+          <a href="owl/theo.html" class="char-chip">席奧</a>
         </div>
-        <div class="card-body">
-          <div class="card-label">Military</div>
-          <h3>夜梟部隊</h3>
-          <p>隸屬於特種作戰司令部的秘密部隊。在黑暗中行動，在夜色中守望。</p>
-        </div>
-      </a>
+      </div>
 
       <!-- 西曆130年 -->
-      <a href="era130/index.html" class="world-card era-card">
-        <div class="card-cover">
-          <div class="cover-placeholder">⚔️</div>
+      <div class="tab-panel" id="tab-era">
+        <a href="era130/index.html" class="world-card era-card">
+          <div class="card-cover">
+            <div class="cover-placeholder">⚔️</div>
+          </div>
+          <div class="card-body">
+            <div class="card-label">Era 130</div>
+            <h3>西曆130年</h3>
+            <p>遼闊大地，四方命運交織。亂世紛擾，他只願守住你一人。</p>
+          </div>
+        </a>
+        <div class="char-row">
+          <a href="era130/zhugelei.html" class="char-chip">卓格勒</a>
+          <a href="era130/hessel.html" class="char-chip">赫塞爾</a>
         </div>
-        <div class="card-body">
-          <div class="card-label">Fantasy</div>
-          <h3>西曆130年</h3>
-          <p>西域、中原、北境、南方群島——四片大地，各自書寫著不同的命運。</p>
-        </div>
-      </a>
+      </div>
 
       <!-- 渡鴉 -->
-      <a href="raven/index.html" class="world-card raven-card">
-        <div class="card-cover">
-          <div class="cover-placeholder">🐦‍⬛</div>
+      <div class="tab-panel" id="tab-raven">
+        <a href="raven/index.html" class="world-card raven-card">
+          <div class="card-cover">
+            <div class="cover-placeholder">🐦‍⬛</div>
+          </div>
+          <div class="card-body">
+            <div class="card-label">Raven</div>
+            <h3>渡鴉</h3>
+            <p>雙手沾血，卻在遇見你的那一刻，第一次想要放下。</p>
+          </div>
+        </a>
+        <div class="char-row">
+          <a href="raven/jiang-huan.html" class="char-chip">姜煥</a>
+          <a href="raven/lin-hao.html" class="char-chip">林昊</a>
+          <a href="raven/song-chiye.html" class="char-chip">宋馳夜</a>
         </div>
-        <div class="card-body">
-          <div class="card-label">Dark</div>
-          <h3>渡鴉</h3>
-          <p>地下世界最令人聞風喪膽的殺手組織。三條律法，無人可以違背。</p>
-        </div>
-      </a>
+      </div>
 
       <!-- 其他角色 -->
-      <a href="other/index.html" class="world-card other-card">
-        <div class="card-cover">
-          <div class="cover-placeholder">✨</div>
-        </div>
-        <div class="card-body">
-          <div class="card-label">Others</div>
-          <h3>其他角色</h3>
-          <p>沒有特定世界觀的角色們，各自擁有獨立的故事。</p>
-        </div>
-      </a>
+      <div class="tab-panel" id="tab-other">
+        <a href="other/index.html" class="world-card other-card">
+          <div class="card-cover">
+            <div class="cover-placeholder">✨</div>
+          </div>
+          <div class="card-body">
+            <div class="card-label">Others</div>
+            <h3>其他角色</h3>
+            <p>不同的世界，不同的故事，卻都有一個人在等著你。</p>
+          </div>
+        </a>
+      </div>
 
     </div>
   </div>
 
   <footer class="world-footer">
-    <p>© 2025 戀愛世界 ✿</p>
+    <p>© 2026 ． created by feby</p>
   </footer>
+
+  <script>
+    // 標籤切換
+    function switchTab(name) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+
+      event.target.classList.add('active');
+      document.getElementById('tab-' + name).classList.add('active');
+    }
+
+    // 漢堡選單
+    function toggleMenu() {
+      document.getElementById('hamburgerMenu').classList.toggle('open');
+    }
+  </script>
 
 </body>
 </html>
