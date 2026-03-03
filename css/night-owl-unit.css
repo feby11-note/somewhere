@@ -1,19 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&family=Share+Tech+Mono&family=Oswald:wght@400;600;700&display=swap');
+/* owl.css — 完整更新版 */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&family=Share+Tech+Mono&family=Oswald:wght@400;600;700&family=Caveat:wght@400;600&family=Cute+Font&display=swap');
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --owl-bg: #1A2535;
-  --owl-surface: #223047;
-  --owl-surface2: #2A3A55;
-  --owl-border: #3A4E68;
-  --owl-green: #5AAB4A;
-  --owl-green-light: #8FCC8F;
-  --owl-orange: #E8A040;
-  --owl-text: #EAF2FF;
-  --owl-text-dim: rgba(234, 242, 255, 0.7);
-  --owl-text-muted: rgba(234, 242, 255, 0.4);
-  --owl-radius: 2px;
+  --owl-bg: #1E2D40;          /* 稍微提亮，不再純黑 */
+  --owl-surface: #273D57;
+  --owl-surface2: #304A6A;
+  --owl-border: #4A6280;
+  --owl-green: #5EC44E;
+  --owl-green-light: #9FDD8F;
+  --owl-green-glow: rgba(94, 196, 78, 0.25);
+  --owl-orange: #F0A840;
+  --owl-orange-glow: rgba(240, 168, 64, 0.2);
+  --owl-accent: #7BC8E8;       /* 新增：冰藍強調色 */
+  --owl-text: #EEF4FF;
+  --owl-text-dim: rgba(238, 244, 255, 0.78);
+  --owl-text-muted: rgba(238, 244, 255, 0.42);
+
+  /* 字體縮放基準 */
+  font-size: clamp(14px, 1.1vw + 10px, 17px);
 }
 
 body.owl-page {
@@ -21,6 +28,8 @@ body.owl-page {
   background: var(--owl-bg);
   color: var(--owl-text);
   min-height: 100vh;
+  width: 100%;
+  font-size: 1rem;
 }
 
 /* ===== 導覽列 ===== */
@@ -28,7 +37,8 @@ body.owl-page {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  padding: 14px 24px;
+  padding: 0 2rem;
+  height: 3.25rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -38,39 +48,34 @@ body.owl-page {
 }
 
 .owl-nav-brand {
-  font-family: 'Oswald', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
   color: var(--owl-green-light);
   text-decoration: none;
-  letter-spacing: 3px;
-  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  opacity: 0.85;
+  transition: opacity 0.2s;
 }
-
-.owl-nav-brand:hover { color: #fff; }
+.owl-nav-brand:hover { opacity: 1; }
 
 .owl-hamburger-btn {
-  width: 36px;
-  height: 36px;
+  width: 2.25rem;
+  height: 2.25rem;
   background: transparent;
   border: 1px solid var(--owl-border);
-  border-radius: 0;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 5px;
-  transition: all 0.3s ease;
+  transition: border-color 0.2s;
+  flex-shrink: 0;
 }
-
-.owl-hamburger-btn:hover {
-  border-color: var(--owl-green-light);
-}
-
+.owl-hamburger-btn:hover { border-color: var(--owl-green-light); }
 .owl-hamburger-btn span {
   display: block;
-  width: 16px;
+  width: 1rem;
   height: 1.5px;
   background: var(--owl-text-dim);
 }
@@ -78,266 +83,419 @@ body.owl-page {
 /* ===== 漢堡選單 ===== */
 .owl-hamburger-menu {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  inset: 0;
   z-index: 200;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-
-.owl-hamburger-menu.open {
-  pointer-events: all;
-  opacity: 1;
-}
+.owl-hamburger-menu.open { pointer-events: all; opacity: 1; }
 
 .owl-hamburger-overlay {
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
+  inset: 0;
+  background: rgba(0,0,0,0.6);
 }
 
 .owl-hamburger-content {
   position: absolute;
   top: 0; right: 0; bottom: 0;
-  width: 240px;
-  background: #1A2535;
+  width: 15rem;
+  background: #1c2c40;
   border-left: 1px solid var(--owl-border);
-  padding: 60px 28px 40px;
+  padding: 3.5rem 1.75rem 2.5rem;
   display: flex;
   flex-direction: column;
   transform: translateX(100%);
   transition: transform 0.3s ease;
 }
-
-.owl-hamburger-menu.open .owl-hamburger-content {
-  transform: translateX(0);
-}
+.owl-hamburger-menu.open .owl-hamburger-content { transform: translateX(0); }
 
 .owl-hamburger-close {
   position: absolute;
-  top: 18px; right: 20px;
+  top: 1rem; right: 1.1rem;
   background: none;
   border: none;
-  font-size: 18px;
+  font-size: 1rem;
   color: var(--owl-text-muted);
   cursor: pointer;
   font-family: 'Share Tech Mono', monospace;
-  transition: color 0.3s ease;
+  transition: color 0.2s;
 }
-
 .owl-hamburger-close:hover { color: var(--owl-text); }
 
 .owl-hamburger-label {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 3px;
-  color: var(--owl-green-light);
-  margin-bottom: 8px;
-  margin-top: 28px;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 0.5rem;
+  margin-top: 1.75rem;
   text-transform: uppercase;
-  opacity: 0.7;
+  opacity: 0.9;
 }
-
 .owl-hamburger-label:first-of-type { margin-top: 0; }
 
-.owl-hamburger-link {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--owl-text-dim);
-  text-decoration: none;
-  padding: 9px 0;
-  border-bottom: 1px solid rgba(58, 78, 104, 0.4);
-  transition: all 0.2s ease;
-  letter-spacing: 0.5px;
+/* members 區 label 橘色 */
+.owl-hamburger-label.label-members {
+  color: var(--owl-orange);
 }
 
+/* navigate 區 label 綠色 */
+.owl-hamburger-label.label-navigate {
+  color: var(--owl-green-light);
+}
+
+.owl-hamburger-link {
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.625rem 0;
+  border-bottom: 1px solid rgba(74, 98, 128, 0.35);
+  transition: all 0.2s;
+  letter-spacing: 0.05em;
+}
 .owl-hamburger-link:last-of-type { border-bottom: none; }
 
-.owl-hamburger-link:hover {
-  color: var(--owl-green-light);
-  padding-left: 6px;
+/* members 連結橘色系 */
+.owl-hamburger-link.link-members {
+  color: var(--owl-text-dim);   /* 預設白色 */
 }
+.owl-hamburger-link.link-members:hover {
+  color: #FFCC88;               /* hover 淺橘 */
+  padding-left: 0.375rem;
+}
+
+/* navigate 連結綠色系 */
+.owl-hamburger-link.link-navigate {
+  color: var(--owl-text-dim);   /* 預設白色 */
+}
+.owl-hamburger-link.link-navigate:hover {
+  color: #C8EDBC;               /* hover 淺綠 */
+  padding-left: 0.375rem;
+}
+.owl-hamburger-link:last-of-type { border-bottom: none; }
+.owl-hamburger-link:hover { color: var(--owl-green-light); padding-left: 0.375rem; }
 
 /* ===== 主內容 ===== */
 .owl-main {
-  width: clamp(900px, 80vw, 1600px);
+  width: 100%;
+  max-width: 960px;
   margin: 0 auto;
+  padding: 3.25rem 2rem 5rem;
 }
 
 /* ===== Header ===== */
 .owl-header {
-  padding: 52px 0 40px;
-  margin-bottom: 32px;
+  padding: 3.5rem 0 0;
+  margin-bottom: 3.25rem;
 }
 
-.owl-header-top {
+.owl-header-eyebrow {
   display: flex;
-  gap: 8px;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 1.25rem;
 }
 
 .owl-badge {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 1px;
-  padding: 4px 10px;
-  border-radius: 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.625rem;
 }
 
 .owl-badge-orange {
   color: var(--owl-orange);
-  background: rgba(232, 160, 64, 0.1);
-  border: 1px solid rgba(232, 160, 64, 0.5);
+  background: var(--owl-orange-glow);
+  border: 1px solid rgba(240, 168, 64, 0.5);
 }
 
 .owl-badge-green {
   color: var(--owl-green-light);
-  background: rgba(90, 171, 74, 0.1);
-  border: 1px solid rgba(90, 171, 74, 0.5);
+  background: var(--owl-green-glow);
+  border: 1px solid rgba(94, 196, 78, 0.5);
 }
 
-.owl-header h1 {
-  font-family: 'Oswald', sans-serif;
-  font-size: 44px;
-  font-weight: 700;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: var(--owl-text);
-  margin-bottom: 12px;
-  line-height: 1.15;
-}
-
-.owl-header .tagline {
-  font-family: 'Share Tech Mono', monospace;
-  color: var(--owl-text-muted);
-  font-size: 12px;
-  letter-spacing: 2px;
-}
-
-/* ===== 分頁列 ===== */
-.owl-tabs {
+.owl-header-title-block {
   display: flex;
+  align-items: flex-end;
+  gap: 1.25rem;
+  margin-bottom: 0.625rem;
+  flex-wrap: wrap;
+}
+
+.owl-header-zh {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: var(--owl-text);
+  letter-spacing: 0.25em;
+  line-height: 1;
+}
+
+.owl-header-en {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 400;
+  color: var(--owl-green-light);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  line-height: 1;
+  padding-bottom: 0.2rem;
+  opacity: 0.9;
+}
+
+/* 打字機文案 */
+.owl-header-tagline {
+  font-family: 'Share Tech Mono', monospace;
+  color: var(--owl-accent);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  margin-top: 1rem;
+  opacity: 0.75;
+  min-height: 1.4em;
+}
+
+.owl-header-tagline::after {
+  content: '█';
+  animation: blink 1s step-end infinite;
+  opacity: 0.7;
+  margin-left: 2px;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ===== 大標籤列 ===== */
+.owl-tab-bar {
+  display: flex;
+  align-items: flex-end;
   gap: 0;
-  margin-bottom: 32px;
-  border-bottom: 1px solid var(--owl-border);
+  border-bottom: 2px solid var(--owl-border);
+  width: 100%;
   overflow-x: auto;
   scrollbar-width: none;
 }
-
-.owl-tabs::-webkit-scrollbar { display: none; }
+.owl-tab-bar::-webkit-scrollbar { display: none; }
 
 .owl-tab {
   flex-shrink: 0;
-  padding: 12px 20px;
-  font-size: 13px;
-  font-weight: 600;
+  position: relative;
+  padding: 0.75rem 1.5rem 0.875rem;
+  font-size: 1rem;           /* 加大 */
+  font-weight: 700;
   color: var(--owl-text-muted);
   border: none;
   background: none;
   cursor: pointer;
-  border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
-  transition: all 0.2s ease;
   font-family: 'Noto Sans TC', sans-serif;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.08em;
+  transition: all 0.2s;
+  clip-path: polygon(8px 0%, calc(100% - 8px) 0%, 100% 8px, 100% 100%, 0% 100%, 0% 8px);
 }
 
-.owl-tab:hover { color: var(--owl-text); }
+.owl-tab::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-top: 1px solid transparent;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  clip-path: polygon(8px 0%, calc(100% - 8px) 0%, 100% 8px, 100% 100%, 0% 100%, 0% 8px);
+  transition: all 0.2s;
+}
+
+.owl-tab:hover { color: var(--owl-text-dim); }
+.owl-tab:hover::before {
+  border-color: rgba(74, 98, 128, 0.6);
+  background: rgba(255,255,255,0.03);
+}
 
 .owl-tab.active {
   color: var(--owl-green-light);
-  border-bottom-color: var(--owl-green-light);
+  background: var(--owl-surface);
+  margin-bottom: -2px;
+  padding-bottom: calc(0.875rem + 2px);
+  text-shadow: 0 0 12px var(--owl-green-glow);  /* 輕微發光 */
+}
+
+.owl-tab.active::before {
+  border-color: var(--owl-border);
+  border-bottom-color: var(--owl-surface);
 }
 
 .owl-tab-content { display: none; }
-.owl-tab-content.active { display: block; }
+.owl-tab-content.active { display: block; padding-top: 2.5rem; }
 
-/* ===== 區塊標題列 ===== */
-.owl-section-label {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 3px;
+/* ===== 區塊標題 ===== */
+.owl-section-head {
+  margin-bottom: 1.75rem;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;        /* 全部底部對齊 */
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.owl-section-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.owl-section-en {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.2em;
   color: var(--owl-green-light);
   text-transform: uppercase;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--owl-border);
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  opacity: 0.9;
+}
+
+.owl-section-zh {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--owl-text);
+  letter-spacing: 0.12em;
 }
 
 .owl-section-id {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
   color: var(--owl-text-muted);
-  font-size: 10px;
+  letter-spacing: 0.08em;
+  opacity: 0.6;
+  padding-bottom: 0.15rem;     /* 跟 zh 底部對齊的微調 */
+  white-space: nowrap;
 }
 
 /* ===== 說明文字 ===== */
 .owl-text {
   color: var(--owl-text-dim);
-  font-size: 15px;
-  line-height: 1.9;
-  margin-bottom: 12px;
+  font-size: 1rem;
+  line-height: 2;
+  margin-bottom: 1rem;
 }
-
 .owl-text:last-child { margin-bottom: 0; }
 
 /* ===== 分隔線 ===== */
 .owl-divider {
   height: 1px;
-  background: var(--owl-border);
-  margin: 24px 0;
+  background: linear-gradient(to right, var(--owl-green), var(--owl-border), transparent);
+  margin: 2.25rem 0;
+  opacity: 0.5;
 }
 
 /* ===== 純文字資料列表 ===== */
-.owl-data-list {
-  display: flex;
-  flex-direction: column;
-}
+.owl-data-list { display: flex; flex-direction: column; }
 
 .owl-data-row {
   display: flex;
   align-items: baseline;
-  gap: 16px;
-  padding: 12px 0;
-  border-bottom: 1px solid rgba(58, 78, 104, 0.4);
+  gap: 1.25rem;
+  padding: 0.875rem 0;
+  border-bottom: 1px solid rgba(74, 98, 128, 0.35);
 }
-
 .owl-data-row:last-child { border-bottom: none; }
 
 .owl-data-label {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 2px;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--owl-green-light);
+  color: var(--owl-accent);    /* 改成冰藍更活潑 */
   flex-shrink: 0;
-  width: 90px;
+  width: 6rem;
+  opacity: 0.9;
 }
 
 .owl-data-value {
   color: var(--owl-text);
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: 0.95rem;
+  line-height: 1.7;
 }
 
-/* ===== 地點圖片 4:3 ===== */
-.owl-place-img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  border: 1px solid var(--owl-border);
-  background: var(--owl-surface);
-  margin-bottom: 24px;
+/* ===== 歷史時間軸（重新設計）===== */
+.owl-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-left: 1.5rem;        /* 留給縱線的空間 */
 }
 
-.owl-place-img img { width: 100%; height: 100%; object-fit: cover; }
+/* 縱線 */
+.owl-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.5rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 1px;
+  background: linear-gradient(to bottom,
+    var(--owl-green) 0%,
+    var(--owl-accent) 50%,
+    var(--owl-border) 100%);
+  opacity: 0.6;
+}
 
-.owl-place-img .img-placeholder {
-  width: 100%; height: 100%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 56px;
+.owl-timeline-item {
+  display: flex;
+  gap: 2rem;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid rgba(74, 98, 128, 0.25);
+  position: relative;
+}
+.owl-timeline-item:last-child { border-bottom: none; }
+
+/* 節點圓點 */
+.owl-timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -1.25rem;
+  top: 2.1rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--owl-green);
+  border: 2px solid var(--owl-bg);
+  box-shadow: 0 0 8px var(--owl-green-glow);
+  flex-shrink: 0;
+}
+
+/* 最後一個（機密）節點變灰 */
+.owl-timeline-item:last-child::before {
+  background: var(--owl-border);
+  box-shadow: none;
+}
+
+.owl-timeline-left {
+  flex-shrink: 0;
+  width: 4.5rem;
+  padding-top: 0.2rem;
+}
+
+.owl-timeline-year {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--owl-green-light);
+  letter-spacing: 0.08em;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+.owl-timeline-right { flex: 1; }
+
+.owl-timeline-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--owl-text);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.03em;
+}
+
+.owl-timeline-text {
+  font-size: 0.95rem;
+  color: var(--owl-text-dim);
+  line-height: 1.9;
 }
 
 /* ===== T-Building 樓層 ===== */
@@ -347,38 +505,32 @@ body.owl-page {
   border-top: 1px solid var(--owl-border);
 }
 
-.owl-floor-item {
-  border-bottom: 1px solid var(--owl-border);
-}
+.owl-floor-item { border-bottom: 1px solid var(--owl-border); }
 
 .owl-floor-toggle {
   width: 100%;
-  padding: 16px 4px;
+  padding: 1.25rem 0;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 1.25rem;
   background: none;
   border: none;
   cursor: pointer;
-  text-align: left;
-  transition: background 0.2s ease;
+  transition: opacity 0.2s;
 }
-
-.owl-floor-toggle:hover {
-  background: rgba(255, 255, 255, 0.03);
-}
+.owl-floor-toggle:hover { opacity: 0.8; }
 
 .owl-floor-tag {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 13px;
+  font-size: 0.85rem;
   color: var(--owl-green-light);
   flex-shrink: 0;
-  width: 32px;
-  letter-spacing: 1px;
+  width: 2rem;
+  letter-spacing: 0.06em;
 }
 
 .owl-floor-name {
-  font-size: 15px;
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--owl-text);
   flex: 1;
@@ -387,179 +539,180 @@ body.owl-page {
 
 .owl-floor-desc-short {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 11px;
+  font-size: 0.7rem;
   color: var(--owl-text-muted);
-  letter-spacing: 1px;
+  letter-spacing: 0.06em;
 }
 
 .owl-floor-arrow {
-  font-size: 10px;
+  font-size: 0.65rem;
   color: var(--owl-text-muted);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s;
   flex-shrink: 0;
 }
-
-.owl-floor-item.open > .owl-floor-toggle .owl-floor-arrow {
-  transform: rotate(180deg);
-}
+.owl-floor-item.open > .owl-floor-toggle .owl-floor-arrow { transform: rotate(180deg); }
 
 .owl-floor-detail {
   display: none;
-  padding: 0 0 20px 48px;
+  padding: 0 0 1.5rem 3.25rem;
 }
+.owl-floor-item.open > .owl-floor-detail { display: block; }
 
-.owl-floor-item.open > .owl-floor-detail {
-  display: block;
-}
-
-/* 空間列表 */
 .owl-room-list {
   display: flex;
   flex-direction: column;
-  border-left: 1px solid var(--owl-border);
+  border-left: 2px solid var(--owl-green-glow);
 }
 
-.owl-room-item {
-  border-bottom: 1px solid rgba(58, 78, 104, 0.4);
-}
-
+.owl-room-item { border-bottom: 1px solid rgba(74, 98, 128, 0.3); }
 .owl-room-item:last-child { border-bottom: none; }
 
 .owl-room-toggle {
   width: 100%;
-  padding: 12px 16px;
+  padding: 0.8125rem 1rem;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.75rem;
   background: none;
   border: none;
   cursor: pointer;
-  text-align: left;
-  transition: background 0.2s ease;
+  transition: opacity 0.2s;
 }
-
-.owl-room-toggle:hover {
-  background: rgba(255, 255, 255, 0.03);
-}
-
-.owl-room-icon { font-size: 14px; flex-shrink: 0; }
+.owl-room-toggle:hover { opacity: 0.75; }
+.owl-room-icon { font-size: 0.95rem; flex-shrink: 0; }
 
 .owl-room-name {
-  font-size: 14px;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--owl-text-dim);
   flex: 1;
+  text-align: left;
 }
 
 .owl-room-arrow {
-  font-size: 10px;
+  font-size: 0.65rem;
   color: var(--owl-text-muted);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s;
   flex-shrink: 0;
 }
+.owl-room-item.open > .owl-room-toggle .owl-room-arrow { transform: rotate(180deg); }
 
-.owl-room-item.open > .owl-room-toggle .owl-room-arrow {
-  transform: rotate(180deg);
-}
-
-/* 空間詳細：圖片在左文字在右（桌機），上下（手機） */
 .owl-room-detail {
   display: none;
-  padding: 12px 16px 16px;
-  border-top: 1px solid rgba(58, 78, 104, 0.4);
+  padding: 0.25rem 1rem 1.25rem;
+  border-top: 1px solid rgba(74, 98, 128, 0.3);
 }
-
-.owl-room-item.open > .owl-room-detail {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-}
+.owl-room-item.open > .owl-room-detail { display: block; }
 
 .owl-room-img {
-  width: 180px;
-  flex-shrink: 0;
+  width: 100%;
   aspect-ratio: 4 / 3;
   overflow: hidden;
   border: 1px solid var(--owl-border);
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255,255,255,0.03);
+  margin: 1rem 0 0.875rem;
 }
-
 .owl-room-img img { width: 100%; height: 100%; object-fit: cover; }
-
 .owl-room-img .img-placeholder {
   width: 100%; height: 100%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 28px;
-  color: rgba(255, 255, 255, 0.12);
+  font-size: 2.5rem;
+  color: rgba(255,255,255,0.1);
 }
-
-.owl-room-body { flex: 1; }
 
 .owl-room-desc {
-  font-size: 14px;
+  font-size: 0.95rem;
   color: var(--owl-text-dim);
-  line-height: 1.8;
+  line-height: 1.9;
 }
 
-/* ===== 部隊歷史 ===== */
-.owl-timeline {
+/* 非總部的私下活動地點 */
+.owl-offsite-section {
+  margin-top: 2.5rem;
+}
+
+.owl-offsite-label {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px dashed var(--owl-border);
 }
 
-.owl-timeline-item {
-  display: flex;
-  gap: 24px;
-  padding: 20px 0;
-  border-bottom: 1px solid rgba(58, 78, 104, 0.4);
-}
-
-.owl-timeline-item:last-child { border-bottom: none; }
-
-.owl-timeline-left {
-  flex-shrink: 0;
-  width: 80px;
-}
-
-.owl-timeline-year {
+.owl-offsite-label-text {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 11px;
-  color: var(--owl-green-light);
-  letter-spacing: 1px;
-  line-height: 1.6;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--owl-orange);
+  text-transform: uppercase;
+  opacity: 0.85;
 }
 
-.owl-timeline-right { flex: 1; }
+.owl-offsite-label-line {
+  flex: 1;
+  height: 1px;
+  background: var(--owl-border);
+  opacity: 0.4;
+}
 
-.owl-timeline-title {
-  font-size: 15px;
+.owl-offsite-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.owl-offsite-card {
+  border: 1px solid var(--owl-border);
+  padding: 1.25rem;
+  background: rgba(48, 74, 106, 0.3);
+  transition: border-color 0.2s;
+}
+.owl-offsite-card:hover { border-color: var(--owl-orange); }
+
+.owl-offsite-icon { font-size: 1.5rem; margin-bottom: 0.625rem; }
+
+.owl-offsite-name {
+  font-size: 1rem;
   font-weight: 700;
   color: var(--owl-text);
-  margin-bottom: 6px;
+  margin-bottom: 0.375rem;
+  letter-spacing: 0.06em;
 }
 
-.owl-timeline-text {
-  font-size: 14px;
+.owl-offsite-who {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--owl-orange);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.625rem;
+  opacity: 0.8;
+}
+
+.owl-offsite-desc {
+  font-size: 0.875rem;
   color: var(--owl-text-dim);
-  line-height: 1.8;
+  line-height: 1.75;
 }
 
-/* ===== 部隊成員 ===== */
+/* ===== 成員 ===== */
 .owl-member-grid {
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
 }
 
 .owl-member-card {
   display: block;
   text-decoration: none;
   color: var(--owl-text);
-  transition: all 0.2s ease;
   border: 1px solid var(--owl-border);
+  transition: all 0.2s;
 }
-
 .owl-member-card:hover {
   border-color: var(--owl-green);
   transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
 }
 
 .owl-member-img {
@@ -568,95 +721,85 @@ body.owl-page {
   overflow: hidden;
   background: var(--owl-surface2);
 }
-
 .owl-member-img img { width: 100%; height: 100%; object-fit: cover; }
-
 .owl-member-img .img-placeholder {
   width: 100%; height: 100%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 32px;
-  color: rgba(255, 255, 255, 0.08);
+  font-size: 2rem;
+  color: rgba(255,255,255,0.07);
 }
 
 .owl-member-info {
-  padding: 12px 14px;
+  padding: 0.875rem 1rem 1rem;
   border-top: 1px solid var(--owl-border);
 }
 
 .owl-member-rank {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 10px;
+  font-size: 0.65rem;
   color: var(--owl-green-light);
-  margin-bottom: 4px;
-  letter-spacing: 1px;
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.06em;
+  opacity: 0.85;
 }
 
 .owl-member-name {
   font-family: 'Oswald', sans-serif;
-  font-size: 20px;
+  font-size: 1.375rem;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 0.12em;
   color: var(--owl-text);
-  margin-bottom: 2px;
+  margin-bottom: 0.2rem;
 }
 
 .owl-member-role {
-  font-size: 12px;
+  font-size: 0.8rem;
   color: var(--owl-text-dim);
-  margin-bottom: 10px;
+  margin-bottom: 0.75rem;
 }
 
-.owl-member-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-}
+.owl-member-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
 
 .owl-member-tag {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 9px;
-  padding: 2px 6px;
+  font-size: 0.625rem;
+  padding: 0.2rem 0.45rem;
   border: 1px solid var(--owl-border);
   color: var(--owl-text-muted);
-  letter-spacing: 1px;
+  letter-spacing: 0.06em;
 }
-
 .owl-member-tag.active {
-  border-color: rgba(90, 171, 74, 0.4);
+  border-color: rgba(94, 196, 78, 0.5);
   color: var(--owl-green-light);
 }
-
 .owl-member-tag.inactive {
-  border-color: rgba(232, 160, 64, 0.3);
+  border-color: rgba(240, 168, 64, 0.4);
   color: var(--owl-orange);
-  opacity: 0.7;
 }
 
-/* ===== 部隊秘聞 ===== */
+/* ===== 秘聞 子標籤 ===== */
 .secret-tabs {
   display: flex;
   gap: 0;
   border-bottom: 1px solid var(--owl-border);
-  margin-bottom: 24px;
+  margin-bottom: 2rem;
 }
 
 .secret-tab-btn {
-  padding: 9px 16px;
+  padding: 0.7rem 1.25rem;
   border: none;
   border-bottom: 2px solid transparent;
   margin-bottom: -1px;
   background: none;
   color: var(--owl-text-muted);
-  font-size: 13px;
+  font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.2s;
   font-family: 'Noto Sans TC', sans-serif;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.03em;
 }
-
-.secret-tab-btn:hover { color: var(--owl-text); }
-
+.secret-tab-btn:hover { color: var(--owl-text-dim); }
 .secret-tab-btn.active {
   color: var(--owl-green-light);
   border-bottom-color: var(--owl-green-light);
@@ -665,83 +808,71 @@ body.owl-page {
 .secret-panel { display: none; }
 .secret-panel.active { display: block; }
 
-/* ===== LINE 群組聊天 ===== */
+/* ===== 聊天視窗 ===== */
 .chat-window {
   border: 1px solid var(--owl-border);
   overflow: hidden;
 }
 
 .chat-header {
-  padding: 12px 16px;
+  padding: 0.875rem 1.125rem;
   background: var(--owl-surface2);
   border-bottom: 1px solid var(--owl-border);
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0.875rem;
 }
-
-.chat-header-icon {
-  font-size: 20px;
-}
-
-.chat-header-info {}
-
+.chat-header-icon { font-size: 1.375rem; }
 .chat-header-name {
   font-family: 'Oswald', sans-serif;
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: 600;
-  letter-spacing: 1px;
+  letter-spacing: 0.06em;
   color: var(--owl-text);
 }
-
 .chat-header-members {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 10px;
+  font-size: 0.7rem;
   color: var(--owl-text-muted);
-  letter-spacing: 1px;
+  letter-spacing: 0.06em;
+  margin-top: 0.125rem;
 }
 
-/* 對話列表（分頁顯示） */
 .chat-sessions {
   display: flex;
-  gap: 0;
   border-bottom: 1px solid var(--owl-border);
   overflow-x: auto;
   scrollbar-width: none;
-  background: rgba(0,0,0,0.15);
+  background: rgba(0,0,0,0.12);
 }
-
 .chat-sessions::-webkit-scrollbar { display: none; }
 
 .chat-session-btn {
   flex-shrink: 0;
-  padding: 8px 14px;
+  padding: 0.5625rem 1rem;
   border: none;
   border-right: 1px solid var(--owl-border);
   background: none;
   color: var(--owl-text-muted);
-  font-size: 11px;
+  font-size: 0.75rem;
   cursor: pointer;
   font-family: 'Share Tech Mono', monospace;
-  letter-spacing: 1px;
-  transition: all 0.2s ease;
+  letter-spacing: 0.06em;
+  transition: all 0.2s;
 }
-
-.chat-session-btn:hover { color: var(--owl-text); background: rgba(255,255,255,0.04); }
-
+.chat-session-btn:hover { color: var(--owl-text); background: rgba(255,255,255,0.03); }
 .chat-session-btn.active {
   color: var(--owl-green-light);
-  background: rgba(90, 171, 74, 0.08);
+  background: rgba(94, 196, 78, 0.07);
 }
 
-/* 對話內容 */
 .chat-body {
-  height: 420px;
+  height: 27.5rem;
   overflow-y: auto;
-  padding: 20px 16px;
+  padding: 1.5rem 1.125rem;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 0.875rem;
   background: var(--owl-bg);
   scrollbar-width: thin;
   scrollbar-color: var(--owl-border) transparent;
@@ -753,185 +884,587 @@ body.owl-page {
 .chat-date-divider {
   text-align: center;
   font-family: 'Share Tech Mono', monospace;
-  font-size: 10px;
+  font-size: 0.7rem;
   color: var(--owl-text-muted);
-  letter-spacing: 1px;
-  padding: 4px 0;
+  letter-spacing: 0.06em;
+  padding: 0.375rem 0;
 }
 
 .chat-msg {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0.25rem;
   max-width: 72%;
 }
+.chat-msg.right { align-self: flex-end; align-items: flex-end; }
+.chat-msg.left { align-self: flex-start; align-items: flex-start; }
 
-.chat-msg.right {
-  align-self: flex-end;
-  align-items: flex-end;
-}
-
-.chat-msg.left {
-  align-self: flex-start;
-  align-items: flex-start;
-}
-
-.chat-sender {
-  font-size: 11px;
-  color: var(--owl-text-muted);
-  letter-spacing: 0.5px;
-  padding-left: 2px;
-}
+.chat-sender { font-size: 0.7rem; color: var(--owl-text-muted); letter-spacing: 0.03em; padding-left: 0.125rem; }
 
 .chat-bubble {
-  padding: 10px 14px;
-  font-size: 14px;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.95rem;
   line-height: 1.7;
   color: var(--owl-text);
 }
-
 .chat-msg.left .chat-bubble {
   background: var(--owl-surface2);
   border: 1px solid var(--owl-border);
-  border-top-left-radius: 0;
   border-radius: 0 8px 8px 8px;
 }
-
 .chat-msg.right .chat-bubble {
-  background: rgba(90, 171, 74, 0.18);
-  border: 1px solid rgba(90, 171, 74, 0.35);
+  background: rgba(94, 196, 78, 0.16);
+  border: 1px solid rgba(94, 196, 78, 0.32);
   border-radius: 8px 0 8px 8px;
 }
 
-.chat-time {
-  font-size: 10px;
-  color: var(--owl-text-muted);
-  font-family: 'Share Tech Mono', monospace;
-  padding: 0 2px;
+.chat-time { font-size: 0.625rem; color: var(--owl-text-muted); font-family: 'Share Tech Mono', monospace; padding: 0 0.125rem; }
+
+/* ===== 個人日記整體容器 ===== */
+.diary-layout {
+  display: flex;
+  gap: 0;
+  min-height: 500px;
+  background: #F2EDE8;
+  border: 1px solid #D4C9BE;
 }
 
-/* ===== 手記 ===== */
-.diary-list {
+/* ===== 左側書籤欄 ===== */
+.diary-person-tabs {
   display: flex;
   flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+  width: 2.75rem;
+  padding: 1.25rem 0 1.25rem 0.75rem;
+  background: #E8E0D8;
+  border-right: 1px solid #D4C9BE;
+  overflow: visible;
+  position: relative;
+  z-index: 1;
 }
 
-.diary-item {
-  padding: 20px 0;
-  border-bottom: 1px solid rgba(58, 78, 104, 0.4);
-}
-
-.diary-item:last-child { border-bottom: none; }
-
-.diary-date {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 11px;
-  color: var(--owl-green-light);
-  letter-spacing: 2px;
-  margin-bottom: 8px;
-}
-
-.diary-title {
-  font-size: 16px;
+.diary-person-btn {
+  position: relative;
+  flex-shrink: 0;
+  width: 2rem;
+  padding: 1rem 0;
+  border: 1px solid #C4B8AA;
+  border-right: none;
+  background: #EDE6DE;
+  color: #8A7A6A;
+  font-size: 0.8rem;
   font-weight: 700;
-  color: var(--owl-text);
-  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Noto Sans TC', sans-serif;
+  letter-spacing: 0.06em;
+  text-align: center;
+
+  /* 書籤夾形狀：右上角缺角 */
+  clip-path: polygon(0% 0%, calc(100% - 8px) 0%, 100% 8px, 100% 100%, 0% 100%);
+
+  /* 直書 */
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
 }
 
-.diary-text {
-  font-size: 14px;
-  color: var(--owl-text-dim);
-  line-height: 1.9;
+.diary-person-btn:hover {
+  background: #E8DDD4;
+  color: #5A4A3A;
+  transform: translateX(2px);
 }
 
+.diary-person-btn.active {
+  background: #F2EDE8;
+  color: #3A2E24;
+  border-color: #C4B8AA;
+  border-right-color: #F2EDE8;  /* 融入內容區 */
+  transform: translateX(3px);
+  font-weight: 900;
+  z-index: 2;
+}
+
+.diary-person-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.diary-person-panel { display: none; }
+.diary-person-panel.active { display: block; }
+
+/* ══════════════════════════════
+   傑克：咖啡土色、偶爾粉色點綴
+   手寫數字感字體
+══════════════════════════════ */
+.diary-jack-wrap {
+  background: #F5F0EA;
+  min-height: 400px;
+  padding: 2rem 2rem 1.5rem;
+  position: relative;
+}
+
+/* 格線背景 */
+.diary-jack-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 31px,
+    rgba(180, 160, 140, 0.2) 31px,
+    rgba(180, 160, 140, 0.2) 32px
+  );
+  pointer-events: none;
+}
+
+/* 左側紅線 */
+.diary-jack-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 3.5rem;
+  width: 1px;
+  background: rgba(200, 130, 130, 0.25);
+  pointer-events: none;
+}
+
+.diary-jack-item {
+  padding: 1.5rem 0 1.5rem 1rem;
+  border-bottom: none;
+  position: relative;
+}
+
+.diary-jack-item + .diary-jack-item {
+  border-top: 1px dashed rgba(180, 160, 140, 0.4);
+}
+
+.diary-jack-date {
+  font-family: 'Caveat', cursive;
+  font-size: 0.95rem;
+  color: #9A8878;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.05em;
+}
+
+.diary-jack-title {
+  font-family: 'Caveat', cursive;
+  font-size: 1.5rem;       /* 縮小 */
+  font-weight: 600;
+  color: #3A2E24;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+/* 手繪分隔線：用短橫線模擬 */
+.diary-jack-doodle {
+  margin: 0.5rem 0 0.75rem;
+  font-family: 'Caveat', cursive;
+  font-size: 0.85rem;
+  color: #C4A882;
+  letter-spacing: 0.3rem;
+}
+
+.diary-jack-text {
+  font-family: 'Caveat', cursive;
+  font-size: 1.05rem;      /* 縮小 */
+  color: #4A3C2E;
+  line-height: 2;
+  position: relative;
+  z-index: 1;
+}
+
+/* 偶爾出現的粉色小點綴 */
+.diary-jack-pink {
+  color: #E8A0A8;
+  font-size: 0.9rem;
+  display: inline-block;
+  transform: rotate(-5deg);
+}
+
+.diary-jack-corner {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 1rem;
+  font-family: 'Caveat', cursive;
+  font-size: 0.9rem;
+  color: #E8A0A8;
+  opacity: 0.5;
+  transform: rotate(8deg);
+  user-select: none;
+}
+
+/* ══════════════════════════════
+   凱恩：冷硬、正式、淺色版
+══════════════════════════════ */
+.diary-kane-wrap {
+  background: #EDF1F5;
+  border-left: 3px solid #7BA8C8;
+  min-height: 400px;
+}
+
+.diary-kane-header-bar {
+  background: #D8E4EE;
+  padding: 0.625rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #C4D4E0;
+}
+
+.diary-kane-header-title {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  color: #4A6E8A;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.diary-kane-header-stamp {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  color: #8AAABB;
+  letter-spacing: 0.1em;
+}
+
+.diary-kane-item {
+  padding: 1.5rem;
+  border-bottom: 1px solid #D4DDE6;
+}
+.diary-kane-item:last-child { border-bottom: none; }
+
+.diary-kane-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.625rem;
+  border-bottom: 1px solid #C8D8E4;
+}
+
+.diary-kane-date {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.75rem;
+  color: #4A6E8A;
+  letter-spacing: 0.15em;
+}
+
+.diary-kane-id {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  color: #8AAABB;
+  letter-spacing: 0.1em;
+}
+
+.diary-kane-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #2A3E50;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+
+.diary-kane-text {
+  font-size: 0.9rem;
+  color: #3A4E5E;
+  line-height: 2;
+  border-left: 2px solid rgba(74, 110, 138, 0.25);
+  padding-left: 1rem;
+}
+
+/* ══════════════════════════════
+   里歐：粉嫩（非螢光）、可愛、兔子
+══════════════════════════════ */
+.diary-leo-wrap {
+  background: #FBF4F6;
+  border-left: 3px solid #E8B4C4;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.diary-leo-topbar {
+  background: #F5E4EC;
+  border-bottom: 1px solid #EAC8D4;
+  padding: 0.5rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.diary-leo-topbar-icon { font-size: 0.9rem; }
+
+.diary-leo-topbar-text {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  color: #C48898;
+  letter-spacing: 0.15em;
+}
+
+.diary-leo-item {
+  padding: 1.5rem;
+  border-bottom: 1px dashed #EAC8D4;
+}
+.diary-leo-item:last-child { border-bottom: none; }
+
+.diary-leo-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.diary-leo-bunny { font-size: 1rem; }
+
+.diary-leo-date {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  color: #C48898;
+  letter-spacing: 0.1em;
+}
+
+.diary-leo-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #8A4A5E;
+  margin-bottom: 0.625rem;
+  letter-spacing: 0.05em;
+}
+.diary-leo-title::before {
+  content: '✦ ';
+  color: #E8B4C4;
+  font-size: 0.8rem;
+}
+
+.diary-leo-text {
+  font-size: 0.9rem;
+  color: #5A3A46;
+  line-height: 2.1;
+}
+
+.diary-leo-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.875rem;
+}
+
+.diary-leo-stamp {
+  display: inline-block;
+  padding: 0.2rem 0.625rem;
+  border: 1px solid #EAC8D4;
+  background: #F5E4EC;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.62rem;
+  color: #C48898;
+  letter-spacing: 0.08em;
+}
+
+.diary-leo-mood { font-size: 0.95rem; }
+
+/* ══════════════════════════════
+   席奧：空洞疏離、文字可讀
+══════════════════════════════ */
+.diary-theo-wrap {
+  background: #F0EFEE;
+  border-left: 3px solid #999;
+  padding: 2.5rem 2rem;
+  min-height: 400px;
+  position: relative;
+}
+
+/* 細格線背景，像空白方格紙 */
+.diary-theo-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(160,160,160,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(160,160,160,0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+.diary-theo-item {
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(120, 120, 120, 0.15);
+  position: relative;
+  z-index: 1;
+}
+.diary-theo-item:last-child { border-bottom: none; }
+
+.diary-theo-date {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  color: #999;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+}
+
+.diary-theo-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.06em;
+}
+
+.diary-theo-text {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 2.8;
+  max-width: 440px;
+}
+
+.diary-theo-redact {
+  display: inline-block;
+  background: #888;
+  color: transparent;
+  user-select: none;
+  padding: 0 0.3rem;
+  letter-spacing: 0.1em;
+  border-radius: 1px;
+}
+/* ===== RWD =====*/
+@media (max-width: 600px) {
+  .diary-layout {
+    flex-direction: column;
+  }
+  .diary-person-tabs {
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    padding: 0.5rem 0.5rem 0 0.5rem;
+    border-right: none;
+    border-bottom: 1px solid #D4C9BE;
+    gap: 4px;
+    overflow-x: auto;
+  }
+  .diary-person-btn {
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    width: auto;
+    padding: 0.5rem 1rem;
+    clip-path: polygon(0% 0%, calc(100% - 6px) 0%, 100% 6px, 100% 100%, 0% 100%);
+    flex: 1;
+    border-right: 1px solid #C4B8AA;
+    border-bottom: none;
+    transform: none;
+  }
+  .diary-person-btn.active {
+    transform: none;
+    border-bottom-color: #F2EDE8;
+    border-right-color: #C4B8AA;
+  }
+}
 /* ===== 任務報告 ===== */
 .report-list {
   display: flex;
   flex-direction: column;
-  gap: 0;
   border-top: 1px solid var(--owl-border);
 }
 
 .report-item {
   border-bottom: 1px solid var(--owl-border);
-  padding: 16px 0;
+  padding: 1.75rem 0;
 }
 
 .report-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 0.75rem;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .report-code {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 11px;
+  font-size: 0.75rem;
   color: var(--owl-orange);
-  letter-spacing: 1px;
+  letter-spacing: 0.06em;
+  opacity: 0.85;
 }
 
 .report-status {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 10px;
-  padding: 3px 8px;
-  letter-spacing: 1px;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.625rem;
+  letter-spacing: 0.06em;
 }
-
-.report-status.complete {
-  color: var(--owl-green-light);
-  border: 1px solid rgba(90, 171, 74, 0.4);
-}
-
-.report-status.classified {
-  color: var(--owl-orange);
-  border: 1px solid rgba(232, 160, 64, 0.4);
-}
+.report-status.complete { color: var(--owl-green-light); border: 1px solid rgba(94, 196, 78, 0.4); }
+.report-status.classified { color: var(--owl-orange); border: 1px solid rgba(240, 168, 64, 0.4); }
 
 .report-title {
-  font-size: 15px;
+  font-size: 1.125rem;
   font-weight: 700;
   color: var(--owl-text);
-  margin-bottom: 8px;
+  margin-bottom: 0.625rem;
+  letter-spacing: 0.03em;
 }
 
 .report-text {
-  font-size: 14px;
+  font-size: 0.95rem;
   color: var(--owl-text-dim);
-  line-height: 1.8;
+  line-height: 1.9;
 }
 
 /* ===== Footer ===== */
 .owl-footer {
   text-align: center;
-  padding: 32px 24px;
-  margin-top: 48px;
+  padding: 2rem 1.5rem;
+  margin-top: 3rem;
   border-top: 1px solid var(--owl-border);
   font-family: 'Share Tech Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 2px;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
   color: var(--owl-text-muted);
 }
 
 /* ===== RWD ===== */
-@media (max-width: 768px) {
-  .owl-main { padding: 64px 20px 48px; }
-  .owl-header h1 { font-size: 32px; }
+@media (max-width: 900px) {
+  .owl-main { padding: 3.25rem 1.5rem 3.75rem; }
   .owl-member-grid { grid-template-columns: repeat(2, 1fr); }
-  .owl-tab { padding: 10px 14px; font-size: 12px; }
-
-  .owl-room-item.open > .owl-room-detail {
-    flex-direction: column;
-  }
-
-  .owl-room-img {
-    width: 100%;
-  }
 }
 
-@media (max-width: 380px) {
-  .owl-header h1 { font-size: 26px; }
-  .owl-tab { padding: 10px 10px; font-size: 11px; }
+@media (max-width: 600px) {
+  :root { font-size: clamp(13px, 4vw, 16px); }
+  .owl-main { padding: 3.25rem 1.125rem 3rem; }
+  .owl-header { padding-top: 2.5rem; margin-bottom: 2.25rem; }
+  .owl-tab { padding: 0.625rem 0.875rem; font-size: 0.875rem; }
+  .owl-floor-detail { padding: 0 0 1.25rem 1.25rem; }
+  .owl-member-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  .owl-floor-desc-short { display: none; }
+  .owl-section-id { display: none; }
+  .owl-offsite-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .diary-layout {
+    flex-direction: column;
+  }
+  .diary-person-tabs {
+    flex-direction: row;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--owl-border);
+    overflow-x: auto;
+  }
+  .diary-person-btn {
+    flex: 1;
+    border-right: none;
+    border-bottom: 2px solid transparent;
+    margin-right: 0;
+    margin-bottom: -1px;
+    padding: 0.625rem 0;
+    font-size: 0.875rem;
+  }
+  .diary-person-btn.active {
+    border-right-color: transparent;
+    border-bottom-color: var(--owl-green-light);
+  }
+}
+@media (max-width: 400px) {
+  .owl-main { padding: 3.25rem 0.875rem 2.5rem; }
+  .owl-tab { padding: 0.625rem 0.625rem; font-size: 0.8rem; }
 }
