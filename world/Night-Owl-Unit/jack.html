@@ -431,108 +431,119 @@
     .meet-btn:hover .meet-btn-arrow { transform: translateX(3px); }
 
     /* ── Gallery ── */
-    .gallery-panel { padding-top: 2rem; }
+.gallery-panel { padding-top: 2rem; }
 
-    .gallery-section-label {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      color: var(--accent);
-      padding-bottom: 0.5rem;
-      margin-bottom: 0.875rem;
-      border-bottom: 1px solid rgba(74,98,128,0.35);
-    }
+.gallery-section-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.875rem;
+  border-bottom: 1px solid rgba(74,98,128,0.35);
+}
 
-    .gallery-section { margin-bottom: 2rem; }
+.gallery-section { margin-bottom: 2rem; }
 
-    .gallery-grid-photo {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.625rem;
-    }
+/* 左右滑動容器 */
+.gallery-scroll {
+  display: flex;
+  gap: 0.625rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.75rem;
+  cursor: grab;
+}
+.gallery-scroll:active { cursor: grabbing; }
 
-    .gallery-photo-item {
-      aspect-ratio: 3 / 4;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: var(--surface2);
-      cursor: pointer;
-      position: relative;
-      transition: border-color 0.2s;
-    }
-    .gallery-photo-item:hover { border-color: var(--green); }
-    .gallery-photo-item img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.3s;
-    }
-    .gallery-photo-item:hover img { transform: scale(1.04); }
+/* 隱藏滾動條但保留功能 */
+.gallery-scroll::-webkit-scrollbar { height: 3px; }
+.gallery-scroll::-webkit-scrollbar-track { background: transparent; }
+.gallery-scroll::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
 
-    .gallery-grid-video {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.625rem;
-    }
+/* 照片格：固定寬度，3:4 */
+.gallery-photo-item {
+  flex: 0 0 auto;
+  width: clamp(7rem, 28vw, 12rem);
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  scroll-snap-align: start;
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.2s;
+}
+.gallery-photo-item:hover { border-color: var(--green); }
+.gallery-photo-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s;
+}
+.gallery-photo-item:hover img { transform: scale(1.04); }
 
-    .gallery-video-item {
-      aspect-ratio: 9 / 16;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: var(--surface2);
-      position: relative;
-      cursor: pointer;
-      transition: border-color 0.2s;
-    }
-    .gallery-video-item:hover { border-color: var(--green); }
-    .gallery-video-item video {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+/* 影片格：固定寬度，9:16 */
+.gallery-video-item {
+  flex: 0 0 auto;
+  width: clamp(8rem, 32vw, 14rem);
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  scroll-snap-align: start;
+  position: relative;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.gallery-video-item:hover { border-color: var(--green); }
+.gallery-video-item video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
-    .video-overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,0.3);
-      transition: background 0.2s;
-    }
-    .gallery-video-item:hover .video-overlay { background: rgba(0,0,0,0.15); }
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.3);
+  transition: background 0.2s;
+}
+.gallery-video-item:hover .video-overlay { background: rgba(0,0,0,0.15); }
 
-    .video-play-icon {
-      width: 2.5rem; height: 2.5rem;
-      border: 2px solid rgba(255,255,255,0.7);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.875rem;
-      color: rgba(255,255,255,0.9);
-    }
+.video-play-icon {
+  width: 2.5rem; height: 2.5rem;
+  border: 2px solid rgba(255,255,255,0.7);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.9);
+}
 
-    .gallery-placeholder {
-      width: 100%; height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
-      color: rgba(255,255,255,0.12);
-    }
-    .gallery-placeholder-icon { font-size: 1.5rem; }
-    .gallery-placeholder-text {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.1em;
-    }
-
-    @media (max-width: 600px) {
-      .gallery-grid-photo { grid-template-columns: repeat(2, 1fr); }
-      .gallery-grid-video { grid-template-columns: 1fr; }
-    }
+.gallery-placeholder {
+  width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  color: rgba(255,255,255,0.12);
+}
+.gallery-placeholder-icon { font-size: 1.5rem; }
+.gallery-placeholder-text {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+}
 
     /* ══════════════════════════
        HIS PAST 面板
@@ -788,54 +799,78 @@
     </div>
 
     <!-- ② GALLERY -->
-    <div class="char-panel" id="char-gallery">
-      <div class="gallery-panel">
+<div class="char-panel" id="char-gallery">
+  <div class="gallery-panel">
 
-        <div class="gallery-section">
-          <div class="gallery-section-label">PHOTO ARCHIVE</div>
-          <div class="gallery-grid-photo">
-            <div class="gallery-photo-item">
-              <div class="gallery-placeholder">
-                <div class="gallery-placeholder-icon">📷</div>
-                <div class="gallery-placeholder-text">NO IMAGE</div>
-              </div>
-            </div>
-            <div class="gallery-photo-item">
-              <div class="gallery-placeholder">
-                <div class="gallery-placeholder-icon">📷</div>
-                <div class="gallery-placeholder-text">NO IMAGE</div>
-              </div>
-            </div>
-            <div class="gallery-photo-item">
-              <div class="gallery-placeholder">
-                <div class="gallery-placeholder-icon">📷</div>
-                <div class="gallery-placeholder-text">NO IMAGE</div>
-              </div>
-            </div>
+    <div class="gallery-section">
+      <div class="gallery-section-label">PHOTO ARCHIVE</div>
+      <div class="gallery-scroll">
+
+        <!-- 有圖時換成：<div class="gallery-photo-item"><img src="..." alt=""></div> -->
+
+        <div class="gallery-photo-item">
+          <div class="gallery-placeholder">
+            <div class="gallery-placeholder-icon">📷</div>
+            <div class="gallery-placeholder-text">NO IMAGE</div>
           </div>
         </div>
-
-        <div class="gallery-section">
-          <div class="gallery-section-label">VIDEO & GIF</div>
-          <div class="gallery-grid-video">
-            <div class="gallery-video-item">
-              <div class="gallery-placeholder">
-                <div class="gallery-placeholder-icon">🎬</div>
-                <div class="gallery-placeholder-text">NO VIDEO</div>
-              </div>
-            </div>
-            <div class="gallery-video-item">
-              <div class="gallery-placeholder">
-                <div class="gallery-placeholder-icon">🎬</div>
-                <div class="gallery-placeholder-text">NO VIDEO</div>
-              </div>
-            </div>
+        <div class="gallery-photo-item">
+          <div class="gallery-placeholder">
+            <div class="gallery-placeholder-icon">📷</div>
+            <div class="gallery-placeholder-text">NO IMAGE</div>
+          </div>
+        </div>
+        <div class="gallery-photo-item">
+          <div class="gallery-placeholder">
+            <div class="gallery-placeholder-icon">📷</div>
+            <div class="gallery-placeholder-text">NO IMAGE</div>
+          </div>
+        </div>
+        <div class="gallery-photo-item">
+          <div class="gallery-placeholder">
+            <div class="gallery-placeholder-icon">📷</div>
+            <div class="gallery-placeholder-text">NO IMAGE</div>
           </div>
         </div>
 
       </div>
     </div>
 
+    <div class="gallery-section">
+      <div class="gallery-section-label">VIDEO & GIF</div>
+      <div class="gallery-scroll">
+
+        <!-- 有影片時換成：
+        <div class="gallery-video-item">
+          <video src="..." loop muted playsinline></video>
+          <div class="video-overlay"><div class="video-play-icon">▶</div></div>
+        </div>
+        -->
+
+        <div class="gallery-video-item">
+          <div class="gallery-placeholder">
+            <div class="gallery-placeholder-icon">🎬</div>
+            <div class="gallery-placeholder-text">NO VIDEO</div>
+          </div>
+        </div>
+        <div class="gallery-video-item">
+          <div class="gallery-placeholder">
+            <div class="gallery-placeholder-icon">🎬</div>
+            <div class="gallery-placeholder-text">NO VIDEO</div>
+          </div>
+        </div>
+        <div class="gallery-video-item">
+          <div class="gallery-placeholder">
+            <div class="gallery-placeholder-icon">🎬</div>
+            <div class="gallery-placeholder-text">NO VIDEO</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
     <!-- ③ HIS PAST -->
     <div class="char-panel" id="char-stories">
       <div class="stories-panel">
