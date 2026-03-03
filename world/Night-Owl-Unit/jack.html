@@ -84,12 +84,12 @@
       border-color: rgba(94, 196, 78, 0.4);
     }
 
-    /* ── 主容器：跟著螢幕放大 ── */
+    /* ── 主容器 ── */
     .main {
-    width: 92%;
-    max-width: 54rem;
-    margin: 0 auto;
-    padding: 4.5rem 0 4rem;
+      width: 92%;
+      max-width: 54rem;
+      margin: 0 auto;
+      padding: 4.5rem 0 4rem;
     }
 
     /* ── 返回 ── */
@@ -179,7 +179,6 @@
       padding-top: 2rem;
     }
 
-    /* 主視覺 + 資料並排 */
     .profile-layout {
       display: grid;
       grid-template-columns: 260px 1fr;
@@ -187,7 +186,6 @@
       align-items: start;
     }
 
-    /* 角色圖 */
     .profile-img {
       width: 100%;
       overflow: hidden;
@@ -212,14 +210,12 @@
       color: rgba(255,255,255,0.07);
     }
 
-    /* 軍方檔案表格 */
     .profile-file {
       border: 1px solid var(--border);
       background: var(--surface);
       overflow: hidden;
     }
 
-    /* 頂部列 */
     .pf-top {
       display: flex;
       align-items: center;
@@ -256,7 +252,6 @@
     }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-    /* 區塊 */
     .pf-block { border-bottom: 1px solid var(--border); }
     .pf-block:last-of-type { border-bottom: none; }
 
@@ -270,10 +265,7 @@
       border-bottom: 1px solid rgba(74,98,128,0.35);
     }
 
-    /* 格子 */
-    .pf-grid {
-      display: grid;
-    }
+    .pf-grid { display: grid; }
     .pf-grid.col2 { grid-template-columns: 1fr 1fr; }
     .pf-grid.col3 { grid-template-columns: 1fr 1fr 1fr; }
     .pf-grid.col4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
@@ -288,10 +280,7 @@
     .pf-cell.span3 { grid-column: span 3; }
     .pf-cell.span4 { grid-column: span 4; }
     .pf-cell.slim { padding: 0.45rem 0.875rem; }
-    .pf-cell.full {
-      grid-column: 1 / -1;
-      border-right: none;
-    }
+    .pf-cell.full { grid-column: 1 / -1; border-right: none; }
 
     .cell-label {
       font-family: 'Share Tech Mono', monospace;
@@ -322,7 +311,6 @@
       margin-top: 0.1rem;
     }
 
-    /* 備註 */
     .pf-remark {
       padding: 0.75rem 0.875rem;
       font-size: 0.95rem;
@@ -330,7 +318,6 @@
       line-height: 1.9;
     }
 
-    /* 底部 */
     .pf-bottom {
       display: flex;
       align-items: center;
@@ -355,133 +342,201 @@
       opacity: 0.65;
     }
 
+    /* ══════════════════════════
+       與他相遇 CTA
+    ══════════════════════════ */
+    .encounter-block {
+      margin-top: 2rem;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* 左上角裝飾線 */
+    .encounter-block::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3rem; height: 3rem;
+      border-top: 2px solid var(--orange);
+      border-left: 2px solid var(--orange);
+      opacity: 0.5;
+    }
+
+    /* 右下角裝飾線 */
+    .encounter-block::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 3rem; height: 3rem;
+      border-bottom: 2px solid var(--orange);
+      border-right: 2px solid var(--orange);
+      opacity: 0.5;
+    }
+
+    .encounter-quote {
+      font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      max-width: 32rem;
+      letter-spacing: 0.02em;
+    }
+
+    .encounter-quote::before { content: '\201C'; color: var(--orange); opacity: 0.6; margin-right: 0.1em; }
+    .encounter-quote::after  { content: '\201D'; color: var(--orange); opacity: 0.6; margin-left: 0.1em; }
+
+    .encounter-attr {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      letter-spacing: 0.15em;
+    }
+
+    .encounter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 2rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--bg);
+      background: var(--green-light);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      clip-path: polygon(8px 0%, calc(100% - 8px) 0%, 100% 8px, 100% 100%, calc(100% - 8px) 100%, 8px 100%, 0% calc(100% - 8px), 0% 8px);
+    }
+
+    .encounter-btn:hover {
+      background: #c5f5b0;
+      transform: translateY(-1px);
+    }
+
+    .encounter-btn-arrow {
+      font-size: 0.75rem;
+      transition: transform 0.2s;
+    }
+    .encounter-btn:hover .encounter-btn-arrow { transform: translateX(3px); }
+
     /* ── Gallery ── */
-.gallery-panel {
-  padding-top: 2rem;
-}
+    .gallery-panel { padding-top: 2rem; }
 
-.gallery-section-label {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  color: var(--accent);
-  padding-bottom: 0.5rem;
-  margin-bottom: 0.875rem;
-  border-bottom: 1px solid rgba(74,98,128,0.35);
-}
+    .gallery-section-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.875rem;
+      border-bottom: 1px solid rgba(74,98,128,0.35);
+    }
 
-.gallery-section {
-  margin-bottom: 2rem;
-}
+    .gallery-section { margin-bottom: 2rem; }
 
-/* 照片格：3欄，9:16或3:4直向 */
-.gallery-grid-photo {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.625rem;
-}
+    .gallery-grid-photo {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.625rem;
+    }
 
-.gallery-photo-item {
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: var(--surface2);
-  cursor: pointer;
-  position: relative;
-  transition: border-color 0.2s;
-}
-.gallery-photo-item:hover { border-color: var(--green); }
+    .gallery-photo-item {
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+      cursor: pointer;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+    .gallery-photo-item:hover { border-color: var(--green); }
+    .gallery-photo-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s;
+    }
+    .gallery-photo-item:hover img { transform: scale(1.04); }
 
-.gallery-photo-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.3s;
-}
-.gallery-photo-item:hover img { transform: scale(1.04); }
+    .gallery-grid-video {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.625rem;
+    }
 
-/* 影片格：2欄，9:16直向 */
-.gallery-grid-video {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.625rem;
-}
+    .gallery-video-item {
+      aspect-ratio: 9 / 16;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+      position: relative;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .gallery-video-item:hover { border-color: var(--green); }
+    .gallery-video-item video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
-.gallery-video-item {
-  aspect-ratio: 9 / 16;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: var(--surface2);
-  position: relative;
-  cursor: pointer;
-  transition: border-color 0.2s;
-}
-.gallery-video-item:hover { border-color: var(--green); }
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.3);
+      transition: background 0.2s;
+    }
+    .gallery-video-item:hover .video-overlay { background: rgba(0,0,0,0.15); }
 
-.gallery-video-item video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
+    .video-play-icon {
+      width: 2.5rem; height: 2.5rem;
+      border: 2px solid rgba(255,255,255,0.7);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.9);
+    }
 
-/* gif 跟照片一樣用 photo-item 就好 */
+    .gallery-placeholder {
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      color: rgba(255,255,255,0.12);
+    }
+    .gallery-placeholder-icon { font-size: 1.5rem; }
+    .gallery-placeholder-text {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+    }
 
-/* 影片播放icon覆蓋 */
-.video-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0,0,0,0.3);
-  transition: background 0.2s;
-}
-.gallery-video-item:hover .video-overlay {
-  background: rgba(0,0,0,0.15);
-}
-.video-play-icon {
-  width: 2.5rem;
-  height: 2.5rem;
-  border: 2px solid rgba(255,255,255,0.7);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.875rem;
-  color: rgba(255,255,255,0.9);
-}
-
-/* placeholder格子 */
-.gallery-placeholder {
-  width: 100%; height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  color: rgba(255,255,255,0.12);
-}
-.gallery-placeholder-icon { font-size: 1.5rem; }
-.gallery-placeholder-text {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.62rem;
-  letter-spacing: 0.1em;
-}
-
-/* ── RWD gallery ── */
-@media (max-width: 600px) {
-  .gallery-grid-photo { grid-template-columns: repeat(2, 1fr); }
-  .gallery-grid-video { grid-template-columns: 1fr; }
-}
+    @media (max-width: 600px) {
+      .gallery-grid-photo { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid-video { grid-template-columns: 1fr; }
+    }
 
     /* ══════════════════════════
-       他的過去 面板
+       HIS PAST 面板
     ══════════════════════════ */
-    .stories-panel {
-      padding-top: 2rem;
-    }
+    .stories-panel { padding-top: 2rem; }
 
     .story-empty {
       font-family: 'Share Tech Mono', monospace;
@@ -499,6 +554,8 @@
       padding: 1.25rem 0;
       border-bottom: 1px solid rgba(74,98,128,0.3);
       cursor: pointer;
+      text-decoration: none;
+      display: block;
       transition: opacity 0.2s;
     }
     .story-item:last-child { border-bottom: none; }
@@ -556,9 +613,7 @@
 
     /* ── RWD ── */
     @media (max-width: 680px) {
-      .profile-layout {
-        grid-template-columns: 1fr;
-      }
+      .profile-layout { grid-template-columns: 1fr; }
       .profile-img {
         position: static;
         max-width: 260px;
@@ -566,7 +621,6 @@
       }
       .pf-grid.col4 { grid-template-columns: 1fr 1fr; }
       .pf-cell.span4 { grid-column: span 2; }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       .nav-links { display: none; }
     }
 
@@ -615,7 +669,6 @@
           <!-- 左：角色圖 -->
           <div class="profile-img">
             <img src="../../pic/characters/jack/1.jpeg" alt="傑克">
-            <!-- 沒圖時換成：<div class="placeholder">👤</div> -->
           </div>
 
           <!-- 右：軍方檔案 -->
@@ -727,12 +780,12 @@
             <div class="pf-block">
               <div class="pf-block-title">REMARKS</div>
               <div class="pf-remark">
-                - 任務時是最可靠的存在<p>
-                - 私底下個性輕浮懶散、酒煙不離身、愛跟女人調情<p>
-                - 喜歡低調高性能的車大於高級跑車，如悍馬 SUV <p>
-                - 有一系列老槍收藏，最喜歡的是二戰德國毛瑟狙擊步槍，取名叫「葛麗特Gretel」<p>
-                - 擅長武器類型：突擊步槍、戰術手槍、霰彈槍<p>
-                - 執著、佔有慾強、情感似乎有點觀極端
+                - 任務時是最可靠的存在<br>
+                - 私底下個性輕浮懶散、酒煙不離身、愛跟女人調情<br>
+                - 喜歡低調高性能的車大於高級跑車，如悍馬 SUV<br>
+                - 有一系列老槍收藏，最喜歡的是二戰德國毛瑟狙擊步槍，取名叫「葛麗特 Gretel」<br>
+                - 擅長武器類型：突擊步槍、戰術手槍、霰彈槍<br>
+                - 執著、佔有慾強、情感似乎有點極端
               </div>
             </div>
 
@@ -744,103 +797,89 @@
 
           </div><!-- /profile-file -->
         </div><!-- /profile-layout -->
-      </div>
+
+        <!-- ── 與他相遇 CTA ── -->
+        <div class="encounter-block">
+          <div class="encounter-quote">你來找我，還是被我找到——其實沒什麼差別。</div>
+          <div class="encounter-attr">— JACK WILSON · CODENAME: WOLF</div>
+          <a href="https://app.floze.ai/link/role/DgfDODaeFsi1JCxLk1F1d9Kk0/?locale=tw"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="encounter-btn">
+            與他相遇
+            <span class="encounter-btn-arrow">→</span>
+          </a>
+        </div>
+
+      </div><!-- /file-panel -->
     </div><!-- /char-file -->
 
     <!-- ② GALLERY -->
-<div class="char-panel" id="char-gallery">
-  <div class="gallery-panel">
+    <div class="char-panel" id="char-gallery">
+      <div class="gallery-panel">
 
-    <!-- 照片區 -->
-    <div class="gallery-section">
-      <div class="gallery-section-label">PHOTO ARCHIVE</div>
-      <div class="gallery-grid-photo">
-
-        <!-- 有照片時這樣放： -->
-        <!-- <div class="gallery-photo-item"><img src="../../pic/characters/jack/2.jpeg" alt=""></div> -->
-
-        <!-- 沒照片時放placeholder -->
-        <div class="gallery-photo-item">
-          <div class="gallery-placeholder">
-            <div class="gallery-placeholder-icon">📷</div>
-            <div class="gallery-placeholder-text">NO IMAGE</div>
-          </div>
-        </div>
-        <div class="gallery-photo-item">
-          <div class="gallery-placeholder">
-            <div class="gallery-placeholder-icon">📷</div>
-            <div class="gallery-placeholder-text">NO IMAGE</div>
-          </div>
-        </div>
-        <div class="gallery-photo-item">
-          <div class="gallery-placeholder">
-            <div class="gallery-placeholder-icon">📷</div>
-            <div class="gallery-placeholder-text">NO IMAGE</div>
+        <div class="gallery-section">
+          <div class="gallery-section-label">PHOTO ARCHIVE</div>
+          <div class="gallery-grid-photo">
+            <div class="gallery-photo-item">
+              <div class="gallery-placeholder">
+                <div class="gallery-placeholder-icon">📷</div>
+                <div class="gallery-placeholder-text">NO IMAGE</div>
+              </div>
+            </div>
+            <div class="gallery-photo-item">
+              <div class="gallery-placeholder">
+                <div class="gallery-placeholder-icon">📷</div>
+                <div class="gallery-placeholder-text">NO IMAGE</div>
+              </div>
+            </div>
+            <div class="gallery-photo-item">
+              <div class="gallery-placeholder">
+                <div class="gallery-placeholder-icon">📷</div>
+                <div class="gallery-placeholder-text">NO IMAGE</div>
+              </div>
+            </div>
           </div>
         </div>
 
-      </div>
-    </div>
-
-    <!-- 影片／GIF 區 -->
-    <div class="gallery-section">
-      <div class="gallery-section-label">VIDEO & GIF</div>
-      <div class="gallery-grid-video">
-
-        <!-- 有影片時這樣放： -->
-        <!--
-        <div class="gallery-video-item">
-          <video src="../../pic/characters/jack/clip1.mp4" loop muted playsinline></video>
-          <div class="video-overlay">
-            <div class="video-play-icon">▶</div>
-          </div>
-        </div>
-        -->
-
-        <!-- 有GIF時用photo-item就好： -->
-        <!--
-        <div class="gallery-photo-item">
-          <img src="../../pic/characters/jack/anim.gif" alt="">
-        </div>
-        -->
-
-        <!-- 沒影片時 -->
-        <div class="gallery-video-item">
-          <div class="gallery-placeholder">
-            <div class="gallery-placeholder-icon">🎬</div>
-            <div class="gallery-placeholder-text">NO VIDEO</div>
-          </div>
-        </div>
-        <div class="gallery-video-item">
-          <div class="gallery-placeholder">
-            <div class="gallery-placeholder-icon">🎬</div>
-            <div class="gallery-placeholder-text">NO VIDEO</div>
+        <div class="gallery-section">
+          <div class="gallery-section-label">VIDEO & GIF</div>
+          <div class="gallery-grid-video">
+            <div class="gallery-video-item">
+              <div class="gallery-placeholder">
+                <div class="gallery-placeholder-icon">🎬</div>
+                <div class="gallery-placeholder-text">NO VIDEO</div>
+              </div>
+            </div>
+            <div class="gallery-video-item">
+              <div class="gallery-placeholder">
+                <div class="gallery-placeholder-icon">🎬</div>
+                <div class="gallery-placeholder-text">NO VIDEO</div>
+              </div>
+            </div>
           </div>
         </div>
 
       </div>
     </div>
-
-  </div>
-</div>
 
     <!-- ③ HIS PAST -->
-<div class="char-panel" id="char-stories">
-  <div class="stories-panel">
-    <div class="story-list">
+    <div class="char-panel" id="char-stories">
+      <div class="stories-panel">
+        <div class="story-list">
 
-      <a href="../../world/stories/jack-01.html" class="story-item">
-        <div class="story-meta">
-          <span class="story-date">20XX · XX · XX</span>
-          <span class="story-tag">BEFORE THE UNIT</span>
+          <a href="../../world/stories/jack-01.html" class="story-item">
+            <div class="story-meta">
+              <span class="story-date">20XX · XX · XX</span>
+              <span class="story-tag">BEFORE THE UNIT</span>
+            </div>
+            <div class="story-title">文章標題</div>
+            <div class="story-preview">開頭兩三行預覽⋯⋯</div>
+          </a>
+
         </div>
-        <div class="story-title">文章標題</div>
-        <div class="story-preview">開頭兩三行預覽⋯⋯</div>
-      </a>
-
+      </div>
     </div>
-  </div>
-</div>
 
   </div><!-- /main -->
 
