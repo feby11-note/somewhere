@@ -78,10 +78,9 @@ body.world-home {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: none;  
 }
 
 .world-nav-back {
@@ -94,6 +93,16 @@ body.world-home {
 }
 
 .world-nav-back:hover { color: #2D3748; }
+
+.world-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.world-nav-notes:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
 
 /* 漢堡按鈕 */
 .hamburger-btn {
@@ -175,16 +184,11 @@ body.world-home {
 }
 
 .hamburger-label {
-  font-size: 10px;
-  letter-spacing: 3px;
-  color: rgba(74, 85, 104, 0.3);
-  margin-bottom: 4px;
-  margin-top: 28px;
-  font-weight: 400;
-}
-
-.hamburger-label:first-of-type {
-  margin-top: 0;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: rgba(74, 85, 104, 0.45);
+  margin-bottom: 10px;
+  margin-top: 4px;
 }
 
 .hamburger-link {
@@ -192,21 +196,28 @@ body.world-home {
   font-weight: 600;
   color: #4A5568;
   text-decoration: none;
-  padding: 10px 0;
-  border-bottom: none;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(74, 85, 104, 0.08);
   transition: all 0.3s ease;
   letter-spacing: 0.5px;
 }
 
 .hamburger-link:hover { color: #2D3748; }
 
+.hamburger-divider {
+  height: 1px;
+  background: rgba(74, 85, 104, 0.12);
+  margin: 16px 0;
+}
+
 /* ===== 主內容 ===== */
 .world-main {
   position: relative;
   z-index: 1;
-  max-width: 640px;
+  width: clamp(700px, 75vw, 1400px);
+  max-width: 100%;
   margin: 0 auto;
-  padding: 80px 24px 60px;
+  padding: 100px 24px 60px;
 }
 
 /* ===== Hero ===== */
@@ -216,17 +227,17 @@ body.world-home {
 }
 
 .world-hero-sub {
-  font-size: 12px;
-  letter-spacing: 3px;
+  font-size: 14px;
+  letter-spacing: 2px;
   color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 16px;
+  margin-bottom: 50px;
 }
 
 .world-hero-title {
-  font-size: 38px;
+  font-size: 48px;
   font-weight: 900;
   color: #FFFFFF;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
   line-height: 1.4;
   margin-bottom: 16px;
   text-shadow: 0 2px 24px rgba(100, 140, 180, 0.3);
@@ -237,6 +248,7 @@ body.world-home {
   color: rgba(255, 255, 255, 0.65);
   letter-spacing: 1px;
   line-height: 1.8;
+  margin-bottom: 16px;
 }
 
 /* ===== 標籤列 ===== */
@@ -409,11 +421,6 @@ body.world-home {
 }
 
 /* ===== RWD ===== */
-@media (max-width: 768px) {
-  .world-hero-title { font-size: 30px; }
-  .world-hero-sub { font-size: 11px; }
-  .world-main { padding: 72px 20px 48px; }
-}
 
 @media (max-width: 380px) {
   .world-hero-title { font-size: 26px; }
