@@ -41,8 +41,8 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      height: 3rem;
-      padding: 0 2rem;
+      height: 3.75rem;           /* ← 3rem → 3.75rem */
+      padding: 0 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -54,26 +54,27 @@
 
     .nav-brand {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 1rem;           /* ← 0.75rem → 1rem */
       color: var(--green-light);
       text-decoration: none;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.12em;
       opacity: 0.85;
       transition: opacity 0.2s;
+      white-space: nowrap;
     }
     .nav-brand:hover { opacity: 1; }
 
     .nav-links {
       list-style: none;
       display: flex;
-      gap: 0.2rem;
+      gap: 0.15rem;
     }
 
     .nav-links a {
-      font-size: 0.85rem;
+      font-size: 0.95rem;        /* ← 0.85rem → 0.95rem */
       color: var(--text-muted);
       text-decoration: none;
-      padding: 0.35rem 0.7rem;
+      padding: 0.4rem 0.75rem;   /* ← 살짝 padding 확장 */
       border: 1px solid transparent;
       transition: all 0.2s;
       letter-spacing: 0.05em;
@@ -89,7 +90,7 @@
       width: 92%;
       max-width: 54rem;
       margin: 0 auto;
-      padding: 4.5rem 0 4rem;
+      padding: 5.5rem 0 4rem;    /* ← 4.5rem → 5.5rem（配合 nav 變高） */
     }
 
     /* ── 標題區 ── */
@@ -188,7 +189,7 @@
       border: 1px solid var(--border);
       background: var(--surface2);
       position: sticky;
-      top: 4rem;
+      top: 4.5rem;               /* ← nav 變高後 sticky 起點對應調整 */
     }
 
     .profile-img img {
@@ -461,7 +462,6 @@
       border-radius: 2px;
     }
 
-    /* 照片格和影片格統一大小 */
     .gallery-photo-item,
     .gallery-video-item {
       flex: 0 0 auto;
@@ -648,6 +648,21 @@
 
     /* ── RWD ── */
     @media (max-width: 680px) {
+      .nav {
+        height: 3.75rem;          /* ← 手機版稍微低一點避免擠 */
+        padding: 0 1.5rem;
+      }
+      .nav-brand {
+        font-size: 1rem;      /* ← 手機版略縮，避免和連結擠 */
+        letter-spacing: 0.12em;
+      }
+      .nav-links a {
+        font-size: 0.95rem;      /* ← 手機版比預設小一點點，但比原本大 */
+        padding: 0.4rem 0.75rem;
+      }
+      .main {
+        padding-top: 5.5rem;       /* ← 對應手機 nav 高度 */
+      }
       .profile-layout { grid-template-columns: 1fr; }
       .profile-img {
         position: static;
@@ -656,13 +671,16 @@
       }
       .pf-grid.col4 { grid-template-columns: 1fr 1fr; }
       .pf-cell.span4 { grid-column: span 2; }
-      .nav-links a {
-        font-size: 0.75rem;
-        padding: 0.3rem 0.45rem;
-      }
     }
 
     @media (max-width: 420px) {
+      .nav-brand {
+        font-size: 0.85rem;      /* ← 很窄的手機再縮一點 */
+      }
+      .nav-links a {
+        font-size: 0.78rem;
+        padding: 0.3rem 0.4rem;
+      }
       .pf-grid.col2,
       .pf-grid.col3 { grid-template-columns: 1fr; }
       .pf-cell.span2,
@@ -708,7 +726,6 @@
           <!-- 左：角色圖 -->
           <div class="profile-img">
             <img src="../../pic/characters/leo/1.jpeg" alt="里歐">
-            <!-- 沒圖時換成：<div class="placeholder">👤</div> -->
           </div>
 
           <!-- 右：軍方檔案 -->
@@ -844,13 +861,9 @@
     <div class="char-panel" id="char-gallery">
       <div class="gallery-panel">
 
-        <!-- 照片區 -->
         <div class="gallery-section">
           <div class="gallery-section-label">PHOTO ARCHIVE</div>
           <div class="gallery-scroll">
-
-            <!-- 有照片時這樣放：<div class="gallery-photo-item" onclick="openLightbox('../../pic/characters/leo/2.jpeg', 'img')"><img src="../../pic/characters/leo/2.jpeg" alt=""></div> -->
-
             <div class="gallery-photo-item">
               <div class="gallery-placeholder">
                 <div class="gallery-placeholder-icon">📷</div>
@@ -869,28 +882,12 @@
                 <div class="gallery-placeholder-text">NO IMAGE</div>
               </div>
             </div>
-
           </div>
         </div>
 
-        <!-- 影片／GIF 區 -->
         <div class="gallery-section">
           <div class="gallery-section-label">VIDEO & GIF</div>
           <div class="gallery-scroll">
-
-            <!-- 有影片時這樣放：
-            <div class="gallery-video-item" onclick="openLightbox('../../pic/characters/leo/1.mp4', 'video')">
-              <video src="../../pic/characters/leo/1.mp4" poster="../../pic/characters/leo/1.jpeg" loop muted playsinline></video>
-              <div class="video-overlay"><div class="video-play-icon">▶</div></div>
-            </div>
-            -->
-
-            <!-- 有GIF時用photo-item就好：
-            <div class="gallery-photo-item" onclick="openLightbox('../../pic/characters/leo/anim.gif', 'img')">
-              <img src="../../pic/characters/leo/anim.gif" alt="">
-            </div>
-            -->
-
             <div class="gallery-video-item">
               <div class="gallery-placeholder">
                 <div class="gallery-placeholder-icon">🎬</div>
@@ -903,66 +900,65 @@
                 <div class="gallery-placeholder-text">NO VIDEO</div>
               </div>
             </div>
-
           </div>
         </div>
 
       </div>
     </div><!-- /char-gallery -->
 
-<!-- ③ HIS PAST -->
-<div class="char-panel" id="char-stories">
-  <div class="stories-panel">
-    <div class="story-list">
+    <!-- ③ HIS PAST -->
+    <div class="char-panel" id="char-stories">
+      <div class="stories-panel">
+        <div class="story-list">
 
-      <a href="../Night-Owl-Unit/stories/leo.html#before-surviving" class="story-item">
-        <div class="story-meta">
-          <span class="story-date">BEFORE THE UNIT</span>
-          <span class="story-tag">CH.1</span>
+          <a href="../Night-Owl-Unit/stories/leo.html#before-surviving" class="story-item">
+            <div class="story-meta">
+              <span class="story-date">BEFORE THE UNIT</span>
+              <span class="story-tag">CH.1</span>
+            </div>
+            <div class="story-title">在活下來之前</div>
+            <div class="story-preview">我從來沒有以為世界應該是安靜的。有意識以來，耳邊沒有搖籃曲……</div>
+          </a>
+
+          <a href="../Night-Owl-Unit/stories/leo.html#survive" class="story-item">
+            <div class="story-meta">
+              <span class="story-date">BEFORE THE UNIT</span>
+              <span class="story-tag">CH.2</span>
+            </div>
+            <div class="story-title">生存</div>
+            <div class="story-preview">在那之後，事情變得很簡單，有人把我帶走，沒有解釋、也沒有選擇……</div>
+          </a>
+
+          <a href="../Night-Owl-Unit/stories/leo.html#just-adapting" class="story-item">
+            <div class="story-meta">
+              <span class="story-date">BEFORE THE UNIT</span>
+              <span class="story-tag">CH.3</span>
+            </div>
+            <div class="story-title">只是適應</div>
+            <div class="story-preview">從那之後，我不再等。我在別人還沒動之前就先動……</div>
+          </a>
+
+          <a href="../Night-Owl-Unit/stories/leo.html#edge-of-thrill" class="story-item">
+            <div class="story-meta">
+              <span class="story-date">BEFORE THE UNIT</span>
+              <span class="story-tag">CH.4</span>
+            </div>
+            <div class="story-title">快感邊緣</div>
+            <div class="story-preview">不知道從什麼時候開始，活著這件事變得太簡單了……</div>
+          </a>
+
+          <a href="../Night-Owl-Unit/stories/leo.html#rainy-night" class="story-item">
+            <div class="story-meta">
+              <span class="story-date">BEFORE THE UNIT</span>
+              <span class="story-tag">CH.5</span>
+            </div>
+            <div class="story-title">雨夜</div>
+            <div class="story-preview">那是個雨天。街道被洗得發亮，霓虹燈在積水裡碎成一片一片的光……</div>
+          </a>
+
         </div>
-        <div class="story-title">在活下來之前</div>
-        <div class="story-preview">我從來沒有以為世界應該是安靜的。有意識以來，耳邊沒有搖籃曲……</div>
-      </a>
-
-      <a href="../Night-Owl-Unit/stories/leo.html#survive" class="story-item">
-        <div class="story-meta">
-          <span class="story-date">BEFORE THE UNIT</span>
-          <span class="story-tag">CH.2</span>
-        </div>
-        <div class="story-title">生存</div>
-        <div class="story-preview">在那之後，事情變得很簡單，有人把我帶走，沒有解釋、也沒有選擇……</div>
-      </a>
-
-      <a href="../Night-Owl-Unit/stories/leo.html#just-adapting" class="story-item">
-        <div class="story-meta">
-          <span class="story-date">BEFORE THE UNIT</span>
-          <span class="story-tag">CH.3</span>
-        </div>
-        <div class="story-title">只是適應</div>
-        <div class="story-preview">從那之後，我不再等。我在別人還沒動之前就先動……</div>
-      </a>
-
-      <a href="../Night-Owl-Unit/stories/leo.html#edge-of-thrill" class="story-item">
-        <div class="story-meta">
-          <span class="story-date">BEFORE THE UNIT</span>
-          <span class="story-tag">CH.4</span>
-        </div>
-        <div class="story-title">快感邊緣</div>
-        <div class="story-preview">不知道從什麼時候開始，活著這件事變得太簡單了……</div>
-      </a>
-
-      <a href="../Night-Owl-Unit/stories/leo.html#rainy-night" class="story-item">
-        <div class="story-meta">
-          <span class="story-date">BEFORE THE UNIT</span>
-          <span class="story-tag">CH.5</span>
-        </div>
-        <div class="story-title">雨夜</div>
-        <div class="story-preview">那是個雨天。街道被洗得發亮，霓虹燈在積水裡碎成一片一片的光……</div>
-      </a>
-
-    </div>
-  </div>
-</div><!-- /char-stories -->
+      </div>
+    </div><!-- /char-stories -->
 
     <!-- ④ MEET HIM -->
     <div class="char-panel" id="char-meet">
@@ -970,14 +966,12 @@
 
         <div class="meet-img">
           <img src="../../pic/characters/leo/1.jpeg" alt="里歐">
-          <!-- 沒圖時換成：<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3rem;">👤</div> -->
         </div>
 
         <div class="meet-card">
           <div class="meet-label">HOUND · LEO · NOU-004</div>
           <div class="meet-divider"></div>
           <div class="meet-quote">
-            <!-- 里歐的引言放這裡 -->
             來啊，反正我也沒事。
           </div>
           <a href="#"
@@ -1004,11 +998,11 @@
   </div>
 
   <script>
-    // 如果網址有 #stories，自動切到 HIS PAST 標籤
     if (window.location.hash === '#stories') {
-    const btn = document.querySelector('[onclick*="stories"]');
-    if (btn) btn.click();
+      const btn = document.querySelector('[onclick*="stories"]');
+      if (btn) btn.click();
     }
+
     function switchCharTab(name, btn) {
       document.querySelectorAll('.char-panel').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.char-tab').forEach(el => el.classList.remove('active'));
@@ -1047,9 +1041,8 @@
       if (e.key === 'Escape') closeLightbox();
     });
 
-    // 頁面載入後嘗試播放所有縮圖影片
     document.querySelectorAll('.gallery-video-item video').forEach(v => {
-      v.play().catch(() => {}); // 失敗就靜默，不報錯
+      v.play().catch(() => {});
     });
   </script>
 
