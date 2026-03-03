@@ -1,115 +1,329 @@
-/* ===== 戀愛世界共用 ===== */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-:root {
-  --world-transition: all 0.3s ease;
-}
-
-/* ===== 戀愛世界主頁 ===== */
+/* ===== 背景 ===== */
 body.world-home {
   font-family: 'Noto Sans TC', sans-serif;
-  background: #111111;
-  color: #ffffff;
   min-height: 100vh;
+  background: linear-gradient(180deg,
+    #8AAED4 0%,
+    #A3C4E4 15%,
+    #BDD6EE 30%,
+    #D4E3F0 50%,
+    #E4E8ED 70%,
+    #EDE8E3 85%,
+    #F0EBE5 100%
+  );
+  color: #4A5568;
+  overflow-x: hidden;
 }
 
+/* ===== 雲朵 ===== */
+.clouds {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.cloud {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 200px;
+  filter: blur(24px);
+}
+
+.cloud-1 {
+  width: 350px; height: 60px;
+  top: 6%; left: -80px;
+  animation: drift 65s linear infinite;
+}
+
+.cloud-2 {
+  width: 220px; height: 40px;
+  top: 14%; right: -120px;
+  animation: drift 50s linear infinite reverse;
+  opacity: 0.5;
+}
+
+.cloud-3 {
+  width: 280px; height: 50px;
+  top: 24%; left: 25%;
+  animation: drift 58s linear infinite;
+  animation-delay: -25s;
+  opacity: 0.35;
+}
+
+.cloud-4 {
+  width: 180px; height: 35px;
+  top: 35%; right: 10%;
+  animation: drift 70s linear infinite reverse;
+  animation-delay: -10s;
+  opacity: 0.25;
+}
+
+@keyframes drift {
+  0% { transform: translateX(-150px); }
+  100% { transform: translateX(calc(100vw + 150px)); }
+}
+
+/* ===== 導覽列 ===== */
 .world-nav {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
   padding: 16px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(17, 17, 17, 0.9);
-  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.world-nav-brand {
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
+.world-nav-back {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4A5568;
   text-decoration: none;
   letter-spacing: 1px;
+  transition: all 0.3s ease;
 }
 
-.world-nav-links {
+.world-nav-back:hover { color: #2D3748; }
+
+/* 漢堡按鈕 */
+.hamburger-btn {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  cursor: pointer;
   display: flex;
-  gap: 20px;
-  list-style: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: all 0.3s ease;
 }
 
-.world-nav-links a {
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.5);
+.hamburger-btn:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.hamburger-btn span {
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  background: #4A5568;
+  border-radius: 2px;
+}
+
+/* ===== 漢堡選單 ===== */
+.hamburger-menu {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 200;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hamburger-menu.open {
+  pointer-events: all;
+  opacity: 1;
+}
+
+.hamburger-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);
+}
+
+.hamburger-content {
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: 260px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-left: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 64px 24px 40px;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+.hamburger-menu.open .hamburger-content {
+  transform: translateX(0);
+}
+
+.hamburger-close {
+  position: absolute;
+  top: 20px; right: 20px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #4A5568;
+  cursor: pointer;
+}
+
+.hamburger-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: rgba(74, 85, 104, 0.3);
+  margin-bottom: 4px;
+  margin-top: 28px;
+  font-weight: 400;
+}
+
+.hamburger-label:first-of-type {
+  margin-top: 0;
+}
+
+.hamburger-link {
+  font-size: 15px;
+  font-weight: 600;
+  color: #4A5568;
   text-decoration: none;
-  transition: var(--world-transition);
-  letter-spacing: 1px;
+  padding: 10px 0;
+  border-bottom: none;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
 }
 
-.world-nav-links a:hover {
-  color: #fff;
-}
+.hamburger-link:hover { color: #2D3748; }
 
-/* 世界主頁內容 */
+/* ===== 主內容 ===== */
 .world-main {
-  max-width: 1000px;
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
   margin: 0 auto;
-  padding: 100px 24px 60px;
+  padding: 80px 24px 60px;
 }
 
+/* ===== Hero ===== */
 .world-hero {
   text-align: center;
-  padding: 60px 0 48px;
+  padding: 48px 0 40px;
 }
 
-.world-hero h1 {
-  font-size: 36px;
+.world-hero-sub {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 16px;
+}
+
+.world-hero-title {
+  font-size: 38px;
   font-weight: 900;
-  margin-bottom: 12px;
-  letter-spacing: 2px;
+  color: #FFFFFF;
+  letter-spacing: 3px;
+  line-height: 1.4;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 24px rgba(100, 140, 180, 0.3);
 }
 
-.world-hero p {
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 15px;
+.world-hero-desc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 1px;
+  line-height: 1.8;
 }
 
-/* 世界觀卡片 */
-.world-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 24px;
-  margin-top: 48px;
+/* ===== 標籤列 ===== */
+.tab-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 2px;
 }
 
+.tab-bar::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+  flex-shrink: 0;
+  padding: 10px 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.25);
+  color: #4A5568;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+.tab-btn:hover {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.tab-btn.active {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(255, 255, 255, 0.9);
+  color: #2D3748;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* ===== 標籤內容 ===== */
+.tab-content {
+  width: 100%;
+}
+
+.tab-panel {
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+.tab-panel.active {
+  display: flex;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== 世界觀卡片 ===== */
 .world-card {
   border-radius: 16px;
   overflow: hidden;
-  transition: var(--world-transition);
   text-decoration: none;
-  color: #fff;
+  color: #4A5568;
   display: block;
-  position: relative;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .world-card:hover {
   transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
 }
 
+/* 4:3 橫向圖片 */
 .world-card .card-cover {
   width: 100%;
-  height: 200px;
-  background: #222;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .world-card .card-cover img {
@@ -124,15 +338,11 @@ body.world-home {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 48px;
+  font-size: 56px;
 }
 
 .world-card .card-body {
-  padding: 20px;
-  background: #1a1a1a;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-top: none;
-  border-radius: 0 0 16px 16px;
+  padding: 20px 22px;
 }
 
 .world-card .card-label {
@@ -140,64 +350,72 @@ body.world-home {
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 8px;
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 .world-card .card-body h3 {
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 8px;
+  color: #2D3748;
 }
 
 .world-card .card-body p {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.5);
-  line-height: 1.7;
+  color: rgba(74, 85, 104, 0.7);
+  line-height: 1.8;
 }
 
-/* 夜梟 hover 色 */
-.world-card.owl-card:hover {
-  box-shadow: 0 8px 32px rgba(76, 133, 76, 0.2);
-}
-.world-card.owl-card .card-label { color: #7CB97C; }
+/* 各世界觀顏色 */
+.owl-card .card-label { color: #4A7C59; }
+.era-card .card-label { color: #8B6914; }
+.raven-card .card-label { color: #8B3A3A; }
+.other-card .card-label { color: #7B6B8D; }
 
-/* 西曆 hover 色 */
-.world-card.era-card:hover {
-  box-shadow: 0 8px 32px rgba(196, 164, 106, 0.2);
+/* ===== 角色快捷列 ===== */
+.char-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
-.world-card.era-card .card-label { color: #C4A46A; }
 
-/* 渡鴉 hover 色 */
-.world-card.raven-card:hover {
-  box-shadow: 0 8px 32px rgba(180, 60, 60, 0.2);
+.char-chip {
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4A5568;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
 }
-.world-card.raven-card .card-label { color: #C85454; }
 
-/* 其他 hover 色 */
-.world-card.other-card:hover {
-  box-shadow: 0 8px 32px rgba(255, 210, 213, 0.2);
+.char-chip:hover {
+  background: rgba(255, 255, 255, 0.7);
+  color: #2D3748;
 }
-.world-card.other-card .card-label { color: #FFD2D5; }
 
+/* ===== Footer ===== */
 .world-footer {
+  position: relative;
+  z-index: 1;
   text-align: center;
-  padding: 40px 24px;
-  margin-top: 60px;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.2);
+  padding: 32px 24px;
+  font-size: 11px;
+  color: rgba(74, 85, 104, 0.4);
+  letter-spacing: 2px;
 }
 
-/* RWD */
+/* ===== RWD ===== */
 @media (max-width: 768px) {
-  .world-grid {
-    grid-template-columns: 1fr;
-  }
+  .world-hero-title { font-size: 30px; }
+  .world-hero-sub { font-size: 11px; }
+  .world-main { padding: 72px 20px 48px; }
+}
 
-  .world-hero h1 {
-    font-size: 28px;
-  }
-
-  .world-nav-links {
-    display: none;
-  }
+@media (max-width: 380px) {
+  .world-hero-title { font-size: 26px; }
+  .tab-btn { padding: 9px 14px; font-size: 12px; }
 }
