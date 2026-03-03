@@ -156,16 +156,16 @@
       padding-bottom: calc(0.625rem + 2px);
     }
 
-    /* MEET HIM 標籤特殊色 */
     .char-tab.tab-meet {
-  color: #F4A7B9;
-  opacity: 1;
-  margin-left: auto;
-}
-.char-tab.tab-meet.active {
-  color: #F4A7B9;
-  border-bottom-color: #F4A7B9;
-}
+      color: #F4A7B9;
+      opacity: 1;
+      margin-left: auto;
+    }
+    .char-tab.tab-meet.active {
+      color: #F4A7B9;
+      background: var(--surface);
+      border-bottom-color: #F4A7B9;
+    }
 
     .char-panel { display: none; }
     .char-panel.active { display: block; }
@@ -346,16 +346,20 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0;
     }
 
-    /* 圖片：固定比例，不要太高 */
-    .meet-img {
+    /* 圖片和文字卡共用同一個寬度，用變數控制 */
+    .meet-img,
+    .meet-card {
       width: 100%;
-      max-width: 22rem;
+      max-width: 260px;
+    }
+
+    .meet-img {
       aspect-ratio: 3 / 4;
       overflow: hidden;
       border: 1px solid var(--border);
+      border-bottom: none;
     }
 
     .meet-img img {
@@ -366,26 +370,21 @@
       display: block;
     }
 
-    /* 文字卡 */
     .meet-card {
-      width: 100%;
-      max-width: 22rem;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-top: none;
-      padding: 1.5rem 1.5rem 1.75rem;
+      padding: 1.25rem 1.25rem 1.5rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.25rem;
+      gap: 1rem;
       text-align: center;
-      position: relative;
     }
 
     .meet-label {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
       color: var(--orange);
       opacity: 0.7;
     }
@@ -406,7 +405,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.65rem 2rem;
+      padding: 0.65rem 1.75rem;
       font-family: 'Share Tech Mono', monospace;
       font-size: 0.8rem;
       letter-spacing: 0.18em;
@@ -425,125 +424,114 @@
       transform: translateY(-1px);
     }
 
-    .meet-btn-arrow {
-      transition: transform 0.2s;
-    }
+    .meet-btn-arrow { transition: transform 0.2s; }
     .meet-btn:hover .meet-btn-arrow { transform: translateX(3px); }
 
-    /* ── Gallery ── */
-.gallery-panel { padding-top: 2rem; }
+    /* ══════════════════════════
+       GALLERY 面板
+    ══════════════════════════ */
+    .gallery-panel { padding-top: 2rem; }
 
-.gallery-section-label {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  color: var(--accent);
-  padding-bottom: 0.5rem;
-  margin-bottom: 0.875rem;
-  border-bottom: 1px solid rgba(74,98,128,0.35);
-}
+    .gallery-section-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.875rem;
+      border-bottom: 1px solid rgba(74,98,128,0.35);
+    }
 
-.gallery-section { margin-bottom: 2rem; }
+    .gallery-section { margin-bottom: 2rem; }
 
-/* 左右滑動容器 */
-.gallery-scroll {
-  display: flex;
-  gap: 0.625rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 0.75rem;
-  cursor: grab;
-}
-.gallery-scroll:active { cursor: grabbing; }
+    .gallery-scroll {
+      display: flex;
+      gap: 0.625rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 0.75rem;
+      cursor: grab;
+    }
+    .gallery-scroll:active { cursor: grabbing; }
 
-/* 隱藏滾動條但保留功能 */
-.gallery-scroll::-webkit-scrollbar { height: 3px; }
-.gallery-scroll::-webkit-scrollbar-track { background: transparent; }
-.gallery-scroll::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 2px;
-}
+    .gallery-scroll::-webkit-scrollbar { height: 3px; }
+    .gallery-scroll::-webkit-scrollbar-track { background: transparent; }
+    .gallery-scroll::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 2px;
+    }
 
-/* 照片格：固定寬度，3:4 */
-.gallery-photo-item {
-  flex: 0 0 auto;
-  width: clamp(7rem, 28vw, 12rem);
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: var(--surface2);
-  scroll-snap-align: start;
-  cursor: pointer;
-  position: relative;
-  transition: border-color 0.2s;
-}
-.gallery-photo-item:hover { border-color: var(--green); }
-.gallery-photo-item img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.3s;
-}
-.gallery-photo-item:hover img { transform: scale(1.04); }
+    /* 照片格和影片格統一大小 */
+    .gallery-photo-item,
+    .gallery-video-item {
+      flex: 0 0 auto;
+      width: clamp(9rem, 26vw, 16rem);
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+      scroll-snap-align: start;
+      cursor: pointer;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+    .gallery-photo-item:hover,
+    .gallery-video-item:hover { border-color: var(--green); }
 
-/* 影片格：固定寬度，9:16 */
-.gallery-video-item {
-  flex: 0 0 auto;
-  width: clamp(8rem, 32vw, 14rem);
-  aspect-ratio: 9 / 16;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: var(--surface2);
-  scroll-snap-align: start;
-  position: relative;
-  cursor: pointer;
-  transition: border-color 0.2s;
-}
-.gallery-video-item:hover { border-color: var(--green); }
-.gallery-video-item video {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-}
+    .gallery-photo-item img,
+    .gallery-video-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s;
+    }
+    .gallery-photo-item:hover img,
+    .gallery-video-item:hover img { transform: scale(1.04); }
 
-.video-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0,0,0,0.3);
-  transition: background 0.2s;
-}
-.gallery-video-item:hover .video-overlay { background: rgba(0,0,0,0.15); }
+    .gallery-video-item video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
-.video-play-icon {
-  width: 2.5rem; height: 2.5rem;
-  border: 2px solid rgba(255,255,255,0.7);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.875rem;
-  color: rgba(255,255,255,0.9);
-}
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.3);
+      transition: background 0.2s;
+    }
+    .gallery-video-item:hover .video-overlay { background: rgba(0,0,0,0.15); }
 
-.gallery-placeholder {
-  width: 100%; height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  color: rgba(255,255,255,0.12);
-}
-.gallery-placeholder-icon { font-size: 1.5rem; }
-.gallery-placeholder-text {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.62rem;
-  letter-spacing: 0.1em;
-}
+    .video-play-icon {
+      width: 2.5rem; height: 2.5rem;
+      border: 2px solid rgba(255,255,255,0.7);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .gallery-placeholder {
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      color: rgba(255,255,255,0.12);
+    }
+    .gallery-placeholder-icon { font-size: 1.5rem; }
+    .gallery-placeholder-text {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+    }
 
     /* ══════════════════════════
        HIS PAST 面板
@@ -601,6 +589,52 @@
       line-height: 1.8;
     }
 
+    /* ── Lightbox ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(0,0,0,0.88);
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .lightbox.open { display: flex; }
+
+    .lightbox-inner {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-inner img,
+    .lightbox-inner video {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      display: block;
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 1rem;
+      right: 1.25rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.5rem;
+      color: rgba(255,255,255,0.7);
+      background: none;
+      border: none;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+      z-index: 1000;
+    }
+    .lightbox-close:hover { color: #fff; }
+
     /* ── Footer ── */
     .footer {
       text-align: center;
@@ -624,8 +658,8 @@
       .pf-grid.col4 { grid-template-columns: 1fr 1fr; }
       .pf-cell.span4 { grid-column: span 2; }
       .nav-links a {
-    font-size: 0.75rem;
-    padding: 0.3rem 0.45rem;
+        font-size: 0.75rem;
+        padding: 0.3rem 0.45rem;
       }
     }
 
@@ -799,78 +833,52 @@
     </div>
 
     <!-- ② GALLERY -->
-<div class="char-panel" id="char-gallery">
-  <div class="gallery-panel">
+    <div class="char-panel" id="char-gallery">
+      <div class="gallery-panel">
 
-    <div class="gallery-section">
-      <div class="gallery-section-label">PHOTO ARCHIVE</div>
-      <div class="gallery-scroll">
-
-        <!-- 有圖時換成：<div class="gallery-photo-item"><img src="..." alt=""></div> -->
-
-        <div class="gallery-photo-item">
-          <div class="gallery-placeholder">
-            <div class="gallery-placeholder-icon">📷</div>
-            <div class="gallery-placeholder-text">NO IMAGE</div>
-          </div>
-        </div>
-        <div class="gallery-photo-item">
-          <div class="gallery-placeholder">
-            <div class="gallery-placeholder-icon">📷</div>
-            <div class="gallery-placeholder-text">NO IMAGE</div>
-          </div>
-        </div>
-        <div class="gallery-photo-item">
-          <div class="gallery-placeholder">
-            <div class="gallery-placeholder-icon">📷</div>
-            <div class="gallery-placeholder-text">NO IMAGE</div>
-          </div>
-        </div>
-        <div class="gallery-photo-item">
-          <div class="gallery-placeholder">
-            <div class="gallery-placeholder-icon">📷</div>
-            <div class="gallery-placeholder-text">NO IMAGE</div>
+        <div class="gallery-section">
+          <div class="gallery-section-label">PHOTO ARCHIVE</div>
+          <div class="gallery-scroll">
+            <div class="gallery-photo-item" onclick="openLightbox('../../pic/characters/jack/3.jpeg', 'img')">
+              <img src="../../pic/characters/jack/3.jpeg" alt="">
+            </div>
+            <div class="gallery-photo-item" onclick="openLightbox('../../pic/characters/jack/4.jpeg', 'img')">
+              <img src="../../pic/characters/jack/4.jpeg" alt="">
+            </div>
+            <div class="gallery-photo-item" onclick="openLightbox('../../pic/characters/jack/5.jpeg', 'img')">
+              <img src="../../pic/characters/jack/5.jpeg" alt="">
+            </div>
+            <div class="gallery-photo-item" onclick="openLightbox('../../pic/characters/jack/6.jpeg', 'img')">
+              <img src="../../pic/characters/jack/6.jpeg" alt="">
+            </div>
           </div>
         </div>
 
-      </div>
-    </div>
-
-    <div class="gallery-section">
-      <div class="gallery-section-label">VIDEO & GIF</div>
-      <div class="gallery-scroll">
-
-        <!-- 有影片時換成：
-        <div class="gallery-video-item">
-          <video src="..." loop muted playsinline></video>
-          <div class="video-overlay"><div class="video-play-icon">▶</div></div>
-        </div>
-        -->
-
-        <div class="gallery-video-item">
-          <div class="gallery-placeholder">
-            <div class="gallery-placeholder-icon">🎬</div>
-            <div class="gallery-placeholder-text">NO VIDEO</div>
-          </div>
-        </div>
-        <div class="gallery-video-item">
-          <div class="gallery-placeholder">
-            <div class="gallery-placeholder-icon">🎬</div>
-            <div class="gallery-placeholder-text">NO VIDEO</div>
-          </div>
-        </div>
-        <div class="gallery-video-item">
-          <div class="gallery-placeholder">
-            <div class="gallery-placeholder-icon">🎬</div>
-            <div class="gallery-placeholder-text">NO VIDEO</div>
+        <div class="gallery-section">
+          <div class="gallery-section-label">VIDEO</div>
+          <div class="gallery-scroll">
+            <div class="gallery-video-item" onclick="openLightbox('../../pic/characters/jack/clip1.mp4', 'video')">
+              <video src="../../pic/characters/jack/1.mp4" loop muted playsinline></video>
+              <div class="video-overlay"><div class="video-play-icon">▶</div></div>
+            </div>
+            <div class="gallery-video-item">
+              <div class="gallery-placeholder">
+                <div class="gallery-placeholder-icon">🎬</div>
+                <div class="gallery-placeholder-text">NO VIDEO</div>
+              </div>
+            </div>
+            <div class="gallery-video-item">
+              <div class="gallery-placeholder">
+                <div class="gallery-placeholder-icon">🎬</div>
+                <div class="gallery-placeholder-text">NO VIDEO</div>
+              </div>
+            </div>
           </div>
         </div>
 
       </div>
     </div>
 
-  </div>
-</div>
     <!-- ③ HIS PAST -->
     <div class="char-panel" id="char-stories">
       <div class="stories-panel">
@@ -920,6 +928,12 @@
     NIGHT OWL SQUADRON — PERSONNEL FILE — CLASSIFIED
   </footer>
 
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <div class="lightbox-inner" id="lightbox-inner" onclick="event.stopPropagation()"></div>
+  </div>
+
   <script>
     function switchCharTab(name, btn) {
       document.querySelectorAll('.char-panel').forEach(el => el.classList.remove('active'));
@@ -927,6 +941,37 @@
       document.getElementById('char-' + name).classList.add('active');
       btn.classList.add('active');
     }
+
+    function openLightbox(src, type) {
+      const inner = document.getElementById('lightbox-inner');
+      inner.innerHTML = '';
+      if (type === 'img') {
+        const img = document.createElement('img');
+        img.src = src;
+        inner.appendChild(img);
+      } else if (type === 'video') {
+        const vid = document.createElement('video');
+        vid.src = src;
+        vid.controls = true;
+        vid.autoplay = true;
+        vid.loop = true;
+        vid.style.maxWidth = '90vw';
+        vid.style.maxHeight = '90vh';
+        inner.appendChild(vid);
+      }
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.getElementById('lightbox-inner').innerHTML = '';
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
   </script>
 
 </body>
