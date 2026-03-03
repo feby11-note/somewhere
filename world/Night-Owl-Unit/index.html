@@ -659,77 +659,22 @@
               <div class="chat-header-members">傑克 · 凱恩 · 里歐 · 席奧（4）</div>
             </div>
           </div>
-          <!-- 日期按鈕列：只放在這裡，一個日期一個 button -->
+
           <div class="chat-sessions">
             <button class="chat-session-btn active" onclick="switchChatSession('s1', this)">20XX.03.15</button>
-            <button class="chat-session-btn" onclick="switchChatSession('s2', this)">20XX.07.22</button>
-            <button class="chat-session-btn" onclick="switchChatSession('s3', this)">20XX.11.04</button>
-            <button class="chat-session-btn" onclick="switchChatSession('s3', this)">20XX.11.04</button>
-            <button class="chat-session-btn" onclick="switchChatSession('s4', this)">20XX.11.04</button>
-            <button class="chat-session-btn" onclick="switchChatSession('s5', this)">20XX.11.04</button>
-            <button class="chat-session-btn" onclick="switchChatSession('s6', this)">20XX.11.04</button>
-          <!-- 之後新增日期：複製上面一行，s3改成s4，日期改掉就好 -->
-        </div>
+            <button class="chat-session-btn" onclick="switchChatSession('s2', this)">20XX.04.03</button>
+            <button class="chat-session-btn" onclick="switchChatSession('s3', this)">20XX.06.18</button>
+            <button class="chat-session-btn" onclick="switchChatSession('s4', this)">20XX.07.22</button>
+            <button class="chat-session-btn" onclick="switchChatSession('s5', this)">20XX.09.07</button>
+            <button class="chat-session-btn" onclick="switchChatSession('s6', this)">20XX.10.30</button>
+            <button class="chat-session-btn" onclick="switchChatSession('s7', this)">20XX.11.04</button>
+          </div>
 
-    <!-- 訊息內容：一個日期對應一個 chat-session -->
           <div class="chat-body">
 
+            <!-- s1 -->
             <div class="chat-session active" id="chat-s1">
-              <div class="chat-date-divider">20XX · 03 · 15</div>
-              <div class="chat-msg left">
-                <span class="chat-sender">凱恩</span>
-                <div class="chat-bubble">有人要吃宵夜嗎</div>
-                <span class="chat-time">23:12</span>
-              </div>
-              <div class="chat-msg left">
-                <span class="chat-sender">里歐</span>
-                <div class="chat-bubble">要，幫我叫牛肉麵</div>
-                <span class="chat-time">23:13</span>
-              </div>
-              <div class="chat-msg left">
-                <span class="chat-sender">席奧</span>
-                <div class="chat-bubble">我不餓</div>
-                <span class="chat-time">23:13</span>
-              </div>
-              <div class="chat-msg left">
-                <span class="chat-sender">凱恩</span>
-                <div class="chat-bubble">隊長？</div>
-                <span class="chat-time">23:14</span>
-              </div>
-              <div class="chat-msg left">
-                <span class="chat-sender">傑克</span>
-                <div class="chat-bubble">不用</div>
-                <span class="chat-time">23:31</span>
-              </div>
-              <div class="chat-msg left">
-                <span class="chat-sender">里歐</span>
-                <div class="chat-bubble">隊長你剛才在幹嘛，17分鐘才回</div>
-                <span class="chat-time">23:31</span>
-              </div>
-              <div class="chat-msg left">
-                <span class="chat-sender">傑克</span>
-                <div class="chat-bubble">沒事</div>
-                <span class="chat-time">23:32</span>
-              </div>
-              <div class="chat-msg left">
-                <span class="chat-sender">凱恩</span>
-                <div class="chat-bubble">他在傳訊息給某人</div>
-                <span class="chat-time">23:32</span>
-              </div>
-              <div class="chat-msg left">
-                <span class="chat-sender">傑克</span>
-                <div class="chat-bubble">凱恩。</div>
-                <span class="chat-time">23:32</span>
-              </div>
-              <div class="chat-msg left">
-                <span class="chat-sender">里歐</span>
-                <div class="chat-bubble">😮</div>
-                <span class="chat-time">23:33</span>
-              </div>
-
-            </div>
-            <div class="chat-session active" id="chat-s2">
-              <div class="chat-date-divider">20XX · 03 · 15</div>
+              <div class="chat-date-divider">20XX · 03 · 15 — 宵夜事件</div>
               <div class="chat-msg left">
                 <span class="chat-sender">凱恩</span>
                 <div class="chat-bubble">有人要吃宵夜嗎</div>
@@ -782,114 +727,113 @@
               </div>
             </div>
 
-            <div class="chat-session active" id="chat-s3">
-              <div class="chat-date-divider">20XX · 03 · 15</div>
+            <!-- s2 -->
+            <div class="chat-session" id="chat-s2">
+              <div class="chat-date-divider">20XX · 04 · 03 — 廚房災難</div>
               <div class="chat-msg left">
-                <span class="chat-sender">凱恩</span>
-                <div class="chat-bubble">有人要吃宵夜嗎</div>
-                <span class="chat-time">23:12</span>
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">我昨晚做了蛋炒飯</div>
+                <span class="chat-time">08:14</span>
               </div>
               <div class="chat-msg left">
                 <span class="chat-sender">里歐</span>
-                <div class="chat-bubble">要，幫我叫牛肉麵</div>
-                <span class="chat-time">23:13</span>
+                <div class="chat-bubble">還有剩，有人要吃嗎</div>
+                <span class="chat-time">08:14</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">昨晚幾點做的</div>
+                <span class="chat-time">08:17</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">兩點多</div>
+                <span class="chat-time">08:17</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">不吃</div>
+                <span class="chat-time">08:18</span>
               </div>
               <div class="chat-msg left">
                 <span class="chat-sender">席奧</span>
-                <div class="chat-bubble">我不餓</div>
-                <span class="chat-time">23:13</span>
-              </div>
-              <div class="chat-msg left">
-                <span class="chat-sender">凱恩</span>
-                <div class="chat-bubble">隊長？</div>
-                <span class="chat-time">23:14</span>
-              </div>
-              <div class="chat-msg left">
-                <span class="chat-sender">傑克</span>
-                <div class="chat-bubble">不用</div>
-                <span class="chat-time">23:31</span>
+                <div class="chat-bubble">廚房現在什麼狀態</div>
+                <span class="chat-time">08:20</span>
               </div>
               <div class="chat-msg left">
                 <span class="chat-sender">里歐</span>
-                <div class="chat-bubble">隊長你剛才在幹嘛，17分鐘才回</div>
-                <span class="chat-time">23:31</span>
+                <div class="chat-bubble">……我等一下去清</div>
+                <span class="chat-time">08:21</span>
               </div>
               <div class="chat-msg left">
                 <span class="chat-sender">傑克</span>
-                <div class="chat-bubble">沒事</div>
-                <span class="chat-time">23:32</span>
-              </div>
-              <div class="chat-msg left">
-                <span class="chat-sender">凱恩</span>
-                <div class="chat-bubble">他在傳訊息給某人</div>
-                <span class="chat-time">23:32</span>
-              </div>
-              <div class="chat-msg left">
-                <span class="chat-sender">傑克</span>
-                <div class="chat-bubble">凱恩。</div>
-                <span class="chat-time">23:32</span>
+                <div class="chat-bubble">里歐。廚房。現在。</div>
+                <span class="chat-time">08:23</span>
               </div>
               <div class="chat-msg left">
                 <span class="chat-sender">里歐</span>
-                <div class="chat-bubble">😮</div>
-                <span class="chat-time">23:33</span>
-              </div>
-            </div>
-            <div class="chat-session active" id="chat-s4">
-              <div class="chat-date-divider">20XX · 03 · 15</div>
-              <div class="chat-msg left">
-                <span class="chat-sender">凱恩</span>
-                <div class="chat-bubble">有人要吃宵夜嗎</div>
-                <span class="chat-time">23:12</span>
-              </div>
-              <div class="chat-msg left">
-                <span class="chat-sender">里歐</span>
-                <div class="chat-bubble">要，幫我叫牛肉麵</div>
-                <span class="chat-time">23:13</span>
-              </div>
-              <div class="chat-msg left">
-                <span class="chat-sender">席奧</span>
-                <div class="chat-bubble">我不餓</div>
-                <span class="chat-time">23:13</span>
-              </div>
-              <div class="chat-msg left">
-                <span class="chat-sender">凱恩</span>
-                <div class="chat-bubble">隊長？</div>
-                <span class="chat-time">23:14</span>
-              </div>
-              <div class="chat-msg left">
-                <span class="chat-sender">傑克</span>
-                <div class="chat-bubble">不用</div>
-                <span class="chat-time">23:31</span>
-              </div>
-              <div class="chat-msg left">
-                <span class="chat-sender">里歐</span>
-                <div class="chat-bubble">隊長你剛才在幹嘛，17分鐘才回</div>
-                <span class="chat-time">23:31</span>
-              </div>
-              <div class="chat-msg left">
-                <span class="chat-sender">傑克</span>
-                <div class="chat-bubble">沒事</div>
-                <span class="chat-time">23:32</span>
-              </div>
-              <div class="chat-msg left">
-                <span class="chat-sender">凱恩</span>
-                <div class="chat-bubble">他在傳訊息給某人</div>
-                <span class="chat-time">23:32</span>
-              </div>
-              <div class="chat-msg left">
-                <span class="chat-sender">傑克</span>
-                <div class="chat-bubble">凱恩。</div>
-                <span class="chat-time">23:32</span>
-              </div>
-              <div class="chat-msg left">
-                <span class="chat-sender">里歐</span>
-                <div class="chat-bubble">😮</div>
-                <span class="chat-time">23:33</span>
+                <div class="chat-bubble">收到😭</div>
+                <span class="chat-time">08:23</span>
               </div>
             </div>
 
-            <div class="chat-session" id="chat-s5">
+            <!-- s3 -->
+            <div class="chat-session" id="chat-s3">
+              <div class="chat-date-divider">20XX · 06 · 18 — 停電事件</div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">等等大家停電了嗎</div>
+                <span class="chat-time">20:03</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">B1 備援電源正常，情報中心沒問題</div>
+                <span class="chat-time">20:04</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">但我房間全黑</div>
+                <span class="chat-time">20:04</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">手電筒在武器庫旁邊的櫃子</div>
+                <span class="chat-time">20:05</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">B2 要下去好遠喔</div>
+                <span class="chat-time">20:06</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">走樓梯。</div>
+                <span class="chat-time">20:07</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">隊長你也醒著？</div>
+                <span class="chat-time">20:07</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">我一直醒著。</div>
+                <span class="chat-time">20:08</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">他在4F辦公室。我剛從那裡過來。</div>
+                <span class="chat-time">20:08</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">隊長你到底有沒有在睡覺啊😭</div>
+                <span class="chat-time">20:09</span>
+              </div>
+            </div>
+
+            <!-- s4 -->
+            <div class="chat-session" id="chat-s4">
               <div class="chat-date-divider">20XX · 07 · 22 — 任務出發前</div>
               <div class="chat-msg left">
                 <span class="chat-sender">里歐</span>
@@ -923,8 +867,129 @@
               </div>
             </div>
 
+            <!-- s5 -->
+            <div class="chat-session" id="chat-s5">
+              <div class="chat-date-divider">20XX · 09 · 07 — 里歐的問題</div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">請問一個假設性的問題</div>
+                <span class="chat-time">14:22</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">如果一個人喜歡另一個人，但那個人是任務相關的人，這算違規嗎</div>
+                <span class="chat-time">14:22</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">假設性的</div>
+                <span class="chat-time">14:24</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">對對，完全假設的</div>
+                <span class="chat-time">14:24</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">看規模</div>
+                <span class="chat-time">14:25</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">什麼叫看規模</div>
+                <span class="chat-time">14:25</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">不算違規。但你要自己負責後果。</div>
+                <span class="chat-time">14:31</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">謝謝隊長🙏</div>
+                <span class="chat-time">14:31</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">假設性的問題不需要謝謝</div>
+                <span class="chat-time">14:32</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">對對對，假設的😅</div>
+                <span class="chat-time">14:32</span>
+              </div>
+            </div>
+
+            <!-- s6 -->
             <div class="chat-session" id="chat-s6">
-              <div class="chat-date-divider">20XX · 11 · 04</div>
+              <div class="chat-date-divider">20XX · 10 · 30 — 凌晨的訊息</div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">有人還醒著嗎</div>
+                <span class="chat-time">02:17</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">怎麼了</div>
+                <span class="chat-time">02:18</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">沒事，睡不著</div>
+                <span class="chat-time">02:18</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">明天六點集訓</div>
+                <span class="chat-time">02:19</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">我知道我知道</div>
+                <span class="chat-time">02:19</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">凱恩你也睡不著嗎</div>
+                <span class="chat-time">02:20</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">值班</div>
+                <span class="chat-time">02:20</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">喔。那你一個人嗎</div>
+                <span class="chat-time">02:21</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">隊長也在</div>
+                <span class="chat-time">02:21</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">隊長你也在？？那我下去找你們</div>
+                <span class="chat-time">02:22</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">回去睡。</div>
+                <span class="chat-time">02:22</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">……好吧😔</div>
+                <span class="chat-time">02:23</span>
+              </div>
+            </div>
+
+            <!-- s7 -->
+            <div class="chat-session" id="chat-s7">
+              <div class="chat-date-divider">20XX · 11 · 04 — 席奧離隊</div>
               <div class="chat-msg left">
                 <span class="chat-sender">席奧</span>
                 <div class="chat-bubble">我要離隊了</div>
@@ -953,8 +1018,8 @@
               </div>
             </div>
 
-          </div>
-        </div>
+          </div><!-- /chat-body -->
+        </div><!-- /chat-window -->
       </div><!-- /secret-chat -->
 
       <!-- 個人日記 -->
