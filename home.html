@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/home.css">
 
   <!-- 顯示路徑與文字 -->
-  <meta property="og:title" content="✿⁺◟菲比/•᷅•᷄\୭ 的首頁◟✿⁺">
+  <meta property="og:title" content="｜菲比/•᷅•᷄\୭ 的首頁◟✿⁺">
   <meta property="og:description" content="收藏角色們的故事和一些小筆記，歡迎來看看 ♡">
   <meta property="og:url" content="https://feby11-note.github.io/somewhere/home.html">
   <meta property="og:type" content="website">
@@ -150,67 +150,82 @@
   </div>
 
   <script>
-    const track = document.querySelector('.carousel-track');
+  const track = document.querySelector('.carousel-track');
 
-    // 自動複製三份，實現無限循環
-    const original = track.innerHTML;
-    track.innerHTML = original + original + original;
+  // 複製三份
+  const original = track.innerHTML;
+  track.innerHTML = original + original + original;
 
-    // 頁面載入時，滾到中間位置
-    window.addEventListener('load', () => {
+  // 單份寬度（等 DOM 算完再抓）
+  function getOneSetWidth() {
+    const allCards = track.querySelectorAll('.char-card');
+    const countPerSet = allCards.length / 3;
+    let width = 0;
+    for (let i = 0; i < countPerSet; i++) {
+      const card = allCards[i];
+      const style = getComputedStyle(card);
+      width += card.offsetWidth + parseInt(style.marginRight || 0);
+    }
+    // 加上 gap（20px）* 張數
+    width += 20 * (countPerSet - 1);
+    return width;
+  }
+
+  let oneSetWidth = 0;
+
+  window.addEventListener('load', () => {
+    oneSetWidth = track.scrollWidth / 3;
+    track.style.scrollBehavior = 'auto';
+    track.scrollLeft = oneSetWidth;
+    track.style.scrollBehavior = 'smooth';
+  });
+
+  // 箭頭
+  function scrollCards(direction) {
+    track.scrollBy({ left: direction * 320, behavior: 'smooth' });
+  }
+
+  // 無限循環
+  track.addEventListener('scroll', () => {
+    if (oneSetWidth === 0) return;
+
+    if (track.scrollLeft >= oneSetWidth * 2) {
       track.style.scrollBehavior = 'auto';
-      track.scrollLeft = track.scrollWidth / 3;
+      track.scrollLeft = oneSetWidth;
       track.style.scrollBehavior = 'smooth';
-    });
-
-    // 箭頭點擊
-    function scrollCards(direction) {
-      track.scrollBy({
-        left: direction * 500,
-        behavior: 'smooth'
-      });
     }
 
-    // 無限循環
-    track.addEventListener('scroll', () => {
-      const maxScroll = track.scrollWidth - track.clientWidth;
+    if (track.scrollLeft <= 0) {
+      track.style.scrollBehavior = 'auto';
+      track.scrollLeft = oneSetWidth;
+      track.style.scrollBehavior = 'smooth';
+    }
+  });
 
-      if (track.scrollLeft >= maxScroll - 5) {
-        track.style.scrollBehavior = 'auto';
-        track.scrollLeft = 1;
-        track.style.scrollBehavior = 'smooth';
-      }
+  // 手機拖曳
+  let isDown = false;
+  let startX, sl;
 
-      if (track.scrollLeft <= 0) {
-        track.style.scrollBehavior = 'auto';
-        track.scrollLeft = maxScroll - 1;
-        track.style.scrollBehavior = 'smooth';
-      }
-    });
+  track.addEventListener('mousedown', (e) => {
+    isDown = true;
+    startX = e.pageX - track.offsetLeft;
+    sl = track.scrollLeft;
+    track.style.scrollBehavior = 'auto';
+  });
 
-    // 手機版手指拖曳
-    let isDown = false;
-    let startX;
-    let sl;
+  track.addEventListener('mouseleave', () => { isDown = false; });
+  track.addEventListener('mouseup', () => {
+    isDown = false;
+    track.style.scrollBehavior = 'smooth';
+  });
 
-    track.addEventListener('mousedown', (e) => {
-      if (window.innerWidth >= 769) return;
-      isDown = true;
-      startX = e.pageX - track.offsetLeft;
-      sl = track.scrollLeft;
-    });
-
-    track.addEventListener('mouseleave', () => { isDown = false; });
-    track.addEventListener('mouseup', () => { isDown = false; });
-
-    track.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - track.offsetLeft;
-      const walk = (x - startX) * 1.5;
-      track.scrollLeft = sl - walk;
-    });
-  </script>
+  track.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    track.scrollLeft = sl - (x - startX) * 1.5;
+  });
+</script>
 
 </body>
 </html>
