@@ -9,7 +9,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&family=Share+Tech+Mono&family=Oswald:wght@400;600;700&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦉</text></svg>">
-  <title>傑克 — 夜梟部隊</title>
+  <title>傑克｜夜梟部隊</title>
+
+  <meta property="og:title" content="傑克｜by菲比">
+  <meta property="og:description" content="關於他的小秘密，還有一些不想讓別人知道的過去。">
+  <meta property="og:image" content="https://feby11-note.github.io/somewhere/pic/characters/jack/1.jpeg">
+  <meta property="og:url" content="https://feby11-note.github.io/somewhere/world/Night-Owl-Unit/jack.html">
+  <meta property="og:type" content="website">
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -41,8 +47,8 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      height: 3rem;
-      padding: 0 2rem;
+      height: 3.75rem;
+      padding: 0 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -54,26 +60,28 @@
 
     .nav-brand {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 1rem;
       color: var(--green-light);
       text-decoration: none;
-      letter-spacing: 0.15em;
-      opacity: 0.85;
+      letter-spacing: 0.12em;
+      opacity: 0.9;
       transition: opacity 0.2s;
+      white-space: nowrap;
     }
     .nav-brand:hover { opacity: 1; }
 
     .nav-links {
       list-style: none;
       display: flex;
-      gap: 0.2rem;
+      gap: 0.15rem;
     }
 
     .nav-links a {
-      font-size: 0.85rem;
-      color: var(--text-muted);
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 1rem;
+      color: var(--text-dim);
       text-decoration: none;
-      padding: 0.35rem 0.7rem;
+      padding: 0.4rem 0.75rem;
       border: 1px solid transparent;
       transition: all 0.2s;
       letter-spacing: 0.05em;
@@ -89,7 +97,7 @@
       width: 92%;
       max-width: 54rem;
       margin: 0 auto;
-      padding: 4.5rem 0 4rem;
+      padding: 5.5rem 0 4rem;
     }
 
     /* ── 標題區 ── */
@@ -100,11 +108,11 @@
 
     .file-eyebrow {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       color: var(--orange);
       letter-spacing: 0.2em;
       margin-bottom: 0.6rem;
-      opacity: 0.8;
+      opacity: 0.9;
     }
 
     .file-header h1 {
@@ -119,8 +127,8 @@
 
     .file-sub {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.78rem;
-      color: var(--text-muted);
+      font-size: 0.8rem;
+      color: var(--text-dim);
       letter-spacing: 0.15em;
     }
 
@@ -134,12 +142,12 @@
     }
 
     .char-tab {
-      padding: 0.5rem 1.25rem 0.625rem;
+      padding: 0.55rem 1.25rem 0.625rem;
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--text-dim);
       background: none;
       border: none;
       cursor: pointer;
@@ -147,7 +155,7 @@
       clip-path: polygon(6px 0%, calc(100% - 6px) 0%, 100% 6px, 100% 100%, 0% 100%, 0% 6px);
     }
 
-    .char-tab:hover { color: var(--text-dim); }
+    .char-tab:hover { color: var(--text); }
 
     .char-tab.active {
       color: var(--green-light);
@@ -161,6 +169,7 @@
       opacity: 1;
       margin-left: auto;
     }
+    .char-tab.tab-meet:hover { color: #ffc8d8; }
     .char-tab.tab-meet.active {
       color: #F4A7B9;
       background: var(--surface);
@@ -169,6 +178,39 @@
 
     .char-panel { display: none; }
     .char-panel.active { display: block; }
+
+    /* ── 回頂端按鈕 ── */
+    .back-to-top {
+      position: fixed;
+      bottom: 1.75rem;
+      right: 1.25rem;
+      z-index: 200;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s, background 0.2s, color 0.2s;
+      clip-path: polygon(6px 0%, calc(100% - 6px) 0%, 100% 6px, 100% 100%, 0% 100%, 0% 6px);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .back-to-top:hover {
+      background: var(--surface);
+      color: var(--green-light);
+      border-color: var(--green-light);
+    }
 
     /* ══════════════════════════
        FILE 面板
@@ -188,7 +230,7 @@
       border: 1px solid var(--border);
       background: var(--surface2);
       position: sticky;
-      top: 4rem;
+      top: 4.5rem;
     }
 
     .profile-img img {
@@ -216,22 +258,22 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.45rem 0.875rem;
+      padding: 0.5rem 0.875rem;
       background: var(--surface2);
       border-bottom: 1px solid var(--border);
     }
 
     .pf-top-label {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.68rem;
+      font-size: 0.75rem;
       letter-spacing: 0.2em;
       color: var(--orange);
-      opacity: 0.85;
+      opacity: 1;
     }
 
     .pf-top-status {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.6rem;
+      font-size: 0.68rem;
       letter-spacing: 0.12em;
       color: var(--green-light);
       display: flex;
@@ -253,9 +295,10 @@
 
     .pf-block-title {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.65rem;
+      font-size: 0.72rem;
       letter-spacing: 0.2em;
       color: var(--accent);
+      opacity: 1;
       padding: 0.4rem 0.875rem;
       background: rgba(0,0,0,0.15);
       border-bottom: 1px solid rgba(74,98,128,0.35);
@@ -280,9 +323,9 @@
 
     .cell-label {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.62rem;
+      font-size: 0.68rem;
       letter-spacing: 0.15em;
-      color: var(--text-muted);
+      color: rgba(238, 244, 255, 0.58);
       margin-bottom: 0.25rem;
     }
 
@@ -295,14 +338,14 @@
     .cell-val.orange {
       color: var(--orange);
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.95rem;
+      font-size: 1rem;
       letter-spacing: 0.08em;
     }
 
     .cell-sub {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--text-muted);
+      font-size: 0.7rem;
+      color: rgba(238, 244, 255, 0.55);
       letter-spacing: 0.06em;
       margin-top: 0.1rem;
     }
@@ -310,7 +353,7 @@
     .pf-remark {
       padding: 0.75rem 0.875rem;
       font-size: 0.95rem;
-      color: var(--text-dim);
+      color: var(--text);
       line-height: 1.9;
     }
 
@@ -327,7 +370,7 @@
       font-size: 0.62rem;
       letter-spacing: 0.12em;
       color: var(--orange);
-      opacity: 0.55;
+      opacity: 0.65;
     }
 
     .pf-stamp {
@@ -335,7 +378,7 @@
       font-size: 0.68rem;
       letter-spacing: 0.08em;
       color: var(--green-light);
-      opacity: 0.65;
+      opacity: 0.8;
     }
 
     /* ══════════════════════════
@@ -348,7 +391,6 @@
       align-items: center;
     }
 
-    /* 圖片和文字卡共用同一個寬度，用變數控制 */
     .meet-img,
     .meet-card {
       width: 100%;
@@ -383,10 +425,10 @@
 
     .meet-label {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.6rem;
+      font-size: 0.65rem;
       letter-spacing: 0.18em;
       color: var(--orange);
-      opacity: 0.7;
+      opacity: 0.85;
     }
 
     .meet-quote {
@@ -434,7 +476,7 @@
 
     .gallery-section-label {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       letter-spacing: 0.2em;
       color: var(--accent);
       padding-bottom: 0.5rem;
@@ -462,7 +504,6 @@
       border-radius: 2px;
     }
 
-    /* 照片格和影片格統一大小 */
     .gallery-photo-item,
     .gallery-video-item {
       flex: 0 0 auto;
@@ -560,16 +601,16 @@
 
     .story-date {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       color: var(--green-light);
       letter-spacing: 0.1em;
-      opacity: 0.8;
+      opacity: 0.9;
     }
 
     .story-tag {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--text-muted);
+      font-size: 0.68rem;
+      color: var(--text-dim);
       letter-spacing: 0.08em;
       border: 1px solid var(--border);
       padding: 0.1rem 0.4rem;
@@ -649,6 +690,24 @@
 
     /* ── RWD ── */
     @media (max-width: 680px) {
+      .nav {
+        height: 3.75rem;
+        padding: 0 1.25rem;
+      }
+      .nav-brand {
+        font-size: 0.95rem;
+        letter-spacing: 0.1em;
+      }
+      .nav-links {
+        gap: 0;
+      }
+      .nav-links a {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.6rem;
+      }
+      .main {
+        padding-top: 5.5rem;
+      }
       .profile-layout { grid-template-columns: 1fr; }
       .profile-img {
         position: static;
@@ -657,13 +716,23 @@
       }
       .pf-grid.col4 { grid-template-columns: 1fr 1fr; }
       .pf-cell.span4 { grid-column: span 2; }
-      .nav-links a {
-        font-size: 0.75rem;
-        padding: 0.3rem 0.45rem;
+      .char-tab {
+        font-size: 0.82rem;
+        padding: 0.5rem 0.875rem 0.625rem;
       }
+      .cell-label { font-size: 0.7rem; }
+      .pf-block-title { font-size: 0.75rem; }
     }
 
     @media (max-width: 420px) {
+      .nav-brand {
+        font-size: 0.85rem;
+        letter-spacing: 0.08em;
+      }
+      .nav-links a {
+        font-size: 0.82rem;
+        padding: 0.35rem 0.45rem;
+      }
       .pf-grid.col2,
       .pf-grid.col3 { grid-template-columns: 1fr; }
       .pf-cell.span2,
@@ -683,6 +752,8 @@
       <li><a href="theo.html">席奧</a></li>
     </ul>
   </nav>
+
+  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到頂端">↑</button>
 
   <div class="main">
 
@@ -855,17 +926,15 @@
         </div>
 
         <div class="gallery-section">
-          <div class="gallery-section-label">VIDEO</div>
+          <div class="gallery-section-label">VIDEO & GIF</div>
           <div class="gallery-scroll">
             <div class="gallery-video-item" onclick="openLightbox('../../pic/characters/jack/1.mp4', 'video')">
               <video src="../../pic/characters/jack/1.mp4" loop muted playsinline></video>
               <div class="video-overlay"><div class="video-play-icon">▶</div></div>
             </div>
-            <div class="gallery-video-item">
-              <div class="gallery-placeholder">
-                <div class="gallery-placeholder-icon">🎬</div>
-                <div class="gallery-placeholder-text">NO VIDEO</div>
-              </div>
+            <div class="gallery-video-item" onclick="openLightbox('../../pic/characters/jack/2.mp4', 'video')">
+              <video src="../../pic/characters/jack/2.mp4" loop muted playsinline></video>
+              <div class="video-overlay"><div class="video-play-icon">▶</div></div>
             </div>
             <div class="gallery-video-item">
               <div class="gallery-placeholder">
@@ -884,13 +953,31 @@
       <div class="stories-panel">
         <div class="story-list">
 
-          <a href="../../world/stories/jack-01.html" class="story-item">
+          <a href="stories/jack-stories.html#before-the-wolf" class="story-item">
             <div class="story-meta">
-              <span class="story-date">20XX · XX · XX</span>
-              <span class="story-tag">BEFORE THE UNIT</span>
+              <span class="story-date">BEFORE THE UNIT</span>
+              <span class="story-tag">CH.1</span>
             </div>
-            <div class="story-title">文章標題</div>
-            <div class="story-preview">開頭兩三行預覽⋯⋯</div>
+            <div class="story-title">在成為狼之前</div>
+            <div class="story-preview">我記得第一次摸到槍是幾歲的事。那不是玩具，是真的，而且很重……</div>
+          </a>
+
+          <a href="stories/jack-stories.html#first-command" class="story-item">
+            <div class="story-meta">
+              <span class="story-date">BEFORE THE UNIT</span>
+              <span class="story-tag">CH.2</span>
+            </div>
+            <div class="story-title">第一次下令</div>
+            <div class="story-preview">那天雨很大。我站在泥地裡，旁邊三個人等我開口，我張嘴，什麼都說不出來……</div>
+          </a>
+
+          <a href="stories/jack-stories.html#gretel" class="story-item">
+            <div class="story-meta">
+              <span class="story-date">BEFORE THE UNIT</span>
+              <span class="story-tag">CH.3</span>
+            </div>
+            <div class="story-title">葛麗特</div>
+            <div class="story-preview">那把槍是在一個老人的倉庫裡找到的。生鏽、骯髒，沒有人要，我把它帶走了……</div>
           </a>
 
         </div>
@@ -906,10 +993,10 @@
         </div>
 
         <div class="meet-card">
-          <div class="meet-label">WOLF · JACK WILSON · NOU-001</div>
+          <div class="meet-label">WOLF · JACK WILSON</div>
           <div class="meet-divider"></div>
           <div class="meet-quote">
-            你來找我，還是被我找到——<br>其實沒什麼差別。
+            你來找我，還是被我找到...<br>其實沒什麼差別。
           </div>
           <a href="https://app.floze.ai/link/role/DgfDODaeFsi1JCxLk1F1d9Kk0/?locale=tw"
              target="_blank"
@@ -935,6 +1022,11 @@
   </div>
 
   <script>
+    if (window.location.hash === '#stories') {
+      const btn = document.querySelector('[onclick*="stories"]');
+      if (btn) btn.click();
+    }
+
     function switchCharTab(name, btn) {
       document.querySelectorAll('.char-panel').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.char-tab').forEach(el => el.classList.remove('active'));
@@ -973,11 +1065,14 @@
       if (e.key === 'Escape') closeLightbox();
     });
 
-    // 頁面載入後嘗試播放所有縮圖影片
     document.querySelectorAll('.gallery-video-item video').forEach(v => {
-    v.play().catch(() => {}); // 失敗就靜默，不報錯
+      v.play().catch(() => {});
     });
 
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 300);
+    });
   </script>
 
 </body>
