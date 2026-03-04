@@ -6,10 +6,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&family=Share+Tech+Mono&family=Oswald:wght@400;600;700&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&family=Share+Tech+Mono&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦉</text></svg>">
-  <title>里歐 — 夜梟部隊</title>
+  <title>里歐的過去 — 夜梟部隊</title>
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -41,8 +41,8 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      height: 3.75rem;
-      padding: 0 1.5rem;
+      height: 3.75rem;               /* ← 3rem → 3.75rem */
+      padding: 0 1.5rem;             /* ← 2rem → 1.5rem */
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -54,11 +54,11 @@
 
     .nav-brand {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 1rem;
+      font-size: 1rem;               /* ← 0.75rem → 1rem */
       color: var(--green-light);
       text-decoration: none;
-      letter-spacing: 0.12em;
-      opacity: 0.9;
+      letter-spacing: 0.12em;        /* ← 0.15em → 0.12em */
+      opacity: 0.9;                  /* ← 0.85 → 0.9 */
       transition: opacity 0.2s;
       white-space: nowrap;
     }
@@ -67,111 +67,247 @@
     .nav-links {
       list-style: none;
       display: flex;
-      gap: 0.15rem;
+      gap: 0;                        /* ← 0.2rem → 0 */
     }
 
     .nav-links a {
       font-family: 'Noto Sans TC', sans-serif;
-      font-size: 1rem;
-      color: var(--text-dim);          /* ← muted → dim、更亮 */
+      font-size: 0.9rem;             /* ← 0.85rem → 0.9rem */
+      color: var(--text-dim);        /* ← text-muted → text-dim */
       text-decoration: none;
-      padding: 0.4rem 0.75rem;
+      padding: 0.4rem 0.65rem;      /* ← 0.35rem 0.7rem → 0.4rem 0.65rem */
       border: 1px solid transparent;
       transition: all 0.2s;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.03em;
     }
     .nav-links a:hover { color: var(--text); border-color: var(--border); }
-    .nav-links a.current {
-      color: var(--green-light);
-      border-color: rgba(94, 196, 78, 0.4);
-    }
 
     /* ── 主容器 ── */
     .main {
       width: 92%;
-      max-width: 54rem;
+      max-width: 42rem;
       margin: 0 auto;
-      padding: 5.5rem 0 4rem;
+      padding: 5.5rem 0 5rem;        /* ← 5rem → 5.5rem（配合 nav 變高） */
     }
 
-    /* ── 標題區 ── */
-    .file-header {
-      margin-bottom: 0;
+    /* ── 頁面標題 ── */
+    .page-header {
+      margin-bottom: 3rem;
       padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
     }
 
-    .file-eyebrow {
+    .page-eyebrow {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.75rem;              /* ← 0.72 → 0.75 */
+      font-size: 0.72rem;            /* ← 0.7 → 0.72 */
       color: var(--orange);
       letter-spacing: 0.2em;
-      margin-bottom: 0.6rem;
-      opacity: 0.9;                    /* ← 0.8 → 0.9 */
-    }
-
-    .file-header h1 {
-      font-family: 'Oswald', sans-serif;
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      font-weight: 700;
-      color: var(--text);
-      letter-spacing: 0.25em;
-      line-height: 1;
+      opacity: 0.85;                 /* ← 0.7 → 0.85 */
       margin-bottom: 0.5rem;
     }
 
-    .file-sub {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.8rem;               /* ← 0.78 → 0.8 */
-      color: var(--text-dim);          /* ← muted → dim */
-      letter-spacing: 0.15em;
+    .page-header h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--text);
     }
 
-    /* ── 書籤標籤列 ── */
-    .char-tab-bar {
+    /* ══════════════════════════
+       目錄
+    ══════════════════════════ */
+    .toc {
+      margin-bottom: 3rem;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .toc-header {
       display: flex;
-      align-items: flex-end;
-      gap: 3px;
-      margin-top: 1.5rem;
-      border-bottom: 2px solid var(--border);
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1rem;
+      background: var(--surface2);
+      border-bottom: 1px solid var(--border);
     }
 
-    .char-tab {
-      padding: 0.55rem 1.25rem 0.625rem; /* ← 0.5 → 0.55 */
+    .toc-header-label {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.9rem;               /* ← 0.8 → 0.9 */
-      letter-spacing: 0.08em;          /* ← 0.12 → 0.08 */
-      text-transform: uppercase;
-      color: var(--text-dim);          /* ← muted → dim */
-      background: none;
-      border: none;
-      cursor: pointer;
-      transition: all 0.2s;
-      clip-path: polygon(6px 0%, calc(100% - 6px) 0%, 100% 6px, 100% 100%, 0% 100%, 0% 6px);
+      font-size: 0.68rem;            /* ← 0.65 → 0.68 */
+      letter-spacing: 0.2em;
+      color: var(--accent);
     }
 
-    .char-tab:hover { color: var(--text); }
+    .toc-header-count {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--text-dim);        /* ← text-muted → text-dim */
+      letter-spacing: 0.1em;
+    }
 
-    .char-tab.active {
+    .toc-list { list-style: none; }
+
+    .toc-list li {
+      border-bottom: 1px solid rgba(74,98,128,0.2);
+    }
+    .toc-list li:last-child { border-bottom: none; }
+
+    .toc-list a {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .toc-list a:hover { background: rgba(123,200,232,0.06); }
+
+    /* 序號格 */
+    .toc-num {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;            /* ← 0.62 → 0.65 */
+      color: var(--text-dim);        /* ← text-muted → text-dim */
+      letter-spacing: 0.08em;
+      padding: 0.875rem 0.875rem;   /* ← 0.75rem → 0.875rem（行高一致） */
+      min-width: 3rem;
+      text-align: center;
+      border-right: 1px solid rgba(74,98,128,0.2);
+      background: rgba(0,0,0,0.1);
+      flex-shrink: 0;
+    }
+
+    /* 標題格 */
+    .toc-title {
+      font-family: 'Noto Sans TC', sans-serif; /* ← mono → 中文字體 */
+      font-size: 0.9rem;             /* ← 0.8rem → 0.9rem */
+      color: var(--text-dim);
+      letter-spacing: 0.04em;
+      padding: 0.875rem 1rem;
+      flex: 1;
+      transition: color 0.15s;
+    }
+    .toc-list a:hover .toc-title { color: var(--green-light); }
+
+    /* 箭頭 */
+    .toc-arrow {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.68rem;            /* ← 0.65 → 0.68 */
+      color: var(--text-muted);      /* ← border色 → text-muted（稍亮） */
+      padding: 0.875rem 1rem;
+      flex-shrink: 0;
+      transition: color 0.15s, transform 0.15s;
+    }
+    .toc-list a:hover .toc-arrow {
       color: var(--green-light);
-      background: var(--surface);
-      margin-bottom: -2px;
-      padding-bottom: calc(0.625rem + 2px);
+      transform: translateX(3px);
     }
 
-    .char-tab.tab-meet {
-      color: #F4A7B9;
-      opacity: 1;
-      margin-left: auto;
-    }
-    .char-tab.tab-meet:hover { color: #ffc8d8; }
-    .char-tab.tab-meet.active {
-      color: #F4A7B9;
-      background: var(--surface);
-      border-bottom-color: #F4A7B9;
+    /* ── 文章區塊 ── */
+    .story-entry {
+      margin-bottom: 4rem;
+      scroll-margin-top: 4.5rem;
     }
 
-    .char-panel { display: none; }
-    .char-panel.active { display: block; }
+    .story-entry-header {
+      margin-bottom: 1.75rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(74,98,128,0.3);
+    }
+
+    .story-entry-tag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;            /* ← 0.65 → 0.72 */
+      letter-spacing: 0.15em;
+      color: var(--text-dim);        /* ← text-muted → text-dim */
+      border: 1px solid var(--border);
+      padding: 0.15rem 0.5rem;       /* ← 0.1rem → 0.15rem */
+      display: inline-block;
+      margin-bottom: 0.6rem;
+    }
+
+    .story-entry-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .story-entry-anchor {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;             /* ← 0.62 → 0.7 */
+      color: var(--text-dim);        /* ← text-muted → text-dim */
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      opacity: 0.65;                 /* ← 0.5 → 0.65 */
+      transition: opacity 0.2s;
+    }
+    .story-entry-anchor:hover { opacity: 1; color: var(--green-light); }
+
+    /* ── 內文 ── */
+    .story-body {
+      font-size: 1rem;
+      color: var(--text-dim);
+      line-height: 2;
+      letter-spacing: 0.04em;
+    }
+
+    .story-body p { margin-bottom: 1.5em; }
+    .story-body p:last-child { margin-bottom: 0; }
+
+    /* ── 文章間分隔 ── */
+    .story-divider {
+      margin: 4rem 0;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .story-divider::before,
+    .story-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      opacity: 0.65;                 /* ← 0.4 → 0.65 */
+    }
+    .story-divider-text {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;            /* ← 0.62 → 0.75 */
+      color: var(--text-dim);        /* ← text-muted → text-dim */
+      letter-spacing: 0.2em;
+      white-space: nowrap;
+    }
+
+    /* ── 返回按鈕 ── */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      width: 100%;
+      transition: color 0.2s;
+    }
+    .back-btn:hover { color: var(--green-light); }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      padding: 1.75rem;
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
 
     /* ── 回頂端按鈕 ── */
 .back-to-top {
@@ -206,483 +342,6 @@
   border-color: var(--green-light);
 }
 
-
-    /* ══════════════════════════
-       FILE 面板
-    ══════════════════════════ */
-    .file-panel { padding-top: 2rem; }
-
-    .profile-layout {
-      display: grid;
-      grid-template-columns: 260px 1fr;
-      gap: 1.5rem;
-      align-items: start;
-    }
-
-    .profile-img {
-      width: 100%;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: var(--surface2);
-      position: sticky;
-      top: 4.5rem;
-    }
-
-    .profile-img img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .profile-img .placeholder {
-      aspect-ratio: 9/16;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-      color: rgba(255,255,255,0.07);
-    }
-
-    .profile-file {
-      border: 1px solid var(--border);
-      background: var(--surface);
-      overflow: hidden;
-    }
-
-    .pf-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.5rem 0.875rem;        /* ← 0.45 → 0.5 */
-      background: var(--surface2);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .pf-top-label {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.75rem;              /* ← 0.68 → 0.75 */
-      letter-spacing: 0.2em;
-      color: var(--orange);
-      opacity: 1;                      /* ← 0.85 → 1 */
-    }
-
-    .pf-top-status {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.68rem;              /* ← 0.6 → 0.68 */
-      letter-spacing: 0.12em;
-      color: var(--green-light);
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-
-    .status-dot {
-      width: 5px; height: 5px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 5px var(--green);
-      animation: blink 2s ease-in-out infinite;
-    }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
-    .pf-block { border-bottom: 1px solid var(--border); }
-    .pf-block:last-of-type { border-bottom: none; }
-
-    .pf-block-title {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.72rem;              /* ← 0.65 → 0.72 */
-      letter-spacing: 0.2em;
-      color: var(--accent);
-      opacity: 1;                      /* 確保不被壓暗 */
-      padding: 0.4rem 0.875rem;
-      background: rgba(0,0,0,0.15);
-      border-bottom: 1px solid rgba(74,98,128,0.35);
-    }
-
-    .pf-grid { display: grid; }
-    .pf-grid.col2 { grid-template-columns: 1fr 1fr; }
-    .pf-grid.col3 { grid-template-columns: 1fr 1fr 1fr; }
-    .pf-grid.col4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
-
-    .pf-cell {
-      padding: 0.6rem 0.875rem;
-      border-right: 1px solid rgba(74,98,128,0.25);
-      border-bottom: 1px solid rgba(74,98,128,0.15);
-    }
-    .pf-cell:last-child { border-right: none; }
-    .pf-cell.span2 { grid-column: span 2; }
-    .pf-cell.span3 { grid-column: span 3; }
-    .pf-cell.span4 { grid-column: span 4; }
-    .pf-cell.slim { padding: 0.45rem 0.875rem; }
-    .pf-cell.full { grid-column: 1 / -1; border-right: none; }
-
-    .cell-label {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.68rem;              /* ← 0.62 → 0.68 */
-      letter-spacing: 0.15em;
-      color: rgba(238, 244, 255, 0.58); /* ← 42% → 58% */
-      margin-bottom: 0.25rem;
-    }
-
-    .cell-val {
-      font-size: 1rem;
-      color: var(--text);
-      line-height: 1.5;
-    }
-
-    .cell-val.orange {
-      color: var(--orange);
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 1rem;                 /* ← 0.95 → 1 */
-      letter-spacing: 0.08em;
-    }
-
-    .cell-sub {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.7rem;               /* ← 0.65 → 0.7 */
-      color: rgba(238, 244, 255, 0.55); /* ← 42% → 55% */
-      letter-spacing: 0.06em;
-      margin-top: 0.1rem;
-    }
-
-    .pf-remark {
-      padding: 0.75rem 0.875rem;
-      font-size: 0.95rem;
-      color: var(--text);              /* ← text-dim → text */
-      line-height: 1.9;
-    }
-
-    .pf-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.4rem 0.875rem;
-      background: rgba(0,0,0,0.2);
-    }
-
-    .pf-classify {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.12em;
-      color: var(--orange);
-      opacity: 0.65;                   /* ← 0.55 → 0.65 */
-    }
-
-    .pf-stamp {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.08em;
-      color: var(--green-light);
-      opacity: 0.8;                    /* ← 0.65 → 0.8 */
-    }
-
-    /* ══════════════════════════
-       MEET HIM 面板
-    ══════════════════════════ */
-    .meet-panel {
-      padding-top: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .meet-img,
-    .meet-card {
-      width: 100%;
-      max-width: 260px;
-    }
-
-    .meet-img {
-      aspect-ratio: 3 / 4;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      border-bottom: none;
-    }
-
-    .meet-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top;
-      display: block;
-    }
-
-    .meet-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 1.25rem 1.25rem 1.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      text-align: center;
-    }
-
-    .meet-label {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.65rem;              /* ← 0.6 → 0.65 */
-      letter-spacing: 0.18em;
-      color: var(--orange);
-      opacity: 0.85;                   /* ← 0.7 → 0.85 */
-    }
-
-    .meet-quote {
-      font-size: 0.95rem;
-      color: var(--text-dim);
-      line-height: 1.9;
-    }
-
-    .meet-divider {
-      width: 2rem;
-      height: 1px;
-      background: var(--border);
-    }
-
-    .meet-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.65rem 1.75rem;
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.8rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: var(--bg);
-      background: var(--green-light);
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
-      clip-path: polygon(8px 0%, calc(100% - 8px) 0%, 100% 8px, 100% 100%, calc(100% - 8px) 100%, 8px 100%, 0% calc(100% - 8px), 0% 8px);
-    }
-
-    .meet-btn:hover {
-      background: #c5f5b0;
-      transform: translateY(-1px);
-    }
-
-    .meet-btn-arrow { transition: transform 0.2s; }
-    .meet-btn:hover .meet-btn-arrow { transform: translateX(3px); }
-
-    /* ══════════════════════════
-       GALLERY 面板
-    ══════════════════════════ */
-    .gallery-panel { padding-top: 2rem; }
-
-    .gallery-section-label {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.72rem;              /* ← 0.7 → 0.72 */
-      letter-spacing: 0.2em;
-      color: var(--accent);
-      padding-bottom: 0.5rem;
-      margin-bottom: 0.875rem;
-      border-bottom: 1px solid rgba(74,98,128,0.35);
-    }
-
-    .gallery-section { margin-bottom: 2rem; }
-
-    .gallery-scroll {
-      display: flex;
-      gap: 0.625rem;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      padding-bottom: 0.75rem;
-      cursor: grab;
-    }
-    .gallery-scroll:active { cursor: grabbing; }
-
-    .gallery-scroll::-webkit-scrollbar { height: 3px; }
-    .gallery-scroll::-webkit-scrollbar-track { background: transparent; }
-    .gallery-scroll::-webkit-scrollbar-thumb {
-      background: var(--border);
-      border-radius: 2px;
-    }
-
-    .gallery-photo-item,
-    .gallery-video-item {
-      flex: 0 0 auto;
-      width: clamp(9rem, 60vw, 16rem);
-      aspect-ratio: 3 / 4;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: var(--surface2);
-      scroll-snap-align: start;
-      cursor: pointer;
-      position: relative;
-      transition: border-color 0.2s;
-    }
-    .gallery-photo-item:hover,
-    .gallery-video-item:hover { border-color: var(--green); }
-
-    .gallery-photo-item img,
-    .gallery-video-item img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.3s;
-    }
-    .gallery-photo-item:hover img,
-    .gallery-video-item:hover img { transform: scale(1.04); }
-
-    .gallery-video-item video {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .video-overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,0.3);
-      transition: background 0.2s;
-    }
-    .gallery-video-item:hover .video-overlay { background: rgba(0,0,0,0.15); }
-
-    .video-play-icon {
-      width: 2.5rem; height: 2.5rem;
-      border: 2px solid rgba(255,255,255,0.7);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.875rem;
-      color: rgba(255,255,255,0.9);
-    }
-
-    .gallery-placeholder {
-      width: 100%; height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
-      color: rgba(255,255,255,0.12);
-    }
-    .gallery-placeholder-icon { font-size: 1.5rem; }
-    .gallery-placeholder-text {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.1em;
-    }
-
-    /* ══════════════════════════
-       HIS PAST 面板
-    ══════════════════════════ */
-    .stories-panel { padding-top: 2rem; }
-
-    .story-list { display: flex; flex-direction: column; }
-
-    .story-item {
-      padding: 1.25rem 0;
-      border-bottom: 1px solid rgba(74,98,128,0.3);
-      cursor: pointer;
-      text-decoration: none;
-      display: block;
-      transition: opacity 0.2s;
-    }
-    .story-item:last-child { border-bottom: none; }
-    .story-item:hover { opacity: 0.8; }
-
-    .story-meta {
-      display: flex;
-      align-items: center;
-      gap: 0.875rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .story-date {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.75rem;              /* ← 0.72 → 0.75 */
-      color: var(--green-light);
-      letter-spacing: 0.1em;
-      opacity: 0.9;                    /* ← 0.8 → 0.9 */
-    }
-
-    .story-tag {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.68rem;              /* ← 0.65 → 0.68 */
-      color: var(--text-dim);          /* ← muted → dim */
-      letter-spacing: 0.08em;
-      border: 1px solid var(--border);
-      padding: 0.1rem 0.4rem;
-    }
-
-    .story-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 0.4rem;
-      letter-spacing: 0.03em;
-    }
-
-    .story-preview {
-      font-size: 0.95rem;
-      color: var(--text-dim);
-      line-height: 1.8;
-    }
-
-    /* ── Lightbox ── */
-    .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 999;
-      background: rgba(0,0,0,0.88);
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-    }
-    .lightbox.open { display: flex; }
-
-    .lightbox-inner {
-      position: relative;
-      max-width: 90vw;
-      max-height: 90vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .lightbox-inner img,
-    .lightbox-inner video {
-      max-width: 90vw;
-      max-height: 90vh;
-      object-fit: contain;
-      display: block;
-    }
-
-    .lightbox-close {
-      position: fixed;
-      top: 1rem;
-      right: 1.25rem;
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 1.5rem;
-      color: rgba(255,255,255,0.7);
-      background: none;
-      border: none;
-      cursor: pointer;
-      line-height: 1;
-      transition: color 0.2s;
-      z-index: 1000;
-    }
-    .lightbox-close:hover { color: #fff; }
-
-    /* ── Footer ── */
-    .footer {
-      text-align: center;
-      padding: 1.75rem;
-      margin-top: 3rem;
-      border-top: 1px solid var(--border);
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      color: var(--text-muted);
-    }
-
     /* ── RWD ── */
     @media (max-width: 680px) {
       .nav {
@@ -693,31 +352,22 @@
         font-size: 0.95rem;
         letter-spacing: 0.1em;
       }
-      .nav-links {
-        gap: 0;
-      }
       .nav-links a {
-        font-size: 0.9rem;
-        padding: 0.4rem 0.6rem;
+        font-size: 0.8rem;
+        padding: 0.35rem 0.5rem;
       }
       .main {
         padding-top: 5.5rem;
       }
-      .profile-layout { grid-template-columns: 1fr; }
-      .profile-img {
-        position: static;
-        max-width: 260px;
-        margin: 0 auto;
+      .toc-title {
+        font-size: 0.88rem;          /* 手機版稍微確保大小 */
       }
-      .pf-grid.col4 { grid-template-columns: 1fr 1fr; }
-      .pf-cell.span4 { grid-column: span 2; }
-      /* 手機文字補強 */
-      .char-tab {
-        font-size: 0.82rem;
-        padding: 0.5rem 0.875rem 0.625rem;
+      .story-entry-tag {
+        font-size: 0.7rem;
       }
-      .cell-label { font-size: 0.7rem; }
-      .pf-block-title { font-size: 0.75rem; }
+      .story-entry-anchor {
+        font-size: 0.68rem;
+      }
     }
 
     @media (max-width: 420px) {
@@ -726,13 +376,9 @@
         letter-spacing: 0.08em;
       }
       .nav-links a {
-        font-size: 0.82rem;
-        padding: 0.35rem 0.45rem;
+        font-size: 0.75rem;
+        padding: 0.3rem 0.4rem;
       }
-      .pf-grid.col2,
-      .pf-grid.col3 { grid-template-columns: 1fr; }
-      .pf-cell.span2,
-      .pf-cell.span3 { grid-column: span 1; }
     }
   </style>
 </head>
@@ -740,364 +386,247 @@
 <body>
 
   <nav class="nav">
-    <a href="index.html" class="nav-brand">◁ 夜梟部隊</a>
+    <a href="../leo.html#stories" class="nav-brand">◁ 里歐</a>
     <ul class="nav-links">
-      <li><a href="jack.html">傑克</a></li>
-      <li><a href="kane.html">凱恩</a></li>
-      <li><a href="leo.html" class="current">里歐</a></li>
-      <li><a href="theo.html">席奧</a></li>
+      <li><a href="../index.html#members">夜梟部隊</a></li>
+      <li><a href="../../../world/index.html">回到天空</a></li>
     </ul>
   </nav>
- <!-- 箭頭按鈕 -->
-  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到頂端">↑</button>
 
   <div class="main">
 
-    <!-- 標題 -->
-    <div class="file-header">
-      <div class="file-eyebrow">PERSONNEL FILE · #NOU-004</div>
-      <h1>LEO</h1>
-      <div class="file-sub">CODENAME: HOUND ｜ RANK: SERGEANT ｜ STATUS: ACTIVE</div>
+    <!-- 頁面標題 -->
+    <div class="page-header">
+      <div class="page-eyebrow">HIS PAST · LEO · NOU-004</div>
+      <h1>在活下來之前</h1>
     </div>
 
-    <!-- 書籤標籤 -->
-    <div class="char-tab-bar">
-      <button class="char-tab active" onclick="switchCharTab('file', this)">FILE</button>
-      <button class="char-tab" onclick="switchCharTab('gallery', this)">GALLERY</button>
-      <button class="char-tab" onclick="switchCharTab('stories', this)">HIS PAST</button>
-      <button class="char-tab tab-meet" onclick="switchCharTab('meet', this)">MEET HIM</button>
+    <!-- 目錄 -->
+    <div class="toc" id="toc">
+      <div class="toc-header">
+        <span class="toc-header-label">CHAPTER · 章節選單</span>
+        <span class="toc-header-count">5 CHAPTERS</span>
+      </div>
+      <ul class="toc-list">
+        <li>
+          <a href="#before-surviving">
+            <span class="toc-num">01</span>
+            <span class="toc-title">在活下來之前</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#survive">
+            <span class="toc-num">02</span>
+            <span class="toc-title">生存</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#just-adapting">
+            <span class="toc-num">03</span>
+            <span class="toc-title">只是適應</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#edge-of-thrill">
+            <span class="toc-num">04</span>
+            <span class="toc-title">快感邊緣</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#rainy-night">
+            <span class="toc-num">05</span>
+            <span class="toc-title">雨夜</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+      </ul>
     </div>
 
-    <!-- ① FILE -->
-    <div class="char-panel active" id="char-file">
-      <div class="file-panel">
-        <div class="profile-layout">
-
-          <!-- 左：角色圖 -->
-          <div class="profile-img">
-            <img src="../../pic/characters/leo/1.jpeg" alt="里歐">
-          </div>
-
-          <!-- 右：軍方檔案 -->
-          <div class="profile-file">
-
-            <div class="pf-top">
-              <span class="pf-top-label">PERSONNEL FILE</span>
-              <span class="pf-top-status">
-                <span class="status-dot"></span>ACTIVE DUTY
-              </span>
-            </div>
-
-            <!-- 身份 -->
-            <div class="pf-block">
-              <div class="pf-block-title">IDENTIFICATION</div>
-              <div class="pf-grid col2">
-                <div class="pf-cell span2">
-                  <div class="cell-label">FULL NAME</div>
-                  <div class="cell-val">里歐</div>
-                  <div class="cell-sub">Leo</div>
-                </div>
-                <div class="pf-cell">
-                  <div class="cell-label">CODENAME</div>
-                  <div class="cell-val orange">HOUND</div>
-                </div>
-                <div class="pf-cell">
-                  <div class="cell-label">FILE NO.</div>
-                  <div class="cell-val">#NOU-004</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 軍事 -->
-            <div class="pf-block">
-              <div class="pf-block-title">MILITARY STATUS</div>
-              <div class="pf-grid col2">
-                <div class="pf-cell">
-                  <div class="cell-label">RANK</div>
-                  <div class="cell-val">中士</div>
-                  <div class="cell-sub">Sergeant</div>
-                </div>
-                <div class="pf-cell">
-                  <div class="cell-label">POSITION</div>
-                  <div class="cell-val">隊員</div>
-                  <div class="cell-sub">Operator</div>
-                </div>
-                <div class="pf-cell">
-                  <div class="cell-label">CLEARANCE</div>
-                  <div class="cell-val orange">LEVEL 2</div>
-                </div>
-                <div class="pf-cell">
-                  <div class="cell-label">UNIT</div>
-                  <div class="cell-val">Night Owl</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 體格 -->
-            <div class="pf-block">
-              <div class="pf-block-title">PHYSICAL DATA</div>
-              <div class="pf-grid col4">
-                <div class="pf-cell slim">
-                  <div class="cell-label">AGE</div>
-                  <div class="cell-val">30</div>
-                </div>
-                <div class="pf-cell slim">
-                  <div class="cell-label">BIRTHDATE</div>
-                  <div class="cell-val">04 / 04</div>
-                </div>
-                <div class="pf-cell slim">
-                  <div class="cell-label">HEIGHT</div>
-                  <div class="cell-val">186 cm</div>
-                </div>
-                <div class="pf-cell slim">
-                  <div class="cell-label">WEIGHT</div>
-                  <div class="cell-val">78 kg</div>
-                </div>
-                <div class="pf-cell full">
-                  <div class="cell-label">APPEARANCE</div>
-                  <div class="cell-val">凌亂的金髮、藍色瞳孔、全身刺青、氣場強烈</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 個人 -->
-            <div class="pf-block">
-              <div class="pf-block-title">PERSONAL DATA</div>
-              <div class="pf-grid col2">
-                <div class="pf-cell">
-                  <div class="cell-label">SPECIALTY</div>
-                  <div class="cell-val">近戰格鬥與、爆破、拆彈</div>
-                </div>
-                <div class="pf-cell">
-                  <div class="cell-label">INTERESTS</div>
-                  <div class="cell-val">戰鬥、酒精、爆炸、女人、速度</div>
-                </div>
-                <div class="pf-cell">
-                  <div class="cell-label">DISLIKES</div>
-                  <div class="cell-val">安靜、守規矩</div>
-                </div>
-                <div class="pf-cell">
-                  <div class="cell-label">ORIGIN</div>
-                  <div class="cell-val">?</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 備註 -->
-            <div class="pf-block">
-              <div class="pf-block-title">REMARKS</div>
-              <div class="pf-remark">
-                - 粗魯、毒舌、反骨、暴躁、放蕩不羈<br>
-                - 極端直接的個性在部隊裡是個麻煩製造者，老是讓凱恩頭痛<br>
-                - 戰鬥力強、忠誠度高，對同伴也很照顧，總之是個難得的好士兵<br>
-                - 下班後老是跟傑克泡在HALO酒吧裡<br>
-                - 食量大、愛吃肉和甜食，喜歡裸睡露<br>
-                - 私生活放蕩但在他心裡似乎一直記著某段放不下的過去
-              </div>
-            </div>
-
-            <!-- 底部 -->
-            <div class="pf-bottom">
-              <span class="pf-classify">TOP SECRET — LEVEL 4 CLEARANCE REQUIRED</span>
-              <span class="pf-stamp">VERIFIED ✓</span>
-            </div>
-
-          </div><!-- /profile-file -->
-        </div><!-- /profile-layout -->
+    <!-- ─────────────────────────── -->
+    <!-- 文章 1 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="before-surviving">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">BEFORE THE UNIT · 01</span>
+        <div class="story-entry-title">在活下來之前</div>
+        <a href="#before-surviving" class="story-entry-anchor"># before-surviving</a>
       </div>
-    </div><!-- /char-file -->
-
-    <!-- ② GALLERY -->
-    <div class="char-panel" id="char-gallery">
-      <div class="gallery-panel">
-
-        <div class="gallery-section">
-          <div class="gallery-section-label">PHOTO ARCHIVE</div>
-          <div class="gallery-scroll">
-              <div class="gallery-photo-item" onclick="openLightbox('../../pic/characters/leo/2.jpeg', 'img')">
-                <img src="../../pic/characters/leo/2.jpeg" alt="">
-              </div>
-              <div class="gallery-photo-item" onclick="openLightbox('../../pic/characters/leo/3.jpeg', 'img')">
-                <img src="../../pic/characters/leo/3.jpeg" alt="">
-              </div>
-              <div class="gallery-photo-item" onclick="openLightbox('../../pic/characters/leo/4.jpeg', 'img')">
-                <img src="../../pic/characters/leo/4.jpeg" alt="">
-              </div>
-              <div class="gallery-photo-item" onclick="openLightbox('../../pic/characters/leo/5.jpeg', 'img')">
-                <img src="../../pic/characters/leo/5.jpeg" alt="">
-              </div>
-              <div class="gallery-photo-item" onclick="openLightbox('../../pic/characters/leo/6.jpeg', 'img')">
-                <img src="../../pic/characters/leo/6.jpeg" alt="">
-              </div>
-              <div class="gallery-photo-item" onclick="openLightbox('../../pic/characters/leo/7.jpeg', 'img')">
-                <img src="../../pic/characters/leo/7.jpeg" alt="">
-              </div>
-          </div>
-        </div>
-
-        <div class="gallery-section">
-          <div class="gallery-section-label">VIDEO & GIF</div>
-          <div class="gallery-scroll">
-              <div class="gallery-video-item" onclick="openLightbox('../../pic/characters/leo/1.mp4', 'video')">
-                <video src="../../pic/characters/leo/1.mp4" loop muted playsinline></video>
-                <div class="video-overlay"><div class="video-play-icon">▶</div></div>
-              </div>
-            <div class="gallery-video-item" onclick="openLightbox('../../pic/characters/leo/2.mp4', 'video')">
-                <video src="../../pic/characters/leo/2.mp4" loop muted playsinline></video>
-                <div class="video-overlay"><div class="video-play-icon">▶</div></div>
-              </div>
-          </div>
-        </div>
-
+      <div class="story-body">
+        <p>我從來沒有以為世界應該是安靜的。</p>
+        <p>有意識以來，耳邊沒有搖籃曲、不是母親哼過的溫柔旋律，而是遠處的爆炸聲，低沉、遙遠，卻始終存在，像某種不會停下來的呼吸。</p>
+        <p>空氣裡總帶著燒焦的味道，混著灰塵和鐵鏽，街角的牆不是牆，是拼接起來的木板和殘磚，顏色一層一層蓋過去，像在掩飾什麼又掩飾不乾淨。</p>
+        <p>夜裡偶爾會亮起光，不是燈，也不是星星，是落下來的火光，在遠處炸開，短暫照亮整條街，然後什麼都沒有。</p>
+        <p>我後來才知道，別人的童年是有聲音的，會笑、會吵、會有人喊名字，而我的世界從一開始就沒有那些東西，只有規律的警報聲，還有隨時會中斷一切的巨響。</p>
+        <p>父母很少笑，每當外頭傳來鳴笛聲，他們會停下手上的動作，迅速收拾東西，穿上靴子，檢查武器，然後離開。</p>
+        <p>我站在門口看著他們的背影，沒有哭，也沒有問，因為我知道那不是我能問的事情。他們有時候會回來，有時候會晚一點，有時候身上帶著血，有時候什麼都沒說，只是坐在那裡喘氣。</p>
+        <p>但有一天，他們沒有再回來。那天其實沒有什麼特別，天一樣灰，空氣一樣冷，只是門再也沒有被推開。</p>
+        <p>我不知道那是不是「死亡」，但我知道那代表什麼。</p>
+        <p>代表不會再有人回來叫我的名字，代表有些東西消失了，而且不會再補上。</p>
       </div>
-    </div><!-- /char-gallery -->
+    </div>
 
-    <!-- ③ HIS PAST -->
-    <div class="char-panel" id="char-stories">
-      <div class="stories-panel">
-        <div class="story-list">
+    <div class="story-divider"><span class="story-divider-text">· · ·</span></div>
 
-          <a href="stories/leo.html#before-surviving" class="story-item">
-            <div class="story-meta">
-              <span class="story-date">BEFORE THE UNIT</span>
-              <span class="story-tag">CH.1</span>
-            </div>
-            <div class="story-title">在活下來之前</div>
-            <div class="story-preview">我從來沒有以為世界應該是安靜的。有意識以來，耳邊沒有搖籃曲……</div>
-          </a>
-
-          <a href="stories/leo.html#survive" class="story-item">
-            <div class="story-meta">
-              <span class="story-date">BEFORE THE UNIT</span>
-              <span class="story-tag">CH.2</span>
-            </div>
-            <div class="story-title">生存</div>
-            <div class="story-preview">在那之後，事情變得很簡單，有人把我帶走，沒有解釋、也沒有選擇……</div>
-          </a>
-
-          <a href="stories/leo.html#just-adapting" class="story-item">
-            <div class="story-meta">
-              <span class="story-date">BEFORE THE UNIT</span>
-              <span class="story-tag">CH.3</span>
-            </div>
-            <div class="story-title">只是適應</div>
-            <div class="story-preview">從那之後，我不再等。我在別人還沒動之前就先動……</div>
-          </a>
-
-          <a href="stories/leo.html#edge-of-thrill" class="story-item">
-            <div class="story-meta">
-              <span class="story-date">BEFORE THE UNIT</span>
-              <span class="story-tag">CH.4</span>
-            </div>
-            <div class="story-title">快感邊緣</div>
-            <div class="story-preview">不知道從什麼時候開始，活著這件事變得太簡單了……</div>
-          </a>
-
-          <a href="stories/leo-stories.html#rainy-night" class="story-item">
-            <div class="story-meta">
-              <span class="story-date">BEFORE THE UNIT</span>
-              <span class="story-tag">CH.5</span>
-            </div>
-            <div class="story-title">雨夜</div>
-            <div class="story-preview">那是個雨天。街道被洗得發亮，霓虹燈在積水裡碎成一片一片的光……</div>
-          </a>
-
-        </div>
+    <!-- ─────────────────────────── -->
+    <!-- 文章 2 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="survive">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">BEFORE THE UNIT · 02</span>
+        <div class="story-entry-title">生存</div>
+        <a href="#survive" class="story-entry-anchor"># survive</a>
       </div>
-    </div><!-- /char-stories -->
-
-    <!-- ④ MEET HIM -->
-    <div class="char-panel" id="char-meet">
-      <div class="meet-panel">
-
-        <div class="meet-img">
-          <img src="../../pic/characters/leo/8.jpeg" alt="里歐">
-        </div>
-
-        <div class="meet-card">
-          <div class="meet-label">HOUND · LEO · NOU-004</div>
-          <div class="meet-divider"></div>
-          <div class="meet-quote">
-            來啊，反正我也沒事。
-          </div>
-          <a href="#"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="meet-btn">
-            與他相遇 <span class="meet-btn-arrow">→</span>
-          </a>
-        </div>
-
+      <div class="story-body">
+        <p>在那之後，事情變得很簡單，有人把我帶走，沒有解釋、也沒有選擇，像把還能用的東西從廢墟裡撿起來。</p>
+        <p>我被丟進一個地方，那裡沒有名字，沒有過去，只有規矩。鐵門關上的聲音很重，一聲之後，裡外就分開了。那裡的人不會問你是誰，也不在意你從哪裡來，他們只看你能不能活下來。</p>
+        <p>他們給我一個編號，「D09」，之後再也沒有人叫過我其他的名字。</p>
+        <p>每天都有新的臉被帶進來，也每天都有人消失，沒有人會提起，也沒有人會停下來找。時間在那裡不是用天算的，是用還剩多少人算的。</p>
+        <p>那裡很冷。食物不夠，水不夠，連躺下的空間都不夠。我餓過很多次，餓到胃在抽，餓到眼前發黑，餓到只剩下本能。</p>
+        <p>有一次，我和另一個人同時拿到一塊乾掉的麵包，他比我瘦，眼睛很亮，一直盯著我看，他說：「分一半。」聲音很輕，好像還相信什麼。</p>
+        <p>我沒有回答。我只是看著他，在他還沒反應過來之前，用拳頭把他打倒，把那塊麵包搶過來。他倒在地上，很安靜。</p>
+        <p>那天晚上我把麵包吃完，一點都不覺得飽，但我第一次感覺到一種東西——安全。不是因為吃飽，是因為我活下來了。</p>
+        <p>我記住了，不是「搶得到就能活」，而是「猶豫的人會死」。</p>
       </div>
-    </div><!-- /char-meet -->
+    </div>
+
+    <div class="story-divider"><span class="story-divider-text">· · ·</span></div>
+
+    <!-- ─────────────────────────── -->
+    <!-- 文章 3 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="just-adapting">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">BEFORE THE UNIT · 03</span>
+        <div class="story-entry-title">只是適應</div>
+        <a href="#just-adapting" class="story-entry-anchor"># just-adapting</a>
+      </div>
+      <div class="story-body">
+        <p>從那之後，我不再等。</p>
+        <p>我在別人還沒動之前就先動，在別人還在想的時候就已經做完。</p>
+        <p>他們開始注意到我，教我怎麼打人、怎麼用刀、怎麼讓對方在最短的時間裡閉嘴。動作要快、力道要狠、不讓對方有機會反應，因為機會一旦給出去，就收不回來。</p>
+        <p>第一次拿刀的時候，手有點抖，不是因為害怕，只是不習慣。刀子很輕，輕得不像真的，但當我劃下去的時候，那聲音很清楚，布料裂開，皮膚跟著開，還有那種濕的、黏的觸感，一點一點黏在手上。</p>
+        <p>我記得那個人看著我，眼睛睜得很大，很用力，好像在問什麼。我沒有回答，因為我不知道答案。</p>
+        <p>我只知道，如果我停下來，躺在地上的人就會變成我。</p>
+        <p>很快的，我明白一件事——學會活著，比學會開槍更重要。</p>
+        <p>真正的第一課不是怎麼殺人，而是不要信任何人。</p>
+        <p>信任是一種奢侈品，而那裡沒有奢侈的資格。你旁邊的人，可能下一秒就會把你推開，你救過的人，下一秒就踩著你往上爬。我學會在每一個人身上留距離，也學會在每一次選擇裡不留下餘地。</p>
+        <p>拳頭落下去時要狠，刀刃劃開時要穩，只要有一瞬間的猶豫，地上的人就會變成自己。</p>
+        <p>冷和餓慢慢變成背景，它們不再讓我難受，只是提醒我還活著。血的味道從刺鼻變得熟悉，骨頭斷裂的聲音從刺耳變得理所當然，我甚至開始分得出不同爆炸的距離和威力，哪一種會掀翻牆面，哪一種只會震碎玻璃。</p>
+        <p>有人說我適應得太快，我沒有回答，因為適應不是選擇，是本能。</p>
+        <p>我知道自己長在灰燼裡，腳下踩著的是燒過的東西，是被踩過、被壓實、再也長不出東西的土地。而在那種地方，活下來的人才算數。</p>
+        <p>從那時候起，我不再期待有人會留下，也不再去想什麼明天值不值得。今天沒死，就算贏，明天再說。這樣活著很簡單，也很乾淨，沒有希望，就不會失望，沒有依靠，就不會被推開。</p>
+        <p>我不需要任何人，也不需要任何東西。</p>
+        <p>只要我還能動、還能咬、還能站著，那就夠了。</p>
+      </div>
+    </div>
+
+    <div class="story-divider"><span class="story-divider-text">· · ·</span></div>
+
+    <!-- ─────────────────────────── -->
+    <!-- 文章 4 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="edge-of-thrill">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">BEFORE THE UNIT · 04</span>
+        <div class="story-entry-title">快感邊緣</div>
+        <a href="#edge-of-thrill" class="story-entry-anchor"># edge-of-thrill</a>
+      </div>
+      <div class="story-body">
+        <p>不知道從什麼時候開始，活著這件事變得太簡單了。</p>
+        <p>拳頭落下去的時候，我不再遲疑；爆炸聲在耳邊炸開時，我不再眨眼；我甚至能在火光裡分辨出炸藥的配比是不是剛好。</p>
+        <p>別人說我狠，我沒有反駁，因為那不是誇獎也不是指責，只是事實。我活下來了，活得比很多人都久。</p>
+        <p>可不知道為什麼，當一切都變得熟練之後，心裡反而出現一種空掉的感覺。不是難過，也不是害怕，是一種說不上來的空，像是站在廢墟上，周圍什麼都有，卻沒有一樣是真的屬於自己。</p>
+        <p>記得那次，牆塌下來的瞬間，火焰沿著空氣竄起，我站得很近，太近了，熱浪幾乎燙到皮膚，碎石擦過臉頰，我沒有退。</p>
+        <p>那一瞬間，我心臟跳得很快，不是因為危險，而是因為那種刺激讓人清醒。所有聲音都被拉長，時間像是被撕開，我甚至能聽見自己的呼吸。</p>
+        <p>那種感覺，比活著更明確。</p>
+        <p>像是在提醒，我還在。</p>
+        <p>之後我開始故意站得更近一點。別人後退的時候，我往前一步。碎片劃開手臂的時候，我沒有躲，血順著皮膚流下來，我盯著看，確認它是真的。痛是最直接的證明，比爆炸聲還真實。</p>
+        <p>只要有痛，我就知道自己沒有變成某種空殼。</p>
+        <p>睡眠開始變得困難。</p>
+        <p>夜裡太安靜的時候，那種空會慢慢浮上來，像水一樣淹過胸口。我躺在床上，聽著遠處偶爾傳來的槍聲，卻覺得不夠。於是我起來，去拆炸藥，把零件一個一個拆開，再重新組裝，確定每個細節都沒有錯。</p>
+        <p>有時候我乾脆去找人打架，不為了輸贏，只為了讓拳頭落在身上，讓骨頭震動、讓嘴裡嚐到一點鐵鏽味。別人罵我瘋子，我笑著回嘴說不過是消遣，可我知道，那不是消遣，是需求。</p>
+        <p>有幾次我甚至故意不處理傷口。</p>
+        <p>繃帶就在旁邊，我讓血流，讓疼延長一點時間。我對自己說，這不是自虐，也不是什麼奇怪的嗜好，只是訓練，只是讓自己更強。但其實我心裡清楚，那不只是訓練。</p>
+        <p>我需要那種邊緣感，需要那種差一點就會失控的感覺，因為只有在那種時候，我才不會去想其他東西。</p>
+        <p>我開始享受那種快感。</p>
+        <p>爆炸的瞬間、血濺出的弧線、刺青的疼痛、肌膚交纏的快感，甚至是刀鋒貼著皮膚滑過的壓迫感。不是因為喜歡，而是因為那是唯一能讓我確定自己存在的方式。沒有痛的時候，反而不安，像是身體被抽空，只剩下一具還在呼吸的殼。</p>
+        <p>我告訴自己，這與我無關。</p>
+        <p>這不是錯，也不是病。這只是適應，是在這種地方活下來的副作用。世界本來就這樣，我只是比別人更誠實地面對它。</p>
+        <p>但有時候，在爆炸後的煙霧裡，我會停下，看著自己的手，看著那些舊傷和新傷交錯在一起，像某種紋路。</p>
+        <p>我會想，如果有一天連痛都感覺不到了，那我還剩下什麼。</p>
+        <p>可我已經習慣站在邊緣。</p>
+        <p>我沒有停下來。也沒有打算停。</p>
+      </div>
+    </div>
+
+    <div class="story-divider"><span class="story-divider-text">· · ·</span></div>
+
+    <!-- ─────────────────────────── -->
+    <!-- 文章 5 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="rainy-night">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">BEFORE THE UNIT · 05</span>
+        <div class="story-entry-title">雨夜</div>
+        <a href="#rainy-night" class="story-entry-anchor"># rainy-night</a>
+      </div>
+      <div class="story-body">
+        <p>那是個雨天。</p>
+        <p>街道被洗得發亮，霓虹燈在積水裡碎成一片一片的光。我記得自己靠在巷子口的牆邊，背後是冰冷的磚，身上是還沒乾的血。</p>
+        <p>我走了很遠，才找到那條巷子。右側肋骨應該斷了兩根，呼吸像刀子往裡插，肩膀有子彈擦過的傷口，血混著雨水往下流，順著手臂滴到地面。雨水很冷，冷得幾乎麻痺疼痛。我低頭看著自己的手，發現血被沖淡了，顏色變得很淡，像不屬於我一樣。</p>
+        <p>我沒有求救。</p>
+        <p>也沒有想活。</p>
+        <p>只是覺得有點累。</p>
+        <p>累到覺得，如果現在閉上眼睛，好像也沒什麼關係。反正從小到大，沒有人會真的等我回去，也沒有人會為了我停下腳步。</p>
+        <p>這條街很安靜，只有雨聲，還有遠處偶爾傳來的車聲。我靠著牆滑坐到地上，視線開始模糊，燈光被拉成長長的線。</p>
+        <p>然後有人停下來。</p>
+        <p>腳步聲在我面前停住。我以為是巡邏的人，或者某個多管閒事的路人。我抬不起頭，只能看見一雙鞋，乾淨的，沒有泥，也沒有血。</p>
+        <p>「你還好嗎？」</p>
+        <p>聲音很清晰，沒有害怕，也沒有厭惡。</p>
+        <p>那讓我有點困惑、有點煩躁。</p>
+        <p>我勉強抬頭，看見你蹲下來。</p>
+        <p>雨水落在你的頭髮上，順著髮絲滑下來，你皺著眉看著我，眼神不是審視，也不是恐懼，只是單純的擔心。那種表情我以前見過，但從來不是對著我。</p>
+        <p>我想說「滾開」，想讓你別靠近，因為靠近我從來沒有好下場。可我沒有力氣開口，只能看著你伸手。你沒有碰我的傷口，也沒有質問我是誰，你只是從包裡拿出一條手帕，乾淨的，帶著淡淡的味道，輕輕按在我流血的地方。</p>
+        <p>我幾乎本能地抓住你的手腕，力道不輕。</p>
+        <p>你沒有掙開。</p>
+        <p>那一瞬間，我不知道自己在幹什麼。我應該推開你，應該讓你離遠一點，可我的手沒有放開。雨水打在我們身上，時間像被拉長。我看著你的臉，記住了每一個細節，因為那種表情太不合理了。</p>
+        <p>你不知道我是誰。</p>
+        <p>不知道我做過什麼。</p>
+        <p>不知道我手上沾過多少血。</p>
+        <p>「要好好照顧自己。」</p>
+        <p>你最後這樣說。語氣很平常，像是在對任何一個受傷的人說話，沒有重量，卻又重得讓人喘不過氣。</p>
+        <p>然後你站起來。</p>
+        <p>沒有留下聯絡方式，沒有多看一眼，也沒有問我要不要幫忙。你只是確認我還有呼吸，然後離開。腳步聲漸漸遠去，雨聲重新填滿整條街。</p>
+        <p>我低頭看著那條手帕，血已染紅。</p>
+        <p>那是第一次，有人靠近我，不是為了利用，不是為了命令，也不是為了利益，只是因為我在那裡。</p>
+        <p>我坐在雨裡，很久。</p>
+        <p>肋骨還在痛，傷口還在流血，可那種空掉的感覺突然變得不一樣。不是消失，是被什麼東西擠開了一點點空間。我慢慢站起來，把手帕收進口袋，動作很小心，像在對待什麼不該屬於我的東西。</p>
+        <p>那天晚上，我沒有死。</p>
+        <p>那是我第一次明白，原來「活著」可以不只是因為不想死。</p>
+        <p>後來我沒有去找你。我知道，有些東西太乾淨了，乾淨到我不該碰。我把那張臉、那個聲音、那句話，連同那場雨一起記住。</p>
+        <p>它們像一塊不會融化的東西，藏在我身體某個最深的地方。</p>
+      </div>
+    </div>
+
+    <a href="../leo.html#stories" class="back-btn">◁ 返回里歐的頁面</a>
 
   </div><!-- /main -->
 
   <footer class="footer">
-    NIGHT OWL SQUADRON — PERSONNEL FILE — CLASSIFIED
+    NIGHT OWL UNIT — PERSONNEL FILE — CLASSIFIED
   </footer>
 
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-    <div class="lightbox-inner" id="lightbox-inner" onclick="event.stopPropagation()"></div>
-  </div>
-
-  <script>
-    if (window.location.hash === '#stories') {
-      const btn = document.querySelector('[onclick*="stories"]');
-      if (btn) btn.click();
-    }
-
-    function switchCharTab(name, btn) {
-      document.querySelectorAll('.char-panel').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.char-tab').forEach(el => el.classList.remove('active'));
-      document.getElementById('char-' + name).classList.add('active');
-      btn.classList.add('active');
-    }
-
-    function openLightbox(src, type) {
-      const inner = document.getElementById('lightbox-inner');
-      inner.innerHTML = '';
-      if (type === 'img') {
-        const img = document.createElement('img');
-        img.src = src;
-        inner.appendChild(img);
-      } else if (type === 'video') {
-        const vid = document.createElement('video');
-        vid.src = src;
-        vid.controls = true;
-        vid.autoplay = true;
-        vid.loop = true;
-        vid.style.maxWidth = '90vw';
-        vid.style.maxHeight = '90vh';
-        inner.appendChild(vid);
-      }
-      document.getElementById('lightbox').classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox() {
-      document.getElementById('lightbox').classList.remove('open');
-      document.getElementById('lightbox-inner').innerHTML = '';
-      document.body.style.overflow = '';
-    }
-
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeLightbox();
-    });
-
-    document.querySelectorAll('.gallery-video-item video').forEach(v => {
-      v.play().catch(() => {});
-    });
-
-    // 回頂端按鈕：捲超過 300px 才出現
-    const btt = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      btt.classList.toggle('visible', window.scrollY > 300);
-    });
-
-  </script>
-
+  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到頂端">↑</button>
+<script>
+  // 回頂端按鈕：捲超過 300px 才出現
+const btt = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  btt.classList.toggle('visible', window.scrollY > 300);
+});
+</script>
 </body>
 </html>
