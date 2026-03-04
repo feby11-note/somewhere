@@ -421,11 +421,6 @@ body.world-home {
 }
 
 /* ===== RWD ===== */
-
-@media (max-width: 380px) {
-  .world-hero-title { font-size: 26px; }
-  .tab-btn { padding: 9px 14px; font-size: 12px; }
-}
 @media (max-width: 600px) {
   .world-hero {
     padding: 8px 0 32px;  /* 手機頂部幾乎不留空 */
@@ -434,4 +429,9 @@ body.world-home {
     font-size: 14px;
     margin-bottom: 10px;
   }
+}
+
+@media (max-width: 380px) {
+  .world-hero-title { font-size: 26px; }
+  .tab-btn { padding: 9px 14px; font-size: 12px; }
 }
