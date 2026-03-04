@@ -417,6 +417,43 @@ body.owl-page {
   white-space: nowrap;
 }
 
+/* ── 部隊簡介：圖文並排 ── */
+.owl-intro-layout {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.owl-intro-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.owl-intro-img {
+  flex: 0 0 auto;
+  width: 280px;          /* 電腦版寬度 */
+}
+
+.owl-intro-img img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* 手機版：改成上圖下文 */
+@media (max-width: 640px) {
+  .owl-intro-layout {
+    flex-direction: column;
+  }
+  .owl-intro-img {
+    width: 100%;
+    max-width: 320px;    /* 不要太大 */
+  }
+}
+
 /* ===== 說明文字 ===== */
 .owl-text {
   color: var(--owl-text-dim);
@@ -1627,4 +1664,29 @@ body.owl-page {
 @media (max-width: 400px) {
   .owl-main { padding: 4rem 0.875rem 2.5rem; }
   .owl-tab { padding: 0.625rem 0.625rem; font-size: 0.9rem; }
+}
+
+/* ── 手機版時間線間距修正 ── */
+@media (max-width: 640px) {
+  .owl-timeline-item {
+    gap: 0.6rem;         /* 原本可能較大，縮小 */
+  }
+  .owl-timeline-left {
+    flex: 0 0 52px;      /* 固定年份欄寬，別撐太寬 */
+    min-width: 52px;
+  }
+  .owl-timeline-year {
+    font-size: 0.7rem;
+    line-height: 1.3;
+  }
+  .owl-timeline-right {
+    flex: 1;
+    min-width: 0;
+  }
+  .owl-timeline-title {
+    font-size: 0.85rem;
+  }
+  .owl-timeline-text {
+    font-size: 0.78rem;
+  }
 }
