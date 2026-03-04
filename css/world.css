@@ -227,10 +227,10 @@ body.world-home {
 }
 
 .world-hero-sub {
-  font-size: 14px;
+  font-size: 20px;
   letter-spacing: 2px;
   color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .world-hero-title {
@@ -239,7 +239,7 @@ body.world-home {
   color: #FFFFFF;
   letter-spacing: 4px;
   line-height: 1.4;
-  margin-bottom: 16px;
+  margin-bottom: 30px;
   text-shadow: 0 2px 24px rgba(100, 140, 180, 0.3);
 }
 
