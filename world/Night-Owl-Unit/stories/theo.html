@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&family=Share+Tech+Mono&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦉</text></svg>">
+  <title>席奧的過去｜夜梟部隊</title>
+
+  <meta property="og:title" content="席奧的過去｜by菲比">
+  <meta property="og:description" content="他研究每一張臉，像解剖標本。他唯一沒有研究過的，是鏡子裡那張。">
+  <meta property="og:image" content="https://feby11-note.github.io/somewhere/pic/characters/theo/1.jpeg">
+  <meta property="og:url" content="https://feby11-note.github.io/somewhere/world/Night-Owl-Unit/stories/theo-stories.html">
+  <meta property="og:type" content="website">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #1E2D40;
+      --surface: #273D57;
+      --surface2: #304A6A;
+      --border: #4A6280;
+      --green: #5EC44E;
+      --green-light: #9FDD8F;
+      --orange: #F0A840;
+      --accent: #7BC8E8;
+      --text: #EEF4FF;
+      --text-dim: rgba(238, 244, 255, 0.78);
+      --text-muted: rgba(238, 244, 255, 0.42);
+      font-size: clamp(15px, 1.1vw + 11px, 18px);
+    }
+
+    body {
+      font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── Nav ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 3.75rem;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(26, 37, 53, 0.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1rem;
+      color: var(--green-light);
+      text-decoration: none;
+      letter-spacing: 0.12em;
+      opacity: 0.9;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .nav-brand:hover { opacity: 1; }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 0;
+    }
+
+    .nav-links a {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      padding: 0.4rem 0.65rem;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+      letter-spacing: 0.03em;
+    }
+    .nav-links a:hover { color: var(--text); border-color: var(--border); }
+
+    /* ── 主容器 ── */
+    .main {
+      width: 92%;
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 5.5rem 0 5rem;
+    }
+
+    /* ── 頁面標題 ── */
+    .page-header {
+      margin-bottom: 3rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-eyebrow {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--orange);
+      letter-spacing: 0.2em;
+      opacity: 0.85;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-header h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--text);
+    }
+
+    /* ══════════════════════════
+       目錄
+    ══════════════════════════ */
+    .toc {
+      margin-bottom: 3rem;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .toc-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1rem;
+      background: var(--surface2);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .toc-header-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+    }
+
+    .toc-header-count {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+    }
+
+    .toc-list { list-style: none; }
+
+    .toc-list li {
+      border-bottom: 1px solid rgba(74,98,128,0.2);
+    }
+    .toc-list li:last-child { border-bottom: none; }
+
+    .toc-list a {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .toc-list a:hover { background: rgba(123,200,232,0.06); }
+
+    .toc-num {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      letter-spacing: 0.08em;
+      padding: 0.875rem 0.875rem;
+      min-width: 3rem;
+      text-align: center;
+      border-right: 1px solid rgba(74,98,128,0.2);
+      background: rgba(0,0,0,0.1);
+      flex-shrink: 0;
+    }
+
+    .toc-title {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      letter-spacing: 0.04em;
+      padding: 0.875rem 1rem;
+      flex: 1;
+      transition: color 0.15s;
+    }
+    .toc-list a:hover .toc-title { color: var(--green-light); }
+
+    .toc-title-redacted {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    padding: 0.875rem 1rem;
+    flex: 1;
+    user-select: none;
+    }
+
+
+    .toc-arrow {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      padding: 0.875rem 1rem;
+      flex-shrink: 0;
+      transition: color 0.15s, transform 0.15s;
+    }
+    .toc-list a:hover .toc-arrow {
+      color: var(--green-light);
+      transform: translateX(3px);
+    }
+
+    /* ── 文章區塊 ── */
+    .story-entry {
+      margin-bottom: 4rem;
+      scroll-margin-top: 4.5rem;
+    }
+
+    .story-entry-header {
+      margin-bottom: 1.75rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(74,98,128,0.3);
+    }
+
+    .story-entry-tag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+      padding: 0.15rem 0.5rem;
+      display: inline-block;
+      margin-bottom: 0.6rem;
+    }
+
+    .story-entry-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+
+    .story-entry-anchor {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      opacity: 0.65;
+      transition: opacity 0.2s;
+    }
+    .story-entry-anchor:hover { opacity: 1; color: var(--green-light); }
+
+    /* ── 內文 ── */
+    .story-body {
+      font-size: 1rem;
+      color: var(--text-dim);
+      line-height: 2;
+      letter-spacing: 0.04em;
+    }
+
+    .story-body p { margin-bottom: 1.5em; }
+    .story-body p:last-child { margin-bottom: 0; }
+
+    /* 引言區塊 */
+    .story-body blockquote {
+      margin: 0 0 1.5em 0;
+      padding: 1rem 1.25rem;
+      border-left: 2px solid var(--border);
+      background: rgba(0,0,0,0.12);
+    }
+    .story-body blockquote p {
+      margin-bottom: 0.6em;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-style: italic;
+      letter-spacing: 0.04em;
+    }
+    .story-body blockquote p:last-child { margin-bottom: 0; }
+
+    /* ── 場景分隔線（篇內用）── */
+    .scene-break {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 2.5rem 0;
+    }
+    .scene-break::before,
+    .scene-break::after {
+      content: '';
+      width: 1.5rem;
+      height: 1px;
+      background: var(--border);
+      opacity: 0.35;
+      flex: none;
+    }
+    .scene-break-text {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--text-muted);
+      letter-spacing: 0.2em;
+      white-space: nowrap;
+    }
+
+    /* ── 短篇小標題 ── */
+    .scene-title {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 2.5rem 0 1.25rem;
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--border);
+    }
+
+    .scene-title-num {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      flex-shrink: 0;
+    }
+
+    .scene-title-text {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── 文章間分隔 ── */
+    .story-divider {
+      margin: 4rem 0;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .story-divider::before,
+    .story-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      opacity: 0.65;
+    }
+    .story-divider-text {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      letter-spacing: 0.2em;
+      white-space: nowrap;
+    }
+
+    /* ── 返回按鈕 ── */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      width: 100%;
+      transition: color 0.2s;
+    }
+    .back-btn:hover { color: var(--green-light); }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      padding: 1.75rem;
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
+
+    /* ── 回頂端按鈕 ── */
+    .back-to-top {
+      position: fixed;
+      bottom: 1.75rem;
+      right: 1.25rem;
+      z-index: 200;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s, background 0.2s, color 0.2s;
+      clip-path: polygon(6px 0%, calc(100% - 6px) 0%, 100% 6px, 100% 100%, 0% 100%, 0% 6px);
+    }
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .back-to-top:hover {
+      background: var(--surface);
+      color: var(--green-light);
+      border-color: var(--green-light);
+    }
+
+    /* ── RWD ── */
+    @media (max-width: 680px) {
+      .nav {
+        height: 3.75rem;
+        padding: 0 1.25rem;
+      }
+      .nav-brand {
+        font-size: 0.95rem;
+        letter-spacing: 0.1em;
+      }
+      .nav-links a {
+        font-size: 0.8rem;
+        padding: 0.35rem 0.5rem;
+      }
+      .main {
+        padding-top: 5.5rem;
+      }
+      .toc-title {
+        font-size: 0.88rem;
+      }
+      .story-entry-tag {
+        font-size: 0.7rem;
+      }
+      .story-entry-anchor {
+        font-size: 0.68rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .nav-brand {
+        font-size: 0.85rem;
+        letter-spacing: 0.08em;
+      }
+      .nav-links a {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="nav">
+    <a href="../theo.html#stories" class="nav-brand">◁ 席奧</a>
+    <ul class="nav-links">
+    <li><a href="../stories/theo.html#">章節選單</a></li>
+      <li><a href="../index.html#members">夜梟部隊</a></li>
+      <li><a href="../../../index.html">回到世界</a></li>
+    </ul>
+  </nav>
+
+  <div class="main">
+
+    <!-- 頁面標題 -->
+    <div class="page-header">
+      <div class="page-eyebrow">HIS PAST · THEO</div>
+      <h1>完美面具</h1>
+    </div>
+
+    <!-- 目錄 -->
+    <div class="toc" id="toc">
+      <div class="toc-header">
+        <span class="toc-header-label">CHAPTER · 章節選單</span>
+        <span class="toc-header-count">6 CHAPTERS</span>
+      </div>
+      <ul class="toc-list">
+        <li>
+          <a href="#perfect-mask">
+            <span class="toc-num">01</span>
+            <span class="toc-title">完美面具</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#no-name">
+            <span class="toc-num">02</span>
+            <span class="toc-title">無名</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#ascent">
+            <span class="toc-num">03</span>
+            <span class="toc-title">攀升</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#beyond-the-coastline">
+            <span class="toc-num">04</span>
+            <span class="toc-title">海線之外</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#the-betrayal">
+            <span class="toc-num">05</span>
+            <span class="toc-title-redacted">███████</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#snake-and-wolf">
+            <span class="toc-num">06</span>
+            <span class="toc-title">蛇與狼</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ─────────────────────────── -->
+    <!-- 文章 01 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="perfect-mask">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">BEFORE THE UNIT · 01</span>
+        <div class="story-entry-title">完美面具</div>
+        <a href="#perfect-mask" class="story-entry-anchor"># perfect-mask</a>
+      </div>
+      <div class="story-body">
+        <p>沒有人知道席奧是什麼時候開始發現的。</p>
+        <p>也許是七歲，院子裡那隻黃貓死在牆角，毛色黯淡，四肢僵直。其他孩子圍著它哭，有個女孩哭得最大聲，鼻涕眼淚糊了一臉。席奧站在人群最外圍，看著那具小小的屍體，試著感受點什麼。</p>
+        <p>什麼都沒有。</p>
+        <p>他低頭看了看自己的手，確認自己還活著。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>孤兒院的規矩很簡單：哭的孩子得到糖，安靜的孩子沒有。</p>
+        <p>修女嬤嬤喜歡把最軟的麵包留給那些會撒嬌的孩子，喜歡摸著哭泣的小腦袋說「可憐的孩子」。席奧從來拿不到那塊麵包，不是因為他不餓，而是因為他不知道怎麼擠出眼淚。</p>
+        <p>他只是靜靜地坐在角落，觀察。</p>
+        <p>他研究哭泣的方式。嘴角要下垂多少度，眼眶要紅到什麼程度，聲音要從喉嚨的哪個位置發出來，才能讓大人把視線鎖在你身上，把手伸過來。</p>
+        <p>他研究撒嬌的方式。什麼時候要低頭，什麼時候要仰臉，眼睛要濕潤到什麼程度才恰到好處，不能太誇張，誇張的孩子只讓人覺得煩。</p>
+        <p>他研究每一張臉，像解剖標本。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>八歲那年，他第一次試了。</p>
+        <p>修女嬤嬤把最後一塊麵包遞給隔壁的小男孩時，席奧走了過去，低下頭，讓嘴角微微下垂，讓眼睛帶上一點霧氣。不是哭，是睜眼太久之後眼球本能分泌的水分，他花了兩個禮拜學會在任何時候召喚它。</p>
+        <p>「嬤嬤，」他說，聲音帶著一點沙，「我肚子很餓。」</p>
+        <p>修女嬤嬤愣了一下，然後把手伸過來，摸了摸他的頭。</p>
+        <p>「可憐的孩子。」</p>
+        <p>他拿到了麵包。</p>
+        <p>回到角落，他把麵包吃完，一口一口，細嚼慢嚥。味道普通，比他預期的更普通。但他記住的不是麵包的味道，而是修女嬤嬤那一刻眼睛裡的憐憫，溫柔，完全的信任。</p>
+        <p>那才是真正讓他感興趣的部分。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>年幼的他花了一點時間理解自己的不同。</p>
+        <p>其他孩子會哭，真的哭；會笑，真的笑；會因為一句話難過三天，也會因為一顆糖高興一整個下午。他看著他們，像看著一種他永遠無法理解的生物。</p>
+        <p>不是厭惡，只是陌生。</p>
+        <p>他試著問自己：你難過嗎？</p>
+        <p>沒有。</p>
+        <p>你害怕嗎？</p>
+        <p>他想了很久，想起那隻死去的黃貓，想起有一晚鄰床的孩子高燒不退被人抬走之後再也沒有回來，想起院子外有時候會傳來很大的爭吵聲和哭聲。</p>
+        <p>沒有。</p>
+        <p>他把這個答案翻來覆去地看，最後把它放進某個不重要的抽屜裡，輕輕推上去。</p>
+        <p>不一樣就不一樣。</p>
+        <p>他需要的從來都不是一樣，他需要的是讓別人以為他一樣。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>十歲的時候，他已經是孤兒院裡最受嬤嬤喜歡的孩子。</p>
+        <p>他學會在飯前禱告時閉上眼睛，嘴唇微動，讓自己看起來虔誠而乖巧。他學會在其他孩子發生爭吵時走過去，輕聲勸架，說一些大人喜歡聽的話，讓自己看起來善良而成熟。他學會在某個孩子哭泣時坐到他身邊，不說話，只是靠著，讓對方以為他懂，讓對方自己說出所有的秘密。</p>
+        <p>然後他把那些秘密收好，放進記憶裡，貼上標籤。</p>
+        <p>知識，他認為。這些是知識。</p>
+        <p>每一個人的軟肋，每一個人最在意的東西，每一個人會在什麼時候把理智讓給情緒——這些都是有用的東西。他不帶惡意地收集，只是覺得有一天，它們都會有用。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>十二歲那年冬天，他站在孤兒院浴室的鏡子前，仔細看著鏡子裡的臉。</p>
+        <p>五官清晰，輪廓稜角，即使還是個孩子，也已經帶著某種讓人說不上來的銳利。他歪了歪頭，對著鏡中的自己試了一個笑。</p>
+        <p>不太對，太假，太空。</p>
+        <p>他調整弧度，放鬆眼周的肌肉，讓笑意延伸到眼角，讓那雙灰黑色的眼睛帶上一點光。</p>
+        <p>好多了。</p>
+        <p>他對著鏡子練習了二十分鐘，直到那個笑容看起來完全自然，完全溫暖，完全真實。</p>
+        <p>然後他走出浴室，和走廊上遇見的修女嬤嬤道了晚安，讓她在轉身離去之前多看了他一眼，帶著那種慈愛的、被感動的表情。</p>
+        <p>他回到床鋪，躺下，盯著天花板的裂縫。</p>
+        <p>院子外頭有風聲，有遠處傳來的汽車聲，有另一個孩子在夢裡輕輕哭泣的聲音。</p>
+        <p>他想了很久，最後確認了一件事。</p>
+        <p>這個世界上沒有人知道他是什麼樣子的。</p>
+        <p>只有他自己知道。</p>
+        <p>而那個秘密，安靜地藏在那張完美的笑容底下，像一把上了膛的槍。</p>
+      </div>
+    </div>
+
+    <div class="story-divider">
+      <span class="story-divider-text">· · ·</span>
+    </div>
+
+    <!-- ─────────────────────────── -->
+    <!-- 文章 02 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="no-name">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">BEFORE THE UNIT · 02</span>
+        <div class="story-entry-title">無名</div>
+        <a href="#no-name" class="story-entry-anchor"># no-name</a>
+      </div>
+      <div class="story-body">
+        <p>沒有人記得他叫什麼。</p>
+        <p>孤兒院的登記冊上只有一個名字，席奧。</p>
+        <p>沒有姓氏，沒有出生地，沒有任何人在那個欄位留下任何東西。</p>
+        <p>他離開的那天，修女嬤嬤站在門口送他，說了一些他右耳進左耳出的話，大概是祝福，大概是叮嚀。他點了頭，讓自己的表情帶上適當的感激，然後走出那道鐵門，頭也沒回。</p>
+        <p>城市比他想像的更吵，也比他想像的更簡單。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>他用了不到三個月摸清楚規則。</p>
+        <p>地下世界和孤兒院沒有本質上的差異，都是弱肉強食，都是誰的拳頭硬誰說話，只是孤兒院用糖衣包著，這裡連糖衣都省了。他從最底層開始，替人跑腿，替人傳話，把一個地址和一個數字從A點帶到B點。那些人打量他，看他年紀輕、個子還沒長開，覺得好用，覺得安全。</p>
+        <p>他讓他們這樣覺得。</p>
+        <p>他用孤兒院練出來的眼睛觀察每一個人。誰說話時習慣摸脖子，誰在撒謊時會把視線偏向左邊，誰表面兇狠但膝蓋一軟就會把所有秘密吐乾淨。他把這些收進記憶，安靜地等。</p>
+        <p>不到半年，他已經知道這條街上每一個人的軟肋放在哪裡。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>毒品先來，軍火後到。</p>
+        <p>他十八歲的時候替一個中階毒梟管帳，數字清楚，從不出錯，從不貪污，讓對方覺得撿到寶。他不碰那些東西。不是道德，只是他對任何會讓人失去清醒的事物沒有興趣。他只是站在那條產業鏈的某個位置，看著錢流進來，看著貨流出去，把整個網絡的運作方式默默畫進腦子裡。</p>
+        <p>然後有一天，那個毒梟跟另一個人起了衝突，找他來談。</p>
+        <p>他坐在那張油膩的木桌前，聽兩個人互相威脅，聽數字，聽名字，聽背後牽連的利益關係。他分析，計算，最後開口說了幾句話。</p>
+        <p>那場衝突在四十分鐘內結束，雙方都滿意，毒梟多賺了一筆，另一個人以為自己佔了便宜。</p>
+        <p>沒有人知道他從中抽走了什麼。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>他以為金錢能讓他感受。</p>
+        <p>財富累積起來，乾淨地躺在幾個沒有名字的帳戶裡，數字越來越大，他盯著它們看，等待某種滿足感出現。什麼都沒有。他以為權力會不同。當他第一次可以對人開口說「去做」然後看著對方真的去做，他等待著某種快感。</p>
+        <p>還是什麼都沒有。</p>
+        <p>地下世界的人太容易預測了。恐懼、貪婪、情慾，他們全部被這三樣東西牽著走，像牽線木偶，他只需要找到那條線，輕輕一扯，想要什麼就有什麼。太容易。容易到讓他覺得無聊，容易到讓他開始懷疑，這個世界上有沒有任何東西是他無法計算的。</p>
+        <p>十九歲那年，他殺了第一個人。</p>
+        <p>不是計劃內的事。那個人拿著刀衝過來，眼睛裡是純粹的憤怒和恐懼，席奧側身避開，動作幾乎是本能，然後他的手做了一件事，那個人就倒下了。</p>
+        <p>他站在那裡，看著那張臉從憤怒變成驚愕，再從驚愕變成空白。</p>
+        <p>他等著自己感到恐慌，或噁心，或任何正常人應該會有的東西。</p>
+        <p>沒有。</p>
+        <p>有的只是一種奇異的、接近平靜的清醒。他低頭看了看自己的手，然後蹲下來，仔細看那張臉。</p>
+        <p>那個從有到無的瞬間，那個表情凝固的方式。</p>
+        <p>像一件藝術品，他想。</p>
+        <p>死亡是一件藝術品，而他第一次覺得，這個世界上有某樣東西讓他真正感興趣。</p>
+        <p>只是這份興趣沒有持續太久。</p>
+        <p>因為那個死法太粗糙了。</p>
+        <p>混亂，偶然，沒有任何技術含量。他對粗糙的東西沒有耐心。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>他不是靠運氣爬上來的。</p>
+        <p>每一步都是計算，每一個人都是棋子。</p>
+        <p>有的用來鋪路，有的用來擋刀，有的在完成使命之後被安靜地移出棋盤。他從不手軟，也從不留情，因為情感是一種消耗，而他從來就沒有多餘的東西可以消耗。</p>
+        <p>二十出頭，他已經是地下世界裡沒有人說得清楚來歷、卻沒有人敢輕易得罪的名字。</p>
+        <p>但他站在那個位置上，俯瞰腳底下的一切，只感覺到一種越來越清晰的東西。</p>
+        <p>不是滿足。</p>
+        <p>是飢餓。</p>
+        <p>他想要一個更高的地方。想要一套真正精密的系統，想要把殺人這件事從粗糙的偶然壓縮成某種他可以研究、可以測試、可以不斷推進極限的藝術。</p>
+        <p>地下世界給不了他這個。</p>
+        <p>他開始把眼睛放向別的地方。</p>
+      </div>
+    </div>
+
+    <div class="story-divider">
+      <span class="story-divider-text">· · ·</span>
+    </div>
+
+    <!-- ─────────────────────────── -->
+    <!-- 文章 03 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="ascent">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">BEFORE THE UNIT · 03</span>
+        <div class="story-entry-title">攀升</div>
+        <a href="#ascent" class="story-entry-anchor"># ascent</a>
+      </div>
+      <div class="story-body">
+        <p>軍火讓他第一次接觸到另一種語言。</p>
+        <p>二十一歲，他開始替更高層的組織中介武器交易，第一次把手放在一把真正的軍規武器上。那把槍的重量、精密度、每一個細節背後的設計邏輯，他感受到一種他沒有辦法用語言描述的東西，不是情感，但比情感更具體。</p>
+        <p>他開始研究。</p>
+        <p>戰術、彈道、近戰格鬥的力學，還有殺人這件事在系統性框架下的運作方式。</p>
+        <p>不是衝動，不是憤怒，而是精密計算之後的精準執行。</p>
+        <p>他找來所有能找到的資料，在空蕩蕩的公寓裡一頁一頁讀，讀到天亮，讀到他的腦子裡裝滿了一套他自己都覺得陌生的知識體系。</p>
+        <p>他想知道，這套東西被放進一個真實的框架裡是什麼樣子。</p>
+        <p>有規則的殺人，他想。</p>
+        <p>國家訓練出來的，有系統的，把人類的暴力壓縮成最高效的形式。</p>
+        <p>那種東西，地下世界給不了他。</p>
+        <p>他讓自己的名字透過幾個管道送到某些人耳朵裡。</p>
+        <p>不是申請，不是請求。只是讓那個名字出現在正確的地方，附帶足夠讓人側目的履歷。</p>
+        <p>然後他等。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>他坐在公寓窗邊，俯瞰整座城市的燈火，手裡夾著一根還沒點燃的菸。</p>
+        <p>地下世界在他腳底下運轉，那些人在黑暗裡互相算計，互相吞噬，以為自己站在食物鏈的頂端。他看著那些燈光，覺得一切都太小，太淺，像一盤沒有挑戰性的棋局，他甚至不需要思考就能看見三步之後的結局。</p>
+        <p>他想要一個裝得下他的地方。</p>
+        <p>想知道規則是否真的能束縛他，想知道那個系統的天花板在哪裡。</p>
+        <p>想知道——當殺人被包裝成任務、被賦予目標與框架——它還能不能帶給他那個蹲在屍體旁邊時短暫感受到的清醒。</p>
+        <p>菸還沒點，他把它夾在指間，輕輕彈了一下。</p>
+        <p>電話響了。</p>
+        <p>他看了一眼來電顯示，嘴角微微動了一下，不是笑，只是某種確認。</p>
+        <p>他接起來，聲音平穩，像在討論天氣。</p>
+        <p>「我知道，」他說，「我等你們很久了。」</p>
+      </div>
+    </div>
+
+    <div class="story-divider">
+      <span class="story-divider-text">· · ·</span>
+    </div>
+
+    <!-- ─────────────────────────── -->
+    <!-- 文章 04 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="beyond-the-coastline">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">IN THE UNIT · 04</span>
+        <div class="story-entry-title">海線之外</div>
+        <a href="#beyond-the-coastline" class="story-entry-anchor"># beyond-the-coastline</a>
+      </div>
+      <div class="story-body">
+        <p>席奧進入ALPHA的方式沒有人說得清楚。</p>
+        <p>沒有報到程序，沒有人事檔案，沒有任何一份官方文件上出現過他的名字。他就那樣出現在第一天的集訓場地，站在隊伍最後排，穿著跟所有人一樣的訓練服，臉上帶著那種讓人說不上來哪裡不對勁的平靜。</p>
+        <p>有人問過教官他是誰。</p>
+        <p>教官沉默了兩秒，說「別管他」。</p>
+        <p>沒有人再問第二次。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>他花了兩週觀察傑克。</p>
+        <p>不是刻意的。</p>
+        <p>是那個人太吵了，吵到席奧在人群裡想忽略他都做不到。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>第一天集訓，教官話還沒說完，傑克就開口了。</p>
+        <p>問了什麼席奧沒有仔細聽，只記得那個聲音很大，帶著某種天生的鬆散，整個人靠在旁邊隊友肩上，笑得像這裡是他自家院子。教官盯了他五秒，什麼都沒說，轉身繼續講。周圍幾個人悄悄扯了嘴角。</p>
+        <p>席奧把視線從那個方向收回來。</p>
+        <p>傑克．威爾森。</p>
+        <p>他在腦子裡過了一遍那個名字，然後輕描淡寫地給它貼了一個標籤。</p>
+        <p>太老套了。那種美國英雄片裡會出現的名字，主角，正義，天生就站在光裡的那種人，臉上永遠掛著那副笑，彷彿整個世界都欠他一個舞台。席奧見過太多這種人，在地下世界活不過三個月，因為太亮了，亮得讓所有危險都知道往哪裡瞄。</p>
+        <p>他沒有再多看一眼，繼續盯著前方。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>但那個人很刺眼。</p>
+        <p>不是比喻。是那種席奧沒辦法把視線從那個方向完全移開的刺眼，像眼角一直有個光源，不管他轉向哪裡，他都還在視野邊緣。</p>
+        <p>190公分，高壯，肩寬背厚，站在人群裡自帶某種壓迫感，但他自己好像完全沒有意識到這一點，還是那副吊兒郎當的樣子，手插口袋，跟旁邊的人說話，說一句笑一下，說一句笑一下，輕鬆得讓席奧覺得他是不是搞錯自己來這裡做什麼的。</p>
+        <p>然後訓練開始，那副輕鬆就消失了。</p>
+        <p>動作乾淨，判斷快，那雙琥珀色的眼睛在戰術環境裡掃一圈，已經知道所有人的位置了，沒有多餘的動作，沒有任何猶豫。</p>
+        <p>席奧看了一會兒，把這個細節放進去。</p>
+        <p>有點意思。</p>
+        <p>他想，然後把這個念頭壓下去。</p>
+        <p>他不習慣讓任何東西在他腦子裡待太久。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>第三週，CQB演習結束，體能測試緊跟著。</p>
+        <p>海岸線的風灌進來，帶著鹽和潮氣，鋼絲網壓得很低，下面是冰水、碎石和泥濘。有人在入水的時候倒抽了一口氣，有人的手肘撞上碎石發出悶聲，有人的節奏在第一個障礙點就亂了。</p>
+        <p>席奧俯身入水，冷沒有讓他停頓。他的節奏不是最快的，但每一個動作都壓在最省力的角度，沒有任何浪費。</p>
+        <p>他從一開始就知道傑克在哪裡。</p>
+        <p>左前方，節奏穩，呼吸控制得很好，那雙手肘入水的動作流暢，整個人在泥濘裡移動的方式讓席奧想到某種大型的犬科動物。不是因為野性，而是因為那種骨子裡的從容，好像不管地形多爛，他的身體都已經先適應了。</p>
+        <p>席奧加快了一點。</p>
+        <p>不是因為輸贏。是他想看。</p>
+        <p>想看傑克被超越的那一秒是什麼表情，想知道這個習慣站在前面的人在有人從旁邊超過去的時候會怎麼反應。</p>
+        <p>是加速，是維持，還是那雙眼睛會往這裡看過來。</p>
+        <p>他從傑克旁邊超過去的時候，偏了一下頭。</p>
+        <p>傑克也看了過來。</p>
+        <p>泥水從額前流下來，那雙琥珀色的眼睛沒有慌，也沒有急，就是看了他一眼，兩秒，平靜得像在確認一個意外。然後傑克把視線收回去，繼續往前，節奏沒有亂，速度沒有變。</p>
+        <p>席奧轉回頭。</p>
+        <p>沒有加速追，沒有任何反應。</p>
+        <p>他把這個結果收進腦袋，往終點移動，嘴角動了一下，幅度非常小。</p>
+        <p>他自己沒有注意到。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>更衣室裡有水聲。</p>
+        <p>席奧在門口停了一秒。</p>
+        <p>他知道是傑克。腳步聲、落地方式……</p>
+        <p>他已經在三週，不，第三天時把這些細節記下來。不需要看，聽一下就夠。</p>
+        <p>他本來應該等，或是去別的地方，這個空間不大，沒有必要跟任何人共用。</p>
+        <p>可他推開門走了進去。</p>
+        <p>數據還不夠，他告訴自己，繼續收集。</p>
+        <p>這個理由很合理。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>傑克背對著他，站在最裡面的蓮蓬頭下，水柱打在肩膀上，沿著背脊往下流。席奧在旁邊的位置打開水龍頭，沒有說話，讓自己的視線以一種非常自然的角度落在傑克身上。</p>
+        <p>不是偷看。是觀察。</p>
+        <p>他告訴自己這兩件事不一樣。</p>
+        <p>傑克的背很寬，肩胛骨的線條在水光裡很清楚，訓練在那副身體上留下的東西不是刻意堆出來的厚度，是那種長期高強度之後自然壓縮出來的結實，每一條肌肉都在正確的位置，沒有多餘的，也沒有缺少的。手臂上被碎石蹭出的幾道紅痕還沒褪，水沖過去，那個顏色深了一下又淡回來。</p>
+        <p>席奧的視線往下移了一點。</p>
+        <p>他把這個動作在腦子裡定義成「繼續評估」。</p>
+        <p>然後傑克轉過身，把臉湊進水柱裡，閉著眼睛，泡沫順著頸側流下去。席奧在這個角度第一次這麼清楚地看見傑克的正面。</p>
+        <p>輪廓很硬，下顎線條分明，臉上帶著那種用完力之後才會有的鬆弛，眉頭沒有皺，呼吸很穩，像一頭休息中的獸。</p>
+        <p>席奧盯著那張臉看了兩秒。</p>
+        <p>他在孤兒院花了很多年研究人的臉，學會從表情裡讀出情緒，學會把那些情緒轉化成可以利用的數據。他見過漂亮的臉，見過讓人覺得有威脅感的臉，見過那種把危險藏得很深的臉。</p>
+        <p>傑克的臉讓他想到的不是這些。</p>
+        <p>他沒有辦法立刻給這張臉貼標籤，這件事讓他有一點不舒服。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>沉默維持了一段時間。</p>
+        <p>後來傑克先開口，說了什麼，席奧回了幾句，對話沒有持續很長，傑克的語氣一如既往地鬆散，帶著那種讓席奧覺得低效的隨意。</p>
+        <p>他說了幾句席奧覺得沒有必要記錄的話。</p>
+        <p>「還不小。」</p>
+        <p>席奧的視線從水柱上移開，偏了一下頭。</p>
+        <p>那句話他聽見了，他的大腦在零點幾秒內完成了接收、判斷、分類，然後把它歸進「不需要回應」的那個格子裡。他沒有理由開口，這種話不值得他花力氣，他甚至不確定傑克說這句話的目的是什麼，挑釁，打招呼，還是純粹的語言反射。</p>
+        <p>沒有必要回應。</p>
+        <p>然後席奧說了那句。</p>
+        <p>「我的還是大了點。」</p>
+        <p>不是後悔，席奧不做後悔這種事。</p>
+        <p>只是他在那個瞬間非常清楚地意識到，他剛才說這句話沒有任何計算，沒有目的，沒有預期對方會有什麼反應，那句話就這樣出來了，像是繞過了他腦子裡所有的篩選機制，直接落地。</p>
+        <p>傑克沉默了三秒，笑出來，那種從喉嚨裡漏出來的聲音在更衣室裡顯得很大，席奧繼續搓著頭髮，臉上什麼都沒有，像剛才說的是一個他很早就確認過的事實，不值得為此多做任何表示。</p>
+        <p>「你他媽的是個怪人。」</p>
+        <p>他知道。</p>
+        <p>這不是第一次有人這樣說，也不會是最後一次。這個評價他在孤兒院就確認過了，不需要討論，也不打算解釋。他拿起掛在旁邊的毛巾，把頭髮擦了一下，往更衣室出口走。</p>
+        <p>走到一半，他停了不到一秒。</p>
+        <p>那個未完成的模型還懸在腦子裡，傑克說話時的節奏，那個笑出來之前的三秒停頓，他沒有辦法把這些數據放進任何一個他已經建好的框架裡。</p>
+        <p>他往前走，把那些想法暫時擱置。</p>
+        <p>繼續觀察，他告訴自己。</p>
+        <p>只是資料還不夠。</p>
+      </div>
+    </div>
+
+    <div class="story-divider">
+      <span class="story-divider-text">· · ·</span>
+    </div>
+
+    <!-- ─────────────────────────── -->
+    <!-- 文章 05 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="the-betrayal">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">IN THE UNIT · 05</span>
+        <div class="story-entry-title-redacted">███████</div>
+        <a href="#the-betrayal" class="story-entry-anchor"># the-betrayal</a>
+      </div>
+      <div class="story-body">
+        <p>夜梟的人比他預期的優秀。</p>
+        <p>這是席奧入隊第一週得出的結論，他給了這個評價，然後把它收進某個不重要的抽屜。</p>
+        <p>優秀是事實，但優秀不等於有趣。</p>
+        <p>那些人在酒吧裡嚷嚷，在訓練場上互相叫囂，賭博、喝酒、說廢話，把最低級的幾種本能過得理直氣壯。他站在人群邊緣，看著他們鬧，偶爾給出一個剛好夠用的笑容，讓人覺得他也是其中一份子。</p>
+        <p>他不是。</p>
+        <p>他從來不是任何群體的一份子，他只是站在旁邊，辨認每一個人的重量，決定這顆棋子能走多遠，什麼時候該讓它退出棋盤。</p>
+        <p>夜梟部隊的棋盤比地下世界乾淨，規則更精密，玩家更強，但本質上沒有什麼不同。</p>
+        <p>他以為這裡也跟過去那些地方一樣。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>他只能看見傑克。</p>
+        <p>不是刻意去看的。</p>
+        <p>是某次任務簡報，傑克站在投影前，把戰術地圖拆解成四個部分，聲音平穩，語句精準，眼神掃過每一個人的時候帶著一種席奧在地下世界從來沒有見過的東西。不是威嚴，不是權力，是某種更難描述的東西。</p>
+        <p>那個人相信自己站的地方。</p>
+        <p>席奧在那一刻停住了眼睛。</p>
+        <p>他研究人很多年了，知道大多數人的底色是什麼。恐懼的、貪婪的、虛榮的，包裝不同，內裡大同小異。傑克不一樣，傑克的底色他辨認了很久，最後只能用一個他不常使用的詞去描述。</p>
+        <p>真實。</p>
+        <p>那個人是真實的。他的憤怒是真的，他的信念是真的，他在乎的那些東西對他而言是真的。</p>
+        <p>席奧把這個發現翻來覆去地看，像在研究他不理解的器皿，不知道裡面裝的是什麼，也不知道它為什麼不會破。</p>
+        <p>他決定留在這裡。</p>
+        <p>副隊長的位置是走了後門的，但席奧沒有任何愧疚，因為他清楚自己的能力值那個位置。他站在傑克身邊，兩個人一動一靜，配合得無懈可擊，部隊裡的人都說他們是最好的搭檔。</p>
+        <p>他們說的是對的，只是原因不是他們以為的那個。</p>
+        <p>傑克信任他，因為他夠強，夠冷靜，永遠把任務放在第一位。席奧跟著他，不是因為信任，不是因為忠誠。</p>
+        <p>是因為這個人是他見過唯一一個讓他覺得棋盤還沒走完的人。</p>
+        <p>他從一開始就知道兩人不一樣。</p>
+        <p>只是他沒有預料到，不一樣這件事，會讓他把眼睛停在那個人身上這麼久。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>有些片段他記得，但他不會說自己記得。</p>
+        <p>比如傑克的車。</p>
+        <p>全黑的改裝悍馬，停在基地外的時候擋住了半條路，傑克靠著車門點菸，懶洋洋的，像一頭剛睡醒的獸。席奧把自己的保時捷停在旁邊，下車，掃了那輛車一眼，沒說話。</p>
+        <p>「你那台，」傑克當時說，吐出一口煙，「開進戰區就是個棺材。」</p>
+        <p>「你那台，」席奧說，「油耗和審美都是災難。」</p>
+        <p>傑克哈哈笑了，聲音很大，在空曠的停車場裡蕩了一圈，席奧沒有笑，但他記住了那個聲音的頻率。</p>
+        <p>比如菸的事。</p>
+        <p>傑克抽廉價菸，塑膠打火機，隨手夾在耳後，抽到一半被任務打斷就踩滅，等會兒再撿起來繼續。席奧抽雪茄，不趕時間，一根從頭抽到尾，不讓它在指間浪費。有一次傑克指著他手裡的雪茄說「少在那裡裝逼了」，席奧沒有回答，只是把煙吐向他那一側。</p>
+        <p>傑克揮開煙，繼續說廢話。</p>
+        <p>席奧看著他說廢話，沒有表情，但他記住了那天空氣裡菸草混著夜風的味道，記住了傑克說話時手比劃的幅度，記住了他說到某個幹話時自己先笑出來的樣子。</p>
+        <p>他不知道自己為什麼記這些。</p>
+        <p>他不打算去想清楚。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>任務裡的摩擦是從第一次開始累積的。</p>
+        <p>有一次撤退途中有人受傷，傑克衝上去，雙膝跪地，把手壓在傷口上，叫擔架叫位置，聲音沉穩但席奧聽出了裂縫。</p>
+        <p>那種人在承受某些他不說出口的東西時，聲音裡才會有的細小裂縫。</p>
+        <p>席奧站在四公尺外，背對那攤血跡，觀測前方地形。</p>
+        <p>他掃描了威脅，確認了陣地，回頭時傑克正用眼神看著他，不是問句，是某種他辨認不出來的東西。</p>
+        <p>任務結束後傑克說，「你當時在幹嘛。」</p>
+        <p>他把戰術邏輯解釋得很清楚，傑克沉默了，把菸灰彈進泥地裡，沒有再追。</p>
+        <p>那個答案是正確的，席奧知道。</p>
+        <p>他保住了整個小隊的後路，這是事實。</p>
+        <p>但他也知道傑克想問的不是這個。</p>
+        <p>他只是選擇不去回答傑克真正想問的那個問題。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>後來又有過幾次。</p>
+        <p>目標制伏之後，席奧說後院還有人。傑克說不在名單裡。他跟著撤了，沒有異議，但他在心裡把那個決定翻看了一遍，覺得那是一個情緒大於邏輯的選擇，不理解，也不打算理解。</p>
+        <p>還有那個平民，那個看見了他們臉的女人。席奧給出了分析，傑克罵了他，聲音壓得很低，直呼他名字而不是代號。</p>
+        <p>席奧在無線電裡沉默了兩秒。</p>
+        <p>他在那兩秒裡做的事不是猶豫，是計算。他算出了傑克的決定，算出了那個決定帶來的風險，算出了最終結果大概率還在可接受範圍內。</p>
+        <p>然後他說，你決定，我執行。</p>
+        <p>因為傑克是隊長，這是事實。更重要的是，他的棋盤還沒走到需要翻桌的那一步。</p>
+        <p>那些摩擦之後，傑克有時候會沉默，有時候會在基地外點菸站著，一個人待一段時間。席奧見過他那個樣子很多次，從來沒有走過去。</p>
+        <p>他理解傑克在想什麼。</p>
+        <p>理解他的憤怒，理解他的信念，理解那條他死守著的線從哪裡來，為什麼對他而言那麼真實。</p>
+        <p>只是席奧認為，理解和認同是兩回事。</p>
+        <p>那條線對傑克是真實的。</p>
+        <p>可對他只是一個他可以計算、可以繞過、可以在必要時推倒的變數。</p>
+        <p>他從不覺得這有什麼值得爭論的地方。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>後來有一次，在基地外，天色全黑了，只有遠處哨所的燈在轉。</p>
+        <p>傑克在擦槍，席奧靠著牆，沒有說話。</p>
+        <p>那種沉默在他們之間出現過很多次。</p>
+        <p>「那些東西，」席奧說，「有些是救不回來的。」</p>
+        <p>傑克把手槍放下，看了他一眼。席奧沒有回望他，讓視線落在遠處某個不重要的地方。</p>
+        <p>「你覺得我應該怎麼做，像你一樣？」</p>
+        <p>席奧沒有回答那個問題，因為那個問題問錯了方向。他說的不是要傑克變成他，他只是在陳述一個事實。</p>
+        <p>你看了，也救不了所有人。</p>
+        <p>傑克知道，只是不願意承認。</p>
+        <p>席奧把那個沉默放進記憶裡，和那輛悍馬，和廉價菸的氣味，和任務後傑克在基地門口說話時手比劃的幅度，放在同一個地方。</p>
+        <p>他不知道那個地方叫什麼。</p>
+        <p>他只知道那些片段都在，他沒有刻意留著，也沒有清理掉。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>他從一開始就知道兩人不一樣。</p>
+        <p>傑克是鋼鐵的那種人，有重量，有形狀，可以承重，可以彎，相信自己站的地方。席奧不需要形狀，不需要邊界，他滲透，他蔓延，他不在乎傷到誰，也不覺得有什麼東西值得守護。</p>
+        <p>這兩種不屬於同一個容器。</p>
+        <p>他知道，從一開始就知道。</p>
+        <p>只是結局到來之前，他沒有預料到自己會記得這些碎片這麼清楚。</p>
+        <p>那輛保時捷停在悍馬旁邊的樣子。雪茄和廉價菸的氣味混在一起。傑克在黑暗裡說話，聲音大，不在乎有沒有人聽。</p>
+        <p>席奧記得。</p>
+        <p>他不解釋為什麼。</p>
+      </div>
+    </div>
+
+    <div class="story-divider">
+      <span class="story-divider-text">· · ·</span>
+    </div>
+
+    <!-- ─────────────────────────── -->
+    <!-- 文章 06 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="snake-and-wolf">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">AFTER · 06</span>
+        <div class="story-entry-title">蛇與狼</div>
+        <a href="#snake-and-wolf" class="story-entry-anchor"># snake-and-wolf</a>
+      </div>
+      <div class="story-body">
+        <blockquote>
+          <p><em>「我們曾經站在同一側的黑暗裡。」</em></p>
+          <p><em>「他想走出去。我不明白為什麼要出去。」</em></p>
+          <p><em>「外面叫光的地方，不過是另種讓人看不清楚的方式。」</em></p>
+        </blockquote>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>他在一個陌生城市的某間診所裡，讓人把肋骨固定好。</p>
+        <p>醫生沒問他怎麼傷的，在這裡不需要問這種事。</p>
+        <p>席奧躺著，盯著診所天花板上的燈，聽著外面偶爾傳進來的街道聲音，讓自己安靜地，很罕見地，想了一些事。</p>
+        <p>他試著理解傑克。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>傑克是個很好用的人。</p>
+        <p>聰明，果斷，判斷準確，在任何高壓環境下都能維持清醒，這些東西席奧早就知道。</p>
+        <p>他第一次在訓練場上看見那個人的時候就已經知道了。他有一種識人的能力，看眼神和站姿，就能大概評估出對方的效益值。</p>
+        <p>傑克的效益值向來很高。</p>
+        <p>但他後來發現，傑克身上有一樣東西，他始終沒有辦法歸入任何已知的分類。</p>
+        <p>那個東西不是能力，不是判斷力，是更麻煩的東西。</p>
+        <p>是情感。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>那次行動，他沒有後悔過。</p>
+        <p>消除變數是最乾淨的處理方式，是任何一個清醒的人都應該做的選擇。</p>
+        <p>傑克不這樣認為，他當然知道。</p>
+        <p>他知道傑克為什麼會阻止他，知道那背後是什麼結構、什麼情緒、什麼驅動他。</p>
+        <p>那些他都知道。</p>
+        <p>他只是不認為有任何必要。</p>
+        <p>他沒有愧疚。那幾個人的死是一個結果，是他評估失誤的結果，他把誤差記下來，修正。他知道普通人在這裡會有某種叫做愧疚的情緒，知道那個情緒長什麼樣子，知道它在臉上是什麼表情，在聲音裡是什麼頻率。</p>
+        <p>他能模仿，一直都能。</p>
+        <p>他只是不想。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>那個夜晚傑克壓著他打，落下去每一拳都很重。</p>
+        <p>席奧感覺得到，不是因為疼，是因為力道本身告訴他那些拳不是在清除威脅，不是在執行任何命令，是傑克在發洩某種他自己可能都說不清楚的東西。</p>
+        <p>情緒驅動的行為他見過很多種，憤怒，恐懼，失控，結構通常很簡單，可以預測，容易利用。</p>
+        <p>但傑克那天的拳頭裡有更複雜的東西，有憤怒，但不只是憤怒。</p>
+        <p>有更底層的東西在憤怒下面。</p>
+        <p>讓那些拳頭很重，也讓他打到最後，還是停了。</p>
+        <p>席奧躺在地上，仰頭，和那個人對視，感覺到一個念頭在腦子裡緩緩成形，清醒的，不帶任何情緒色彩。</p>
+        <p>他知道傑克會停。</p>
+        <p>他從一開始就知道。</p>
+        <p>傑克永遠會停，因為那是傑克，因為他有席奧沒有的東西，某種讓他在黑暗裡還是記得自己是誰的東西，而那個東西不允許他越過那條線，不管他有多憤怒，不管那雙手有多想繼續落下去。</p>
+        <p>傑克會停。他早就知道。</p>
+        <p>然後席奧的腦子裡，沒有任何預兆地，冒出另一個問題。</p>
+        <p>如果換成是他自己。</p>
+        <p>他讓那個問題在腦子裡停了一秒，只是一秒，讓它展開，讓它指向一個很清晰的答案。</p>
+        <p>他不會停。</p>
+        <p>不是因為他比傑克殘忍，是因為他根本沒有那個讓他停下來的東西。沒有什麼訊號會告訴他夠了，沒有哪條線在那裡等著讓他記得不能越過去，沒有任何一種情感能在他的手落下去的時候讓他猶豫。</p>
+        <p>他不會停。</p>
+        <p>答案很清楚，清楚到他沒有辦法再往下想。</p>
+        <p>他無視了腦袋裡那零點零幾秒的遲疑。</p>
+        <p>他絕對不會停。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>他在那個城市待了三週。</p>
+        <p>傷在那三週裡慢慢癒合，肋骨還是隱隱作痛，他不太在意，讓自己繼續拆解傑克那件事。他把記憶裡那些年的細節一件一件翻出來，放在腦子裡的光下重新看，像在整理一批需要重新估價的舊物。</p>
+        <p>那個在破爛基地裡拆槍的夜晚。</p>
+        <p>訓練場上傑克讓著他的那次。</p>
+        <p>邊境任務撤退，傑克繞回去把他拉出來，自己的手臂捱了一刀，沒說什麼，罵了一聲，兩個人繼續跑。</p>
+        <p>那些畫面放在光下，他一個一個翻面，試著找出它們的結構。</p>
+        <p>傑克在做什麼？</p>
+        <p>他在守護。他在忠誠。他在實踐某種他的信念，某種叫做情誼、叫做正義、叫做我不能放棄你的信仰，那個東西讓他在那個夜晚憤怒，讓他的拳頭很重，也讓他最後停了下來。</p>
+        <p>席奧盯著天花板，感覺到一種陌生的情緒在他某個地方浮起來，淡的，模糊的，他辨認了很久，才辨認出那是什麼。</p>
+        <p>可笑。</p>
+        <p>不是嘲諷，是真的覺得可笑。</p>
+        <p>傑克把一切分成光明和黑暗，把守護當成武器，把忠誠當成信仰，站在那個框架裡自以為清醒，自以為他選的那條路比席奧的更乾淨。</p>
+        <p>但他們做的是同一件事。</p>
+        <p>都殺人，都欺騙，都在法律照不進去的地方運作，都把手伸進那些不能見光的縫隙裡，唯一的差別只是傑克能得到國家給的章，而席奧做的事沒有。</p>
+        <p>憑什麼那個章讓一件事變得正義。</p>
+        <p>憑什麼傑克是光。</p>
+        <p>他在公寓裡倒了杯酒，坐在靠窗的椅子上，讓那個念頭在腦子裡轉了很久，最後得出一個讓他很平靜的結論。</p>
+        <p>傑克是個聰明人，但傑克有一個致命的弱點。</p>
+        <p>他相信那些東西。他真的相信。</p>
+        <p>那讓傑克好用，讓他可靠，也讓他脆弱。</p>
+        <p>而席奧不需要這些。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>他睡眠一直不好。</p>
+        <p>這不是新的事，只是在那段時間裡，他偶爾在半夜醒來，腦子裡浮著一些細碎的畫面，沒有邏輯，沒有順序，像是記憶的碎片被人隨手丟在那裡。</p>
+        <p>雨聲，和某個破爛屋簷下兩個人並排坐著的輪廓。</p>
+        <p>訓練場上傑克扭頭看他的側臉。</p>
+        <p>還有傑克笑的樣子。</p>
+        <p>那種很輕鬆的、沒有任何目的的笑，是他始終沒有辦法分析清楚的表情。</p>
+        <p>他會讓那些畫面在腦子裡浮一會兒。</p>
+        <p>不是因為那些畫面讓他難過，是因為它們沒有效益，沒有作用，卻反覆出現，他把它們歸為尚未處理乾淨的雜訊。</p>
+        <p>但他也沒有刻意清除它們。</p>
+        <p>只是讓它們待著，在他偶爾清醒的半夜浮出、沉回去、等天亮。</p>
+        <p>他把公寓佈置得很乾淨，很安靜，落地窗對著整座城市，燈在下面連成一片，他喜歡那個視角，喜歡居高臨下，喜歡在那個位置讓所有人的移動縮成可以計算的圖形。</p>
+        <p>他坐在那扇窗前，品一杯好酒，讓古典樂在室內低低地流，看著底下那座城市的燈慢慢亮起來。</p>
+        <p>傑克的框架和他的選擇，在那個畫面裡都變得很遠，很小。</p>
+        <p>他很清楚自己是什麼。</p>
+        <p>至於傑克是什麼，他想他大概也知道了。</p>
+        <p>只是有一件事，他至今還是沒有辦法計算清楚。</p>
+        <p>那個夜晚傑克的手停下來之前，他眼睛裡的東西，那個他命名不出來的東西，是什麼。</p>
+        <p>他讓那個問題在腦子裡沉，像一枚硬幣落進深水，沉下去，沉到他看不見的地方，沒有答案，也沒有聲音。</p>
+        <p>他喝了口酒，讓它繼續沉著，看著窗外的燈繼續亮，等著下一件事發生。</p>
+      </div>
+    </div>
+
+    <!-- 返回按鈕 -->
+    <a href="../theo.html#stories" class="back-btn">◁ 返回席奧</a>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    NIGHT OWL UNIT · THEO · BY FEBY
+  </footer>
+
+  <!-- 回頂端按鈕 -->
+  <button class="back-to-top" id="backToTop" aria-label="回頂端">↑</button>
+
+  <script>
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      btn.classList.toggle('visible', window.scrollY > 400);
+    });
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>

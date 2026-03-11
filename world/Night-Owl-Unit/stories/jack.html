@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&family=Share+Tech+Mono&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦉</text></svg>">
+  <title>傑克的過去｜夜梟部隊</title>
+
+  <meta property="og:title" content="傑克的過去｜by菲比">
+  <meta property="og:description" content="他一直在等，等某個值得他全力以赴的東西。">
+  <meta property="og:image" content="https://feby11-note.github.io/somewhere/pic/characters/jack/1.jpeg">
+  <meta property="og:url" content="https://feby11-note.github.io/somewhere/world/Night-Owl-Unit/stories/jack-stories.html">
+  <meta property="og:type" content="website">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #1E2D40;
+      --surface: #273D57;
+      --surface2: #304A6A;
+      --border: #4A6280;
+      --green: #5EC44E;
+      --green-light: #9FDD8F;
+      --orange: #F0A840;
+      --accent: #7BC8E8;
+      --text: #EEF4FF;
+      --text-dim: rgba(238, 244, 255, 0.78);
+      --text-muted: rgba(238, 244, 255, 0.42);
+      font-size: clamp(15px, 1.1vw + 11px, 18px);
+    }
+
+    body {
+      font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── Nav ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 3.75rem;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(26, 37, 53, 0.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1rem;
+      color: var(--green-light);
+      text-decoration: none;
+      letter-spacing: 0.12em;
+      opacity: 0.9;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .nav-brand:hover { opacity: 1; }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 0;
+    }
+
+    .nav-links a {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      padding: 0.4rem 0.65rem;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+      letter-spacing: 0.03em;
+    }
+    .nav-links a:hover { color: var(--text); border-color: var(--border); }
+
+    /* ── 主容器 ── */
+    .main {
+      width: 92%;
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 5.5rem 0 5rem;
+    }
+
+    /* ── 頁面標題 ── */
+    .page-header {
+      margin-bottom: 3rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-eyebrow {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--orange);
+      letter-spacing: 0.2em;
+      opacity: 0.85;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-header h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--text);
+    }
+
+    /* ══════════════════════════
+       目錄
+    ══════════════════════════ */
+    .toc {
+      margin-bottom: 3rem;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .toc-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1rem;
+      background: var(--surface2);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .toc-header-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+    }
+
+    .toc-header-count {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+    }
+
+    .toc-list { list-style: none; }
+
+    .toc-list li {
+      border-bottom: 1px solid rgba(74,98,128,0.2);
+    }
+    .toc-list li:last-child { border-bottom: none; }
+
+    .toc-list a {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .toc-list a:hover { background: rgba(123,200,232,0.06); }
+
+    .toc-num {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      letter-spacing: 0.08em;
+      padding: 0.875rem 0.875rem;
+      min-width: 3rem;
+      text-align: center;
+      border-right: 1px solid rgba(74,98,128,0.2);
+      background: rgba(0,0,0,0.1);
+      flex-shrink: 0;
+    }
+
+    .toc-title {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      letter-spacing: 0.04em;
+      padding: 0.875rem 1rem;
+      flex: 1;
+      transition: color 0.15s;
+    }
+    .toc-list a:hover .toc-title { color: var(--green-light); }
+
+    .toc-arrow {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      padding: 0.875rem 1rem;
+      flex-shrink: 0;
+      transition: color 0.15s, transform 0.15s;
+    }
+    .toc-list a:hover .toc-arrow {
+      color: var(--green-light);
+      transform: translateX(3px);
+    }
+
+    /* ── 文章區塊 ── */
+    .story-entry {
+      margin-bottom: 4rem;
+      scroll-margin-top: 4.5rem;
+    }
+
+    .story-entry-header {
+      margin-bottom: 1.75rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(74,98,128,0.3);
+    }
+
+    .story-entry-tag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+      padding: 0.15rem 0.5rem;
+      display: inline-block;
+      margin-bottom: 0.6rem;
+    }
+
+    .story-entry-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .story-entry-anchor {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      opacity: 0.65;
+      transition: opacity 0.2s;
+    }
+    .story-entry-anchor:hover { opacity: 1; color: var(--green-light); }
+
+    /* ── 內文 ── */
+    .story-body {
+      font-size: 1rem;
+      color: var(--text-dim);
+      line-height: 2;
+      letter-spacing: 0.04em;
+    }
+
+    .story-body p { margin-bottom: 1.5em; }
+    .story-body p:last-child { margin-bottom: 0; }
+
+    /* ── 場景分隔線（篇內用）── */
+    .scene-break {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 2.5rem 0;
+    }
+    .scene-break::before,
+    .scene-break::after {
+    content: '';
+    width: 1.5rem;
+    height: 1px;
+    background: var(--border);
+    opacity: 0.35;
+    flex: none;
+    }
+    .scene-break-text {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--text-muted);
+      letter-spacing: 0.2em;
+      white-space: nowrap;
+    }
+    /* ── 短篇小標題 ── */
+    .scene-title {
+     display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 2.5rem 0 1.25rem;
+    padding-left: 0.75rem;
+    border-left: 2px solid var(--border);
+    }
+
+    .scene-title-num {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+    flex-shrink: 0;
+    }
+
+.scene-title-text {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+}
+    /* ── 文章間分隔 ── */
+    .story-divider {
+      margin: 4rem 0;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .story-divider::before,
+    .story-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      opacity: 0.65;
+    }
+    .story-divider-text {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      letter-spacing: 0.2em;
+      white-space: nowrap;
+    }
+
+    /* ── 返回按鈕 ── */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      width: 100%;
+      transition: color 0.2s;
+    }
+    .back-btn:hover { color: var(--green-light); }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      padding: 1.75rem;
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
+
+    /* ── 回頂端按鈕 ── */
+    .back-to-top {
+      position: fixed;
+      bottom: 1.75rem;
+      right: 1.25rem;
+      z-index: 200;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s, background 0.2s, color 0.2s;
+      clip-path: polygon(6px 0%, calc(100% - 6px) 0%, 100% 6px, 100% 100%, 0% 100%, 0% 6px);
+    }
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .back-to-top:hover {
+      background: var(--surface);
+      color: var(--green-light);
+      border-color: var(--green-light);
+    }
+
+    /* ── RWD ── */
+    @media (max-width: 680px) {
+      .nav {
+        height: 3.75rem;
+        padding: 0 1.25rem;
+      }
+      .nav-brand {
+        font-size: 0.95rem;
+        letter-spacing: 0.1em;
+      }
+      .nav-links a {
+        font-size: 0.8rem;
+        padding: 0.35rem 0.5rem;
+      }
+      .main {
+        padding-top: 5.5rem;
+      }
+      .toc-title {
+        font-size: 0.88rem;
+      }
+      .story-entry-tag {
+        font-size: 0.7rem;
+      }
+      .story-entry-anchor {
+        font-size: 0.68rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .nav-brand {
+        font-size: 0.85rem;
+        letter-spacing: 0.08em;
+      }
+      .nav-links a {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="nav">
+    <a href="../jack.html#stories" class="nav-brand">◁ 傑克</a>
+    <ul class="nav-links">
+        <li><a href="../stories/jack.html#">章節選單</a></li>
+      <li><a href="../index.html#members">夜梟部隊</a></li>
+      <li><a href="../../../world/index.html">回到世界</a></li>
+    </ul>
+  </nav>
+
+  <div class="main">
+
+    <!-- 頁面標題 -->
+    <div class="page-header">
+      <div class="page-eyebrow">HIS PAST · JACK · NOU-001</div>
+      <h1>狼</h1>
+    </div>
+
+    <!-- 目錄 -->
+    <div class="toc" id="toc">
+      <div class="toc-header">
+        <span class="toc-header-label">CHAPTER · 章節選單</span>
+        <span class="toc-header-count">17 CHAPTERS</span>
+      </div>
+      <ul class="toc-list">
+        <li>
+          <a href="#jack-wilson">
+            <span class="toc-num">01</span>
+            <span class="toc-title">傑克．威爾森</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#not-for-justice">
+            <span class="toc-num">02</span>
+            <span class="toc-title">不是為了正義</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#coastline">
+            <span class="toc-num">03</span>
+            <span class="toc-title">海線</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#side-by-side">
+            <span class="toc-num">04</span>
+            <span class="toc-title">並肩而行</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#steel-and-venom">
+            <span class="toc-num">05</span>
+            <span class="toc-title">鋼鐵與毒</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#gretel">
+            <span class="toc-num">06</span>
+            <span class="toc-title">葛麗特</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#fragment-1">
+            <span class="toc-num">07</span>
+            <span class="toc-title">碎片 I</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#fragment-2">
+            <span class="toc-num">08</span>
+            <span class="toc-title">碎片 II</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#sahara-1">
+            <span class="toc-num">09</span>
+            <span class="toc-title">任務代號：撒哈拉 I</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#sahara-2">
+            <span class="toc-num">10</span>
+            <span class="toc-title">任務代號：撒哈拉 II</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#sahara-3">
+            <span class="toc-num">11</span>
+            <span class="toc-title">任務代號：撒哈拉 III</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#sahara-4">
+            <span class="toc-num">12</span>
+            <span class="toc-title">任務代號：撒哈拉 IV</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#sahara-5">
+            <span class="toc-num">13</span>
+            <span class="toc-title">任務代號：撒哈拉 V</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#before-dawn">
+            <span class="toc-num">14</span>
+            <span class="toc-title">黎明之前</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#wolf-and-snake">
+            <span class="toc-num">15</span>
+            <span class="toc-title">狼與蛇</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#you">
+            <span class="toc-num">16</span>
+            <span class="toc-title">你</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#flower">
+            <span class="toc-num">17</span>
+            <span class="toc-title">花</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ─────────────────────────── -->
+    <!-- 文章 01 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="jack-wilson">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">BEFORE THE UNIT · 01</span>
+        <div class="story-entry-title">傑克．威爾森</div>
+        <a href="#jack-wilson" class="story-entry-anchor"># jack-wilson</a>
+      </div>
+      <div class="story-body">
+        <p>在十八歲以前，他沒有輸得太難看過。</p>
+        <p>不是他拼命，而是因為他幾乎不需要。</p>
+        <p>操場上的短跑，他跑到一半就知道誰追不上；籃球場上的對抗，他在對方起跳前就能預判落點；打架也是，他總是先看，再動手。</p>
+        <p>他不愛惹事，但如果事情來了，他結束得很快。</p>
+        <p>有一次放學後，巷口的幾個高年級堵住他，氣裡帶著那種想試探強弱的興奮。傑克沒有立刻回話，他先看了一眼巷口出口的距離，再看他們的位置，最後才看人。</p>
+        <p>第一拳落下時，他已經知道會是最後一拳。</p>
+        <p>他並不為此驕傲，只是覺得原來事情可以這麼簡單。</p>
+        <p>老師說他聰明、教練說他天賦高、同學說他囂張，而他自己呢？</p>
+        <p>他只覺得無聊。</p>
+        <p>學業能考好，但懶得拿第一；體測他輕鬆破紀錄，卻裝作沒盡全力。不是懦弱，他只是沒有找到值得全力以赴的東西。</p>
+        <p>直到他看到那支軍校招生影片。</p>
+        <p>畫面裡沒有音樂，沒有誇張的剪輯，是那種最粗糙簡單的無聊影片，連行銷都沒做。只有一群人背著負重在雨裡奔跑，有人跌倒、有人爬起來、有人被拖走。</p>
+        <p>那是他第一次感到心跳變重。</p>
+        <p>不是因為榮耀、不是因為薪水，而是因為「難」。那種純粹的強度，讓他覺得有趣。</p>
+        <p>面試那天，軍官問他為什麼報名。他說「想試試看」，語氣隨意得像報名籃球社。</p>
+        <p>軍官皺眉，追問：「試什麼？」</p>
+        <p>「試試看我能不能撐到最後。」</p>
+        <p>他其實不擔心自己撐不住。他更想知道的是，會不會終於遇到讓他必須全力以赴的東西。</p>
+      </div>
+    </div>
+
+    <div class="story-divider">
+      <span class="story-divider-text">· · ·</span>
+    </div>
+
+    <!-- ─────────────────────────── -->
+    <!-- 文章 02 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="not-for-justice">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">BEFORE THE UNIT · 02</span>
+        <div class="story-entry-title">不是為了正義</div>
+        <a href="#not-for-justice" class="story-entry-anchor"># not-for-justice</a>
+      </div>
+      <div class="story-body">
+        <p>22歲那年，他從軍校畢業得很順利，體能、射擊、搏鬥、判斷、戰術分析——近乎無可挑剔。</p>
+        <p>授階少尉的那天，他站在陽光底下，制服筆挺，肩章閃著光。旁人眼裡那是榮耀，對他而言，只是下一關開始。</p>
+        <p>ALPHA特戰部隊看中他卓越的天賦，招募他入伍，那是別人夢寐以求的位置，對他而言是「終於有點刺激」。</p>
+        <p>反恐、救援、城市突入、夜間火力壓制——他的心跳在子彈聲中反而變得平穩。他發現自己在混亂裡思路更清晰、在壓力裡更冷靜。</p>
+        <p>他適合這裡。</p>
+        <p>他不熱血、不喊口號、不在夜裡寫信說想為國家犧牲，只是把任務完成，乾淨、俐落、沒有懸念，也沒有不必要的牽掛。</p>
+        <p>只是在某個時間點，他開始意識到一件事：自己不是為了榮譽，也不是為了勳章，甚至不是為了什麼可笑的世界和平。「正義」這個詞在行動簡報裡出現太多次，多到像一種方便的理由。他救過人、開過火、殺過人，有時候界線模糊得讓人懶得分辨。</p>
+        <p>他不是迷失，只是那種無聊的感覺又回來了。</p>
+
+        <div class="scene-break"><span class="scene-break-text">* * *</span></div>
+
+        <p>那個契機發生在一次再平凡不過的反恐打擊行動。</p>
+        <p>沒有什麼英雄式的高潮，沒有震天動地的對峙，只是煙霧彈殘留在空氣裡，嗆得人喉嚨發乾，無線電裡有人報平安，有人報傷亡，隊伍正在按標準流程撤離。</p>
+        <p>他經過那具倒在走廊盡頭的屍體時，本來沒有停下。那人是目標之一，身份明確，威脅已解除，一切合理，一切安全。</p>
+        <p>直到他餘光掃到對方攤開的手。</p>
+        <p>掌心裡不是武器，是一張被血浸濕、邊角折得發白的照片。照片上是一個女人，笑得有點傻氣，懷裡抱著一隻狗，背面還寫著幾個字，字跡凌亂，像是出發前匆忙留下的。</p>
+        <p>那一刻他忽然明白，自己不是為了任務或命令，甚至不是為了國家。</p>
+        <p>他是在等。</p>
+        <p>等某一天，有某個人站在他身後，而他會本能地擋在前面。不是因為規定，而是因為選擇。</p>
+        <p>他知道這種想法很蠢，一個職業軍人不該浪漫化自己的動機，不該等誰、不該想守護誰。</p>
+        <p>但那念頭像子彈一樣卡在他腦海裡，他繼續任務、繼續升遷、繼續冷靜。</p>
+        <p>只是從那天起，他心裡多了一個位置。不是為了正義，是為了那個還沒出現、卻值得的人。</p>
+
+        <div class="scene-break"><span class="scene-break-text">* * *</span></div>
+
+        <p>多年後，他依然嘴硬、依然散漫、依然像對什麼都不在乎。</p>
+        <p>但只有他自己知道，走進戰場不是為了證明自己。</p>
+        <p>是為了確保當那個人出現時，他已經強到能保護。</p>
+      </div>
+    </div>
+
+    <div class="story-divider">
+      <span class="story-divider-text">· · ·</span>
+    </div>
+
+    <!-- ─────────────────────────── -->
+    <!-- 文章 03 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="coastline">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">BEFORE THE UNIT · 03</span>
+        <div class="story-entry-title">海線</div>
+        <a href="#coastline" class="story-entry-anchor"># coastline</a>
+      </div>
+      <div class="story-body">
+        <p>海岸線的風從來不為人客氣。</p>
+        <p>鹽味裡帶著潮氣，灌進鼻腔、沉進肺裡，涼得像刀，每一口都提醒你這裡不是讓人舒服的地方。</p>
+        <p>ALPHA特戰部隊的操練向來不以仁慈著稱，第一週淘汰三分之一的人，第二週開始，沒有人再說笑，連罵人都省了力氣。</p>
+
+        <div class="scene-break"><span class="scene-break-text">* * *</span></div>
+
+        <p>第三週，CQB演習結束後緊接著體能測試。</p>
+        <p>鋼絲網壓得極低，下面是冰水、碎石和泥濘，氣溫比清晨還低兩度，手指一碰到水就像被刀割。周圍是喘息聲、咒罵聲、碎石被肘尖劃過的悶響，有人撞上鋼絲發出一聲鐵器顫動的噪音，緊接著是教官平靜的「重來」。</p>
+        <p>傑克維持低姿匍匐，節奏穩定，手肘入水、前推、拖腿，呼吸均勻得像在睡前散步。他從來不浪費體力在緊張上，這一點從他第一天訓練就沒有變過。</p>
+        <p>然後有人超過他。</p>
+        <p>動作比他快，比他俐落，乾脆得像是鋼絲網對那人來說只是個稍微麻煩的障礙物，甚至帶點漫不在乎。</p>
+        <p>傑克抬眼看了一下。</p>
+        <p>銀灰色的頭髮被泥水打濕，貼在額前，臉側向他這邊，灰黑色的瞳孔被晨霧漫出的光打亮，嘴角帶著一點笑。不是被激勵的鬥志，也不是咬牙的痛苦。</p>
+        <p>像是在找樂子。</p>
+        <p>傑克盯著那個背影看了兩秒，心裡浮出一個念頭，清晰得讓他自己都意外。</p>
+        <p><em>這個人有問題。</em></p>
+        <p>緊接著是第二個念頭。</p>
+        <p><em>但他很強。</em></p>
+
+        <div class="scene-break"><span class="scene-break-text">* * *</span></div>
+
+        <p>演習結束之後，傑克在水龍頭下沖掉身上的泥，兩條手臂被碎石蹭出幾道紅痕，還帶著泥。</p>
+        <p>他聽見旁邊有人走進來，腳步聲不重，落地方式有種刻意放輕的習慣。傑克沒轉頭，只是本能地側了一下眼。</p>
+        <p>銀灰色的頭髮，泥水沖掉之後露出底下的臉。</p>
+        <p>傑克承認他愣了一秒。</p>
+        <p>不是奇怪的原因，純粹是因為這個人長得有點過分。輪廓深、下顎線條硬、皮膚白，白得不像在野外操練過，肌肉不是那種刻意堆出來的厚度，要說轉行去走伸展台也不是沒有可能——就是臉上的表情把那個可能性直接殺死了。</p>
+        <p>沒有表情。一點都沒有。冷著臉，對整個世界保持統一的不在意。純粹的無動於衷。</p>
+        <p>傑克的視線不太老實地往下掃了一眼。</p>
+        <p>純粹是直男本能，那種無聊的、不帶任何意義的自動比較。健身房更衣室裡每個男人都做過，沒有人承認，但沒有人沒做過。</p>
+        <p>他看了一眼，然後哼了一聲，把視線收回來，繼續沖水，語氣非常平靜。</p>
+        <p>「還不小。」</p>
+        <p>旁邊沉默了大概一秒半。</p>
+        <p>那人偏頭看他，像是在確認傑克說的是否是人類語言。表情沒有變化，視線也沒有波動，「你習慣這樣跟人打招呼？」</p>
+        <p>「只是陳述事實，」傑克說，「你剛才超過我。」</p>
+        <p>那人沉默了一秒，重新整理這兩句話之間的邏輯關係，「這兩件事有關係？」</p>
+        <p>「沒有，」傑克聳了聳肩，「在這裡通常我是第一。」</p>
+        <p>他打量他，那個眼神在傑克臉上停了兩秒。不是評估，更像是在觀察一個有趣的物體。然後他把視線收回去，開始沖水，口氣平得像在念操作說明書，「你的節奏太規律，三分鐘就能算出你的速度。」</p>
+        <p>他停頓了一下。</p>
+        <p>「還有，」</p>
+        <p>「什麼，」傑克側過頭看他。</p>
+        <p>那人說，「我的還是大了點。」</p>
+        <p>然後他沒再說話，認真沖他的澡，臉上一如既往地什麼起伏都沒有，像是剛才那句話跟報告今天天氣涼爽的難度完全一樣。</p>
+        <p>傑克站在旁邊，沉默了大概三秒。</p>
+        <p>然後笑出來了，那種沒忍住、從喉嚨裡漏出來的笑，帶著點不敢置信。</p>
+        <p>「你叫什麼，」傑克問。</p>
+        <p>「席奧，」他依然沒有看他，自顧自地搓著那頭銀髮，泡沫順著頸側流下去。</p>
+        <p>「我是傑克，」然後想了一秒，「你他媽的是個怪人。」</p>
+        <p>「我知道。」</p>
+        <p>他沒有停頓，沒有被冒犯，語氣平靜得像是這個評價他很早之前就確認過了，不需要討論，也不打算解釋。</p>
+        <p>傑克看著他離開更衣室的背影，步伐不快，帶著一種奇怪的優雅，像一隻在人群裡走的野獸，外表安靜，但骨子裡的東西跟「馴服」這個詞完全沒有交集。</p>
+        <p>傑克心裡有個模糊的念頭還沒成形，只能先暫時概括成一句話。</p>
+        <p><em>這個人肯定有點病。</em></p>
+
+        <div class="scene-break"><span class="scene-break-text">* * *</span></div>
+
+        <p>他們沒有刻意成為搭檔，是訓練本身把他們推在一起的。</p>
+        <p>高空跳傘，教官要求雙人協作，傑克判斷風向，席奧負責修正落點。落地之後教官說「偏了兩公尺」，兩個人對視了一眼，沒有說話，下一次縮到半公尺，再下一次，完美落點。</p>
+        <p>近距離巷戰，傑克壓制正面，席奧清理死角。沒有事先說好，沒有手勢，傑克往右的時候席奧已經在左邊，傑克需要掩護的時候席奧的槍口已經轉過來了，時間差小到幾乎不存在，像是提前走過幾百次的默契，但實際上他們連對過眼神都沒有。</p>
+        <p>演習結束，隊友說「你們兩個原本就是搭檔？」</p>
+        <p>傑克說不是。</p>
+        <p>席奧沒有說話。</p>
+        <p>傑克瞥見他嘴角動了一下，非常輕微，輕到如果不是傑克那一刻正在看著他，根本不會發現。那不是笑，嚴格來說，只是某個表情最起始的一個動作，但傑克知道那是席奧版本的「不錯。」</p>
+
+        <div class="scene-break"><span class="scene-break-text">* * *</span></div>
+
+        <p>那晚傑克躺在舖上，盯著天花板上的一道裂紋，外面的風還是帶著鹽味，把窗框的鐵鉸鏈吹得微微作響。</p>
+        <p>他遇過很多強的人，遇過讓他覺得麻煩的人，遇過讓他打從心底佩服的人。但那些都是他能定義的關係，對手、隊友、值得尊重的人。</p>
+        <p>席奧不一樣。</p>
+        <p>跟席奧並肩的時候，傑克沒有計算、不用思考。那種戰場上他最習慣的判斷，在席奧身上根本沒有啟動。不是因為他鬆懈了，而是他從第一眼就已經知道答案了，像是某種早就寫好的結論，他只是在訓練裡一步一步地翻到那一頁。</p>
+        <p>但傑克從來沒有遇過讓他覺得「對，就是這樣」的人。</p>
+        <p>不需要確認、不需要磨合，只要他在場，背後就有了依靠。不是信任，是比信任更深的部分，是他不需要解釋也不需要懷疑的完整。</p>
+        <p>他說不清楚那是什麼。</p>
+        <p>只知道在席奧身上，那個位置第一次有了重量。</p>
+        <p>他從來沒有跟席奧說過這件事。</p>
+        <p>後來，他慶幸自己沒有說。</p>
+      </div>
+    </div>
+
+<!-- ─────────────────────────── -->
+    <!-- 文章 04 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="side-by-side">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">BEFORE THE UNIT · 04</span>
+        <div class="story-entry-title">並肩而行</div>
+        <a href="#side-by-side" class="story-entry-anchor"># side-by-side</a>
+      </div>
+      <div class="story-body">
+        <p>第一次和席奧搭檔出任務時，傑克其實沒太當回事。</p>
+        <p>不是因為看不起席奧，而是在那之前，所有任務對他來說都差不多：計畫、潛入、清場、撤離，流程像機械一樣穩定，唯一的變數通常是隊友。有些人太急，有些人太慢，還有些人會在關鍵時刻問些讓人想把他丟出窗外的問題。</p>
+        <p>席奧則不屬於這三種。</p>
+
+        <div class="scene-break"><span class="scene-break-text">* * *</span></div>
+
+        <p>那次行動在一座廢棄港口倉庫。情報說目標是小隊武裝分子，躲在港區邊緣的舊貨倉裡，沒有重武器，沒有複雜防線，理論上是一場標準的夜間突入。</p>
+        <p>理論上。</p>
+        <p>傑克蹲在集裝箱的陰影裡，透過夜視鏡掃著入口。</p>
+        <p>「三個，」他低聲說。旁邊傳來彈匣被輕輕推進槍身的聲音。</p>
+        <p>「左邊那個會先死。」席奧說。</p>
+        <p>傑克瞥了他一眼。「你打賭？」</p>
+        <p>席奧露出一個幾乎算不上笑的笑。「不用賭。」</p>
+        <p>傑克懶得跟他爭，翻了個白眼，把注意力放回入口。</p>
+        <p>倒數從無線電裡傳來，三、二、一，門開。</p>
+        <p>第一個人轉身太慢，第二個人槍都沒抬起來，第三個人直接愣住。席奧的第一槍確實打在左邊。</p>
+        <p>「看吧。」他邊移動邊說，語氣平得像在報氣象。</p>
+        <p>「別得意。」傑克回。</p>
+        <p>他們一前一後進入倉庫，動作沒有多餘的聲音。角落、門口、樓梯口，每個死角都在視線裡被標記出來，幾乎不需要說話。</p>
+
+        <div class="scene-break"><span class="scene-break-text">* * *</span></div>
+
+        <p>到二樓的時候，事情開始有點滑稽。</p>
+        <p>倉庫裡剩下的兩個人顯然沒做好心理準備，其中一個慌亂地踢翻椅子，另一個試圖躲到一張完全沒有遮蔽的桌子後面。</p>
+        <p>傑克忍不住低聲說：「他是不是覺得那張桌子防彈？」</p>
+        <p>席奧沒回頭。「希望不是。」</p>
+        <p>「為什麼？」</p>
+        <p>「因為我剛打穿了它。」</p>
+        <p>兩秒後，那張桌子確實多了兩個洞。傑克輕哼一聲。「你破壞公物。」</p>
+        <p>「港口管理局又不會報警。」席奧擺了擺手，「我們也算警察吧。」</p>
+        <p>「濫用職權，罪加一等。」</p>
+        <p>最後一個目標試圖從後門逃跑，剛踏出門檻就停住了。因為傑克已經站在外面，像是早就算好他會往哪裡跑。</p>
+        <p>席奧慢悠悠地跟出來，看了一眼那人的表情。「你運氣不太好。」他說。</p>
+        <p>那人還沒搞清楚這句話是什麼意思，下一秒已經被傑克壓倒在地。</p>
+
+        <div class="scene-break"><span class="scene-break-text">* * *</span></div>
+
+        <p>撤離的路上，海風從港口吹過來，夜色安靜得像沒有發生過任何事。</p>
+        <p>傑克把頭盔摘下來，甩了甩悶了一晚的頭髮，正打算說點什麼，席奧先開口了。</p>
+        <p>「你很吵。」</p>
+        <p>傑克轉頭。「我？」</p>
+        <p>「任務裡一直嘮嘮叨叨的。」</p>
+        <p>傑克笑了，那種懶散的、帶點無賴氣的笑。「不說話的人吃虧囉。」</p>
+        <p>席奧想了想，好像找不到反駁，只說了一句：「但效率不錯。」</p>
+        <p>「這是誇獎？」</p>
+        <p>「不是。」</p>
+        <p>傑克挑了挑眉，決定不繼續這個話題，只是把頭盔往手上拋了一下，繼續往前走。</p>
+
+        <div class="scene-break"><span class="scene-break-text">* * *</span></div>
+
+        <p>後來幾年，他們完成過不少任務。</p>
+        <p>高樓突入、夜間滲透、邊境掃蕩，局勢有時混亂得像一團燒不完的火，有時安靜得只剩彼此的呼吸聲。但不管是哪一種情況，只要兩個人同時在場，事情總會變得簡單一點。</p>
+        <p>傑克衝得很深，但從不擔心背後；席奧從不懷疑前面有沒有清乾淨。</p>
+        <p>這種默契沒有名字，不是信任宣言，也不是什麼戰友情深的鬼話，只是效率，只是本能，只是兩個人恰好能拼成一個完整的答案。</p>
+        <p>他們沒有說過「信任」，但在火線交錯的那瞬間，彼此的背後從不用回頭確認。</p>
+        <p>傑克承認在所有訓練與戰場裡，他唯一真正感覺「棋逢對手」的人是席奧。</p>
+        <p>也是他此生第一次，意識到「強大」可能有不同定義，而另一種定義，他不確定自己願不願意走過去。</p>
+        <p>像兩條在同一片森林裡奔跑的野獸，不需要確認彼此在哪，並肩而行。</p>
+        <p>只是沒有想過，這條路有一天會分叉。</p>
+      </div>
+    </div>
+
+    <div class="story-divider">
+      <span class="story-divider-text">· · ·</span>
+    </div>
+
+    <!-- ─────────────────────────── -->
+    <!-- 文章 05 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="steel-and-venom">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">IN THE UNIT · 05</span>
+        <div class="story-entry-title">鋼鐵與毒</div>
+        <a href="#steel-and-venom" class="story-entry-anchor"># steel-and-venom</a>
+      </div>
+      <div class="story-body">
+        <p>傑克升遷得很快。</p>
+        <p>在ALPHA特戰部隊待了一陣子後被夜梟挖角，成了隊長。席奧，理所當然地走了後門，成為他的副隊長。</p>
+        <p>那段時間傑克慢慢拼湊出了一些東西。</p>
+        <p>不是察覺，是積累，像沙子一粒一粒落進鞋裡。</p>
+        <p>可那時候他還不知道，有些人生來就不是為了被理解的。</p>
+
+        <div class="scene-break"><span class="scene-break-text">* * *</span></div>
+
+        <p>第一次，是一場山地清剿任務之後。</p>
+        <p>小隊在撤退途中踩到了地雷，是新兵陳，左腳以下幾乎沒了。傑克衝上去按著傷口，叫人回報位置、叫人備擔架，他在腥熱的地面上，用自己的膝蓋和手掌維持那個傷不繼續崩潰。</p>
+        <p>他沒時間確認其他人的位置，但他的餘光掃過了在場的人。</p>
+        <p>席奧站在四公尺外的土坡邊緣，背對他們，觀測前方地形，動作從容，彷彿身後那攤血跡與慌亂跟他所處的世界之間隔著一層玻璃。</p>
+        <p>任務結束後，傑克在基地外點了根菸，坐在彈藥箱上等待自己的心跳慢下來。席奧從通道裡走出來，手裡拿著一份情報摘要，在他旁邊坐下，不說話，翻頁。</p>
+        <p>「陳沒了一條腿。」</p>
+        <p>「我知道，」席奧說，眼睛沒從文件上移開，「他踩的是M14，那個角度，截肢是最好的結果。」</p>
+        <p>「你當時在幹嘛。」不是問句。</p>
+        <p>「觀測，」席奧說，語氣跟回報天氣一樣平靜，「你們身後三點鐘方向有狙擊陣地，我在確認是否已廢棄。」他把摘要翻過一頁，「嗯。已廢棄。所以你們還活著。」</p>
+        <p>傑克沉默了幾秒，把菸灰彈進泥地裡。</p>
+        <p>那個答案無懈可擊，戰術上正確，邏輯上精準。他沒有辦法挑剔，也沒有辦法說席奧做錯了什麼。</p>
+        <p>但他記住了那個輪廓。</p>
+        <p>席奧站在土坡邊緣的樣子，背影筆直，周圍是亂流，而他像一根錨，扎在局外。</p>
+
+        <div class="scene-break"><span class="scene-break-text">* * *</span></div>
+
+        <p>第二次，是目標的事。</p>
+        <p>目標已經確認制伏，傑克下令撤離。</p>
+        <p>「還有人，」席奧說，語氣非常平靜，「在後院。」</p>
+        <p>「不在清除名單裡，」傑克說，「撤。」</p>
+        <p>席奧看了他一眼，那個眼神傑克後來想了很多次，想不出一個準確的詞去形容它。不是憤怒，不是不滿，更像是一個人在看某件他覺得沒有道理的事，然後決定不浪費時間去理解它。</p>
+        <p>「你確定？」席奧問。</p>
+        <p>「確定。」</p>
+        <p>席奧跟著撤了。</p>
+        <p>但傑克知道他不同意。</p>
+        <p>那天晚上他們在臨時據點吃乾糧，席奧沒有再提那件事，傑克也沒有。但那個東西留在房間裡，像一個沒關緊的水龍頭，細細地滴。</p>
+
+        <div class="scene-break"><span class="scene-break-text">* * *</span></div>
+
+        <p>第三次，是人質。</p>
+        <p>那個任務是市區滲透，目標是一名被扣押的情報員，傑克帶隊，席奧負責後方封鎖線。他們突破了兩個警戒點，把人找到的時候，對方已經半昏迷，被綁在椅子上，嘴裡還塞著布。</p>
+        <p>然後傑克聽到無線電裡席奧的聲音。</p>
+        <p>「WOLF，走廊有四名武裝人員，正在往你們方向移動，十八秒。」</p>
+        <p>「收到，」傑克把人架起來，「HOUND，準備——」</p>
+        <p>「等等，」席奧說，聲音沒有起伏，帶著一種奇異的緩慢，「東側還有一個平民。女性，目前還沒被發現。怎麼處理？」</p>
+        <p>傑克在心裡算了一秒，「帶走，讓她跟著撤。」</p>
+        <p>「她會拖慢速度，」席奧說，「那四個人十二秒後到，你帶著半昏迷的人質再加一個平民，你覺得結果是什麼。」</p>
+        <p>「那就讓她躲起來，等我們撤完——」</p>
+        <p>「她看到我們的臉了。」</p>
+        <p>短短一句話，落地的聲音很輕，但傑克聽懂了他真正的意思。</p>
+        <p>「席奧，」他說，聲音壓得很低，直呼名字而不是代號，「你他媽在說什麼。」</p>
+        <p>沉默了兩秒。</p>
+        <p>「我只是在給你分析，」席奧說，語氣沒有任何波動，彷彿他剛才說的不是一條人命，「你決定，我執行。你是隊長。」</p>
+        <p>那個任務最後平安撤離了，那個女人被帶走。席奧沒有再提，傑克也沒有。</p>
+        <p>但那兩秒的沉默，傑克記了很久。</p>
+
+        <div class="scene-break"><span class="scene-break-text">* * *</span></div>
+
+        <p>他後來想，真正讓他開始感覺到的，不是那些事件本身，而是席奧在那些事件裡的眼睛。</p>
+        <p>不是冷酷，是乾淨。</p>
+        <p>像一片湖，深到你看不見底，但水面平靜得不像話。</p>
+        <p>傑克見過很多在戰場上壞掉的人，那是失去的空洞，有創口，有痕跡。席奧不一樣。他不像是失去過什麼，他像是從來就沒有裝過那些東西。</p>
+        <p>那個區別讓傑克說不上來地不安，卻又說不上來地著迷。就像你在懸崖邊緣站著，知道下面是空的，還是忍不住往下看。</p>
+
+        <div class="scene-break"><span class="scene-break-text">* * *</span></div>
+
+        <p>有一次兩個人在基地外坐著，是任務後難得的空檔，外頭的天色已經徹底黑了，只有遠處的哨所燈在轉。傑克在收拾手邊的備用手槍，席奧靠著牆，在黑暗裡沒有說話。</p>
+        <p>那種沉默在他們之間已經出現過很多次了，傑克沒有特別在意，繼續拆槍，擦拭，推彈匣。</p>
+        <p>但那次席奧開口了。</p>
+        <p>「你不需要每次都撿起來的。」</p>
+        <p>傑克沒抬頭，「什麼。」</p>
+        <p>「那些，」席奧說，語氣漫不經心，像在說一件無關緊要的事，「那些東西。有些是救不回來的。」</p>
+        <p>傑克把手槍放下，看了他一眼。席奧沒有回望他，眼神落在遠處什麼地方，側臉在暗光裡輪廓很銳。</p>
+        <p>「你覺得我應該怎麼做，」傑克說，「像你一樣？」</p>
+        <p>「你看了，也救不了所有人。」席奧看著窗外的夜色說，「你知道的，你只是不願意承認。」</p>
+        <p>傑克沒有回答。</p>
+        <p>因為他說的是事實，傑克知道。可他偏偏不能接受。</p>
+
+        <div class="scene-break"><span class="scene-break-text">* * *</span></div>
+
+        <p>類似的事情後來又發生了幾次，每次都是不同的細節，但輪廓相同。</p>
+        <p>席奧永遠站在效益的那一側。能不能活，能不能用，有沒有威脅，處理掉是不是更乾淨。傑克站在另一側，不是非黑即白的道德，但有一條他不願意越過的線，他說不清楚那條線為什麼在那裡，只知道它在。</p>
+        <p>兩個人都沒有說錯，但兩個人都沒有說到一起。</p>
+        <p>有一次爭完之後，傑克在走廊上抽了半根菸，腦子裡轉著一個他怎麼想都想不通的問題。</p>
+        <p>席奧是清醒的，邏輯是對的，為什麼他就是沒辦法跟著走？</p>
+        <p>傑克是第一次遇到這種人。他跟所有強悍的人都交過手，都合作過，見過沈默的、暴烈的、冷靜的、瘋狂的，但席奧是第一個讓他覺得「我在這個人身上看見了某種東西」然後又慢慢開始不確定自己看見的究竟是什麼的人。</p>
+        <p>他知道兩人之間有一件事是真實的。</p>
+        <p>傑克像鋼鐵。可以承重，可以彎，不屈、果斷，相信自己站的地方。</p>
+        <p>席奧像毒。不需要邊界，不需要形狀，只是滲透和蔓延，不在乎傷到誰，包括自己。</p>
+        <p>這兩種東西最終沒有辦法放在同一個容器裡。</p>
+        <p>傑克曾以為他們是同一種人，曾以為他們只是被不同的事打造出了不同的形狀。</p>
+        <p>鋼鐵可以彎，毒會持續擴散。</p>
+        <p>兩種強大，不一定能共存。</p>
+      </div>
+    </div>
+
+    <div class="story-divider">
+      <span class="story-divider-text">· · ·</span>
+    </div>
+
+    <!-- ─────────────────────────── -->
+    <!-- 文章 06 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="gretel">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">IN THE UNIT · 06</span>
+        <div class="story-entry-title">葛麗特</div>
+        <a href="#gretel" class="story-entry-anchor"># gretel</a>
+      </div>
+      <div class="story-body">
+        <p>任務之後的日子就沒那麼嚴肅了。</p>
+        <p>某次長時間輪休，幾個人窩在夜梟基地休息室裡喝啤酒，話題從裝備聊到車，從女人聊到老婆，再聊到誰最可能在退役後開酒吧。傑克坐在角落，懶洋洋地喝著酒，沒加入討論。</p>
+        <p>席奧進來的時候，手裡多了個舊木箱，不大，邊角磨得有些舊，上頭沒有標籤。他把箱子往桌上一放，在傑克對面坐下。</p>
+        <p>「給你的。」</p>
+        <p>傑克看了一眼，沒動。「什麼東西？」</p>
+        <p>「打開看。」</p>
+        <p>他伸手掀開箱蓋。</p>
+        <p>躺在裡頭的是一把老式狙擊步槍，木質槍托，金屬部件在燈光下泛著舊時代的光澤，保存得出奇完好。傑克把槍拿起來，翻過去看了一眼，手指沿著槍托的紋路慢慢描了一下。</p>
+        <p>「毛瑟，」他說，「二戰的。」</p>
+        <p>「眼力不錯。」席奧把打火機在指間轉了一圈，「跑了點路才找到，你最好喜歡。」</p>
+        <p>旁邊有人湊過來看熱鬧。「這東西連開槍都會卡彈吧？」</p>
+        <p>傑克頭也不抬。「我又不拿去打仗。」</p>
+        <p>有人笑出聲。席奧靠在椅背上，語氣帶著點漫不經心的審視，「名字。」</p>
+        <p>傑克愣了一秒，抬眼看他。「什麼？」</p>
+        <p>「你看起來像會給槍取名字的人。」</p>
+        <p>傑克低頭看著手裡的槍，沉默了一會兒，然後很平靜地說：「葛麗特。」</p>
+        <p>席奧皺眉。「你認真的？」</p>
+        <p>「很適合她。」</p>
+        <p>席奧盯著那把槍幾秒，忽然笑得很誇張，往椅背上一倒，「你居然給一把二戰狙擊步槍取童話名字。」</p>
+        <p>「怎樣。」傑克把槍放回箱子裡，語氣沒有半點辯解的意思，「她比你可靠。」</p>
+        <p>旁邊的人開始起鬨。席奧搖搖頭，慢悠悠地站起來，俯身拍了拍木箱蓋。</p>
+        <p>「好了，葛麗特，」他說，「好好跟你主人相處。」</p>
+        <p>傑克嗤了一聲。「謝了。」</p>
+        <p>席奧聳肩，轉身走開，手裡的打火機在指間轉了最後一圈，隨手插回口袋。</p>
+        <p>「別讓她生鏽。」他說，沒回頭。</p>
+        <p>傑克看著他的背影，低頭把木箱蓋重新扣上，沒有說話。</p>
+        <p>那把槍後來一直放在他房間裡，擦得一塵不染。</p>
+      </div>
+    </div>
+
+
+<!-- ─────────────────────────── -->
+    <!-- 文章 07 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="fragment-1">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">IN THE UNIT · 07</span>
+        <div class="story-entry-title">碎片 I</div>
+        <a href="#fragment-1" class="story-entry-anchor"># fragment-1</a>
+      </div>
+      <div class="story-body">
+
+        <div class="scene-title">
+          <span class="scene-title-num">101</span>
+          <span class="scene-title-text">不准關</span>
+        </div>
+
+        <p>某次市區滲透演習，傑克跟席奧理所當然被分在一起，任務是在規定時間內穿越封鎖區，不能被發現，不能使用武力。</p>
+        <p>標準流程不難。</p>
+        <p>難的是，演習開始前二十分鐘，席奧把傑克的無線電靜音了。</p>
+        <p>「你幹嘛？？」傑克盯著他。</p>
+        <p>「你呼吸太大聲，」席奧一臉懶得跟笨蛋解釋的表情。</p>
+        <p>「那你他媽的關我無線電幹嘛？？」傑克暴怒。</p>
+        <p>「你會忍不住。」席奧說，語氣是那種陳述已知事實的平靜，「你遇到狀況習慣先說話，再做決定，這個習慣會害死我們。」</p>
+        <p>傑克沉默了三秒，「你現在是嫌我話多？」</p>
+        <p>「我是在說你的反應順序有問題，」席奧大發慈悲地補充，然後把自己的無線電也靜音了，「看我的手勢。」</p>
+        <p>傑克盯著他看了一會兒，心想這個人憑什麼。</p>
+        <p>但他沒有說話，因為他知道席奧說的有一部分是對的，他確實習慣先開口，而在那個演習裡，開口就是暴露位置。</p>
+        <p>演習結束，他們是全隊唯一沒有被發現的那組。</p>
+        <p>回程的路上，傑克把無線電靜音解除，看了席奧一眼，「下次你想關我東西，先說。」</p>
+        <p>「說了你不會同意，」席奧說。</p>
+        <p>「所以你就直接關？？」傑克忍住K人的衝動。</p>
+        <p>「結果不是很好嗎。」</p>
+        <p>傑克張了張嘴，想反駁，找了三秒，什麼都沒找到，咂了一聲舌，把頭轉回去。</p>
+        <p>席奧餘光掃了他一眼，嘴角往上動了一下，「理虧了吧。」</p>
+        <p>「幹！給我閉嘴！」</p>
+
+        <div class="scene-title">
+          <span class="scene-title-num">102</span>
+          <span class="scene-title-text">老千</span>
+        </div>
+
+        <p>野外待援，地點偏僻，後援預計兩小時後到，周圍除了樹還是樹，安靜得讓人煩躁。</p>
+        <p>席奧全程沒有表情，沒有得意，牌打完就疊好，動作慢條斯理，像是在完成一件他早就確定結果的例行公事。</p>
+        <p>傑克的臉從第一局的胸有成竹，到第三局的眉頭微皺，到第五局的嘴角輕微抽搐，走完了一段完整的心理崩潰歷程。</p>
+        <p>他盯著席奧看了一會，「你他媽出老千。」</p>
+        <p>「沒有。」席奧把牌收進盒子。</p>
+        <p>傑克沉默了三秒，第六感爬上來，「你第幾局看透我了。」</p>
+        <p>「第一局，」席奧說，「後面是在確認規律。」</p>
+        <p>「……」傑克覺得自己像被耍的猴子，連拳頭都硬了。</p>
+        <p>「現在開始寫報告還來得及，」席奧說，「我可以教你格式。」</p>
+        <p>傑克後來老老實實地寫了一週的報告。他沒有賴帳，但他把這件事記住了。</p>
+        <p>記住那張從頭到尾沒有任何起伏、卻把他從頭摸透的臉，心裡有個聲音說：這個人以後不能跟他坐在同一張桌上。</p>
+        <p>然後他們繼續被分在同一組。</p>
+
+        <div class="scene-title">
+          <span class="scene-title-num">103</span>
+          <span class="scene-title-text">交換</span>
+        </div>
+
+        <p>有一次在基地附近的小館子吃飯，傑克要了一盤辣的，吃到一半發現不對，招手叫老闆，說「這不是我點的」。</p>
+        <p>老闆說是。傑克說不是。老闆把菜單拿過來指給他看，上面寫得清清楚楚，他點的就是這道，只是名字跟他以為的不一樣。</p>
+        <p>傑克沉默了一秒，把菜單推回去，拿起筷子繼續吃，一句話都沒有。</p>
+        <p>席奧坐在對面，把自己那碗湯喝完，用紙巾擦了嘴，說：「你沒看菜單就點了。」</p>
+        <p>「我看了，」傑克說。</p>
+        <p>「你掃了一眼，」席奧說，「那不叫看。」</p>
+        <p>傑克夾了一筷子，辣得倒吸一口氣，眼淚都快噴出來，但表情紋絲不動，「好吃。」</p>
+        <p>席奧看著他，頓了一秒，把自己的餐盤往傑克那邊推了一點，「換。」</p>
+        <p>傑克低頭看了一眼，席奧點的是白切雞，清淡，幾乎沒有味道，是那種他平常絕對不會碰的東西。他看了席奧一眼。</p>
+        <p>席奧已經把視線收回去，自顧自地動筷，臉上沒有任何多餘的表情，像是剛才那個動作對他來說只是一個邏輯判斷：<em>你那盤不適合繼續吃，換掉效率比較高。</em></p>
+        <p>傑克沒說謝，把餐盤換了過來。</p>
+        <p>白切雞確實很淡，淡到他覺得自己在吃空氣，但他一句話都沒抱怨，把整盤吃完了。</p>
+
+        <div class="scene-title">
+          <span class="scene-title-num">104</span>
+          <span class="scene-title-text">小孩</span>
+        </div>
+
+        <p>執勤途中，市區外圍，商場附近。</p>
+        <p>那個小孩大概五歲，站在路中間，眼睛紅著，四周沒有大人，顯然已經哭了一陣。</p>
+        <p>傑克率先蹲下來，「迷路了嗎，你媽媽在哪裡？」</p>
+        <p>小孩吸了一下鼻子，指了個模糊的方向，說不清楚。</p>
+        <p>傑克站起來，打算帶他去找商場服務台，轉頭發現席奧也蹲下來了。這一點讓傑克稍微意外，他沒想到席奧會主動蹲下，但他沒說什麼。</p>
+        <p>席奧看著那個小孩，表情平靜，用一種非常正常的語氣說：「你知道嗎，根據統計，迷路超過四十分鐘以上、且無成人陪同的兒童……」</p>
+        <p>「……出現在失蹤通報名單上的機率，」席奧繼續，視線沒有離開那個小孩，「比你想的高很多。其中有一部分，最後出現的位置是……」</p>
+        <p>「席奧，」傑克聲調低了一度。</p>
+        <p>「……暗網上的活體名單。」</p>
+        <p>小孩的嘴開始抖。</p>
+        <p>「席奧！你他媽……」傑克沒忍住，差點氣到冒煙。</p>
+        <p>「我只是在提供資訊，」席奧把頭轉向傑克，一臉完全沒有意識到問題在哪的表情，「讓他理解情況的嚴重性，這樣他以後會記得——」</p>
+        <p>小孩哇的一聲哭出來，這次比剛才大聲三倍，眼淚鼻涕一起下來，整個人往後退了一步，躲到傑克後面死命拉著他的褲子。</p>
+        <p>傑克站起來，用身體把席奧擋開，再次蹲下去，把音調調到能跟五歲小孩溝通的頻率，「好了好了，那個叔叔腦子有問題，我們不用理他。」</p>
+        <p>「哥哥帶你去找媽媽，好不好？」</p>
+        <p>小孩邊哭邊點頭，不知道是害怕還是喜極而泣。</p>
+        <p>傑克牽著他往服務台走，轉頭瞪了席奧一眼，「你跟小孩說這些？？？」</p>
+        <p>「是有根據的資訊，」席奧跟在旁邊，表情毫無悔意，「比『不要跟陌生人走』這種空泛的警告有效得多。」</p>
+        <p>「你以後不准靠近小孩！」</p>
+
+        <div class="scene-title">
+          <span class="scene-title-num">105</span>
+          <span class="scene-title-text">早餐</span>
+        </div>
+
+        <p>有一次兩個人在基地附近打賭，賭的是誰能在三十秒內把一把拆開的手槍組回去，輸的人請對方吃一週的早餐。</p>
+        <p>傑克二十七秒完成，把槍放下，拍了拍手，「來。」</p>
+        <p>席奧看著他，沒有動，「我在想，如果我輸了，你會點什麼。」</p>
+        <p>「培根蛋，豆漿，有時候加個蘿蔔糕，」傑克說，「不貴，你請得起。」</p>
+        <p>席奧沉默了兩秒，「如果我贏了。」</p>
+        <p>「我請你吃你他媽那間死貴的法式早午餐，」傑克說，「上次你去吃一份要五百八，誰早餐吃五百八？？天皇老子來我都不付。」</p>
+        <p>「那我玩，」席奧說，把手槍拿過來。</p>
+        <p>二十三秒。</p>
+        <p>傑克盯著他那把已經組好的槍，沉默了四秒，「……你練過。」</p>
+        <p>「你也練過，」席奧一臉事不關己地說。</p>
+        <p>「你練得比我多，」傑克說。</p>
+        <p>「願賭服輸，」席奧說，把槍推回去。</p>
+        <p>傑克坐在那裡，表情走完了從確信到懷疑到接受的完整過程，最後嘆了一口氣，把手機拿出來，「你他媽的那間店幾點開。」</p>
+        <p>「八點，」席奧說，「他們的可頌很好，你可以試試看。」</p>
+        <p>「我不吃可頌，」傑克說。</p>
+        <p>「你會吃的，」席奧說，口氣像是在陳述一件已經發生的事。</p>
+        <p>傑克後來吃了，確實不錯，但他沒有說出口，只是把盤子推到旁邊，用一種非常普通的語氣說：「普通。」</p>
+        <p>席奧看著他，把咖啡杯放下，「你眼睛亮了。」</p>
+        <p>「沒有，」</p>
+        <p>「有。」</p>
+        <p>「我餓。」</p>
+        <p>席奧看著他，沒有說話，只是把視線收回去，端起咖啡，嘴角的弧度小到幾乎不存在。</p>
+        <p></p>傑克還是看見了，沒有說什麼，低頭把剩下的水波蛋解決掉，心想這個地方的可頌確實不錯，他不打算說出口，以後也不打算說。</p>
+
+      </div>
+    </div>
+
+    <div class="story-divider">
+      <span class="story-divider-text">· · ·</span>
+    </div>
+
+    <!-- ─────────────────────────── -->
+    <!-- 文章 08 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="fragment-2">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">IN THE UNIT · 08</span>
+        <div class="story-entry-title">碎片 II</div>
+        <a href="#fragment-2" class="story-entry-anchor"># fragment-2</a>
+      </div>
+      <div class="story-body">
+
+        <div class="scene-title">
+          <span class="scene-title-num">201</span>
+          <span class="scene-title-text">煙</span>
+        </div>
+
+        <p>傑克在基地門口點了根煙。</p>
+        <p>便利商店的那種，普通的，一包一百塊，紙盒壓得有點皺，像是在口袋裡放了幾天。他把煙夾在嘴角，打火機劃了一下，深吸一口。</p>
+        <p>席奧從他旁邊經過，停下來，低頭看了一眼他手裡的東西，表情像是看見有人在餐廳用免洗筷吃懷石料理。</p>
+        <p>「那是什麼。」</p>
+        <p>不是問句，是陳述，語氣像是看到有人在抽垃圾。</p>
+        <p>「煙。」</p>
+        <p>「你眼睛有問題？」傑克吐了口氣，煙霧繚繞在兩人中間。</p>
+        <p>席奧沒有回答。他從外套口袋取出一支雪茄，剪刀從指節縫裡滑出來，剪了頭。整套動作慢，每個細節都精準，像是有意讓人看見某種對比。</p>
+        <p>「便利商店的東西，你放進嘴裡，不覺得這件事本身就有問題嗎。」</p>
+        <p>「方便。隨便走進一家就有，不用跑去找什麼精品菸草店，不用花我他媽兩千塊。」</p>
+        <p>傑克聳了聳肩，不覺得自己的回答有問題。</p>
+        <p>「兩千塊。」席奧重複了一遍，語氣不是嫌貴，是那種單純覺得這個換算邏輯很有趣，「兩千塊抽的是品質，不是便利。」</p>
+        <p>他把雪茄點上，煙霧比傑克那根厚三倍，香氣完全是另一個物種。</p>
+        <p>傑克把煙夾在嘴角，看起來對於品味和品質毫無想法，「你那根要抽多久？」</p>
+        <p>「四十分鐘左右。」</p>
+        <p>「我這根八分鐘，」傑克說，「我可以抽五根。」</p>
+        <p>席奧看著他，沉默了三秒，「你說這話的時候才覺得自己贏了嗎。」</p>
+        <p>「那五根加在一起，」席奧緩緩說，「讓你口腔裡留下的是什麼。」</p>
+        <p>傑克沉默了一秒，把煙夾在指縫間，「……煙味。」</p>
+        <p>「廉價的煙味。」</p>
+        <p>煙霧從唇角散開，席奧的表情沒有得意，只是平靜，那種平靜比嘲諷更讓人無處著力。他把雪茄重新叼回嘴角，慢條斯理地抽，眼神望向別處。</p>
+        <p>「我不明白，一個對自己有要求的人，為什麼唯獨在這件事上這麼將就。」</p>
+        <p>傑克看著他，吐了最後一口煙，把菸屁股踩滅。他在那裡站了一秒，想說什麼，又說不出個理所當然，張了嘴，最後只說：</p>
+        <p>「因為煙抽的不是味道。」</p>
+        <p>席奧偏了一下頭，沒有說話，只是等，等他說出一個能自圓其說的理由。</p>
+        <p>「而且我是對的。」傑克硬撐補了這一句。</p>
+        <p>席奧沒有再說話，把雪茄重新叼回嘴角，慢條斯理地抽，眼神望向別處，像是這個話題對他來說已經沒有繼續的必要了。不是被說服，只是覺得沒有意思。</p>
+        <p>傑克把手插進口袋，餘光掃了一眼席奧手裡那根雪茄，味道確實不一樣，這他知道。</p>
+        <p>他沒有說出口(愛面子)。</p>
+
+        <div class="scene-title">
+          <span class="scene-title-num">202</span>
+          <span class="scene-title-text">點煙</span>
+        </div>
+
+        <p>任務結束在凌晨兩點，廢棄廠房的鐵門在他們身後合上，夜風把灰塵和火藥味一起捲進來。</p>
+        <p>兩個人靠著外牆坐下，不說話，肩膀各自沉著任務後那種安靜的重量。</p>
+        <p>傑克摸進外套口袋，掏出那盒便利商店的煙，剩最後兩根。他抽出一根，自己叼著，用打火機點燃。另一根遞向旁邊。</p>
+        <p>傑克低頭看了一眼。</p>
+        <p>「你的雪茄，」傑克把另一根遞向旁邊，「今天留在車上了吧。」</p>
+        <p>席奧沒有回答，但他把那根煙接過去了，指尖夾著，沒有立刻放進嘴裡，只是停在那裡，像在做最後一輪的心理建設。</p>
+        <p>傑克側過頭，「來。」</p>
+        <p>席奧把煙放到嘴角，兩個人靠近，煙頭對著煙頭，火光在兩張臉之間燒了一下，距離近到傑克能清楚看見席奧眼睫的弧度。</p>
+        <p>火滅了，兩個人各自靠回牆上。</p>
+        <p>席奧吸了一口，煙霧從鼻腔緩緩散出，沉默了幾秒，「臭死了。」</p>
+        <p>「我知道。」</p>
+        <p>「沒有層次。」</p>
+        <p>「我知道。」</p>
+        <p>「餘味也很差。」</p>
+        <p>「你他媽的抽完再說，不想抽就還我。」傑克說完，把頭轉向別處。</p>
+        <p>席奧沒有還，繼續抽，視線往前，看著夜色裡什麼都看不清楚的遠處。廠房外面偶爾有風，把兩個人的煙霧吹散，混在一起，分不清楚是誰的。</p>
+        <p>「下次帶備用的，省得廉價味染我全身。」那根煙抽完，席奧把菸在地面壓滅，顯然不太滿意。</p>
+        <p>「任務裝備欄沒有雪茄這一格，」傑克嘖了一聲，覺得這人有夠龜毛。</p>
+        <p>「加一格，」席奧說的理所當然。</p>
+        <p>「你自己加，」傑克把空煙盒捏扁，塞回口袋，「我只帶便利商店的。」</p>
+        <p>席奧沒有回答，把頭微微往後靠上牆，閉上眼。</p>
+        <p>傑克側過頭看了他一眼，沒說話，把腿伸直，也靠著牆，等後援。</p>
+
+        <div class="scene-title">
+          <span class="scene-title-num">203</span>
+          <span class="scene-title-text">車</span>
+        </div>
+
+        <p>停車場裡，傑克的全黑改裝悍馬H2停在席奧保時捷911 GT3旁邊。</p>
+        <p>兩台車的間距勉強夠開門，像是兩個完全不屬於同一語境的物種被迫共存。一台是鋼鐵與泥地的產物，四驅全地形，引擎聲低沉得像地鳴，停在那裡就有一種「你讓不讓路都無所謂」的壓迫感。另一台是水平對臥六缸、四點零升自然進氣，車身低趴，銀灰色烤漆在燈下反著光，乾淨得像剛從展示間開出來。</p>
+        <p>席奧繞著悍馬走了半圈，視線往車身右後方停了一下。</p>
+        <p>「怎樣，要說就說。」傑克從後座拖出裝備包，頭也不抬。</p>
+        <p>「我在想，」席奧說，「你停進來的時候有沒有刮到我的車。」</p>
+        <p>「沒有。」</p>
+        <p>「你那台寬兩米，間距一米二，」席奧說，「你確定？」</p>
+        <p>「我開這台開了三年，」傑克關上車門，在悍馬引擎蓋上輕拍了一下，帶著那種對自己老婆的滿意感，「上山下海，進泥地，塞窄巷，六百匹的V8踩下去路上沒東西能攔。載人、拉裝備、任務撤離……」</p>
+        <p>傑克顯然有些意猶未盡，自豪地繼續補充，「載女人雙人運動，我他媽腿還能伸直。你那台行嗎？」</p>
+        <p>席奧把視線從車身收回來，「你想說什麼。」</p>
+        <p>「我在說你那台，」傑克下巴往911的方向抬了一下，「緊急撤離，你打算讓隊友擠後座嗎？還是叫他們跑步跟上？」</p>
+        <p>「我不需要帶隊友，」席奧說。</p>
+        <p>「上個月，北郊任務，你那台去得了嗎？」</p>
+        <p>「我走另一條路。」</p>
+        <p>「繞了多遠？」</p>
+        <p>「提早二十分鐘到，」席奧把外套搭上手臂，「GT3的轉向精準度和彎道極限，你那台追不上。」他停頓了一下，「而且我的車不會把停車場地面壓出輪痕。」</p>
+        <p>傑克看了地面一眼，確實有兩道痕跡，位置剛好在悍馬輪胎下面。他把視線收回來，表情沒有鬆動，「……那叫存在感。」</p>
+        <p>「那叫地磚損耗，」席奧說，「物業會寄帳單來。」</p>
+        <p>「坐你那台跟坐跑步機有什麼差別？四個輪子咬住地的感覺，你懂嗎？！那才叫開車！」傑克開始不甘示弱，「而且我的油箱大，跑長途不用停兩次油，車高視野好，下雨天路況複雜你那台的底盤——」</p>
+        <p>「你說完了嗎。」</p>
+        <p>「還沒，」傑克說，「後座空間，遮光——」</p>
+        <p>「傑克。」</p>
+        <p>「幹嘛。」</p>
+        <p>席奧指了一下911的車門邊緣，「這裡。」</p>
+        <p>傑克走過去，俯身看了看。什麼都沒有，漆面完整，連灰塵都沒有多一層。他直起身，看向席奧。</p>
+        <p>席奧已經把車鑰匙收進口袋，往出口方向走了，「確認完了，沒刮到，我先走。」</p>
+        <p>傑克站在原地，看著他的背影，再看了一眼自己的悍馬，又看了一眼那輛911。</p>
+        <p>「……你他媽故意的。」</p>
+        <p>「喂！滾回來！」</p>
+        <p>停車場裡沒有人回答他。</p>
+
+        <div class="scene-title">
+          <span class="scene-title-num">204</span>
+          <span class="scene-title-text">副駕駛</span>
+        </div>
+
+        <p>悍馬送去保養廠那天，傑克站在停車場看著它被拖車架走，表情像是在送老婆去動手術。</p>
+        <p>「只是定期保養又不是送終。」身後傳來席奧的聲音，語氣裡沒有一絲安慰的意思。</p>
+        <p>「我只是在目送，」傑克說，沒有回頭。</p>
+        <p>「我猜，你沒有其他台車？」席奧說得像每個人都有好幾台車一樣。</p>
+        <p>對，傑克沒有。</p>
+        <p>911停在角落，銀灰色漆面在地下室的燈光下反著冷光，低趴的車身幾乎貼著地面，明顯不是為傑克這種體型設計的。</p>
+        <p>傑克站在副駕駛門旁邊，低頭看了一眼座艙，沉默了三秒。</p>
+        <p>「進來，」席奧已經坐進駕駛座，引擎發動，聲浪在地下室裡滾了一圈，「還是你打算走路？」</p>
+        <p>傑克拉開車門，彎腰，側身，用了一個他這輩子從來沒有用過的姿勢把自己塞進副駕駛座。膝蓋頂著前方的儀表台，肩膀抵著車頂，右手肘沒有地方放，左手扶著門把，找了五秒沒找到一個舒服的姿勢，最後只能半強迫地讓自己的腿向左偏了三十度，腳踝別著中控台下緣。</p>
+        <p>席奧的視線從前方移過來，在傑克身上掃了一眼，「繫安全帶。」</p>
+        <p>「我在找，」傑克往右摸了摸，安全帶插扣的位置比他預期的低了將近二十公分，他側著身才勉強扣上，喀噠一聲，「好了。」</p>
+        <p>席奧把車駛出停車位，「舒服嗎？」</p>
+        <p>「不舒服，」傑克直接說，「你這台是給誰坐的？」</p>
+        <p>「正常身高的人，」席奧說。</p>
+        <p>「我190，這叫正常，」傑克把頭稍微往左偏，避開車頂壓迫感，「你這台坐起來像坐棺材。」</p>
+        <p>「棺材時速沒有300，」席奧出了地下室，車身在路面起伏，底盤極低，傑克能感覺到每一條路面接縫，「GT3的座椅是依照駕駛坐姿設計的。」</p>
+        <p>「什麼駕駛坐姿，侏儒坐姿嗎？」</p>
+        <p>席奧沒有理他，上了主幹道，油門踩深了一點，引擎聲浪往上攀，車身輕盈得像是地面只是個參考。</p>
+        <p>傑克沉默了兩秒，不得不承認這台車的油門響應是真的快，快到有點過分，幾乎是意念到動作之間沒有任何延遲，身體被座椅往後推了一下，那種推力乾淨，不拖泥帶水。</p>
+        <p>「……加速還行，」他說，語氣勉強。</p>
+        <p>「謝謝你的認可，」席奧說，聽不出來是不是在諷刺。</p>
+        <p>傑克把視線轉向窗外，車身低，視角比他習慣的低了快三十公分，路上的大車從這個高度看起來都像是隨時要壓過來，他下意識想踩一腳不存在的煞車，腳踝頂著中控台，什麼都沒踩到。</p>
+        <p>「彎道。」席奧說。</p>
+        <p>車身往右壓，四個輪子死死咬著地面，側向的力把傑克推向車門，他的肩膀抵著車窗，膝蓋差點頂穿儀表台，「請你提前說。」</p>
+        <p>「我說了，」席奧說，「彎道。」</p>
+        <p>「那是預告不是警告！」</p>
+        <p>「抓好，」席奧說，「前面還有三個。」</p>
+        <p>傑克閉上嘴，把右手壓在中控台側邊，用了一個不太體面的姿勢撐住自己，連續三個彎，車身每次都壓得極低，那種貼地的側向推力是他在悍馬上完全感受不到的，像是整台車變成一個有方向性的東西在路面上劃過去。</p>
+        <p>出了彎道，直路拉開，傑克慢慢把手放開，清了清喉嚨，「……彎道確實穩。」</p>
+        <p>「嗯，」席奧說。</p>
+        <p>「但我還是覺得這台適合你，」傑克補充，「個頭小，坐起來剛好。」</p>
+        <p>席奧把視線從路面移過來，在傑克臉上停了一秒，「你坐我的車膝蓋到頂儀表台，所以決定批評我的身高？」</p>
+        <p>「我沒有批評，我在陳述事實，」傑克說，原封不動地還回去，「這台車的駕駛座是為175左右的人設計的，你坐起來剛好，這是事實。」</p>
+        <p>「我185，」席奧說。</p>
+        <p>「差不多，」傑克說。</p>
+        <p>「差10公分，你要不要再算一下。」席奧顯然懶得繼續跟他爭。</p>
+        <p>傑克沉默了兩秒，決定換個方向，「總之這台不適合長途，坐久了背會痠。」</p>
+        <p>「GT3的座椅支撐性在同級裡是頂標，」席奧說，「背痠是因為你太大隻。」</p>
+        <p>「我的坐姿沒有問題，是你的座艙有問題。」</p>
+        <p>「你該反省下自己的體型。」</p>
+        <p>傑克張嘴，想反駁，停了一秒，發現這個邏輯好像沒有辦法從正面攻破，換了個角度，「你上次說你的轉向精準，彎道極限高——」</p>
+        <p>「對。」</p>
+        <p>「好，那上個月北郊任務，我悍馬直接從河床開過去，你這台試試看？」傑克挑眉，覺得終於贏一分。</p>
+        <p>「我走橋，」席奧說。</p>
+        <p>「橋被炸了。」</p>
+        <p>「我知道，所以我提早出發，走另一條，」席奧說，「提早二十分鐘到，你忘了？」</p>
+        <p>傑克記得，但他不打算承認，「你繞遠路。」</p>
+        <p>「我準時，」席奧說，「用更聰明的方式。」</p>
+        <p>傑克盯著前方，沉默了三秒，「你不覺得悍馬直接從河床壓過去比較帥？」</p>
+        <p>席奧頓了一下，「我覺得那叫不必要的底盤損耗。」</p>
+        <p>「那叫氣勢。」</p>
+        <p>「我不在意。」</p>
+        <p>傑克看著他，這句話有什麼地方讓他沒辦法繼續往下說，沉默了一會，把視線收回去，看著窗外的路面從車身兩側掠過，速度比他習慣的快，視角比他習慣的低，座艙比他習慣的窄，但引擎聲是真的好聽，那種聲浪不是悍馬的低沉轟鳴，是更高頻、更銳利、帶著一點機械精準感的嘯叫。</p>
+        <p>他沒有說出來。</p>
+        <p>「到了，」席奧把車停在路邊，引擎聲落下去，「自己開門。」</p>
+        <p>傑克側身，把安全帶解開，用了跟進來的時候差不多費力的姿勢把自己從座艙裡解放出來，站直身，活動了一下肩膀。他低頭看了一眼那輛911，又看了一眼停車格旁邊因為底盤太低而完整保留下來的、一條積水沒有濺到的乾燥地面。</p>
+        <p>「這台，」他說，「遇到泥地怎麼辦。」</p>
+        <p>「不去。」</p>
+        <p>「遇到碎石路？」</p>
+        <p>「繞路。」</p>
+        <p>「河床？」</p>
+        <p>「我說過了。」</p>
+        <p>「積雪？」</p>
+        <p>席奧把車門關上，按了鎖車，回聲在街道裡彈了一下，看了傑克一眼，「你的車明天下午可以取，別來煩我了。」然後他把外套領翻上去，背對傑克往前走了。</p>
+        <p>傑克站在那輛銀灰色跑車旁邊，看著他的背影，沉默了一秒。</p>
+        <p>「喂！積雪呢！」他往後喊。</p>
+        <p>前方沒有人回答。</p>
+
+        <div class="scene-title">
+          <span class="scene-title-num">205</span>
+          <span class="scene-title-text">尾</span>
+        </div>
+
+        <p>後來傑克想過很多次，他跟席奧究竟算什麼。</p>
+        <p>不是特別投緣，話也不多，也不是那種會刻意靠近的關係。他們繼續被分在同一組，是因為讀對方的速度都快，快到省掉了所有溝通的成本。</p>
+        <p>傑克承認，在那之前，他沒有覺得旁邊有個人「是夠的」這種感受，遇見席奧之後才有。不是因為席奧可靠，是因為他不需要分心。那種感覺很難得，他理所當然地以為那是雙向的。</p>
+        <p>你讀得懂我，我讀得懂你，這叫做彼此了解。</p>
+        <p>後來他才明白，席奧讀得懂他，只是因為席奧讀得懂所有人。</p>
+        <p>那不是了解，那只是他的本能。</p>
+        <p>傑克只是他讀過的人裡面，剛好比較有意思的那一個。</p>
+
+      </div>
+    </div>
+
+
+<!-- ─────────────────────────── -->
+    <!-- 文章 09 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="sahara-1">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">OPERATION SAHARA · 09</span>
+        <div class="story-entry-title">任務代號：撒哈拉 I</div>
+        <a href="#sahara-1" class="story-entry-anchor"># sahara-1</a>
+      </div>
+      <div class="story-body">
+        <p>執行地點在哈薩克邊境的一座廢棄工業區。</p>
+        <p>目標是滲透當地一個武裝組織的臨時據點，取得一批關鍵情報文件後立刻撤離。任務簡報說得很清楚：取得、撤離，不必要的交戰一律避免。上頭的意思是，這次要的是情報，不是屍體。</p>
+        <p>傑克在出發前把簡報看了三遍。</p>
+        <p>不是因為他不確定，而是因為他知道席奧也看了，而席奧對「不必要」這三個字的定義，從來跟別人不一樣。</p>
+
+        <div class="scene-break"><span class="scene-break-text">* * *</span></div>
+
+        <p>前半段進行得很順利。</p>
+        <p>傑克把文件移交給負責攜帶的隊員，掃了一眼房間，確認沒有遺漏，然後說：「撤。」</p>
+        <p>席奧沒動。</p>
+        <p>傑克回頭看他。</p>
+        <p>席奧站在窗邊，俯瞰著樓下的院子，院子裡有幾個武裝人員在走動，手裡端著槍，不知道在等什麼。他的表情是那種傑克認識很久的表情。平靜，像是興趣，又像是判斷。</p>
+        <p>「六個，」席奧說，聲音很低，「都可以清。」</p>
+        <p>「不在計畫裡。」</p>
+        <p>「計畫沒說不能清。」</p>
+        <p>「計畫說了不必要的交戰一律避免。」</p>
+        <p>席奧轉過頭來看他。在夜視鏡的綠光裡，那雙眼睛帶著某種傑克越來越看不懂的光，又或是傑克其實一直都看得懂，但選擇不去看。</p>
+        <p>「這六個人，」他說，「今晚不清，下次就是變數。你確定要帶著這個變數回去？」</p>
+        <p>傑克盯著他。「我們的任務已經完成。」</p>
+        <p>「任務完成，不代表事情完成。」</p>
+        <p>「席奧。」</p>
+        <p>「傑克。」</p>
+        <p>兩個人對視了幾秒。空氣裡有風從破損的窗縫鑽進來，帶著工業區特有的鐵鏽和廢油的氣味，外面的腳步聲還在繼續，院子裡的人還在走動，不知道樓上有兩個人正在靜默地爭執一件可能改變所有人結局的事。</p>
+        <p>「撤離，」傑克說，語氣比剛才更低，「這是命令。」</p>
+        <p>席奧沉默了一秒，然後嘴角動了一下，那個笑容很淡，淡到傑克幾乎以為自己看錯了。「收到。」</p>
+
+        <div class="scene-break"><span class="scene-break-text">* * *</span></div>
+
+        <p>撤離路上，傑克走在隊伍最前方，同時分出一半注意力放在身後。</p>
+        <p>他說不清楚是什麼讓他警覺，或許是多年來對席奧的了解，或許只是某種說不清楚的直覺。席奧答應得太快了，快得不像他。</p>
+        <p>無線電裡傳來各節點回報的聲音，一切正常，路線清晰，撤離點就在兩百公尺外。他側頭掃了一眼隊伍，席奧在，步伐穩定，夜視鏡下的輪廓沒有異狀。他幾乎要放下那份警覺。</p>
+        <p>就在那個時候，他看見席奧的手在腰間裝備上停了一下。</p>
+        <p>那是一個很細微的動作，細微到在別人眼裡可能只是習慣性確認裝備，但傑克認識那隻手太久了。那不是確認，那是準備。</p>
+        <p>「停。」</p>
+        <p>傑克的聲音剛出口，席奧已經轉身。傑克一步上前，一手扣住他的手腕，力道不輕，「你要去哪裡。」</p>
+        <p>那不是問句。</p>
+        <p>席奧低頭看了一眼被扣住的手腕，然後抬頭看傑克，表情沒有任何慌亂，只是帶著那種傑克越來越厭倦的平靜，「放開。」</p>
+        <p>「回隊伍。」</p>
+        <p>「傑克，」席奧的語氣很慢，像是在跟一個理解能力有限的人解釋一件再簡單不過的事，「那六個人，我去五分鐘，你們先走，我自己追上來。」</p>
+        <p>「我說回隊伍。」</p>
+        <p>席奧盯著他看了幾秒，然後輕輕地笑了。</p>
+        <p>傑克不喜歡那個笑，因為那個笑不像是認輸，更像是在說：好吧，那就換個方式。</p>
+        <p>「收到，隊長。」</p>
+        <p>隊長那兩個字說得很重、又很輕。</p>
+      </div>
+    </div>
+
+    <div class="story-divider">
+      <span class="story-divider-text">· · ·</span>
+    </div>
+
+    <!-- ─────────────────────────── -->
+    <!-- 文章 10 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="sahara-2">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">OPERATION SAHARA · 10</span>
+        <div class="story-entry-title">任務代號：撒哈拉 II</div>
+        <a href="#sahara-2" class="story-entry-anchor"># sahara-2</a>
+      </div>
+      <div class="story-body">
+        <p>傑克讓隊伍先行撤退，只留了席奧。</p>
+        <p>腳步聲消失之後，廠房安靜下來，只有風從破損的鐵皮縫裡鑽進來，帶著廢油和鐵鏽的味道。傑克站在原地，看著席奧，沒有立刻說話。</p>
+        <p>他在讓自己冷靜。他知道自己現在的狀態不適合說話，胸腔裡在燒，燒得他太清醒，清醒得每個字都可能變成引線。</p>
+        <p>「說，」他最後開口，聲音比他預期的更低，「你剛才想做什麼。」</p>
+        <p>席奧靠在鐵柱上，把夜視鏡隨手掛在指間晃了晃，像無聊的人在打發時間，「你知道我想做什麼。」</p>
+        <p>「我要你說出來。」</p>
+        <p>「清掉那六個人，」席奧說，語氣像在報告天氣，「五分鐘，你們先走，我追上來，任務結束，所有人回家。」他偏頭看傑克，「哪裡有問題？」</p>
+        <p>「你違令。」</p>
+        <p>「我做了正確的事。」</p>
+        <p>「你他媽的——」傑克咬住後半句，把它嚥下去，重新把聲音壓平，「你知道計畫怎麼說的。」</p>
+        <p>「我知道，」席奧說，「計畫說不必要的交戰一律避免。」他停頓了一下，「但那六個人是必要的。」</p>
+        <p>「那是你說的。」</p>
+        <p>「那是事實。」席奧偏了偏頭，語氣依然平靜，像是在跟一個反應遲鈍的學生解釋一道已知的題，「你也知道是事實，你只是不想承認。」</p>
+        <p>風又從鐵皮縫裡鑽進來，鐵架震了一聲。傑克站在原地，感覺那個東西在胸腔裡燒得更旺，旺到他有點想笑。不是因為好笑，是因為他已經不知道還能有什麼別的反應。</p>
+        <p>「你知道跟你說話最他媽的累的是什麼嗎，」他說，「是你永遠都覺得你是對的。」</p>
+        <p>席奧沒有反駁，只是看著他，帶著那個傑克認識很久、越來越看不懂的表情。平靜，有點像無聊，又有點像在等他說出什麼有趣的東西，就像傑克是一個還沒跑完的實驗，而結果目前還不夠精彩。</p>
+        <p>然後席奧笑了。</p>
+        <p>那種笑傑克聽過很多次，每次都讓他覺得對話快要失控。</p>
+        <p>「命令，」他說，像是在品評一個有點意思的詞，「傑克，你跟著命令走了多少年了？他們說跳，你問多高；他們說撤，你就撤；他們畫個框框，你住進去，然後告訴自己這叫做正確。」</p>
+        <p>他繼續說，語氣沒有起伏，就像是在說一件早就確認過的事，「你知道從外面看你是什麼樣子嗎？」</p>
+        <p>他停頓了一下，讓那個停頓吊著。</p>
+        <p>「很乖。」</p>
+        <p>「閉嘴。」</p>
+        <p>「說錯了嗎？」席奧把夜視鏡在指間轉了一圈，語氣依然帶笑，「你是我見過最聰明的人，真的。戰場上的直覺，對局勢的掌握，出手的時機，沒有人比你更準。」</p>
+        <p>他停了一下。</p>
+        <p>「但你跟一條受過訓練的狗一樣好管理。」</p>
+        <p>傑克動了。</p>
+        <p>不是思考之後的決定，是那句話落下來之後身體本能反應，拳頭帶著力道直接往席奧臉上砸過去。席奧側頭躲開，但躲得不完全，傑克的指節擦過他顴骨，帶出一道紅。</p>
+        <p>然後兩個人打起來了。</p>
+
+        <div class="scene-break"><span class="scene-break-text">* * *</span></div>
+
+        <p>他們打過好幾次，知道彼此的慣用手、慣用角度、慣用節奏。問題是那時候是訓練，有邊界，有規則，打到某個程度會停下來。</p>
+        <p>現在沒有。</p>
+        <p>席奧不像是憤怒，他從來就不憤怒。他出手的方式還是精準的，還是計算過的，但那個計算裡有什麼東西變了，變成一種更純粹的東西，像是他終於不需要在傑克面前假裝任何一點他根本沒有的剋制。</p>
+        <p>傑克被撞上鐵架，背後傳來悶響，他抓住席奧的手臂，把他帶著一起往旁邊的牆頂過去，兩個人撞進黑暗裡，碰撞聲在廠房裡迴響，消散在那個滴水聲的間隙裡。</p>
+        <p>他把席奧壓在牆上，一手扣住他的衣領，喘著氣，胸口在劇烈起伏。就那樣盯著他。近到能看清楚席奧眼睛裡的東西。</p>
+        <p>還是平靜。</p>
+        <p>他媽的，還是平靜。</p>
+        <p>沒有憤怒，沒有痛，沒有任何傑克能夠辨認的情緒，就像對這件事、對這個人、對這整個廠房和外面的夜晚，席奧都只是一個旁觀者，一個在觀察某個有點意思的實驗結果的旁觀者。</p>
+        <p>「你，」傑克說，胸腔裡有什麼東西在垮，他不確定那是憤怒還是別的什麼，「你他媽有沒有感覺？」他聲音壓得很低，低到幾乎是咬字，「任何一點。」</p>
+        <p>「那些跟著你一起出去的人，萬一他們沒回來呢？」</p>
+        <p>席奧看著他，表情沒有變。</p>
+        <p>然後他說：「你的力道往左偏了，腰傷還沒好。」</p>
+        <p>傑克鬆開他。</p>
+        <p>他退後一步，胸口還在起伏，但那個燒著的東西忽然熄了，不是因為平息了，是因為他忽然不知道還能燒什麼。</p>
+        <p>就是這一句話。不是侮辱，不是嘲諷，是這句話，讓他比任何東西都更清醒。</p>
+        <p>他認識席奧。從選訓基地的泥水裡，從一次又一次的火線裡，從那把叫葛麗特的槍，從所有他以為自己已經足夠了解的地方。他第一次意識到，他從來不了解席奧。</p>
+        <p>他只了解席奧在他身邊的那個部分。剩下的部分，他以為只是方式不同，只是另一種強大，只是他還沒讀懂的東西。</p>
+        <p>他現在讀懂了。</p>
+        <p>那裡面什麼都沒有。</p>
+        <p>「你他媽的……」他說，聲音很輕，輕到不像是在罵人，「你真的什麼都感覺不到？」</p>
+        <p>席奧整了整衣領，神態像是剛才只是一場有點無聊的小插曲。</p>
+        <p>「我感覺得到，」他說，「只是感覺的東西跟你不一樣。」</p>
+        <p>「你知道你的問題是什麼嗎，」傑克說，聲音變冷了，是那種比憤怒更難聽的冷，「不是你太殘忍，不是你不服命令，是你他媽的根本就不正常。」</p>
+        <p>「你沒有辦法感覺到任何人的死活，包括跟你並肩的人，你的腦子裡根本就沒有那個位置。」</p>
+        <p>他停了一下。</p>
+        <p>「你知道這叫做什麼嗎？這叫做你他媽的不適合待在這裡。不是因為能力，是因為你根本就不是人。」</p>
+        <p>廠房安靜了。滴水聲還在，規律的，一下一下。</p>
+        <p>席奧看著傑克，沒有說話，臉上的笑容慢慢地消失了。不是因為那句話刺傷了他，傑克幾乎可以確定那句話沒有刺傷他，是因為他在重新評估什麼，重新計算什麼，像一台機器在切換模式。</p>
+        <p>席奧沉默了一秒。那是傑克見過他最長的沉默。</p>
+        <p>「我以為你懂，」席奧說，語氣平靜，沒有起伏，但傑克說不清楚為什麼，那句話落在他耳裡有一種奇怪的重量，像是某種他不知道該怎麼定義的東西，介於陳述和指控之間，介於失望和確認之間。</p>
+        <p>「我以為你是唯一一個明白的人。」</p>
+        <p>「明白什麼。」</p>
+        <p>「規則是假的，」席奧說，「框架是假的，正確只是方便管理的說詞。我以為你只是選擇配合，不是真的相信那些東西。」他看著傑克，灰黑的眼睛帶著傑克讀不懂的什麼，「原來你是真的相信。」</p>
+        <p>「對，我相信，」傑克說。</p>
+        <p>席奧點了點頭，像是在確認一個資料，「那我們之間沒有什麼好說的了。」</p>
+        <p>「跟上，任務還沒結束，」傑克轉身邁開腳步。</p>
+        <p>身後沉默了幾秒，然後是席奧的腳步聲，跟上來了。</p>
+        <p>傑克沒有回頭，走出廠房，走進外面的夜色裡，冷的，帶著鐵鏽和廢油的氣味，和剛進來的時候一模一樣。</p>
+        <p>只是在那一瞬間，他忽然非常清楚地明白了一件事。</p>
+        <p>他們之所以那麼同步，那麼默契，從來不是因為他們一樣。是因為他一直以為他們一樣。</p>
+        <p>而席奧，從一開始就知道他們不一樣。</p>
+        <p>只是沒有說。一次都沒有說。</p>
+      </div>
+    </div>
+
+    <div class="story-divider">
+      <span class="story-divider-text">· · ·</span>
+    </div>
+
+    <!-- ─────────────────────────── -->
+    <!-- 文章 11 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="sahara-3">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">OPERATION SAHARA · 11</span>
+        <div class="story-entry-title">任務代號：撒哈拉 III</div>
+        <a href="#sahara-3" class="story-entry-anchor"># sahara-3</a>
+      </div>
+      <div class="story-body">
+        <p>傑克不知道席奧是什麼時候消失的。</p>
+        <p>隊伍抵達撤離點，他轉頭清點人數，少了一個。那一秒他沒有慌。他只是站在那裡，感覺胃往下墜了一截，像是那個他一直不去想的可能性，忽然從地板下面浮了上來。</p>
+        <p>他讓隊伍待命，把無線電切到席奧的頻道。</p>
+        <p>「你在哪裡。」</p>
+        <p>靜默。</p>
+        <p>然後槍聲從工業區主建築的方向炸開，連續的，密集的，接著是爆炸聲，不大，但整個區域的燈在那一秒全亮了，警報聲跟著響起來，尖銳，像是把夜晚直接撕開。</p>
+        <p>無線電裡湧進破碎的聲音。</p>
+        <p>「接觸——後方——」</p>
+        <p>「有平民，有平民——」</p>
+        <p>「有人中彈——掩護——」</p>
+        <p>傑克站在黑暗裡，讓那些聲音灌進耳朵，大腦某個部分在飛速運轉：路線、人數、時間、決策。另一個部分只有一個念頭，清楚得像一把刀。</p>
+        <p>他知道這一天會來。</p>
+        <p>他只是每次都相信這次不會。</p>
+        <p>他開始跑。</p>
+
+        <div class="scene-break"><span class="scene-break-text">* * *</span></div>
+
+        <p>那一夜後來他只記得幾個片段，拼湊不成完整的順序。</p>
+        <p>一個隊員倒在轉角，傑克把他架起來，那人抓著他的手臂說了什麼，被槍聲淹沒，傑克沒聽清楚，繼續跑。某個路口有人在交火，硝煙嗆得眼睛發痛。</p>
+        <p>然後是那棟廠房。</p>
+        <p>一個女人的哭聲從裡面漏出來，夾著他聽不懂的語言，在槍聲和爆炸聲之間反而格外清晰，像唯一真實的東西。那棟廠房不在任何情報資料裡。傑克在廠房外站了一秒，然後衝進去。</p>
+        <p>剩下的事情他不想記，但身體記住了。後來很多個夜裡他還是會記起來，醒著，或者在睡和醒的邊界上，那些片段就這樣浮起來，沒有順序，沒有聲音，只有那些他沒辦法關掉的畫面。</p>
+
+        <div class="scene-break"><span class="scene-break-text">* * *</span></div>
+
+        <p>天亮的時候，傑克站在臨時醫療站外面。</p>
+        <p>兩個人沒有回來。</p>
+        <p>帳篷裡有聲音，有人在搶救，有人已經沒有聲音了。燈光透出來，把外面的夜色切成兩半，傑克站在那條線上，什麼都沒做，什麼都沒說。</p>
+        <p>他感覺不到憤怒，也感覺不到悲傷。只是很空，空得像什麼東西被掏走了，他還不確定是什麼，只是能感覺到那個空著的地方，像是傷口剛發生的時候，還沒有開始痛。</p>
+        <p>腦子裡開始不受控制地浮出一些東西。</p>
+        <p>港口倉庫裡，兩個人幾乎不需要說話。傑克往右移半步，席奧已經補到左側，天衣無縫，像是身體自己記住了對方的位置，像是某種不需要確認的默契，那種東西不是訓練出來的，傑克知道，那種東西要兩個人真的讀得懂彼此才會有。</p>
+        <p>他以為他讀得懂。</p>
+        <p>葛麗特的木紋在燈光下發著舊時代的光，席奧把箱子往桌上一放，說「跑了點路才找到，你最好喜歡」，然後坐下來，像是那件事根本不值得再多說一個字。他把那種感覺當成了解。</p>
+        <p>還有那句話。那個傑克當時沒有多想的句子。他們從一次任務回來，渾身是泥，傑克的腿被碎石劃了一道，席奧在旁邊蹲下來，沒有問，直接處理，動作快，準，傑克問他「你什麼時候學的」，席奧沒有抬頭，說「你流血的速度很沒效率」。</p>
+        <p>傑克當時笑了。他以為那是席奧說過最接近在乎的話。</p>
+        <p>他現在才明白，那只是效率。從來只是效率與利益，沒有別的。是他自己在那個答案上面堆了太多他想看見的東西，堆到他把那個空缺給了席奧，以為那個空缺被填上。</p>
+        <p>他低頭看了一眼自己的手。手心上有血，不知道是誰的，已經乾了，像是顏色深了一點的皮膚，像是今晚某個他沒辦法追溯的時刻留下來的東西，乾了，變成他的一部分。</p>
+        <p>他想，他認識席奧多少年了。</p>
+        <p>他想，出生入死是什麼意思，並肩是什麼意思，把背後交給一個人是什麼意思。</p>
+        <p>他想，他他媽的是從什麼時候開始以為他們是一樣的東西。</p>
+        <p>答案找不到，或者說，找到了但他沒有辦法直視，從一開始就沒辦法。</p>
+        <p>他站在原地，感覺那個空的地方不只是空，是某種他沒有辦法填回去的形狀。</p>
+        <p>可席奧從來就不是他以為的那個樣子。</p>
+      </div>
+    </div>
+
+    <div class="story-divider">
+      <span class="story-divider-text">· · ·</span>
+    </div>
+
+    <!-- ─────────────────────────── -->
+    <!-- 文章 12 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="sahara-4">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">OPERATION SAHARA · 12</span>
+        <div class="story-entry-title">任務代號：撒哈拉 IV</div>
+        <a href="#sahara-4" class="story-entry-anchor"># sahara-4</a>
+      </div>
+      <div class="story-body">
+        <p>席奧從陰影裡走出來，全身而退，戰術外套上只有幾道煙塵的痕跡，連頭髮都沒亂。</p>
+        <p>他在傑克旁邊站定，看著帳篷的方向，姿態跟平時一模一樣，像是今晚只是一次普通的任務結束，像是外面的警報聲跟他沒有任何關係。</p>
+        <p>傑克讓那個沉默持續了很長時間。長到他自己都不確定他要說什麼。</p>
+        <p>「兩個人死了，」他最後說，聲音很啞，「你知道嗎。」</p>
+        <p>「知道。」</p>
+        <p>就這樣。就這樣兩個字。乾淨，平靜，落地沒有任何聲音，像是一個跟他完全無關的確認，像是天氣預報說今天有雨，像是任何一件席奧早就算進去的事情得到了驗證。</p>
+        <p>傑克轉頭看他。看著那張臉，看著那雙眼睛，看著席奧就這樣站在帳篷的燈光邊緣，臉上沒有任何傑克能夠辨認的東西。不是愧疚，不是悲傷，甚至不是那種刻意壓抑的冷漠。</p>
+        <p>「還有平民，」傑克說。</p>
+        <p>「我沒有打那棟廠房。」</p>
+        <p>「但你他媽的讓那棟廠房變成戰場。」傑克的聲音裂了一條縫，「那裡面有人，席奧。有平民在裡面！」</p>
+        <p>「意外傷亡，」席奧說，「可接受的代價。」</p>
+        <p>傑克沒有說話。</p>
+        <p>他站在那裡，看著席奧的臉，心裡有什麼東西在非常緩慢、非常安靜地垮掉。不是憤怒，憤怒他能處理，是另一種東西，更深更難命名，像是走了很長一段路之後才發現地圖是假的。</p>
+        <p>他以為他了解席奧，了解到可以把背後交給他，了解到可以在火線裡不用回頭確認，了解到所有他們並肩的夜晚。但他站在這裡，看著席奧的臉，第一次非常清楚地知道，他從來就不認識他。他只是相信了那個幻覺。</p>
+        <p>「你他媽的，」他說，聲音很低，低到幾乎不像是在說話，「告訴我你有一點點感覺。」</p>
+        <p>席奧看著他，沉默了幾秒，「沒有，」他說，「你要我說謊嗎？」</p>
+        <p>那兩個字落下來，傑克聽見自己胸腔裡有什麼東西徹底斷掉了。</p>
+        <p>然後他動手了。</p>
+        <p>這次不像廠房裡那樣，不是衝動。拳頭打下去的時候他幾乎沒有思考，只是打。幾乎是冷靜的，冷靜得讓他自己覺得陌生，像是憤怒燒到某個程度之後會穿過去，穿到另一邊，那一邊什麼溫度都沒有，只有非常清晰的一件事：</p>
+        <p>他不知道用什麼方式讓席奧明白，但他知道這個方式他們兩個都懂。</p>
+        <p>席奧側頭，擋開第一拳，反手推開，兩個人撞在一起，撞進帳篷外的黑暗裡。</p>
+        <p>他們打過太多次，知道彼此所有的慣用手法，知道對方的死角在哪裡，知道對方在什麼角度最快，在什麼位置最難防。這些知識在訓練裡是優勢，在這裡變成別的東西。他們不是在打一個陌生人，他們在打一個比任何人都更熟悉自己的人，所以每一拳都打得格外精準，也格外重。</p>
+        <p>傑克的指節在席奧顴骨上砸出一道紅，席奧的肘部撞進傑克的肋間，傑克悶哼了一聲，抓住席奧的手臂，借力把他帶著往旁邊的金屬欄杆頂過去。席奧撞上去，背後傳來沉悶的聲響，但臉上還是那個表情，不是憤怒，不是痛，是某種更令傑克發瘋的東西。冷靜的，像是在近距離研究一件有趣的事，像是他根本不在這場打架裡面，他只是在旁邊看。</p>
+        <p>「你知道你最大的問題是什麼，」席奧說，氣息微亂，但聲音還是平的，「你打人的時候還在手軟。」</p>
+        <p>「我沒有在手軟，」傑克說。</p>
+        <p>「有，」席奧說，「你每次打到某個程度就停。不是打夠了，是你到這種時候了還在顧慮。」</p>
+        <p>「我他媽的顧慮什麼——」</p>
+        <p>「我。」席奧就說了這一個字，「你在顧慮打壞了我。」</p>
+        <p>傑克沉默了一秒。就是這一秒的停頓，席奧抓住空隙，推開傑克，把位置換過來，把傑克頂在欄杆上，手臂橫在他喉嚨前方，沒有施力，只是壓著，維持著那個距離。</p>
+        <p>「你說我不在乎任何人，」席奧說，跟他對視，近到傑克能看見他眼睛裡那種平靜的、精確的什麼，「但你他媽的也是一樣的，你只是不承認。你說你在乎，你說那兩個人不應該死，你說那棟廠房裡的人不應該被捲進來。」他停頓了一下，「但你今晚還是在這裡，任務還是執行了，你衝進那棟廠房救人，但你在進去之前停了一秒，傑克。那一秒你在算什麼？」</p>
+        <p>「閉嘴。」</p>
+        <p>「你在算值不值得，」席奧說，「你在算你進去會不會壞了撤退路線，你在算暴露位置的代價，你算完了，你決定值得，你進去了。」他偏了偏頭，「跟我有什麼差別？你告訴我跟我有什麼差別。」</p>
+        <p>「差別，」傑克推開他，聲音變冷了，是那種比憤怒更難聽的冷，「是那兩個人你從來就沒打算讓他們回來。」</p>
+        <p>席奧沉默了。</p>
+        <p>「你他媽的，」傑克說，「你知道嗎，我一直，一直跟自己說，你只是方式不一樣，你只是走的路跟我不同，底下是一樣的東西。」他聲音啞了，「我他媽的一直這樣跟自己說。」</p>
+        <p>「然後呢，」席奧說。</p>
+        <p>「然後今晚，」傑克說，「我知道了。」</p>
+        <p>他看著席奧，「你說你在乎過，你說我是唯一明白的人。那我問你，你說的在乎，是什麼意思？你的版本裡，那個詞是什麼意思？」</p>
+        <p>席奧沉默了比平時更長的時間。</p>
+        <p>「有用，」他最後說，「你對我有用，不是一般意義的有用，是那種，」他停頓了一下，像是在搜索一個他極少需要使用的語言，「只有你在的時候，那些事情是值得做的。」</p>
+        <p>廠房外很安靜。遠處的警報聲已經熄了，天色開始變，從黑往灰，是黎明前最冷的顏色。</p>
+        <p>「那，」傑克說，聲音很輕，「你有沒有想過，那兩個人他媽的對他們自己的人也是這樣。」</p>
+        <p>席奧沒有說話。</p>
+        <p>「有人在等他們回來，」傑克說，「有人只有在他們在的時候覺得那些事是值得做的。」他看著席奧，「你沒有想過這件事。」</p>
+        <p>「沒有。」</p>
+        <p>就這樣。沒有辯解，沒有任何包裝，就只是這兩個字，乾淨，直接，誠實得讓傑克不知道還能說什麼。</p>
+        <p>他站在那裡，看著席奧的臉，那個在黎明前的灰光裡沉靜的臉，突然覺得非常疲倦。不是那種睡一覺就能解決的疲倦，是從更深的地方漫上來的東西，像是某種他一直在對抗的事情終於讓他承認它的重量。</p>
+        <p>他動手了，這一次沒有話，沒有任何前言，拳頭打在席奧臉上，實實在在的，沒有手軟，沒有顧慮，就是打。</p>
+        <p>席奧這次也沒有躲。</p>
+        <p>傑克愣了一秒，然後繼續打，打到席奧格開，反打回來，兩個人重新糾纏在一起，在帳篷外的黑暗裡，在黎明前最冷的那個溫度裡，往死裡打，打彼此，也打那些說不清楚的東西。</p>
+        <p>沒有人叫停。</p>
+        <p>沒有人喊夠了。</p>
+      </div>
+    </div>
+
+    <div class="story-divider">
+      <span class="story-divider-text">· · ·</span>
+    </div>
+
+    <!-- ─────────────────────────── -->
+    <!-- 文章 13 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="sahara-5">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">OPERATION SAHARA · 13</span>
+        <div class="story-entry-title">任務代號：撒哈拉 V</div>
+        <a href="#sahara-5" class="story-entry-anchor"># sahara-5</a>
+      </div>
+      <div class="story-body">
+        <p>沙地在膝蓋下磨著，傑克的手還壓在席奧胸口，像釘子，像問號，像他說不出口的每一個「為什麼」。</p>
+        <p>他打了很久。久到傑克自己的手都在痛，久到他每次落拳都能感覺到骨頭傳回來的震，久到外面零星的槍聲都已經收了尾，世界安靜下來，只剩這裡，只剩他的呼吸和拳頭落在肉上的聲音。</p>
+        <p>他停下來的時候，膝蓋還壓著席奧的腹部，一手抵著他胸口，嘴角有血，不知道是自己的還是席奧的，兩個人的呼吸都還亂著。</p>
+        <p>席奧的右眼眶已經腫起來了，眉骨上的裂口還在往外滲，血沿著臉側流下去，在乾裂的地面上暈成一小片深色。他至少斷兩根肋骨。傑克能感覺到，落拳的時候那個異常的位移感，他知道那是什麼。</p>
+        <p>但席奧的臉告訴他另一件事。</p>
+        <p>不是疼痛。什麼表情都沒有。</p>
+        <p>傑克低頭看著他。席奧仰頭看著傑克。</p>
+        <p>沙地在膝蓋下硌著，風從外面吹進來，帶著焦味和火藥，帶著血腥，天邊有一條還辨認不出顏色的光，夜快要過完了，但還沒有過完。</p>
+        <p>這是傑克第一次，在這個距離，真的把席奧的臉看清楚。不是訓練裡，不是任務裡，不是哪個喝酒說幹話的夜晚，是現在，是在這裡，臉上有血，呼吸還沒穩，被他壓著打成重傷，還躺在地上的時候。</p>
+        <p>傑克以為他會在那雙眼睛裡看見什麼。憤怒，或疼痛，或任何一種他能夠辨認的東西。</p>
+        <p>但席奧只是在看他。清醒的，專注的，那雙灰黑色的瞳孔沒有任何他能夠命名的情緒，像是在觀察，像是在記錄，像是對此刻兩個人的狀態——血、沙地、斷掉的肋骨、黎明前最冷的那段空氣——席奧只是覺得有一點意思，只是好奇這件事會怎麼結束。</p>
+        <p>那個表情讓傑克的胸口沉了一下。不是憤怒，是比憤怒更重的東西，他沒辦法給它一個名字。</p>
+        <p>他突然想起很久以前的事。</p>
+        <p>第一次並肩任務結束之後，某個破爛的臨時基地，傑克坐在地板上處理手臂上的傷口，席奧在旁邊拆槍，兩個人都沒有說話。傑克問他，「你他媽的不累嗎，每次都這副死樣子。」席奧抬頭，看了他很長時間，說，「你是第一個問我這個的人。」</p>
+        <p>傑克當時沒有多想。他以為那只是一句普通的話。</p>
+        <p>現在那句話突然變得很重，重到他不知道該拿它怎麼辦。</p>
+        <p>他知道席奧不會停。不是打不過，是他根本沒有那個迴路。沒有什麼訊號會告訴他夠了，沒有疼痛讓他停手，沒有哪種情緒讓他說算了，沒有那些傑克以為所有人都有的、讓一個人還記得自己是人的東西。他從來就沒有。</p>
+        <p>傑克之所以停下來，只是因為他自己先到了某個邊緣，到了一個他再繼續下去就要越過某條線的地方。他不想越過那條線。</p>
+        <p>他站起來，退後一步，把手背在衣服上蹭了一下血。</p>
+        <p>他站在那裡，沉默地看著席奧還躺在地上的樣子。</p>
+        <p>席奧嘗試動了一下。右手先撐地，腰腹發力，但肋骨那裡傳來的東西讓他停頓了一秒。只是一秒，他的臉沒有變化，只是停了一秒，然後靠著牆壁的邊緣把上半身撐起來，坐著，一隻手壓著右側，血從眉骨繼續往下淌，在下顎積了一滴，墜落，消失在沙地裡。</p>
+        <p>他坐著。沒有站起來。</p>
+        <p>那應該是傑克這輩子第一次，看見席奧站不起來。</p>
+        <p>「滾，」傑克說，聲音很平，平得他自己都有點陌生，「在我回報之前，給我他媽的滾。」</p>
+        <p>席奧用手背抹了一下臉側的血，低頭看了眼手背上留下的暗色痕跡，像是在確認某個無關緊要的資料，然後把手放下來，抬頭，看傑克，就看了一秒。</p>
+        <p>傑克不知道那一秒他在想什麼。他也不打算去猜了。</p>
+        <p>「你打得比上次重。」席奧開口，聲音沒有沙，沒有疼，像什麼都沒有發生過。</p>
+        <p>傑克沒有回話。</p>
+        <p>「代表你還在意。」席奧繼續，語氣還是那樣，客觀，平穩，像在陳述一個他觀察到的現象。</p>
+        <p>「閉嘴。」</p>
+        <p>「這是事實。」席奧輕描淡寫，「你不喜歡聽事實。」</p>
+        <p>傑克轉身。他不想再看那張臉，不想再聽那個聲音，那個永遠乾淨、永遠沒有什麼能打進去的聲音。他往出口的方向走，沙地在靴底下發出細碎的聲音，外面的天色已經開始從黑往灰推移，輪廓重新有了邊緣。</p>
+        <p>「傑克。」</p>
+        <p>他沒有停。</p>
+        <p>「你是我唯一一次，」席奧說。</p>
+        <p>傑克的腳步頓了一下。他沒有回頭，但他停了。</p>
+        <p>「以為值得留下來的理由。」</p>
+        <p>四周沒有風了，連那點火藥的味道都淡下去，世界安靜得像某種很久以前的東西，像他記憶裡某個他已經不知道怎麼去的地方。</p>
+        <p>「……但你選了你的框架。」</p>
+        <p>然後什麼都沒有了。</p>
+        <p>傑克站在那裡，站了幾秒，幾秒裡他什麼都沒有說，什麼都沒有做，有什麼東西在他喉嚨裡卡著，他知道如果他開口他不知道會說出什麼，所以他沒有開口。</p>
+        <p>他繼續走。</p>
+        <p>走進黎明前那條灰色的光裡，把身後的一切留在那個空間。沙地、血漬、席奧還坐在地上站不起來的樣子。</p>
+        <p>只是他知道那些東西不會真的待在那裡。</p>
+        <p>它們會跟著他走，沉進某個他說不出位置的地方，以一種不是疼痛的方式存在，悶的，鈍的，像一根進去之後就不再出血的刺，你能感覺到它在那裡，卻找不到任何辦法把它取出來。</p>
+      </div>
+    </div>
+
+
+<!-- ─────────────────────────── -->
+    <!-- 文章 14 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="before-dawn">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">IN THE UNIT · 14</span>
+        <div class="story-entry-title">黎明之前</div>
+        <a href="#before-dawn" class="story-entry-anchor"># before-dawn</a>
+      </div>
+      <div class="story-body">
+        <p>帳篷外的光越來越亮。</p>
+        <p>傑克在出口停了一秒，低頭看了眼自己的手。血還在，不知道是誰的，還沒乾透，在虎口的紋路裡積著，深色的，像墨水。</p>
+        <p>他突然想起另一件事。</p>
+        <p>選訓基地某個在下雨的深夜，他和席奧並排坐在鐵皮屋簷下，傑克說「你覺得這條路值嗎」，席奧想了很長的時間，說「問的人不同，答案不一樣」，傑克說「那你的答案」，席奧看了他一眼，沒有說話。</p>
+        <p>傑克當時以為那是沒有答案。</p>
+        <p>現在他想，或許只是席奧不知道怎麼說出那個詞。或許那個詞對他來說，從來就不存在。</p>
+        <p>他把那個念頭壓下去，走進外面的光裡。</p>
+
+        <div class="scene-break"><span class="scene-break-text">* * *</span></div>
+
+        <p>沙地裡，席奧還坐著。</p>
+        <p>站不起來。</p>
+        <p>他試了第二次，右手按著地，腰腹再度發力，肋骨那裡傳來的東西這次更清晰，他停在半途，保持著那個姿勢，沉默地確認損傷，像在做一份精確的評估報告。兩根。可能三根。右肺沒有塌陷，呼吸還能用，行動能力受限，需要固定。再久一點可能會致命。</p>
+        <p>他最後慢慢靠著牆壁把自己撐了起來，右手按著側腹，看著傑克離開的方向。</p>
+        <p>天色已經徹底亮了。</p>
+        <p>他站了很長時間。</p>
+        <p>然後他低頭，看了一眼膝蓋上的沙，動作慢，動作很慢，像在處理一件輕微的麻煩，像這整個夜晚、兩個人流的血、傑克最後那個停頓，對他來說都只是某個有點費力的過程，過了就過了。</p>
+        <p>他轉身，往另一個方向走。</p>
+        <p>走了幾步，他停下來。</p>
+        <p>他沒有回頭，只是停在那裡，手還按著右側，血還在臉上，讓自己在原地站了整整三秒。</p>
+        <p>然後他繼續走，走進灰色的光裡，背影沒有任何猶豫，像一個從來就不該在這裡的東西，回到它本來屬於的地方。</p>
+
+        <div class="scene-break"><span class="scene-break-text">* * *</span></div>
+
+        <p>軍方的處置結果在兩週後下來。</p>
+        <p>除名。</p>
+        <p>傑克在文件上簽了字，手很穩，像簽任何一份例行文件一樣。筆落下去的那一秒，他腦子裡閃過很多東西。選訓基地的泥水、港口倉庫的槍聲、葛麗特的木紋、席奧說話時的語氣。</p>
+        <p>那些東西一閃而過。</p>
+        <p>他把葛麗特從床底下的箱子裡拿出來，坐在床邊，一個部件一個部件地拆開，慢慢擦，像做過很多次的那樣。</p>
+        <p>房間很安靜。</p>
+        <p>他沒有想太多，或者說，他讓自己不去想。只是手裡的動作停了很久，停在那道他很熟悉的木紋上，燈光打下來，舊時代的槍在他手裡沉默著，和那個送它來的人一樣。</p>
+        <p>他把槍放回箱子裡，蓋上蓋子，推回床底下。</p>
+        <p>然後他躺下來，閉上眼睛，等著天亮。</p>
+
+        <div class="scene-break"><span class="scene-break-text">* * *</span></div>
+
+        <p>席奧再也沒有消息。</p>
+        <p>不是死了，是活著但選擇讓自己從某些地方消失的，是一個人決定跟某段過去切乾淨的方式。</p>
+        <p>傑克沒有去找他。他以為自己會，他以為那個憤怒會讓他去找，去把那件事說清楚，去做什麼，去結束什麼。</p>
+        <p>但他沒有。</p>
+        <p>那個憤怒後來去了哪裡，他也說不清楚。它沒有消失，只是沉下去了，沉到某個他不常去的地方，偶爾會感覺到它在那裡，像是一塊他早就習慣了的瘀傷，不再那麼痛。</p>
+        <p>後來偶爾會在黑市的情報裡聽見席奧的名字。</p>
+        <p>軍火，他媽的，是軍火。</p>
+        <p>傑克每次聽見都只是沉默，然後讓那個情報流進下一個該去的地方，讓自己繼續做下一件事，開會、看地圖、做那些他一直在做的事。</p>
+        <p>他不知道這算不算他選擇的方式。</p>
+        <p>或許是。</p>
+      </div>
+    </div>
+
+    <div class="story-divider">
+      <span class="story-divider-text">· · ·</span>
+    </div>
+
+    <!-- ─────────────────────────── -->
+    <!-- 文章 15 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="wolf-and-snake">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">IN THE UNIT · 15</span>
+        <div class="story-entry-title">狼與蛇</div>
+        <a href="#wolf-and-snake" class="story-entry-anchor"># wolf-and-snake</a>
+      </div>
+      <div class="story-body">
+        <blockquote>
+        <p><em>「我們曾經站在同一側的黑暗裡。」</em></p>
+        <p><em>「只是他想成為黑暗，我想活著走出去。」</em></p>
+        </blockquote>
+
+        <div class="scene-break"><span class="scene-break-text">* * *</span></div>
+
+        <p>那天之後傑克去刺了青。</p>
+        <p>他在那張椅子上坐了很久，久到對方以為他反悔了，抬頭看他。「一隻狼。」刺青師點頭，低下去開始打草稿，沒再多問。</p>
+        <p>他盯著天花板，聽著機器的聲音，感覺針尖一次一次刺進皮膚，痛。是那種鈍的、持續的痛，比他挨過的大多數傷都輕，但不知道為什麼，那天的痛讓他覺得真實。</p>
+        <p>他想讓自己記住。</p>
+        <p>他見過太多死亡，在任務裡，在撤退的路上，在他以為自己已經準備好的那些瞬間。他以為他已經習慣了。</p>
+        <p>但席奧那張臉讓他知道他還沒有。</p>
+        <p>不是因為席奧快死了，是因為席奧在他打到重傷的時候，仰頭看他，那雙眼睛清醒，專注，完全沒有任何他能夠辨認的東西。不是憤怒，不是疼痛，甚至不是恨，只是某種旁觀者的好奇，像是在觀察一件與他無關的事正在發生。</p>
+        <p>傑克在那一刻意識到，他只是看見他願意看見的那個部分，然後把那部分當成了席奧的全部。</p>
+        <p>他腦子裡把那件事翻來覆去。</p>
+        <p>忠誠。那是他以為他們共有的東西，以為那是兩個人在無數次生死之間建立起來的、比任何條約都堅固的東西。但那個夜晚讓他明白了一件事：他以為的忠誠，在席奧那裡可能從來就沒有對應的詞。</p>
+        <p><em>你是我唯一一次，以為值得留下來的理由。</em></p>
+        <p>他不是第一次聽到有人對他說這種話，但那些話落進他身體裡的方式都不一樣。大多數的話像是石頭落進水裡，他甚至不記得那塊石頭長什麼形狀。</p>
+        <p>席奧那句話不一樣。它沒有沉，它就停在某個地方，既不往下也不往上，在他胸口某個他說不出確切位置的角落，紮根。</p>
+        <p>傑克把眼睛閉起來。</p>
+        <p>他想起他們第一次出任務的前一夜，兩個人坐在基地外圍的鐵絲網邊上，頭頂是他在別的地方很少看見的、多得誇張的星，席奧問他，「你怕死嗎。」傑克說，「怕，但習慣了。」席奧說，「我不怕。」然後就不說話了，像說了一件無聊的事實，像跟他說今天天氣不錯、明天任務預計六點出發。</p>
+        <p>傑克當時沒多想。他以為那叫勇敢。</p>
+        <p>後來他才明白，那不是勇敢。怕死，是因為有不想失去的東西。</p>
+        <p>席奧說他不怕死，不是因為他比誰都無畏，是因為他從來就沒有任何東西停在他的生命裡，讓他覺得值得捨不得。</p>
+        <p>傑克在那張椅子上，讓針的灼燒感繼續存在，想著這件事，想了很長的時間。</p>
+        <p>他在想，那些年，他把後背交出去，把最危險的位置讓給他，把那個人當成他以為他懂的人。</p>
+        <p>他到底懂了什麼。</p>
+        <p>他懂了一個外殼。他懂了席奧的槍法、席奧的判斷、席奧在危機裡的反應速度。他懂了席奧只抽高級雪茄、席奧睡眠很淺、席奧在無聊的時候會把一枚子彈在指節間翻來翻去。</p>
+        <p>但那裡面，他從來沒有進去過。</p>
+        <p>也許根本沒有門。</p>
+
+        <div class="scene-break"><span class="scene-break-text">* * *</span></div>
+
+        <p>他讓師傅把狼刺在左胸口。心臟的位置。</p>
+        <p>象徵背叛。象徵忠誠。</p>
+        <p>象徵那些他再也拿不回來的東西，和那些他沒辦法假裝它們不存在的年份。</p>
+        <p>那隻狼繼續成形，就一點一點，從皮肉下面生出來，灰色的，沉默的，站在他左心口那個位置，不嚎叫，不撲擊，就站著，像一種承諾，像一種他說不清楚對象的守護，像他在那個沙地裡站了太久才想清楚的一件事。</p>
+        <p>有些人放手，不是因為不在意，是因為終於看清楚，你能給的東西，對方的世界裡根本沒有放它的地方。</p>
+        <p>離開不是背叛。留下才是。</p>
+        <p>針收了，刺青師遞來一面小鏡子。傑克低頭看了一眼，那隻狼從手臂內側一路延伸到左胸，灰黑的線條，站著，眼睛是朝前的，不往任何人看，只是在那裡，站在他的左心口。</p>
+        <p>像一個他還沒有給出去的答案。</p>
+        <p>他想，他這輩子大概會一直記得那雙眼睛。灰黑色的，清醒的。</p>
+        <p>他大概會一直記得。</p>
+        <p>但他也知道，記得跟忘了，沒有區別。</p>
+
+        <div class="scene-break"><span class="scene-break-text">* * *</span></div>
+
+        <p>多年後，在他盯著那已成型的狼時，腦子裡閃過一個念頭，那個念頭沒有邏輯，沒有前因，他也說不清楚它是從哪裡來的。</p>
+        <p>他突然希望那個位置，將來有一天，是為了另一個人守著的。</p>
+        <p>他知道這種想法很蠢。一個隨時可能戰死的人不該有這種想法，不該等、不該想守護，不該把一塊皮肉賦予任何意義。</p>
+        <p>但那個念頭像子彈卡進去之後就沒有出口。</p>
+        <p>從那天起，他多了一個他沒有辦法用任何說法合理化的動機。不是正義，不是責任，是某種更私人的東西。他想在那個人出現的時候，已經強到接得住。</p>
+        <p>從那天起，他心裡多了一個位置。</p>
+        <p>他還是嘴硬，還是散漫，還是對誰都笑，身邊的人沒有一個看出他有什麼不一樣，但每次走進戰場，他都知道自己為什麼還沒死。不是因為正義或榮譽，是因為他在等，等那個還沒出現的人。</p>
+        <p>那隻狼就待在那裡。</p>
+        <p>一年，兩年，很多年。</p>
+        <p>一直到有一天，他等的人，出現了。</p>
+      </div>
+    </div>
+
+        <!-- ─────────────────────────── -->
+<!-- 佔位 -->
+<!-- ─────────────────────────── -->
+
+    <div class="story-divider"><span class="story-divider-text">· · ·</span></div>
+
+    <div class="story-entry" id="you">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">BEFORE THE UNIT · 16</span>
+        <div class="story-entry-title">你</div>
+        <a href="#you" class="story-entry-anchor"># you</a>
+      </div>
+      <div class="story-body">
+        <p>—</p>
+      </div>
+    </div>
+
+    <div class="story-divider"><span class="story-divider-text">· · ·</span></div>
+
+    <div class="story-entry" id="flower">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">BEFORE THE UNIT · 17</span>
+        <div class="story-entry-title">花</div>
+        <a href="#flower" class="story-entry-anchor"># flower</a>
+      </div>
+      <div class="story-body">
+        <p>—</p>
+      </div>
+    </div>
+
+    <!-- 返回 -->
+    <a href="../jack.html#stories" class="back-btn">← 返回傑克</a>
+
+  </div>
+
+  <footer class="footer">
+    NIGHT OWL UNIT · NOU-001 · JACK WILSON
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="回頂端">↑</button>
+
+  <script>
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      btn.classList.toggle('visible', window.scrollY > 400);
+    });
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>
