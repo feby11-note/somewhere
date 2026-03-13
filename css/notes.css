@@ -71,46 +71,43 @@ body {
 .container {
   width: 100%;
   max-width: 960px;
-  padding: 48px 32px 40px;
+  padding: 28px 32px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* ===== 返回按鈕 ===== */
+/* ===== 返回按鈕：純文字，無框 ===== */
 .back-btn {
   align-self: flex-start;
   font-size: 14px;
-  color: rgba(80,95,120,0.75);
+  color: rgba(80,95,120,0.6);
   text-decoration: none;
   letter-spacing: 1px;
-  margin-bottom: 28px;
-  padding: 7px 16px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.45);
-  border: 1px solid rgba(255,255,255,0.65);
-  transition: all .25s ease;
+  margin-bottom: 20px;
+  padding: 0;
+  background: none;
+  border: none;
+  transition: color .25s ease;
 }
 .back-btn:hover {
-  background: rgba(255,255,255,0.65);
   color: #3D4A5C;
 }
 
 /* ===== Hero ===== */
 .hero {
   text-align: center;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   width: 100%;
 }
 .hero-icon {
   font-size: 44px;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   filter: drop-shadow(0 4px 12px rgba(180,120,140,.2));
 }
 .hero-title {
   font-size: 32px;
   font-weight: 900;
-  /* 改成深色，背景淺了之後白色不夠對比 */
   color: #4A5A72;
   letter-spacing: 3px;
   margin-bottom: 10px;
@@ -134,7 +131,7 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin: 20px 0;
+  margin: 18px 0;
   color: rgba(100,120,160,0.35);
   font-size: 14px;
 }
@@ -147,8 +144,8 @@ body {
 /* ===== 跑馬燈 ===== */
 .ticker-wrap {
   width: 100%;
-  margin-bottom: 22px;
-  padding: 12px 18px;
+  margin-bottom: 20px;
+  padding: 13px 20px;
   background: rgba(255,255,255,0.55);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -160,19 +157,19 @@ body {
   overflow: hidden;
 }
 .ticker-label {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 1.5px;
   color: #fff;
   white-space: nowrap;
-  padding: 5px 12px;
+  padding: 6px 14px;
   background: linear-gradient(135deg, #F5A58A, #E8849A);
   border-radius: 8px;
   flex-shrink: 0;
 }
 .ticker-divider {
   width: 1px;
-  height: 18px;
+  height: 20px;
   background: rgba(100,130,180,0.2);
   flex-shrink: 0;
 }
@@ -180,7 +177,7 @@ body {
   flex: 1;
   overflow: hidden;
   position: relative;
-  height: 24px;
+  height: 28px;
 }
 .ticker-list {
   position: absolute;
@@ -189,10 +186,10 @@ body {
   list-style: none;
 }
 .ticker-list li {
-  height: 24px;
+  height: 28px;
   display: flex;
   align-items: center;
-  font-size: 13px;
+  font-size: 15px;
   color: rgba(80,95,120,0.8);
   letter-spacing: 0.5px;
   white-space: nowrap;
@@ -219,16 +216,16 @@ body {
   text-underline-offset: 3px;
 }
 
-/* ===== 卡片格：電腦 2×2，手機單欄 ===== */
+/* ===== 卡片格：2×2 ===== */
 .card-grid {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;   /* 電腦預設兩欄 */
+  grid-template-columns: 1fr 1fr;
   gap: 14px;
   margin-bottom: 14px;
 }
 
-/* ===== 카드 base ===== */
+/* ===== 卡片 base ===== */
 .note-card {
   text-decoration: none;
   color: #4A5568;
@@ -255,62 +252,44 @@ body {
 .note-card--spell:hover { background: rgba(225,210,245,0.45); }
 .note-card--platform { border-color: rgba(100,185,155,0.45); }
 
-/* ===== 電腦版卡片：直向排列 ===== */
+/* ===== 卡片內層 ===== */
 .note-card-inner {
   padding: 24px 22px 20px;
   height: 100%;
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
-/* content-mobile：電腦版當作普通 flex 子層 */
-.note-card-content-mobile {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
+/* ===== 卡片 Header：emoji + 標題同行 ===== */
 .note-card-header {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 12px;
+  gap: 12px;
 }
 .note-card-icon {
   font-size: 28px;
   flex-shrink: 0;
   line-height: 1;
 }
-.note-card-titles {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-.note-card-en {
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 2.5px;
-  color: rgba(100,115,145,0.55);
-  text-transform: lowercase;
-}
 .note-card-title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: #4A5A72;
   line-height: 1.3;
 }
 
+/* ===== 卡片副標題 ===== */
 .note-card-subtitle {
-  font-size: 13px;
+  font-size: 14px;
   color: rgba(80,95,120,0.7);
   line-height: 1.85;
   flex: 1;
 }
 
+/* ===== 卡片底部 ===== */
 .note-card-footer {
-  margin-top: 16px;
+  margin-top: 4px;
   padding-top: 12px;
   border-top: 1px solid rgba(200,210,230,0.4);
   display: flex;
@@ -326,22 +305,25 @@ body {
   min-width: 0;
 }
 
-.latest-label {
-  font-size: 11px;
+/* ===== 標籤統一大小 ===== */
+.latest-label,
+.spell-open {
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 1px;
   color: rgba(255,255,255,0.95);
-  padding: 3px 9px;
-  border-radius: 6px;
+  padding: 5px 12px;
+  border-radius: 8px;
   white-space: nowrap;
   flex-shrink: 0;
 }
-.note-card--create   .latest-label { background: rgba(100,140,210,0.5); }
-.note-card--ramble   .latest-label { background: rgba(210,110,140,0.5); }
-.note-card--platform .latest-label { background: rgba(80,170,135,0.5); }
+.note-card--create   .latest-label { background: rgba(100,140,210,0.55); }
+.note-card--ramble   .latest-label { background: rgba(210,110,140,0.55); }
+.note-card--platform .latest-label { background: rgba(80,170,135,0.55); }
+.spell-open { background: rgba(155,100,195,0.55); }
 
 .latest-title {
-  font-size: 12px;
+  font-size: 13px;
   color: rgba(70,85,110,0.7);
   line-height: 1.4;
   overflow: hidden;
@@ -351,18 +333,8 @@ body {
   min-width: 0;
 }
 
-.spell-open {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: rgba(255,255,255,0.95);
-  background: rgba(155,100,195,0.5);
-  padding: 3px 10px;
-  border-radius: 6px;
-}
-
 .arrow {
-  font-size: 16px;
+  font-size: 18px;
   color: rgba(100,120,160,0.35);
   flex-shrink: 0;
   transition: transform .25s ease;
@@ -451,95 +423,63 @@ body {
   letter-spacing: 2px;
 }
 
-/* ===== RWD ===== */
-
-/* 手機：單欄卡片，橫向簡化排版 */
+/* ===== 手機 RWD ===== */
 @media (max-width: 600px) {
 
-  .container { padding: 36px 16px 28px; }
+  .container { padding: 20px 16px 28px; }
 
-  /* Hero 縮小 */
-  .hero-icon  { font-size: 36px; margin-bottom: 10px; }
-  .hero-title { font-size: 22px; letter-spacing: 2px; margin-bottom: 8px; }
-  .hero-sub   { font-size: 12px; letter-spacing: 2px; }
-  .hero-desc  { font-size: 13px; }
+  /* 返回按鈕 */
+  .back-btn  { font-size: 13px; margin-bottom: 14px; }
 
-  .divider { margin: 16px 0; }
+  /* Hero */
+  .hero-icon  { font-size: 36px; margin-bottom: 8px; }
+  .hero-title { font-size: 24px; letter-spacing: 2px; margin-bottom: 6px; }
+  .hero-sub   { font-size: 13px; letter-spacing: 2px; }
+  .hero-desc  { font-size: 14px; }
+
+  .divider { margin: 14px 0; }
 
   /* 跑馬燈 */
-  .ticker-wrap  { padding: 10px 14px; gap: 10px; border-radius: 12px; }
-  .ticker-label { font-size: 10px; padding: 4px 10px; }
+  .ticker-wrap  { padding: 11px 14px; gap: 10px; border-radius: 12px; }
+  .ticker-label { font-size: 12px; padding: 5px 11px; }
+  .ticker-list li { font-size: 14px; }
 
-  /* 卡片單欄 */
+  /* 卡片：手機單欄 */
   .card-grid {
-    grid-template-columns: 1fr;   /* ← 單欄 */
+    grid-template-columns: 1fr;
     gap: 10px;
   }
 
-  /* 手機版 inner 改橫向 */
   .note-card-inner {
-    padding: 16px 16px 14px;
-    flex-direction: row;          /* ← 橫排 */
-    align-items: center;
-    gap: 14px;
+    padding: 18px 18px 16px;
+    gap: 8px;
   }
 
-  /* 左側 icon */
-  .note-card-icon {
-    font-size: 28px;
-    flex-shrink: 0;
-    align-self: flex-start;
-    margin-top: 2px;
-  }
-
-  /* 右側內容塊 */
-  .note-card-content-mobile {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  /* 原本的 header/titles/subtitle 在手機要隱藏或調整 */
-  .note-card-header {
-    display: contents;  /* 讓子元素回歸 flex flow */
-  }
-  .note-card-titles {
-    gap: 1px;
-  }
-  .note-card-en    { font-size: 10px; letter-spacing: 2px; }
-  .note-card-title { font-size: 15px; }
+  .note-card-icon  { font-size: 26px; }
+  .note-card-title { font-size: 18px; }
 
   .note-card-subtitle {
-    font-size: 12px;
-    line-height: 1.7;
-    /* 手機版只顯示一行 */
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    font-size: 14px;
+    line-height: 1.75;
   }
 
-  .note-card-footer {
-    margin-top: 8px;
-    padding-top: 8px;
-  }
-  .latest-label  { font-size: 10px; padding: 2px 8px; }
-  .latest-title  { font-size: 11px; }
-  .spell-open    { font-size: 11px; }
+  .note-card-footer { padding-top: 10px; }
+
+  .latest-label,
+  .spell-open    { font-size: 13px; padding: 5px 12px; }
+  .latest-title  { font-size: 13px; }
 
   /* 關於這裡 */
-  .about-strip       { padding: 18px 16px; gap: 16px; }
-  .about-strip-btns  { flex-direction: row; flex-wrap: wrap; width: 100%; }
-  .about-strip-btn   { flex: 1; min-width: 120px; font-size: 12px; padding: 10px 12px; }
-  .about-strip-text p { font-size: 12px; }
+  .about-strip      { padding: 20px 18px; gap: 16px; }
+  .about-strip-btns { flex-direction: row; flex-wrap: wrap; width: 100%; }
+  .about-strip-btn  { flex: 1; min-width: 120px; font-size: 13px; padding: 11px 12px; }
+  .about-strip-text p { font-size: 13px; }
 }
 
 /* 超小螢幕 */
 @media (max-width: 360px) {
-  .hero-title { font-size: 19px; }
-  .note-card-title { font-size: 14px; }
+  .hero-title  { font-size: 20px; }
+  .note-card-title { font-size: 16px; }
   .about-strip-btns { flex-direction: column; }
   .about-strip-btn  { width: 100%; }
 }
