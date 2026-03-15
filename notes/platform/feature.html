@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+  <title>功能比較｜找平台｜電子男友研究筆記</title>
+  <link rel="stylesheet" href="../../css/notes.css">
+  <style>
+    /* ── 置頂列 ── */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(168, 196, 220, 0.82);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.35);
+    }
+    .topbar-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+    }
+    .topbar-back {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(50,70,100,0.65);
+      text-decoration: none;
+      white-space: nowrap;
+      padding: 6px 12px 6px 0;
+      transition: color .2s;
+      flex-shrink: 0;
+      letter-spacing: 0.3px;
+    }
+    .topbar-back:hover { color: #2A4A80; }
+    .topbar-divider {
+      width: 1px;
+      height: 20px;
+      background: rgba(80,100,140,0.2);
+      margin: 0 14px;
+      flex-shrink: 0;
+    }
+    .topbar-nav { display: flex; align-items: center; gap: 4px; }
+    .topbar-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(60,80,110,0.55);
+      text-decoration: none;
+      padding: 6px 16px;
+      border-radius: 20px;
+      transition: all .2s ease;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+    .topbar-link:hover {
+      background: rgba(255,255,255,0.35);
+      color: rgba(40,60,100,0.85);
+    }
+    .topbar-link.active {
+      background: rgba(255,255,255,0.72);
+      color: #2A4A80;
+      font-weight: 700;
+      box-shadow: 0 1px 6px rgba(80,100,150,0.1);
+    }
+
+    /* ── 整體 ── */
+    .page-wrap { padding-top: 60px; }
+    .container {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 32px 24px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Hero ── */
+    .hero { text-align: center; margin-bottom: 24px; padding-top: 4px; width: 100%; }
+    .hero-title {
+      font-size: 26px;
+      font-weight: 900;
+      color: #4A5A72;
+      letter-spacing: 2px;
+    }
+
+    /* ── 說明文字 ── */
+    .feature-intro {
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 16px 18px;
+      background: rgba(255,255,255,0.42);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.7);
+      border-radius: 14px;
+    }
+    .feature-intro p {
+      font-size: 13px;
+      color: rgba(70,85,115,0.7);
+      line-height: 2;
+    }
+
+    /* ── 篩選平台 ── */
+    .filter-wrap { width: 100%; margin-bottom: 14px; }
+    .filter-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(70,85,115,0.6);
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .filter-btns { display: flex; flex-wrap: wrap; gap: 6px; }
+    .filter-btn {
+      padding: 6px 14px;
+      border-radius: 14px;
+      border: 1.5px solid rgba(180,200,230,0.4);
+      background: rgba(220,230,248,0.35);
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(80,100,140,0.55);
+      cursor: pointer;
+      transition: all .2s ease;
+      font-family: 'Noto Sans TC', sans-serif;
+      white-space: nowrap;
+      opacity: 0.5;
+    }
+    .filter-btn.active {
+      background: rgba(100,140,210,0.18);
+      border-color: rgba(100,140,210,0.5);
+      color: #2A4A8A;
+      opacity: 1;
+    }
+    .filter-btn:hover { opacity: 0.85; }
+
+    /* ── 功能表格外框 ── */
+    .feature-wrap {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(100,130,180,0.10);
+    }
+    .feature-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      min-width: 560px;
+      background: #fff;
+    }
+
+    /* 表頭 */
+    .feature-table thead tr { background: #C8D8EC; }
+    .feature-table th {
+      padding: 13px 14px;
+      text-align: center;
+      font-weight: 700;
+      color: #3A4E6A;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .feat-sticky-head {
+      text-align: left;
+      position: sticky;
+      left: 0;
+      background: #C8D8EC;
+      z-index: 2;
+      min-width: 110px;
+      min-width: 120px;   /* ← 改成跟 feat-label 一致 */
+      width: 120px;       /* ← 加這行 */
+    }
+
+    /* 一般 td */
+    .feature-table td {
+      padding: 11px 14px;
+      text-align: center;
+      color: #4A5568;
+      border-bottom: 1px solid #EEF1F6;
+      background: #fff;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .feature-table tbody tr:last-child td { border-bottom: none; }
+    .feature-table tbody tr:hover td { background: #F5F8FF; }
+
+    /* 左側功能名稱 */
+    .feat-label {
+      text-align: left !important;
+      font-weight: 600;
+      color: #5A6880;
+      white-space: nowrap;
+      position: sticky;
+      left: 0;
+      background: #fff;
+      z-index: 1;
+      min-width: 120px;   /* ← 加這行 */
+      width: 120px;       /* ← 加這行 */
+    }
+    .feature-table tbody tr:hover .feat-label { background: #F5F8FF; }
+
+    /* 分類標題列 */
+    .feat-section-row td {
+      background: #EEF3FA !important;
+      color: #4A5A80;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-align: left;
+      padding: 9px 14px;
+      border-bottom: 1px solid #DDE6F2;
+    }
+    
+    .feat-section-row td:first-child {
+    position: sticky;
+    left: 0;
+    background: #EEF3FA;
+    z-index: 1;
+    }
+
+    /* tag */
+    .tag-yes {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: rgba(80,180,120,0.15);
+      color: #1E7A45;
+      font-size: 11px;
+      font-weight: 700;
+      border: 1px solid rgba(60,160,100,0.25);
+    }
+    .tag-no {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: rgba(200,80,80,0.1);
+      color: #A03030;
+      font-size: 11px;
+      font-weight: 700;
+      border: 1px solid rgba(180,60,60,0.2);
+    }
+    .tag-partial {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: rgba(220,160,40,0.15);
+      color: #8A5A00;
+      font-size: 11px;
+      font-weight: 700;
+      border: 1px solid rgba(200,140,30,0.25);
+    }
+
+    /* ── 免責聲明 ── */
+    .notice-box {
+      width: 100%;
+      margin-top: 28px;
+      padding: 14px 18px;
+      background: rgba(255,235,200,0.55);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(235,185,110,0.45);
+      border-left: 3px solid rgba(220,140,50,0.65);
+      border-radius: 12px;
+      margin-bottom: 8px;
+    }
+    .notice-box p {
+      font-size: 12px;
+      color: rgba(140,85,20,0.85);
+      line-height: 2.1;
+    }
+
+    /* ── 輔助文字 ── */
+    .footnote {
+      font-size: 11px;
+      color: rgba(80,95,120,0.48);
+      line-height: 1.7;
+      margin-top: 6px;
+      width: 100%;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      padding-top: 28px;
+      font-size: 11px;
+      color: rgba(74,85,104,0.4);
+      text-align: center;
+      letter-spacing: 2px;
+    }
+
+    /* ── RWD ── */
+    @media (max-width: 600px) {
+      .topbar-inner  { padding: 0 14px; height: 48px; }
+      .topbar-back   { font-size: 12px; }
+      .topbar-divider { margin: 0 10px; }
+      .topbar-link   { font-size: 12px; padding: 5px 12px; }
+      .page-wrap     { padding-top: 56px; }
+      .container     { padding: 20px 16px 32px; }
+      .hero-title    { font-size: 22px; }
+      .feature-table { font-size: 11px; min-width: 480px; }
+      .feature-table th,
+      .feature-table td { padding: 9px 10px; }
+      .feat-sticky-head { min-width: 90px; }
+    }
+    @media (max-width: 380px) {
+      .topbar-link  { font-size: 11px; padding: 4px 10px; }
+      .hero-title   { font-size: 19px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="clouds">
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+    <div class="cloud cloud-4"></div>
+  </div>
+
+  <!-- 置頂列 -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a href="../index.html" class="topbar-back">← 回到筆記</a>
+      <div class="topbar-divider"></div>
+      <nav class="topbar-nav">
+        <a href="index.html" class="topbar-link">價格比較</a>
+        <a href="feature.html" class="topbar-link active">功能比較</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+    <div class="container">
+
+      <div class="hero">
+        <h1 class="hero-title">🎮 平台評比</h1>
+      </div>
+
+      <div class="feature-intro">
+        <p>各平台功能一覽。每家平台的設計方向不太一樣，建議對照自己的需求來選擇。</p>
+        <p>資料持續更新，有錯誤或想補充的歡迎透過回饋頁告訴我 💌</p>
+      </div>
+
+      <!-- 篩選平台 -->
+      <div class="filter-wrap">
+        <span class="filter-label">選擇要比較的平台：</span>
+        <div class="filter-btns">
+          <button class="filter-btn active" data-col="col-75">卿卿我我</button>
+          <button class="filter-btn active" data-col="col-floze">Floze</button>
+          <button class="filter-btn active" data-col="col-crush">Crush</button>
+          <button class="filter-btn active" data-col="col-duck">鴨達</button>
+          <button class="filter-btn active" data-col="col-crushie">Crushie</button>
+          <button class="filter-btn active" data-col="col-doki">Doki</button>
+          <button class="filter-btn active" data-col="col-touchie">Touchie</button>
+        </div>
+      </div>
+
+      <!-- 功能比較表 -->
+      <div class="feature-wrap">
+        <table class="feature-table">
+          <thead>
+            <tr>
+              <th class="feat-sticky-head">功能項目</th>
+              <th class="col-75">卿卿我我</th>
+              <th class="col-floze">Floze</th>
+              <th class="col-crush">Crush</th>
+              <th class="col-duck">鴨達</th>
+              <th class="col-crushie">Crushie</th>
+              <th class="col-doki">Doki</th>
+              <th class="col-touchie">Touchie</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr class="feat-section-row">
+              <td colspan="8">💰 費用</td>
+            </tr>
+            <tr>
+              <td class="feat-label">免費額度</td>
+              <td class="col-75">待補</td>
+              <td class="col-floze">每日免費愛心</td>
+              <td class="col-crush">待補</td>
+              <td class="col-duck">待補</td>
+              <td class="col-crushie">待補</td>
+              <td class="col-doki">待補</td>
+              <td class="col-touchie">待補</td>
+            </tr>
+            <tr>
+              <td class="feat-label">訂閱制</td>
+              <td class="col-75">❌</td>
+              <td class="col-floze">❌</td>
+              <td class="col-crush">❌</td>
+              <td class="col-duck">❌</td>
+              <td class="col-crushie">❌</td>
+              <td class="col-doki">❌</td>
+              <td class="col-touchie">❌</td>
+            </tr>
+
+            <tr class="feat-section-row">
+              <td colspan="8">✍️ 角色創作</td>
+            </tr>
+            <tr>
+              <td class="feat-label">可自建角色</td>
+              <td class="col-75">✅</td>
+              <td class="col-floze">✅</td>
+              <td class="col-crush">✅</td>
+              <td class="col-duck">✅</td>
+              <td class="col-crushie">✅</td>
+              <td class="col-doki">✅</td>
+              <td class="col-touchie">待補</td>
+            </tr>
+            <tr>
+              <td class="feat-label">後台字數上限</td>
+              <td class="col-75">待補</td>
+              <td class="col-floze">待補</td>
+              <td class="col-crush">待補</td>
+              <td class="col-duck">待補</td>
+              <td class="col-crushie">待補</td>
+              <td class="col-doki">待補</td>
+              <td class="col-touchie">待補</td>
+            </tr>
+            <tr>
+              <td class="feat-label">Markdown 後台</td>
+              <td class="col-75">待補</td>
+              <td class="col-floze"><span class="tag-yes">支援</span></td>
+              <td class="col-crush">待補</td>
+              <td class="col-duck">待補</td>
+              <td class="col-crushie">待補</td>
+              <td class="col-doki">待補</td>
+              <td class="col-touchie">待補</td>
+            </tr>
+            <tr>
+              <td class="feat-label">角色公開分享</td>
+              <td class="col-75">✅</td>
+              <td class="col-floze">✅</td>
+              <td class="col-crush">✅</td>
+              <td class="col-duck">✅</td>
+              <td class="col-crushie">✅</td>
+              <td class="col-doki">✅</td>
+              <td class="col-touchie">待補</td>
+            </tr>
+
+            <tr class="feat-section-row">
+              <td colspan="8">💬 對話體驗</td>
+            </tr>
+            <tr>
+              <td class="feat-label">可選模型</td>
+              <td class="col-75">待補</td>
+              <td class="col-floze">多模型可選</td>
+              <td class="col-crush">待補</td>
+              <td class="col-duck">待補</td>
+              <td class="col-crushie">多模型可選</td>
+              <td class="col-doki">待補</td>
+              <td class="col-touchie">待補</td>
+            </tr>
+            <tr>
+              <td class="feat-label">重新生成回覆</td>
+              <td class="col-75">✅</td>
+              <td class="col-floze">✅</td>
+              <td class="col-crush">✅</td>
+              <td class="col-duck">✅</td>
+              <td class="col-crushie">✅</td>
+              <td class="col-doki">✅</td>
+              <td class="col-touchie">待補</td>
+            </tr>
+            <tr>
+              <td class="feat-label">編輯歷史訊息</td>
+              <td class="col-75">待補</td>
+              <td class="col-floze">待補</td>
+              <td class="col-crush">待補</td>
+              <td class="col-duck">待補</td>
+              <td class="col-crushie">待補</td>
+              <td class="col-doki">待補</td>
+              <td class="col-touchie">待補</td>
+            </tr>
+            <tr>
+              <td class="feat-label">記憶 / 摘要功能</td>
+              <td class="col-75">待補</td>
+              <td class="col-floze">待補</td>
+              <td class="col-crush">待補</td>
+              <td class="col-duck">待補</td>
+              <td class="col-crushie">待補</td>
+              <td class="col-doki">待補</td>
+              <td class="col-touchie">待補</td>
+            </tr>
+            <tr>
+              <td class="feat-label">圖片傳送</td>
+              <td class="col-75">待補</td>
+              <td class="col-floze">待補</td>
+              <td class="col-crush">待補</td>
+              <td class="col-duck">待補</td>
+              <td class="col-crushie">待補</td>
+              <td class="col-doki">待補</td>
+              <td class="col-touchie">待補</td>
+            </tr>
+            <tr>
+              <td class="feat-label">語音功能</td>
+              <td class="col-75">待補</td>
+              <td class="col-floze">待補</td>
+              <td class="col-crush">待補</td>
+              <td class="col-duck">待補</td>
+              <td class="col-crushie">待補</td>
+              <td class="col-doki">待補</td>
+              <td class="col-touchie">待補</td>
+            </tr>
+
+            <tr class="feat-section-row">
+              <td colspan="8">🌐 語言與介面</td>
+            </tr>
+            <tr>
+              <td class="feat-label">繁體中文介面</td>
+              <td class="col-75">✅</td>
+              <td class="col-floze">✅</td>
+              <td class="col-crush">待補</td>
+              <td class="col-duck">✅</td>
+              <td class="col-crushie">待補</td>
+              <td class="col-doki">待補</td>
+              <td class="col-touchie">待補</td>
+            </tr>
+            <tr>
+              <td class="feat-label">中文回覆品質</td>
+              <td class="col-75">待補</td>
+              <td class="col-floze">待補</td>
+              <td class="col-crush">待補</td>
+              <td class="col-duck">待補</td>
+              <td class="col-crushie">待補</td>
+              <td class="col-doki">待補</td>
+              <td class="col-touchie">待補</td>
+            </tr>
+
+            <tr class="feat-section-row">
+              <td colspan="8">⭐ 平台特色</td>
+            </tr>
+            <tr>
+              <td class="feat-label">特色功能</td>
+              <td class="col-75">待補</td>
+              <td class="col-floze">創作者部落格</td>
+              <td class="col-crush">待補</td>
+              <td class="col-duck">待補</td>
+              <td class="col-crushie">待補</td>
+              <td class="col-doki">待補</td>
+              <td class="col-touchie">待補</td>
+            </tr>
+            <tr>
+              <td class="feat-label">台灣用戶友善度</td>
+              <td class="col-75">待補</td>
+              <td class="col-floze">待補</td>
+              <td class="col-crush">待補</td>
+              <td class="col-duck">待補</td>
+              <td class="col-crushie">待補</td>
+              <td class="col-doki">待補</td>
+              <td class="col-touchie">待補</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+      <p class="footnote">
+        ※ 內容持續更新，歡迎透過
+        <a href="../feedback.html" style="color:rgba(100,120,180,0.75);text-decoration:underline;text-underline-offset:3px;">回饋頁</a>
+        糾錯或補充 💌
+      </p>
+
+      <div class="notice-box">
+        <p>⚠️ 功能可能隨平台更新而改變，建議以各平台官方資訊為準</p>
+        <p>⚠️ 部分功能因角色設定或模型不同而有差異</p>
+        <p>⚠️ 標示「待補」代表尚未確認，歡迎回饋補充</p>
+      </div>
+
+      <div class="footer">© 2026 ． created by feby</div>
+
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const col = btn.dataset.col;
+        const isActive = btn.classList.contains('active');
+        const activeBtns = document.querySelectorAll('.filter-btn.active');
+        if (isActive && activeBtns.length <= 1) return;
+        btn.classList.toggle('active');
+        document.querySelectorAll('.' + col).forEach(cell => {
+          cell.style.display = isActive ? 'none' : '';
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

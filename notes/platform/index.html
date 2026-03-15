@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+  <title>平台比較｜電子男友研究筆記</title>
+  <link rel="stylesheet" href="../../css/notes.css">
+  <link rel="stylesheet" href="../../css/platform.css">
+  <meta property="og:title" content="平台比較｜by 菲比">
+  <meta property="og:description" content="AI RolePlay APP 不負責任評比。">
+  <meta property="og:url" content="https://feby11-note.github.io/somewhere/notes/platform/index.html">
+  <meta property="og:type" content="website">
+</head>
+<body>
+
+  <div class="clouds">
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+    <div class="cloud cloud-4"></div>
+  </div>
+
+  <!-- 置頂列 -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a href="../index.html" class="topbar-back">← 回到筆記</a>
+      <div class="topbar-divider"></div>
+      <nav class="topbar-nav">
+        <a href="index.html" class="topbar-link active">價格比較</a>
+        <a href="feature.html" class="topbar-link">功能比較</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+    <div class="container">
+
+      <!-- Hero -->
+      <div class="hero">
+        <h1 class="hero-title">🎮 平台評比</h1>
+      </div>
+
+      <!-- 主內容（價格比較） -->
+      <div class="main-panel active" id="main-price">
+
+        <!-- 書籤 Tab：綜合排行 / 各平台詳情 -->
+        <div class="bookmark-tabs">
+          <button class="bookmark-tab active" data-sub="ranking">🔥 綜合排行</button>
+          <button class="bookmark-tab" data-sub="detail">🔍 各平台詳情</button>
+        </div>
+
+        <!-- ▌綜合排行 -->
+        <div class="sub-panel active" id="sub-ranking">
+
+          <!-- 代幣單價 / 每則回覆 切換 -->
+          <div class="pill-tabs">
+            <button class="pill-tab active" data-rank="unit">💰 代幣單價比較</button>
+            <button class="pill-tab" data-rank="reply">💬 每則回覆花費</button>
+          </div>
+
+          <!-- 代幣單價 -->
+          <div class="rank-panel active" id="rank-unit">
+            <p class="panel-note">以各家<u>最划算購買方案</u>計算<strong>「1代幣＝多少台幣」</strong> 越低越划算</p>
+            <div class="rank-table-wrap">
+              <table class="rank-table">
+                <thead>
+                  <tr>
+                    <th>排名</th>
+                    <th>平台</th>
+                    <th>代幣名稱</th>
+                    <th>最小額購買</th>
+                    <th>最大單購買</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="rank-1">
+                    <td>🥇</td><td>Crushie</td><td>寶石 💎</td>
+                    <td class="muted">$0.222</td><td class="best">$0.066</td>
+                  </tr>
+                  <tr class="rank-2">
+                    <td>🥈</td><td>Doki</td><td>心動 💗</td>
+                    <td class="muted">$0.150</td><td class="best">$0.149</td>
+                  </tr>
+                  <tr class="rank-3">
+                    <td>🥉</td><td>Floze</td><td>愛心 💖</td>
+                    <td class="muted">$0.208</td><td class="best">$0.164</td>
+                  </tr>
+                  <tr>
+                    <td>4</td><td>卿卿我我</td><td>果醬 🍓</td>
+                    <td class="muted">$0.263</td><td class="best">$0.240</td>
+                  </tr>
+                  <tr>
+                    <td>5</td><td>Touchie</td><td>金幣 🪙</td>
+                    <td class="muted">$0.633</td><td class="best">$0.260</td>
+                  </tr>
+                  <tr>
+                    <td>6</td><td>鴨達</td><td>翅膀 🪶</td>
+                    <td class="muted">$0.340</td><td class="best">$0.324</td>
+                  </tr>
+                  <tr>
+                    <td>7</td><td>Crush</td><td>點數 🔹</td>
+                    <td class="muted">$1.071</td><td class="best">$0.937</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="footnote">※ Floze 以首購網頁 85 折優惠方案計算</p>
+            <p class="footnote">※ Crush 以網頁優惠方案計算</p>
+          </div>
+
+          <!-- 每則回覆花費 -->
+          <div class="rank-panel" id="rank-reply">
+            <p class="panel-note"><strong>發一則訊息要花多少台幣</strong>，以各家<u>最划算方案</u>計算</p>
+
+            <div class="toggle-row">
+              <button class="toggle-btn active" data-toggle="cheap">使用最便宜模型</button>
+              <button class="toggle-btn" data-toggle="exp">使用最貴模型</button>
+            </div>
+
+            <div class="toggle-panel active" id="toggle-cheap">
+              <div class="rank-table-wrap">
+                <table class="rank-table">
+                  <thead>
+                    <tr><th>排名</th><th>平台</th><th>每則代幣數</th><th>每則花費</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr class="rank-1"><td>🥇</td><td>Doki</td><td>2</td><td class="best">$0.298</td></tr>
+                    <tr class="rank-2"><td>🥈</td><td>鴨達</td><td>1</td><td class="best">$0.324</td></tr>
+                    <tr class="rank-3"><td>🥉</td><td>Crushie</td><td>5</td><td class="best">$0.330</td></tr>
+                    <tr><td>4</td><td>Touchie</td><td>2</td><td class="best">$0.680</td></tr>
+                    <tr><td>5</td><td>Crush</td><td>1</td><td class="best">$0.937</td></tr>
+                    <tr><td>6</td><td>Floze</td><td>6</td><td class="best">$0.984</td></tr>
+                    <tr><td>7</td><td>卿卿我我</td><td>5</td><td class="best">$1.200</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="footnote">※ 模型便宜與貴 不代表回覆長短</p>
+              <p class="footnote">※ 請自行評估模型品質與使用偏好</p>
+            </div>
+
+            <div class="toggle-panel" id="toggle-exp">
+              <div class="rank-table-wrap">
+                <table class="rank-table">
+                  <thead>
+                    <tr><th>排名</th><th>平台</th><th>每則代幣數</th><th>每則花費</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr class="rank-1"><td>🥇</td><td>Crushie</td><td>10</td><td class="best">$0.660</td></tr>
+                    <tr class="rank-2"><td>🥈</td><td>Touchie</td><td>8</td><td class="best">$2.080</td></tr>
+                    <tr class="rank-3"><td>🥉</td><td>Floze</td><td>16</td><td class="best">$2.624</td></tr>
+                    <tr><td>4</td><td>Doki</td><td>20</td><td class="best">$2.980</td></tr>
+                    <tr><td>5</td><td>卿卿我我</td><td>15</td><td class="best">$3.600</td></tr>
+                    <tr><td>6</td><td>鴨達</td><td>20</td><td class="best">$6.480</td></tr>
+                    <tr><td>7</td><td>Crush</td><td>8</td><td class="best">$7.496</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="footnote">※ 模型便宜與貴 不代表回覆長短</p>
+              <p class="footnote">※ 請自行評估模型品質與使用偏好</p>
+            </div>
+          </div>
+
+        </div>
+        <!-- /sub-ranking -->
+
+        <!-- ▌各平台詳情 -->
+        <div class="sub-panel" id="sub-detail">
+
+          <div class="platform-tabs">
+            <button class="ptab active" data-platform="75">卿卿我我</button>
+            <button class="ptab" data-platform="floze">Floze</button>
+            <button class="ptab" data-platform="crush">Crush</button>
+            <button class="ptab" data-platform="duck">鴨達</button>
+            <button class="ptab" data-platform="crushie">Crushie</button>
+            <button class="ptab" data-platform="Doki">Doki</button>
+            <button class="ptab" data-platform="touchie">Touchie</button>
+          </div>
+
+          <!-- 卿卿我我 -->
+          <div class="platform-panel active" id="panel-75">
+            <div class="platform-header">
+              <span class="platform-currency">代幣單位：果醬 🍓</span>
+              <span class="platform-tag">可購買月卡</span>
+            </div>
+            <div class="panel-grid">
+              <div class="panel-card">
+                <div class="panel-card-title">APP 購買價格</div>
+                <div class="table-wrap">
+                  <table class="data-table">
+                    <thead><tr><th>果醬</th><th>台幣</th><th>單價</th></tr></thead>
+                    <tbody>
+                      <tr><td>300</td><td>$79</td><td>$0.263</td></tr>
+                      <tr><td>500</td><td>$130</td><td>$0.260</td></tr>
+                      <tr><td>600</td><td>$155</td><td>$0.258</td></tr>
+                      <tr><td>898</td><td>$230</td><td>$0.256</td></tr>
+                      <tr><td>1183</td><td>$300</td><td>$0.254</td></tr>
+                      <tr><td>1593</td><td>$400</td><td>$0.251</td></tr>
+                      <tr><td>2653</td><td>$660</td><td>$0.249</td></tr>
+                      <tr><td>3612</td><td>$890</td><td>$0.246</td></tr>
+                      <tr><td>4465</td><td>$1090</td><td>$0.244</td></tr>
+                      <tr><td>7813</td><td>$1890</td><td>$0.242</td></tr>
+                      <tr class="best-row"><td>9804</td><td>$2350</td><td><strong>$0.240</strong></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="panel-card">
+                <div class="panel-card-title">每則回覆花費</div>
+                <div class="table-wrap">
+                  <table class="data-table">
+                    <thead><tr><th>每則果醬</th><th>買最便宜方案</th><th>買最貴方案</th></tr></thead>
+                    <tbody>
+                      <tr><td>5</td><td class="cost-cheap">$1.20</td><td>$1.315</td></tr>
+                      <tr><td>10</td><td class="cost-cheap">$2.40</td><td>$2.630</td></tr>
+                      <tr><td>15</td><td class="cost-cheap">$3.60</td><td>$3.945</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="footnote" style="margin-top:8px">
+                    ※ 買最便宜方案 = $2350 最大單方案<br>
+                    ※ 買最貴方案 = $79 最小額方案
+                </p>
+              </div>
+              <p class="footnote">※ 月卡/會員方案 不在此次評比範圍內</p>
+            </div>
+          </div>
+
+          <!-- Floze -->
+<!-- Floze -->
+<div class="platform-panel" id="panel-floze">
+  <div class="platform-header">
+    <span class="platform-currency">代幣單位：愛心 💖</span>
+    <span class="platform-tag">網頁購買有 85折 / 9折 ✨</span>
+  </div>
+
+  <!-- 上排：APP原價 ＋ 85折 -->
+  <div class="panel-grid">
+    <div class="panel-card">
+      <div class="panel-card-title">APP 購買（原價）</div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>愛心</th><th>台幣</th><th>單價</th></tr></thead>
+          <tbody>
+            <tr><td>370</td><td>$90</td><td>$0.243</td></tr>
+            <tr><td>750</td><td>$180</td><td>$0.240</td></tr>
+            <tr><td>1140</td><td>$270</td><td>$0.237</td></tr>
+            <tr><td>1420</td><td>$330</td><td>$0.232</td></tr>
+            <tr><td>2150</td><td>$490</td><td>$0.228</td></tr>
+            <tr><td>2470</td><td>$550</td><td>$0.223</td></tr>
+            <tr><td>3170</td><td>$690</td><td>$0.218</td></tr>
+            <tr><td>4160</td><td>$890</td><td>$0.214</td></tr>
+            <tr><td>5190</td><td>$1090</td><td>$0.210</td></tr>
+            <tr><td>7460</td><td>$1490</td><td>$0.200</td></tr>
+            <tr><td>11750</td><td>$2290</td><td>$0.195</td></tr>
+            <tr class="best-row"><td>15490</td><td>$2990</td><td><strong>$0.193</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel-card">
+      <div class="panel-card-title">網頁購買 85折（首購）</div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>愛心</th><th>台幣</th><th>單價</th></tr></thead>
+          <tbody>
+            <tr><td>370</td><td>$77</td><td>$0.208</td></tr>
+            <tr><td>750</td><td>$153</td><td>$0.204</td></tr>
+            <tr><td>1140</td><td>$230</td><td>$0.202</td></tr>
+            <tr><td>1420</td><td>$280</td><td>$0.197</td></tr>
+            <tr><td>2150</td><td>$417</td><td>$0.194</td></tr>
+            <tr><td>2470</td><td>$468</td><td>$0.189</td></tr>
+            <tr><td>3170</td><td>$586</td><td>$0.185</td></tr>
+            <tr><td>4160</td><td>$756</td><td>$0.182</td></tr>
+            <tr><td>5190</td><td>$926</td><td>$0.178</td></tr>
+            <tr><td>7460</td><td>$1266</td><td>$0.170</td></tr>
+            <tr><td>11750</td><td>$1946</td><td>$0.166</td></tr>
+            <tr class="best-row"><td>15490</td><td>$2541</td><td><strong>$0.164</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 下排：9折 ＋ 每則回覆花費 -->
+  <div class="panel-grid" style="margin-top: 12px;">
+    <div class="panel-card">
+      <div class="panel-card-title">網頁購買 9折</div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>愛心</th><th>台幣</th><th>單價</th></tr></thead>
+          <tbody>
+            <tr><td>370</td><td>$81</td><td>$0.219</td></tr>
+            <tr><td>750</td><td>$162</td><td>$0.216</td></tr>
+            <tr><td>1140</td><td>$243</td><td>$0.213</td></tr>
+            <tr><td>1420</td><td>$297</td><td>$0.209</td></tr>
+            <tr><td>2150</td><td>$441</td><td>$0.205</td></tr>
+            <tr><td>2470</td><td>$495</td><td>$0.200</td></tr>
+            <tr><td>3170</td><td>$621</td><td>$0.196</td></tr>
+            <tr><td>4160</td><td>$801</td><td>$0.193</td></tr>
+            <tr><td>5190</td><td>$981</td><td>$0.189</td></tr>
+            <tr><td>7460</td><td>$1341</td><td>$0.180</td></tr>
+            <tr><td>11750</td><td>$2061</td><td>$0.175</td></tr>
+            <tr class="best-row"><td>15490</td><td>$2691</td><td><strong>$0.174</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel-card">
+      <div class="panel-card-title">每則回覆花費</div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>每則愛心</th>
+              <th>買最便宜方案</th>
+              <th>買最貴方案</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>6</td><td class="cost-cheap">$0.984</td><td>$1.458</td></tr>
+            <tr><td>9</td><td class="cost-cheap">$1.476</td><td>$2.187</td></tr>
+            <tr><td>12</td><td class="cost-cheap">$1.968</td><td>$2.916</td></tr>
+            <tr><td>16</td><td class="cost-cheap">$2.624</td><td>$3.888</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="footnote" style="margin-top:8px">
+        ※ 買最便宜方案 = 網頁85折 $2541 方案<br>
+        ※ 買最貴方案 = APP 原價 $90 方案
+      </p>
+    </div>
+  </div>
+
+</div>
+
+          <!-- Crush -->
+          <div class="platform-panel" id="panel-crush">
+            <div class="platform-header">
+              <span class="platform-currency">代幣單位：點數 🔹</span>
+              <span class="platform-tag">網頁購買較便宜</span>
+            </div>
+            <div class="panel-grid">
+              <div class="panel-card">
+                <div class="panel-card-title">APP 購買</div>
+                <div class="table-wrap">
+                  <table class="data-table">
+                    <thead><tr><th>點數</th><th>台幣</th><th>單價</th></tr></thead>
+                    <tbody>
+                      <tr><td>56</td><td>$75</td><td>$1.339</td></tr>
+                      <tr><td>144</td><td>$185</td><td>$1.285</td></tr>
+                      <tr><td>212</td><td>$270</td><td>$1.274</td></tr>
+                      <tr><td>320</td><td>$400</td><td>$1.250</td></tr>
+                      <tr><td>456</td><td>$560</td><td>$1.228</td></tr>
+                      <tr><td>704</td><td>$850</td><td>$1.207</td></tr>
+                      <tr><td>920</td><td>$1100</td><td>$1.196</td></tr>
+                      <tr><td>1360</td><td>$1600</td><td>$1.176</td></tr>
+                      <tr><td>1928</td><td>$2250</td><td>$1.167</td></tr>
+                      <tr class="best-row"><td>2840</td><td>$3250</td><td><strong>$1.144</strong></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="panel-card">
+                <div class="panel-card-title">網頁購買</div>
+                <div class="table-wrap">
+                  <table class="data-table">
+                    <thead><tr><th>點數</th><th>台幣</th><th>單價</th></tr></thead>
+                    <tbody>
+                      <tr><td>70</td><td>$75</td><td>$1.071</td></tr>
+                      <tr><td>176</td><td>$185</td><td>$1.051</td></tr>
+                      <tr><td>260</td><td>$270</td><td>$1.038</td></tr>
+                      <tr><td>390</td><td>$400</td><td>$1.026</td></tr>
+                      <tr><td>560</td><td>$560</td><td>$1.000</td></tr>
+                      <tr><td>860</td><td>$850</td><td>$0.988</td></tr>
+                      <tr><td>1120</td><td>$1100</td><td>$0.982</td></tr>
+                      <tr><td>1650</td><td>$1600</td><td>$0.970</td></tr>
+                      <tr><td>2350</td><td>$2250</td><td>$0.957</td></tr>
+                      <tr class="best-row"><td>3470</td><td>$3250</td><td><strong>$0.937</strong></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="panel-card" style="margin-top:12px">
+              <div class="panel-card-title">每則回覆花費</div>
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead><tr><th>每則點數</th><th>買最便宜方案</th><th>買最貴方案</th></tr></thead>
+                  <tbody>
+                    <tr><td>1</td><td class="cost-cheap">$0.937</td><td>$1.071</td></tr>
+                    <tr><td>2</td><td class="cost-cheap">$1.874</td><td>$2.142</td></tr>
+                    <tr><td>4</td><td class="cost-cheap">$3.748</td><td>$4.284</td></tr>
+                    <tr><td>8</td><td class="cost-cheap">$7.496</td><td>$8.568</td></tr>
+                  </tbody>
+                </table>
+              </div>
+                <p class="footnote" style="margin-top:8px">
+                    ※ 買最便宜方案 = 網頁版 $3250 最大單方案<br>
+                    ※ 買最貴方案 = APP購買 $75 最小額方案
+                </p>
+            </div>
+          </div>
+
+          <!-- 鴨達 -->
+          <div class="platform-panel" id="panel-duck">
+            <div class="platform-header">
+              <span class="platform-currency">代幣單位：翅膀 🪶</span>
+            </div>
+            <div class="panel-grid">
+              <div class="panel-card">
+                <div class="panel-card-title">APP 購買</div>
+                <div class="table-wrap">
+                  <table class="data-table">
+                    <thead><tr><th>翅膀</th><th>台幣</th><th>單價</th></tr></thead>
+                    <tbody>
+                      <tr><td>500</td><td>$170</td><td>$0.340</td></tr>
+                      <tr><td>1000</td><td>$340</td><td>$0.340</td></tr>
+                      <tr><td>3090</td><td>$1020</td><td>$0.330</td></tr>
+                      <tr class="best-row"><td>5250</td><td>$1700</td><td><strong>$0.324</strong></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="panel-card">
+                <div class="panel-card-title">每則回覆花費</div>
+                <div class="table-wrap">
+                  <table class="data-table">
+                    <thead><tr><th>每則翅膀</th><th>買最便宜方案</th><th>買最貴方案</th></tr></thead>
+                    <tbody>
+                      <tr><td>1</td><td class="cost-cheap">$0.324</td><td>$0.340</td></tr>
+                      <tr><td>2</td><td class="cost-cheap">$0.648</td><td>$0.680</td></tr>
+                      <tr><td>3</td><td class="cost-cheap">$0.972</td><td>$1.020</td></tr>
+                      <tr><td>4</td><td class="cost-cheap">$1.296</td><td>$1.360</td></tr>
+                      <tr><td>8</td><td class="cost-cheap">$2.592</td><td>$2.720</td></tr>
+                      <tr><td>10</td><td class="cost-cheap">$3.240</td><td>$3.400</td></tr>
+                      <tr><td>12</td><td class="cost-cheap">$3.888</td><td>$4.080</td></tr>
+                      <tr><td>20</td><td class="cost-cheap">$6.480</td><td>$6.800</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                 <p class="footnote" style="margin-top:8px">
+                    ※ 買最便宜方案 = $1700 最大單<br>
+                    ※ 買最貴方案 = $170 最小額
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Crushie -->
+          <div class="platform-panel" id="panel-crushie">
+            <div class="platform-header">
+              <span class="platform-currency">代幣單位：寶石 💎</span>
+              <span class="platform-tag">可購買月卡</span>
+            </div>
+            <div class="panel-grid">
+              <div class="panel-card">
+                <div class="panel-card-title">APP 購買</div>
+                <div class="table-wrap">
+                  <table class="data-table">
+                    <thead><tr><th>寶石</th><th>台幣</th><th>單價</th></tr></thead>
+                    <tbody>
+                      <tr><td>405</td><td>$90</td><td>$0.222</td></tr>
+                      <tr><td>900</td><td>$150</td><td>$0.167</td></tr>
+                      <tr><td>2025</td><td>$320</td><td>$0.158</td></tr>
+                      <tr><td>4200</td><td>$690</td><td>$0.164</td></tr>
+                      <tr><td>10500</td><td>$990</td><td>$0.094</td></tr>
+                      <tr class="best-row"><td>22500</td><td>$1490</td><td><strong>$0.066</strong></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="panel-card">
+                <div class="panel-card-title">每則回覆花費</div>
+                <div class="table-wrap">
+                  <table class="data-table">
+                    <thead><tr><th>每則寶石</th><th>買最便宜方案</th><th>買最貴方案</th></tr></thead>
+                    <tbody>
+                      <tr><td>5</td><td class="cost-cheap">$0.330</td><td>$1.110</td></tr>
+                      <tr><td>10</td><td class="cost-cheap">$0.660</td><td>$2.220</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                 <p class="footnote" style="margin-top:8px">
+                    ※ 買最便宜方案 = $1490 最大單<br>
+                    ※ 買最貴方案 = $90 最小額
+                </p>
+              </div>
+              <p class="footnote">※ 月卡/會員方案 不在此次評比範圍內</p>
+            </div>
+          </div>
+
+          <!-- Doki -->
+          <div class="platform-panel" id="panel-Doki">
+            <div class="platform-header">
+              <span class="platform-currency">代幣單位：心動 💗</span>
+              <span class="platform-tag">可購買月卡</span>
+            </div>
+            <div class="panel-grid">
+              <div class="panel-card">
+                <div class="panel-card-title">APP 購買</div>
+                <div class="table-wrap">
+                  <table class="data-table">
+                    <thead><tr><th>心動</th><th>台幣</th><th>單價</th></tr></thead>
+                    <tbody>
+                      <tr><td>400</td><td>$60</td><td>$0.150</td></tr>
+                      <tr><td>1000</td><td>$150</td><td>$0.150</td></tr>
+                      <tr><td>2000</td><td>$320</td><td>$0.160</td></tr>
+                      <tr><td>4000</td><td>$690</td><td>$0.173</td></tr>
+                      <tr><td>6000</td><td>$990</td><td>$0.165</td></tr>
+                      <tr class="best-row"><td>10000</td><td>$1490</td><td><strong>$0.149</strong></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="panel-card">
+                <div class="panel-card-title">每則回覆花費</div>
+                <div class="table-wrap">
+                  <table class="data-table">
+                    <thead><tr><th>每則心動</th><th>買最便宜方案</th><th>買最貴方案</th></tr></thead>
+                    <tbody>
+                      <tr><td>2</td><td class="cost-cheap">$0.298</td><td>$0.300</td></tr>
+                      <tr><td>5</td><td class="cost-cheap">$0.745</td><td>$0.750</td></tr>
+                      <tr><td>20</td><td class="cost-cheap">$2.980</td><td>$3.000</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="footnote" style="margin-top:8px">
+                    ※ 買最便宜方案 = $1490 最大單<br>
+                    ※ 買最貴方案 = $60 最小額
+                </p>
+              </div>
+              <p class="footnote">※ 月卡/會員方案 不在此次評比範圍內</p>
+            </div>
+          </div>
+
+          <!-- Touchie -->
+          <div class="platform-panel" id="panel-touchie">
+            <div class="platform-header">
+              <span class="platform-currency">代幣單位：金幣 🪙</span>
+              <span class="platform-tag">可購買月卡</span>
+            </div>
+            <div class="panel-grid">
+              <div class="panel-card">
+                <div class="panel-card-title">APP 購買</div>
+                <div class="table-wrap">
+                  <table class="data-table">
+                    <thead><tr><th>金幣</th><th>台幣</th><th>單價</th></tr></thead>
+                    <tbody>
+                      <tr><td>300</td><td>$190</td><td>$0.633</td></tr>
+                      <tr><td>540</td><td>$320</td><td>$0.593</td></tr>
+                      <tr><td>1200</td><td>$690</td><td>$0.575</td></tr>
+                      <tr><td>2600</td><td>$1290</td><td>$0.496</td></tr>
+                      <tr><td>5400</td><td>$2290</td><td>$0.424</td></tr>
+                      <tr class="best-row"><td>8800</td><td>$2990</td><td><strong>$0.34</strong></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="panel-card">
+                <div class="panel-card-title">每則回覆花費</div>
+                <div class="table-wrap">
+                  <table class="data-table">
+                    <thead><tr><th>每則金幣</th><th>買最便宜方案</th><th>買最貴方案</th></tr></thead>
+                    <tbody>
+                      <tr><td>2</td><td class="cost-cheap">$0.680</td><td>$1.266</td></tr>
+                      <tr><td>4</td><td class="cost-cheap">$1.360</td><td>$2.532</td></tr>
+                      <tr><td>8</td><td class="cost-cheap">$2.720</td><td>$5.064</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="footnote" style="margin-top:8px">
+                    ※ 買最便宜方案 = $2990 最大單<br>
+                    ※ 買最貴方案 = $190 最小額
+                </p>
+              </div>
+              <p class="footnote">※ 月卡/會員方案 不在此次評比範圍內</p>
+            </div>
+          </div>
+
+        </div>
+        <!-- /sub-detail -->
+
+      </div>
+      <!-- /main-price -->
+
+      <!-- 免責聲明 -->
+      <div class="notice-box">
+        <p>⚠️ 單純列出各種性價比，不代表推薦</p>
+        <p>⚠️ 本次評比不列入月卡 / 會員方案</p>
+        <p>⚠️ 價格不等於實際體驗，請按個人需求購買和遊玩</p>
+        <p>⚠️ 每家使用模型不同，請斟酌參考</p>
+        <p>⚠️ 模型便宜與否跟回覆長短不一定成正比</p>
+        <p>⚠️ 資料有時效性，建議以各平台官方為準</p>
+      </div>
+
+      <div class="footer">© 2026 ． created by feby</div>
+
+    </div>
+  </div>
+
+  <script>
+    // 書籤 Tab（綜合排行 / 各平台詳情）
+    document.querySelectorAll('.bookmark-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.bookmark-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.sub-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('sub-' + tab.dataset.sub).classList.add('active');
+      });
+    });
+
+    // Pill Tab（代幣單價 / 每則回覆）
+    document.querySelectorAll('.pill-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.pill-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.rank-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('rank-' + tab.dataset.rank).classList.add('active');
+      });
+    });
+
+    // 最便宜/最貴切換
+    document.querySelectorAll('.toggle-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.toggle-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('toggle-' + btn.dataset.toggle).classList.add('active');
+      });
+    });
+
+    // 平台 Tab
+    document.querySelectorAll('.ptab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.platform-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('panel-' + tab.dataset.platform).classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
