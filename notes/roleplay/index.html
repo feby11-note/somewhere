@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✍️</text></svg>">
+  <title>遊玩與創角撇步｜電子男友研究筆記</title>
+  <link rel="stylesheet" href="../../css/article.css">
+  <meta property="og:title" content="❓ 遊玩與創角撇步｜by 菲比">
+  <meta property="og:description" content="對話實用指令、創作經驗分享、其他小知識。玩家、創作者都適用！">
+  <meta property="og:url" content="https://feby11-note.github.io/somewhere/notes/roleplay/index.html">
+  <meta property="og:type" content="website">
+</head>
+<body class="theme-roleplay">
+
+  <div class="clouds">
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+    <div class="cloud cloud-4"></div>
+  </div>
+
+  <div class="page-wrap">
+    <div class="container">
+
+      <a href="../index.html" class="back-btn">← 回到筆記主頁</a>
+
+      <div class="list-hero">
+        <div class="list-hero-icon">✍️</div>
+        <h1 class="list-hero-title">遊玩與創角撇步</h1>
+        <p class="list-hero-desc">對話實用指令、創作經驗分享、其他小知識。<br>玩家、創作者都適用！</p>
+      </div>
+
+      <div class="divider">
+        <span class="deco-line"></span>
+        <span>✦</span>
+        <span class="deco-line"></span>
+      </div>
+
+      <!-- 書籤 Tab -->
+      <div class="tab-bar" role="tablist">
+        <button class="tab-btn active" data-filter="all"    role="tab">全部文章</button>
+        <button class="tab-btn"        data-filter="create" role="tab">我的創作經驗</button>
+        <button class="tab-btn"        data-filter="chat"   role="tab">對話相關</button>
+        <button class="tab-btn"        data-filter="tips"   role="tab">實用小知識</button>
+      </div>
+      <div class="tab-underline"></div>
+
+      <!-- 文章列表 -->
+      <!-- data-tag 對應 tab 的 data-filter，加新文章記得填 -->
+      <div class="article-list">
+
+        <a href="article/1.html" class="article-item" data-tag="create">
+          <div class="article-item-body">
+            <div class="article-item-title">角色簡介與第一句話，該如何下筆才吸引人？</div>
+            <div class="article-item-desc">讓你的兒子活起來吧！！</div>
+          </div>
+          <span class="article-item-arrow">→</span>
+        </a>
+
+        <a href="roleplay/article/2.html" class="article-item" data-tag="tips">
+          <div class="article-item-body">
+            <div class="article-item-title">狀態欄裡的 page 能幹嘛？</div>
+            <div class="article-item-desc">難道是什麼增加讀取率的神秘方法嗎?!</div>
+          </div>
+          <span class="article-item-arrow">→</span>
+        </a>
+
+        <a href="roleplay/article/3.html" class="article-item" data-tag="create">
+          <div class="article-item-body">
+            <div class="article-item-title">特殊狀態欄設定大公開！</div>
+            <div class="article-item-desc">設計一個可以影響劇情走向的狀態欄</div>
+          </div>
+          <span class="article-item-arrow">→</span>
+        </a>
+
+        <a href="roleplay/article/4.html" class="article-item" data-tag="tips">
+          <div class="article-item-body">
+            <div class="article-item-title">為何我後台習慣用 Markdown？</div>
+            <div class="article-item-desc">有沒有用 Markdown，AI 讀起來差在哪？</div>
+          </div>
+          <span class="article-item-arrow">→</span>
+        </a>
+
+        <a href="roleplay/article/6.html" class="article-item" data-tag="create">
+          <div class="article-item-body">
+            <div class="article-item-title">彩蛋怎麼設計</div>
+            <div class="article-item-desc">讓玩家驚喜的小心機，不私藏ㄌ</div>
+          </div>
+          <span class="article-item-arrow">→</span>
+        </a>
+
+        <a href="roleplay/article/7.html" class="article-item" data-tag="chat">
+          <div class="article-item-body">
+            <div class="article-item-title">「請讀取角色後台」有沒有用啊</div>
+            <div class="article-item-desc">大家最愛用的咒語，到底有沒有效？</div>
+          </div>
+          <span class="article-item-arrow">→</span>
+        </a>
+
+        <!-- 未發佈範例（不可點擊）
+        <div class="article-item article-item--wip" data-tag="tips">
+          <div class="article-item-body">
+            <div class="article-item-title">文章標題（撰寫中）</div>
+            <div class="article-item-desc">簡短描述。</div>
+          </div>
+        </div>
+        -->
+
+      </div>
+
+      <div class="divider">
+        <span class="deco-line"></span>
+        <span>☁️</span>
+        <span class="deco-line"></span>
+      </div>
+
+      <div class="footer">© 2026 ． created by feby</div>
+
+    </div>
+  </div>
+
+  <script>
+    const tabs  = document.querySelectorAll('.tab-btn');
+    const items = document.querySelectorAll('.article-item[data-tag]');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const filter = tab.dataset.filter;
+
+        items.forEach(item => {
+          if (filter === 'all' || item.dataset.tag === filter) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+      });
+    });
+  </script>
+
+  <button class="back-to-top" id="backToTop" aria-label="回到頂部">&#8679;</button>
+
+  <script>
+    // 複製區塊
+    function copyText(id, btn) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const original = btn.innerText;
+        btn.innerText = '已複製';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.innerText = original;
+          btn.classList.remove('copied');
+        }, 1800);
+      });
+    }
+
+    // 回到頂部
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💭</text></svg>">
+  <title>真心話老實說｜電子男友研究筆記</title>
+  <link rel="stylesheet" href="../../css/article.css">
+  <meta property="og:title" content="💭 真心話老實說｜by 菲比">
+  <meta property="og:description" content="我的碎碎念與辛辣觀點大公開。不代表官方立場，純屬個人感想。">
+  <meta property="og:url" content="https://feby11-note.github.io/somewhere/notes/ramble/index.html">
+  <meta property="og:type" content="website">
+</head>
+<body class="theme-ramble">
+
+  <div class="clouds">
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+    <div class="cloud cloud-4"></div>
+  </div>
+
+  <div class="page-wrap">
+    <div class="container">
+
+      <a href="../index.html" class="back-btn">← 回到筆記主頁</a>
+
+      <div class="list-hero">
+        <div class="list-hero-icon">💭</div>
+        <h1 class="list-hero-title">真心話老實說</h1>
+        <p class="list-hero-desc">我的碎碎念與辛辣觀點大公開。<br>不代表官方立場，純屬個人感想。</p>
+      </div>
+
+      <div class="divider">
+        <span class="deco-line"></span>
+        <span>✦</span>
+        <span class="deco-line"></span>
+      </div>
+
+      <!-- 書籤 Tab -->
+      <div class="tab-bar" role="tablist">
+  <button class="tab-btn active" data-filter="all"     role="tab">全部文章</button>
+  <button class="tab-btn"        data-filter="observe" role="tab">辛辣觀察</button>
+  <button class="tab-btn"        data-filter="misc"    role="tab">吐槽與碎念</button>
+</div>
+      <div class="tab-underline"></div>
+
+      <div class="article-list">
+
+        <a href="article/1.html" class="article-item" data-tag="observe">
+          <div class="article-item-body">
+            <div class="article-item-title">想上首頁？熱門角色經典公式</div>
+            <div class="article-item-desc">狗血 + 霸道 + 綠茶 = 恭喜上熱門</div>
+          </div>
+          <span class="article-item-arrow">→</span>
+        </a>
+
+        <a href="article/2.html" class="article-item" data-tag="observe">
+          <div class="article-item-body">
+            <div class="article-item-title">黑道、霸總角萬年不敗的秘密</div>
+            <div class="article-item-desc">大家都愛 Alpha 男的真正原因</div>
+          </div>
+          <span class="article-item-arrow">→</span>
+        </a>
+
+        <a href="article/3.html" class="article-item" data-tag="observe">
+          <div class="article-item-body">
+            <div class="article-item-title">角色人氣與平台曝光淺見</div>
+            <div class="article-item-desc">創作者/平台/玩家之間的三角戀</div>
+          </div>
+          <span class="article-item-arrow">→</span>
+        </a>
+
+        <a href="article/4.html" class="article-item" data-tag="llm">
+          <div class="article-item-body">
+            <div class="article-item-title">角色到底有沒有 OOC？</div>
+            <div class="article-item-desc">模型演繹 與 那些年角色曾遇過的 OOC 問題</div>
+          </div>
+          <span class="article-item-arrow">→</span>
+        </a>
+
+        <a href="article/5.html" class="article-item" data-tag="llm">
+          <div class="article-item-body">
+            <div class="article-item-title">平台這麼小氣不補償點數，我回報心酸的啊？</div>
+            <div class="article-item-desc">語言模型限制 與 點數補償的合理性</div>
+          </div>
+          <span class="article-item-arrow">→</span>
+        </a>
+
+      </div>
+
+      <div class="divider">
+        <span class="deco-line"></span>
+        <span>☁️</span>
+        <span class="deco-line"></span>
+      </div>
+
+      <div class="footer">© 2026 ． created by feby</div>
+
+    </div>
+  </div>
+
+  <script>
+    const tabs  = document.querySelectorAll('.tab-btn');
+    const items = document.querySelectorAll('.article-item[data-tag]');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const filter = tab.dataset.filter;
+
+        items.forEach(item => {
+          if (filter === 'all' || item.dataset.tag === filter) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+      });
+    });
+  </script>
+
+  <button class="back-to-top" id="backToTop" aria-label="回到頂部">&#8679;</button>
+
+  <script>
+    // 複製區塊
+    function copyText(id, btn) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const original = btn.innerText;
+        btn.innerText = '已複製';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.innerText = original;
+          btn.classList.remove('copied');
+        }, 1800);
+      });
+    }
+
+    // 回到頂部
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>
