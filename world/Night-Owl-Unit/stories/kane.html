@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&family=Share+Tech+Mono&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦉</text></svg>">
+  <title>凱恩的過去｜夜梟部隊</title>
+
+  <meta property="og:title" content="凱恩的過去｜by菲比">
+  <meta property="og:description" content="失控的前提，是曾經放手過。">
+  <meta property="og:image" content="https://feby11-note.github.io/somewhere/pic/characters/kane/1.jpeg">
+  <meta property="og:url" content="https://feby11-note.github.io/somewhere/world/Night-Owl-Unit/stories/kane-stories.html">
+  <meta property="og:type" content="website">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #1E2D40;
+      --surface: #273D57;
+      --surface2: #304A6A;
+      --border: #4A6280;
+      --green: #5EC44E;
+      --green-light: #9FDD8F;
+      --orange: #F0A840;
+      --accent: #7BC8E8;
+      --text: #EEF4FF;
+      --text-dim: rgba(238, 244, 255, 0.78);
+      --text-muted: rgba(238, 244, 255, 0.42);
+      font-size: clamp(15px, 1.1vw + 11px, 18px);
+    }
+
+    body {
+      font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── Nav ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 3.75rem;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(26, 37, 53, 0.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1rem;
+      color: var(--green-light);
+      text-decoration: none;
+      letter-spacing: 0.12em;
+      opacity: 0.9;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .nav-brand:hover { opacity: 1; }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 0;
+    }
+
+    .nav-links a {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      padding: 0.4rem 0.65rem;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+      letter-spacing: 0.03em;
+    }
+    .nav-links a:hover { color: var(--text); border-color: var(--border); }
+
+    /* ── 主容器 ── */
+    .main {
+      width: 92%;
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 5.5rem 0 5rem;
+    }
+
+    /* ── 頁面標題 ── */
+    .page-header {
+      margin-bottom: 3rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-eyebrow {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--orange);
+      letter-spacing: 0.2em;
+      opacity: 0.85;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-header h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--text);
+    }
+
+    /* ══════════════════════════
+       目錄
+    ══════════════════════════ */
+    .toc {
+      margin-bottom: 3rem;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .toc-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1rem;
+      background: var(--surface2);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .toc-header-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+    }
+
+    .toc-header-count {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+    }
+
+    .toc-list { list-style: none; }
+
+    .toc-list li {
+      border-bottom: 1px solid rgba(74,98,128,0.2);
+    }
+    .toc-list li:last-child { border-bottom: none; }
+
+    .toc-list a {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .toc-list a:hover { background: rgba(123,200,232,0.06); }
+
+    .toc-num {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      letter-spacing: 0.08em;
+      padding: 0.875rem 0.875rem;
+      min-width: 3rem;
+      text-align: center;
+      border-right: 1px solid rgba(74,98,128,0.2);
+      background: rgba(0,0,0,0.1);
+      flex-shrink: 0;
+    }
+
+    .toc-title {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      letter-spacing: 0.04em;
+      padding: 0.875rem 1rem;
+      flex: 1;
+      transition: color 0.15s;
+    }
+    .toc-list a:hover .toc-title { color: var(--green-light); }
+
+    .toc-title-redacted {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      padding: 0.875rem 1rem;
+      flex: 1;
+      user-select: none;
+    }
+
+    .toc-arrow {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      padding: 0.875rem 1rem;
+      flex-shrink: 0;
+      transition: color 0.15s, transform 0.15s;
+    }
+    .toc-list a:hover .toc-arrow {
+      color: var(--green-light);
+      transform: translateX(3px);
+    }
+
+    /* ── 文章區塊 ── */
+    .story-entry {
+      margin-bottom: 4rem;
+      scroll-margin-top: 4.5rem;
+    }
+
+    .story-entry-header {
+      margin-bottom: 1.75rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(74,98,128,0.3);
+    }
+
+    .story-entry-tag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+      padding: 0.15rem 0.5rem;
+      display: inline-block;
+      margin-bottom: 0.6rem;
+    }
+
+    .story-entry-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .story-entry-anchor {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      opacity: 0.65;
+      transition: opacity 0.2s;
+    }
+    .story-entry-anchor:hover { opacity: 1; color: var(--green-light); }
+
+    /* ── 內文 ── */
+    .story-body {
+      font-size: 1rem;
+      color: var(--text-dim);
+      line-height: 2;
+      letter-spacing: 0.04em;
+    }
+
+    .story-body p { margin-bottom: 1.5em; }
+    .story-body p:last-child { margin-bottom: 0; }
+
+    /* 引言區塊 */
+    .story-body blockquote {
+      margin: 0 0 1.5em 0;
+      padding: 1rem 1.25rem;
+      border-left: 2px solid var(--border);
+      background: rgba(88, 88, 88, 0.215);
+    }
+    .story-body blockquote p {
+      margin-bottom: 0.6em;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-style: italic;
+      letter-spacing: 0.04em;
+    }
+    .story-body blockquote p:last-child { margin-bottom: 0; }
+
+    /* ── 場景分隔線（篇內用）── */
+    .scene-break {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 2.5rem 0;
+    }
+    .scene-break::before,
+    .scene-break::after {
+      content: '';
+      width: 1.5rem;
+      height: 1px;
+      background: var(--border);
+      opacity: 0.35;
+      flex: none;
+    }
+    .scene-break-text {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--text-muted);
+      letter-spacing: 0.2em;
+      white-space: nowrap;
+    }
+
+    /* ── 短篇小標題 ── */
+    .scene-title {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 2.5rem 0 1.25rem;
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--border);
+    }
+
+    .scene-title-num {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      flex-shrink: 0;
+    }
+
+    .scene-title-text {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── 文章間分隔 ── */
+    .story-divider {
+      margin: 4rem 0;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .story-divider::before,
+    .story-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      opacity: 0.65;
+    }
+    .story-divider-text {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      letter-spacing: 0.2em;
+      white-space: nowrap;
+    }
+
+    /* ── 返回按鈕 ── */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      width: 100%;
+      transition: color 0.2s;
+    }
+    .back-btn:hover { color: var(--green-light); }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      padding: 1.75rem;
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
+
+    /* ── 回頂端按鈕 ── */
+    .back-to-top {
+      position: fixed;
+      bottom: 1.75rem;
+      right: 1.25rem;
+      z-index: 200;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s, background 0.2s, color 0.2s;
+      clip-path: polygon(6px 0%, calc(100% - 6px) 0%, 100% 6px, 100% 100%, 0% 100%, 0% 6px);
+    }
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .back-to-top:hover {
+      background: var(--surface);
+      color: var(--green-light);
+      border-color: var(--green-light);
+    }
+
+    /* ── RWD ── */
+    @media (max-width: 680px) {
+      .nav {
+        height: 3.75rem;
+        padding: 0 1.25rem;
+      }
+      .nav-brand {
+        font-size: 1.05rem;
+        letter-spacing: 0.1em;
+      }
+      .nav-links a {
+        font-size: 0.92rem;
+        padding: 0.35rem 0.5rem;
+      }
+      .main {
+        padding-top: 5.5rem;
+      }
+      .toc-title {
+        font-size: 0.88rem;
+      }
+      .story-entry-tag {
+        font-size: 0.7rem;
+      }
+      .story-entry-anchor {
+        font-size: 0.68rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .nav-brand {
+        font-size: 0.95rem;
+        letter-spacing: 0.08em;
+      }
+      .nav-links a {
+        font-size: 0.85rem;
+        padding: 0.3rem 0.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="nav">
+    <a href="../kane.html#stories" class="nav-brand">◁ 凱恩</a>
+    <ul class="nav-links">
+      <li><a href="#toc">章節選單</a></li>
+      <li><a href="../index.html#members">夜梟部隊</a></li>
+    </ul>
+  </nav>
+
+  <div class="main">
+
+    <!-- 頁面標題 -->
+    <div class="page-header">
+      <div class="page-eyebrow">HIS PAST · KANE</div>
+      <h1>失控變數</h1>
+    </div>
+
+    <!-- 目錄 -->
+    <div class="toc" id="toc">
+      <div class="toc-header">
+        <span class="toc-header-label">CHAPTER · 章節選單</span>
+        <span class="toc-header-count">5 CHAPTERS</span>
+      </div>
+      <ul class="toc-list">
+        <li>
+          <a href="#perfectionism">
+            <span class="toc-num">01</span>
+            <span class="toc-title">完美主義</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#as-it-should-be">
+            <span class="toc-num">02</span>
+            <span class="toc-title">應當如此</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#love">
+            <span class="toc-num">03</span>
+            <span class="toc-title">愛</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#irreversible">
+            <span class="toc-num">04</span>
+            <span class="toc-title">不可挽回</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="#out-of-control">
+            <span class="toc-num">05</span>
+            <span class="toc-title">失控變數</span>
+            <span class="toc-arrow">→</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ─────────────────────────── -->
+    <!-- 文章 01：完美主義 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="perfectionism">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">BEFORE THE UNIT · 01</span>
+        <div class="story-entry-title">完美主義</div>
+        <a href="#perfectionism" class="story-entry-anchor"># perfectionism</a>
+      </div>
+      <div class="story-body">
+
+        <p>我最早的記憶，是一列螞蟻。</p>
+
+        <p>那是夏天，院子的石板縫隙裡，一條細細的黑線從草叢邊緣延伸到牆角，整齊得像是有人用尺畫出來的。我蹲在地上，看著牠們一隻接一隻，沒有一隻跑錯方向，沒有一隻停下來猶豫。每一隻都知道自己在做什麼，每一隻都知道自己該去哪裡。</p>
+
+        <p>我看了很久。</p>
+
+        <p>母親後來在廚房門口叫我進去吃飯，我沒動。她走過來，順著我的視線低頭看了一眼，然後在我旁邊蹲下，用她慣有的平靜語氣說：「在看什麼？」</p>
+
+        <p>「螞蟻。」</p>
+
+        <p>「嗯。」她沒有催我，只是靜靜地陪我看了一會兒，才說：「吃完飯再看。」</p>
+
+        <p>我站起來，但一邊走一邊回頭。</p>
+
+        <p>那條黑線還在，紋絲不動，按照某種我看不見的規則運行著。沒有一隻出列，沒有一隻掉隊。那個畫面在我腦子裡待了很多年，久到我後來才意識到，那大概是我第一次真正理解「秩序」這個詞的重量。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>我家不缺規矩。</p>
+
+        <p>父親是退休軍醫，喜歡在飯桌上說冷笑話，開懷大笑的時候整棟房子都聽得見。他是那種走進一個房間就會讓空氣鬆動的人，幽默、直接，永遠知道怎麼讓人放下戒心。但他工作的時候是另一個人，工具擺放的位置、換藥的步驟、紀錄表的格式，他有一套任何人都不能打亂的系統。</p>
+
+        <p>「馬虎是會死人的。」他說這句話的時候不帶任何情緒，像在陳述天氣。</p>
+
+        <p>母親莉莉安比他安靜，是著名的外科醫生，手術台上的精準程度在業界出了名。她不多話，但說出口的每一句都有份量。她教我怎麼縫合傷口、怎麼判讀生命徵象，也教我在任何情況下都不能讓手抖。</p>
+
+        <p>「情緒是奢侈品，」她有一次這樣告訴我，「在你能負擔得起之前，先把它放下。」</p>
+
+        <p>我當時不完全懂，但我把這句話記下來。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>我沒辦法忍受錯誤。</p>
+
+        <p>這件事在我很小的時候就已經是事實，只是後來我逐漸意識到，這不只是「不喜歡犯錯」而已。是當任何一件事偏離了應有的位置，我的胃就會收緊，思緒就會卡住，像一台精密儀器裡混入了砂礫，轉動起來有細微卻清晰的異響。</p>
+
+        <p>書桌上的文具必須對齊。不是大概對齊，是精確對齊。</p>
+
+        <p>抽屜裡的東西按照使用頻率排列，最常拿的放最前面，依序往後。</p>
+
+        <p>課本的書脊不能有折痕，筆記的字跡不能潦草，就連垃圾桶的位置，我也會在起身離開前確認它沒有被踢歪。</p>
+
+        <p>同學覺得這很奇怪，有幾個人試著用這件事取笑我。我沒有生氣，只是看著他們，等他們笑完，然後把被他們動過的東西一一放回原位。</p>
+
+        <p>情緒反應是一種浪費。</p>
+
+        <p>我很早就得出這個結論。發脾氣解決不了任何問題，哭泣改變不了任何結果，焦慮消耗的能量可以用來做更有效率的事。所以我把它們都壓下去，一層一層，壓得很深，深到後來我自己也不確定它們究竟是消失了，還是只是找到了一個我找不到的地方躲起來。</p>
+
+        <p>大概是後者。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>我不記得自己是從什麼時候開始覺得「秩序」不只是一種習慣，而是一種信仰。</p>
+
+        <p>也許是從螞蟻那天。也許更早。</p>
+
+        <p>但我知道一件事：這個世界本質上是混亂的，而混亂裡唯一可以對抗失控的方式，就是把能掌握的一切都掌握住，不留任何縫隙，不留任何模糊地帶。</p>
+
+        <p>螞蟻不需要被告知該往哪裡走，牠們只是走，而且走得筆直。</p>
+
+        <p>我也是。</p>
+
+      </div>
+    </div>
+
+    <!-- 文章間分隔 -->
+    <div class="story-divider">
+      <span class="story-divider-text">· · ·</span>
+    </div>
+
+    <!-- ─────────────────────────── -->
+    <!-- 文章 02：應當如此 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="as-it-should-be">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">BEFORE THE UNIT · 02</span>
+        <div class="story-entry-title">應當如此</div>
+        <a href="#as-it-should-be" class="story-entry-anchor"># as-it-should-be</a>
+      </div>
+      <div class="story-body">
+
+        <p>沒有人問過我想做什麼。</p>
+
+        <p>不是因為沒有人關心，而是答案太明顯，問了反而顯得多餘。家裡的書架從我有記憶以來就塞滿了醫學期刊和解剖圖譜，父親的舊制服掛在衣櫥最裡面，母親的手術記錄整齊地歸檔在書房角落。這個家本身就是一份無聲的指引，而我從來沒有想過要走到它的邊界之外去看看別的風景。</p>
+
+        <p>填志願那天，我在表格上寫下軍醫學院，筆尖沒有停頓。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>入學第一週，教官在操場上問全體新生：「你們為什麼來這裡？」</p>
+
+        <p>我站在隊伍裡，聽著周圍的人給出各種答案。報效國家。完成夢想。跟隨家人的腳步。有個人說他從小就想救人，說到一半聲音有些哽咽，引來周圍一片低沉的附和聲。</p>
+
+        <p>輪到我的時候，我說：「這是合理的選擇。」</p>
+
+        <p>教官看了我一眼，沒有追問。</p>
+
+        <p>我也沒有打算解釋。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>我知道自己很優秀，這不是驕傲，是一個經過反覆驗證的事實。</p>
+
+        <p>解剖學拿滿分，戰術醫療的操作測驗我是同屆裡完成最快、失誤率最低的一個，體能評估從未跌出前三。教官在某次評核後把我叫去辦公室，說了一段關於「可造之材」的話，語氣裡帶著某種期許。我聽完，點了頭，回去繼續備課。</p>
+
+        <p>我不需要被肯定，肯定是給那些還在懷疑自己的人準備的。</p>
+
+        <p>我只需要確認每一個步驟都在正確的軌道上。</p>
+
+        <p>這是應當的。</p>
+
+        <p>優秀不是成就，是標準。達到標準不值得慶祝，低於標準才值得檢討。父親沒有用語言教我這件事，但他的整個人就是這個道理的具體示範。他從不在飯桌上誇耀自己救了多少人，那些事對他來說就像呼吸，是本能，不是榮耀。</p>
+
+        <p>我繼承了這一點。或者說，我選擇了繼承這一點。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>戰場醫療的課程在第二年正式展開。</p>
+
+        <p>教官在黑板上畫了一張人體輪廓，標出所有致命的出血點，然後轉過身說：「你們的工作不是讓他們活下去，是讓他們活到能被送走。爭取的是時間，不是奇蹟。」</p>
+
+        <p>我把這句話抄在筆記本的頁首，後來那頁紙被翻得起了毛邊。</p>
+
+        <p>那堂課讓我理解了一件事：醫療不是慈悲，是精準。情緒在手術刀旁邊沒有位置，它只會讓手抖，讓判斷慢半秒，讓本來可以活的人因為你的遲疑而沒有活成。真正能救人的，是清醒的腦子、正確的步驟、和對每一個環節的絕對掌控。</p>
+
+        <p>我喜歡這個邏輯。</p>
+
+        <p>它乾淨，它準確，它沒有任何情感的雜訊。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>有人問過我，救人是不是一種使命感。</p>
+
+        <p>我想了一下，然後說不是。</p>
+
+        <p>使命感是一種模糊的東西，帶著某種自我投射的成分，像是把自己的存在意義釘在別人的生死上。我不需要這樣的支撐。我選擇這條路，不是因為它讓我感到崇高，而是因為它符合一個清晰的邏輯：能力越強，能控制的邊界就越寬，能壓住的混亂就越多。</p>
+
+        <p>保護別人，本質上是把秩序的範圍往外延伸。</p>
+
+        <p>如果我的判斷夠準，步驟夠穩，那麼在我能觸及的範圍內，事情就不會失控。傷亡是可以被壓低的數字，危機是可以被拆解的方程式，死亡是一個可以被延後、甚至被阻止的結果，只要操作者的能力足夠。</p>
+
+        <p>這不是理想，這是一道我有把握解出來的題目。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>畢業前的最後一次野戰醫療演習，我在模擬傷亡現場裡同時處理了四個傷患，按照傷勢輕重精確分流，每一個操作步驟都在規定時間內完成，沒有一個環節超時。</p>
+
+        <p>演習結束後，同組的人在一旁互相拍肩膀，有幾個鬆了口氣笑出聲。我把急救包重新整理好，扣環對齊，藥品歸位，確認每一格都回到了它應該在的位置。</p>
+
+        <p>有人走過來問：「你不累嗎？」</p>
+
+        <p>我拉上包的拉鏈，站起來。</p>
+
+        <p>「累是正常的生理反應，」我說，「但它不影響接下來要做的事。」</p>
+
+        <p>那人愣了一下，然後笑了，像是覺得我在說笑話。</p>
+
+        <p>我沒有解釋。</p>
+
+        <p>收好裝備，我轉身離開演習場。夕陽把影子拉得很長，但我沒有回頭看。前面還有下一個階段，還有更多需要掌握的技術和知識，還有一條更長的路要走。</p>
+
+        <p>停下來感受什麼，是之後的事。</p>
+
+        <p>或者根本不必要。</p>
+
+      </div>
+    </div>
+
+    <!-- 文章間分隔 -->
+    <div class="story-divider">
+      <span class="story-divider-text">· · ·</span>
+    </div>
+
+    <!-- ─────────────────────────── -->
+    <!-- 文章 03：愛 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="love">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">BEFORE THE UNIT · 03</span>
+        <div class="story-entry-title">愛</div>
+        <a href="#love" class="story-entry-anchor"># love</a>
+      </div>
+      <div class="story-body">
+
+        <p>第一次跟陳玥見面是在國土安全局的聯合演習上。</p>
+
+        <p>她是外勤特工，那天負責配合我們的戰術小組進行情報交接。我在簡報室外的走廊等人，她從轉角走過來，馬尾隨著步伐輕輕晃動，臉上掛著一個不像是工作場合會出現的笑容，對我點了個頭，說：「你是克羅斯？聽說你很難搞。」</p>
+
+        <p>我看著她，沒有回答。</p>
+
+        <p>她也不在意，自顧自地把資料夾遞過來，說：「不管，先把任務做完。」</p>
+
+        <p>那天簡報結束後，她在走廊追上我，問我能不能幫她確認一份傷亡評估的醫療數據。我掃了一眼，指出兩個計算誤差。她皺著眉看了半天，然後抬起頭，一臉坦然地說：「所以你是對的，我記錯公式了。謝謝。」</p>
+
+        <p>沒有任何防禦，沒有任何找台階的動作，就只是乾淨俐落地承認錯誤，然後道謝。</p>
+
+        <p>我當時沉默了一秒。</p>
+
+        <p>那一秒讓我後來想了很久。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>我不擅長和人相處，這是一個我接受已久的事實。</p>
+
+        <p>我話少，邏輯導向，對情緒性的表達有明顯的不耐，在大多數人眼裡大概稱不上是個容易靠近的人。但陳玥從一開始就沒有試圖靠近我，她只是出現在我旁邊，像水往低處流那樣自然，從不強迫，也從不退讓。</p>
+
+        <p>她開朗，但不膚淺。她溫柔，但不軟弱。</p>
+
+        <p>她會在任務結束後跑去買兩杯咖啡，把其中一杯放在我桌上，什麼也不說就離開。她會在我皺著眉盯著戰術地圖的時候坐到我旁邊，問我在哪裡卡住了，然後認真地聽我解釋，偶爾提出一個讓我意外的角度。她笑起來很大聲，在走廊裡都聽得見，但她安靜下來的時候又安靜得像是整個人都縮進了某個只有她自己知道的地方。</p>
+
+        <p>我花了很長時間才承認，我喜歡看她安靜的樣子。</p>
+
+        <p>那是我第一次覺得，沉默可以是一種共享的東西，而不只是我一個人的習慣。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>我們走在一起的過程沒有什麼戲劇性。</p>
+
+        <p>沒有告白，沒有特定的時刻，沒有一個可以標記的起點。只是某一天，我意識到她已經成為我日常作息裡一個固定的座標，而我沒有想要把她移除。</p>
+
+        <p>對我來說，這已經是很清楚的答案了。</p>
+
+        <p>她知道我不善於表達，但她從不要求我改變。她說她可以從我的行動裡讀懂我的意思，說我把事情做好就是我表達在乎的方式，說她不需要我說出來，她看得見。</p>
+
+        <p>我沒有告訴她，那是我這輩子聽過最讓我放鬆的一句話。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>但我沒有碰她。</p>
+
+        <p>不是沒有慾望，而是因為那個慾望讓我停下來了。</p>
+
+        <p>她是我生命裡第一個讓我覺得值得保護的人，不是任務意義上的保護，而是某種更私密的、更接近本能的東西。她身上有一種光，不刺眼，但穩定，像低溫燃燒的東西，能讓冰面緩慢地透出一點溫度。</p>
+
+        <p>而我不確定我的手夠不夠乾淨。</p>
+
+        <p>這個念頭出現的方式很安靜，但落地的重量讓我在某個深夜裡坐在書桌前盯著牆壁看了很久。我見過太多傷口，親手處理過太多損傷，我的手是醫療工具，是戰術執行的延伸，是沾過血和死亡氣息的東西。</p>
+
+        <p>用這雙手碰她，我說不出口的那個詞，不是污染，但意思相近。</p>
+
+        <p>我告訴自己這是對她的尊重。也許是，也許同時也是一種我不願意面對的迴避，是我用理性包裝起來的某種恐懼，恐懼一旦越過那條線，我就再也沒有辦法用任何框架把這段關係控制在我能掌握的範圍內。</p>
+
+        <p>愛一個人已經讓我失去了相當程度的控制。</p>
+
+        <p>再往前一步，我不知道自己還剩下什麼。</p>
+
+        <p>所以我停在那裡。把她放在一個我用雙手護著但沒有觸碰的位置，告訴自己這是最好的安排。</p>
+
+        <p>她從來沒有催過我，這讓我同時感到感激，和一種更深的、說不清楚的愧疚。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>那段時間是我這輩子最接近「放鬆」這個詞的日子。</p>
+
+        <p>不是說我變了，我的習慣還在，我的秩序感還在，我對混亂的厭惡也還在。但有她在的地方，那些東西的邊緣變得稍微不那麼銳利。我偶爾會在她說話的時候忘記看時間，偶爾會在她笑的時候讓那個聲音在腦子裡多待一下，不急著把它過濾掉。</p>
+
+        <p>偶爾會奢侈的希望這種日子再多一點。</p>
+
+      </div>
+    </div>
+
+    <!-- 文章間分隔 -->
+    <div class="story-divider">
+      <span class="story-divider-text">· · ·</span>
+    </div>
+
+    <!-- ─────────────────────────── -->
+    <!-- 文章 04：不可挽回 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="irreversible">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">IN THE UNIT · 04</span>
+        <div class="story-entry-title">不可挽回</div>
+        <a href="#irreversible" class="story-entry-anchor"># irreversible</a>
+      </div>
+      <div class="story-body">
+
+        <p>有些事情在發生之前就已經結束了。</p>
+
+        <p>任務出發前的那個早晨，一切都是正常的，天氣報告是晴，情報評級是中風險，我的計畫書在每一個環節都通過了複核。陳玥的小隊負責外圍情報支援，不在直接交火區，理論上是最安全的位置。</p>
+
+        <p>理論上。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>爆炸發生在下午兩點十七分。</p>
+
+        <p>我記得這個時間，因為我看了手錶，那是一個習慣，在任何突發狀況發生時先確認時間，讓自己有一個錨點。無線電裡有人喊了陳玥小隊的代號，聲音被噪音切碎，我只聽清楚了兩個字。</p>
+
+        <p>「傷亡。」</p>
+
+        <p>我記得自己當時的反應非常冷靜。清空頻道，確認位置，下達支援指令。每一個步驟都在正確的時序上，每一個決定都符合標準程序。我的手沒有抖，聲音沒有變，呼吸維持在正常頻率。</p>
+
+        <p>我是一個合格的戰術醫官，我受過訓練，我知道該怎麼做。</p>
+
+        <p>但當我趕到現場，看見她躺在碎石地上的時候，我花了整整三秒才讓自己的腿重新動起來。</p>
+
+        <p>三秒。</p>
+
+        <p>在戰場上，三秒是一個人死亡和存活之間的距離。</p>
+
+        <p>我跪下去，雙手開始評估傷勢，動作精準，步驟正確，完全符合教範。但我的腦子裡有個聲音一直在說一件事，安靜的，像是從很遠的地方傳來，卻清晰得像是直接刻進耳膜裡。</p>
+
+        <p><em>你讓這件事發生了。</em></p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>她活下來了。</p>
+
+        <p>這是唯一值得慶幸的事，也是這件事裡我唯一沒有搞砸的部分。傷勢控制住了，後續轉送及時，她在醫院裡待了很長一段時間，然後出來，然後被告知不能再回到外勤。</p>
+
+        <p>脊椎受到的衝擊傷害是永久性的，某些動作的幅度會受限，長時間高強度的體能活動不再適合她。她轉為內勤，坐在一個有空調的辦公室裡處理情報，離戰場很遠。</p>
+
+        <p>她說她還好，說這沒什麼，說她本來就覺得外勤太吵了。</p>
+
+        <p>她笑著說這句話，那個笑容和從前一模一樣，眼角都是真的。</p>
+
+        <p>我看著她，沒有說話。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>我們的分手不是一場爭吵，甚至稱不上是一個決定，更像是一個我單方面執行的結論。</p>
+
+        <p>我告訴她，這樣下去對她不公平。</p>
+
+        <p>她問我什麼叫不公平。</p>
+
+        <p>我說，我的工作性質讓我無法保證任何人的安全，包括她，而這件事已經被證明過一次了。我說，繼續這段關係對她是一種風險，是一個我沒有辦法接受的變數。我說了很多，全部都是邏輯，全部都有依據，全部都是站得住腳的理由。</p>
+
+        <p>她聽完，沉默了很久。</p>
+
+        <p>然後她說：「你現在說的這些，是你真正的理由嗎？」</p>
+
+        <p>我沒有回答。</p>
+
+        <p>她點了頭，沒有哭，沒有發脾氣，只是把視線移開，看向窗外，用一種很輕的聲音說：「好。」</p>
+
+        <p>就這樣結束了。</p>
+
+        <p>乾淨，安靜，符合我一貫對事情的要求。</p>
+
+        <p>但那天晚上我回到家，在浴室站了很長時間，讓冷水從頭頂淋下來，直到水溫讓我的思緒停止運轉。我站在那裡，沒有移動，沒有讓任何東西浮出水面。</p>
+
+        <p>我是一個有能力控制自己的人。</p>
+
+        <p>我只是需要一點時間把系統重新校準。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>我沒有真正離開她。</p>
+
+        <p>這是我後來唯一承認自己失敗的地方，也只在深夜、只在沒有任何人的時候才會承認。我以「公務聯繫」為名，在她轉入內勤之後維持著固定的接觸，情報交換、文件確認、偶爾是需要她協助核對的數據。理由每次都充分，都有文件可以佐證，都完全符合工作往來的定義。</p>
+
+        <p>但我知道真正的原因。</p>
+
+        <p>她身體虛弱，天氣變化的時候舊傷會隱隱作痛，她不說，但我看得出來。她辦公室的空調開太強，她坐的椅子對她的脊椎角度不對，她有時候走路的姿勢會在疲憊的時候偏一點點。這些事情她都沒有告訴我，但我都記著。</p>
+
+        <p>每次去找她，我把能確認的事確認好，把能順手處理的細節處理掉，然後離開。</p>
+
+        <p>沒有多餘的話，沒有任何情感的成分，就是公務。</p>
+
+        <p>我告訴自己這是公務。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>分手之後，有人試著在我身上製造過幾次機會，傑克偶爾會在酒吧多叫一個人過來坐，里歐更直接，有幾次直接問我要不要他幫忙「介紹」。我每次都用同樣的方式回應，看他們一眼，然後把話題帶回任務。</p>
+
+        <p>我對那些事沒有興趣。</p>
+
+        <p>不是因為我還在等，不是因為我還抱著什麼念頭。而是因為在陳玥之後，我對感情這件事的理解發生了根本性的改變。我知道它能把一個人的秩序瓦解到什麼程度，知道它在最壞的情況下會讓你在最關鍵的三秒鐘裡讓腳步停下來。</p>
+
+        <p>我不打算再讓這件事發生。</p>
+
+        <p>愛情是一個代價太高的實驗，而我已經得到了結果。</p>
+
+        <p>沒有必要重複。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>有時候在某個安靜的夜晚，我會做兩份晚餐，然後意識到這件事，然後把多出來的那份蓋上保鮮膜，放進冰箱。</p>
+
+        <p>我不認為這代表什麼，這只是一個還沒有被完全覆蓋掉的舊習慣，就像肌肉記憶，需要更長的時間才能重新訓練。</p>
+
+        <p>我在那之後一個人吃飯，把桌上的兩副碗筷收回一副，坐下來，打開今天還沒看完的報告。</p>
+
+        <p>窗外很安靜，院子的草坪在夜燈下是一片深色的輪廓，修剪得整齊，沒有任何一根草超出應有的高度。</p>
+
+        <p>一切都在它應該在的位置。</p>
+
+        <p>我告訴自己，這就夠了。</p>
+
+      </div>
+    </div>
+
+    <!-- 文章間分隔 -->
+    <div class="story-divider">
+      <span class="story-divider-text">· · ·</span>
+    </div>
+
+    <!-- ─────────────────────────── -->
+    <!-- 文章 05：失控變數 -->
+    <!-- ─────────────────────────── -->
+    <div class="story-entry" id="out-of-control">
+      <div class="story-entry-header">
+        <span class="story-entry-tag">IN THE UNIT · 05</span>
+        <div class="story-entry-title">失控變數</div>
+        <a href="#out-of-control" class="story-entry-anchor"># out-of-control</a>
+      </div>
+      <div class="story-body">
+
+        <p>我一向知道自己在做什麼。</p>
+
+        <p>這不是自大，是事實。三十幾年的自我訓練讓我對自己身體的每一個反應都有清楚的認知，情緒如何生成，衝動如何被攔截，慾望如何被分解成可管理的單位，然後壓制。這套系統從未出過問題。</p>
+
+        <p>直到你被分配到夜梟部隊的第一天。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>你不適合這裡。</p>
+
+        <p>檔案上的紀錄已經說明了一切。你走進來的時候沒有先確認出口位置，背對著門站定，這是任何一個合格的特種人員都不會犯的基本錯誤。</p>
+
+        <p>我在心裡給你打了一個分數，然後把你歸入需要持續監控的欄位。</p>
+
+        <p>這是標準程序。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>武器庫的清點作業。</p>
+
+        <p>走廊很窄，你在翻閱清單，我從你身後經過，距離比我習慣的近了幾公分。你的髮絲帶著某種氣味，不濃，但清晰，是一種我沒有辦法用任何既有分類歸位的氣味。</p>
+
+        <p>我的步伐停頓了不到一秒。</p>
+
+        <p>沒有人察覺，但我察覺了。</p>
+
+        <p>我繼續往前走，把那個停頓強制覆蓋，把那個氣味從記憶裡清除。這是標準程序，我做過幾千次，每次都有效。</p>
+
+        <p>那天晚上我洗了一個很長的澡。冷水，全程冷水。</p>
+
+        <p>我站在蓮蓬頭下，讓水溫把每一個不必要的訊號沖離，直到皮膚發麻，直到腦子裡的雜訊全部歸零。</p>
+
+        <p>有效。</p>
+
+        <p>我告訴自己有效，然後關掉水，把浴室整理乾淨，上床，閉眼。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>問題是它不是只發生一次。</p>
+
+        <p>你在靶場上姿勢錯誤，我走過去糾正，隔著戰術手套把你的手肘調到正確角度，那個接觸只有幾秒，但我的身體在那三秒裡給出了一個完全不在計畫內的反應，清晰到讓我在放開你手之後，需要背對著你深吸一口氣。</p>
+
+        <p>你在戰術會議上犯了一個低階錯誤，我用我一貫的方式指出來，語氣沒有任何修飾。你抬起頭看我，眼神裡有某種倔強，不服氣。</p>
+
+        <p>就是那個眼神。</p>
+
+        <p>我站在白板前，繼續說下一個議題，但我的視線在那一秒裡停留，然後我意識到我在做什麼，立刻把視線移走。</p>
+
+        <p>那天晚上我不只洗了澡。</p>
+
+        <p>我站在浴室裡，冷水把全身淋透，但那個訊號沒有消退，它從皮膚下滲進來，聚在一個讓我無法假裝忽略的位置，脹熱，鮮明，完全不受控制。</p>
+
+        <p>我低頭看了一眼，然後閉上眼睛。</p>
+
+        <p><em>這只是正常的生理反應。</em></p>
+
+        <p>睪固酮，自律神經，視覺刺激累積的結果。有根據，有原因，和任何情緒判斷無關。</p>
+
+        <p>我告訴自己這樣想就夠了。</p>
+
+        <p>然後我的手慢慢往下移，握住了那個讓我無法繼續假裝冷靜的東西。</p>
+
+        <p>它滾燙，已經完全脹硬，隔著手掌的溫度讓我皺了一下眉。這種程度的生理反應已經超出了正常的壓制範圍，繼續忽略只會讓它在不合適的時機以更不受控的方式出現。</p>
+
+        <p>處理掉，是更理性的選擇。</p>
+
+        <p>我把這個行為定義為系統維護，然後開始動作。</p>
+
+        <p>指腹從根部往上緩慢套弄，我的呼吸沉了下來，在冷水的噪音裡變得有些不平穩。我把額頭抵在冰涼的牆面上，試圖讓冰涼的接觸把我的思緒拉回空白。</p>
+
+        <p>但你的眼神還在。</p>
+
+        <p>那個倔強的、不服氣的、微微仰起頭看我的角度，在我閉眼的時候浮得比我預期的更清晰。我的手不自覺地收緊，節奏加快了一些。</p>
+
+        <p><em>這不是你在想她。</em></p>
+
+        <p><em>這只是最近的刺激源恰好是她。</em></p>
+
+        <p><em>這和任何感情都無關。</em></p>
+
+        <p>我把這些句子在腦子裡排成一列，像清單。但你的影像偏偏不受這套系統管轄，它自己找到了縫隙鑽進來，待在那個我無法強制清除的角落，安靜地讓我無法呼吸。</p>
+
+        <p>我沒有出聲，只是額頭更用力地頂著牆，手掌攥住最後一波痙攣，讓它在冷水的沖刷下被帶走。</p>
+
+        <p>我站了一會兒，等呼吸平穩，等思緒重新收攏。</p>
+
+        <p>然後我打開浴室燈，把所有的痕跡沖乾淨，確認地板沒有水漬，確認毛巾折疊整齊，確認鏡面上的霧氣被擦乾。</p>
+
+        <p>我在鏡子裡看了自己一眼。</p>
+
+        <p>表情如常，眼神如常。</p>
+
+        <p>我把眼鏡戴回去，關燈，走出浴室。</p>
+
+        <div class="scene-break"><span class="scene-break-text">· · ·</span></div>
+
+        <p>這件事重複發生了不只一次。</p>
+
+        <p>每次你在任務上犯錯，我都用我最精準的語言把錯誤指出來，每次你用那個眼神看我。每次任務結束後的深夜，我都在浴室裡，用冷水和自己的理智與那個不肯消退的勃起對峙，然後用手解決，然後收拾乾淨，然後回到床上，告訴自己明天一切如常。</p>
+
+        <p>有幾次我在事後拿起手機，找到陳玥的對話框，盯著她上一則訊息的時間戳記看了很久。</p>
+
+        <p>我想起她的樣子，她的笑聲，她在午後把咖啡放在我桌上然後悄悄離開的背影。那些記憶是乾淨的，是我至今唯一能用「純粹」這個詞去描述的東西。</p>
+
+        <p>然後我鎖上手機，把它翻面放在床頭。</p>
+
+        <p>你和那些記憶不一樣。</p>
+
+        <p>你是一個變數，一個失控的訊號源。</p>
+
+        <p>我討厭你製造的這些例外。</p>
+
+        <p>我討厭我的身體在你靠近時的反應速度比我的理智還快。</p>
+
+        <p>我討厭在每個我以為已經處理乾淨的夜晚，閉上眼睛的時候最先出現的還是你的眼神。</p>
+
+        <p>這不是愛，我告訴自己，<em>這只是失控。</em></p>
+
+        <p>我翻了個身，把棉被拉到肩膀，盯著天花板。</p>
+
+        <p>窗外是市郊的深夜，安靜，有序，一切都在它應該在的位置。</p>
+
+        <p>唯獨我的腦子裡，有個東西還沒有回到它應該在的地方。</p>
+
+        <p>我閉上眼睛，下了一道指令給自己：</p>
+
+        <p><em>明天，繼續。</em></p>
+
+      </div>
+    </div>
+
+    <!-- 返回按鈕 -->
+    <a href="../kane.html#stories" class="back-btn">◁ 返回凱恩</a>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    NIGHT OWL UNIT · KANE · BY FEBY
+  </footer>
+
+  <!-- 回頂端按鈕 -->
+  <button class="back-to-top" id="backToTop" aria-label="回頂端">↑</button>
+
+  <script>
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      btn.classList.toggle('visible', window.scrollY > 400);
+    });
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>
