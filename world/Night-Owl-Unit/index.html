@@ -9,8 +9,8 @@
   <title>夜梟部隊</title>
   <link rel="stylesheet" href="../../css/night-owl-unit.css">
 
+<style>
   /* ===== 聊天日期列：可拖曳 / 滑動 ===== */
- <style>
   .chat-sessions-wrap {
   position: relative;
   min-width: 0;
@@ -3610,6 +3610,19 @@
       document.querySelectorAll('.chat-session-btn').forEach(el => el.classList.remove('active'));
       document.getElementById('chat-' + id).classList.add('active');
       btn.classList.add('active');
+
+      // 聊天內容回到最上面
+      const body = document.querySelector('.chat-body');
+      if (body) body.scrollTop = 0;
+
+      // 如果整個頁面已經往下捲、看不到聊天框頂端，就把頁面捲回聊天框
+      const win = document.querySelector('.chat-window');
+      if (win) {
+        const top = win.getBoundingClientRect().top;
+        if (top < 0) {
+          window.scrollTo({ top: window.scrollY + top - 70, behavior: 'smooth' });
+        }
+      }
 
       // 讓被點的日期捲到中間
       const bar = document.getElementById('chatSessions');
