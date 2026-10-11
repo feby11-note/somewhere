@@ -9,6 +9,60 @@
   <title>夜梟部隊</title>
   <link rel="stylesheet" href="../../css/night-owl-unit.css">
 
+  /* ===== 聊天日期列：可拖曳 / 滑動 ===== */
+ <style>
+  .chat-sessions-wrap {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.chat-sessions {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;   /* iOS 慣性滑動 */
+  overscroll-behavior-x: contain;      /* 滑到底不會帶動整頁 */
+  scrollbar-width: none;               /* Firefox 隱藏捲軸 */
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.chat-sessions::-webkit-scrollbar { display: none; }  /* Chrome / Safari 隱藏捲軸 */
+
+.chat-sessions.is-dragging { cursor: grabbing; }
+
+.chat-session-btn {
+  flex: 0 0 auto;        /* 不被壓縮 */
+  white-space: nowrap;
+}
+
+/* 左右漸層提示（還有更多日期） */
+.chat-sessions-wrap::before,
+.chat-sessions-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 48px;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity .25s;
+}
+.chat-sessions-wrap::before {
+  left: 0;
+  background: linear-gradient(to right, #1e2738, rgba(30, 39, 56, 0));
+}
+.chat-sessions-wrap::after {
+  right: 0;
+  background: linear-gradient(to left, #1e2738, rgba(30, 39, 56, 0));
+}
+.chat-sessions-wrap.can-left::before,
+.chat-sessions-wrap.can-right::after { opacity: 1; }
+</style>
   <!-- 顯示路徑與文字 -->
   <meta property="og:title" content="🦉 夜梟部隊｜by菲比">
   <meta property="og:description" content="這群笨蛋直男的秘密基地，還有他們的故事和過去。">
@@ -1377,20 +1431,38 @@
             </div>
           </div>
 
-          <div class="chat-sessions">
-            <button class="chat-session-btn active" onclick="switchChatSession('s1', this)">2021.11.31</button>
-            <button class="chat-session-btn" onclick="switchChatSession('s2', this)">2021.12.03</button>
-            <button class="chat-session-btn" onclick="switchChatSession('s3', this)">2022.01.18</button>
-            <button class="chat-session-btn" onclick="switchChatSession('s4', this)">2022.02.22</button>
-            <button class="chat-session-btn" onclick="switchChatSession('s5', this)">2022.04.07</button>
-            <button class="chat-session-btn" onclick="switchChatSession('s6', this)">2022.05.30</button>
-            <button class="chat-session-btn" onclick="switchChatSession('s7', this)">2022.07.01</button>
-          </div>
+          <div class="chat-sessions-wrap">
+            <div class="chat-sessions" id="chatSessions">
+              <button class="chat-session-btn active" onclick="switchChatSession('s8', this)">2021.11.20</button>
+              <button class="chat-session-btn" onclick="switchChatSession('s1', this)">2021.11.30</button>
+              <button class="chat-session-btn" onclick="switchChatSession('s2', this)">2021.12.03</button>
+              <button class="chat-session-btn" onclick="switchChatSession('s16', this)">2021.12.10</button>
+              <button class="chat-session-btn" onclick="switchChatSession('s9', this)">2021.12.24</button>
+              <button class="chat-session-btn" onclick="switchChatSession('s10', this)">2022.01.01</button>
+              <button class="chat-session-btn" onclick="switchChatSession('s17', this)">2022.01.08</button>
+              <button class="chat-session-btn" onclick="switchChatSession('s3', this)">2022.01.18</button>
+              <button class="chat-session-btn" onclick="switchChatSession('s11', this)">2022.01.25</button>
+              <button class="chat-session-btn" onclick="switchChatSession('s18', this)">2022.02.01</button>
+              <button class="chat-session-btn" onclick="switchChatSession('s12', this)">2022.02.14</button>
+              <button class="chat-session-btn" onclick="switchChatSession('s4', this)">2022.02.22</button>
+              <button class="chat-session-btn" onclick="switchChatSession('s19', this)">2022.03.05</button>
+              <button class="chat-session-btn" onclick="switchChatSession('s20', this)">2022.03.14</button>
+              <button class="chat-session-btn" onclick="switchChatSession('s13', this)">2022.03.21</button>
+              <button class="chat-session-btn" onclick="switchChatSession('s14', this)">2022.04.01</button>
+              <button class="chat-session-btn" onclick="switchChatSession('s5', this)">2022.04.07</button>
+              <button class="chat-session-btn" onclick="switchChatSession('s21', this)">2022.04.20</button>
+              <button class="chat-session-btn" onclick="switchChatSession('s22', this)">2022.05.10</button>
+              <button class="chat-session-btn" onclick="switchChatSession('s23', this)">2022.05.18</button>
+              <button class="chat-session-btn" onclick="switchChatSession('s6', this)">2022.05.30</button>
+              <button class="chat-session-btn" onclick="switchChatSession('s15', this)">2022.06.05</button>
+              <button class="chat-session-btn" onclick="switchChatSession('s7', this)">2022.07.01</button>
+            </div><!-- /chat-sessions -->
+          </div><!-- /chat-sessions-wrap -->
 
           <div class="chat-body">
 
             <!-- s1 -->
-            <div class="chat-session active" id="chat-s1">
+            <div class="chat-session" id="chat-s1">
               <div class="chat-date-divider">2021 · 11 · 31</div>
               <div class="chat-msg left">
                 <span class="chat-sender">里歐</span>
@@ -1741,8 +1813,1322 @@
                 <span class="chat-time">16:51</span>
               </div>
             </div>
+            <!-- s8 -->
+            <div class="chat-session active" id="chat-s8">
+              <div class="chat-date-divider">2021 · 11 · 01</div>
+              <div class="chat-date-divider">— 里歐 已加入群組 —</div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">安安 我是新來的 叫里歐 擅長近身肉搏和炸彈拆裝 請多指教^^</div>
+                <span class="chat-time">21:03</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">話說 這群組名字也太無聊了吧 工作群組？？</div>
+                <span class="chat-time">21:03</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">因為這是工作用的群組。</div>
+                <span class="chat-time">21:05</span>
+              </div>
+              <div class="chat-date-divider">— 里歐 已將群組名稱變更為「夜梟4帥」—</div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">有意思。四個人，你把自己也算進去了。</div>
+                <span class="chat-time">21:06</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">廢話 我最帥好嗎</div>
+                <span class="chat-time">21:06</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">改回來。</div>
+                <span class="chat-time">21:07</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble"><i>@傑克</i> 哥 你說呢</div>
+                <span class="chat-time">21:07</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">4帥不錯 但我要排第一</div>
+                <span class="chat-time">21:15</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">改叫「3人1狗」或許比較貼切。</div>
+                <span class="chat-time">21:15</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">幹 你說誰是狗？還有 人為什麼在前面？</div>
+                <span class="chat-time">21:16</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">……算了。</div>
+                <span class="chat-time">21:18</span>
+              </div>
+            </div>
 
-          </div><!-- /chat-body -->
+            <!-- s9 -->
+            <div class="chat-session" id="chat-s9">
+              <div class="chat-date-divider">2021 · 12 · 24</div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">今晚交換禮物 預算500 不准超過</div>
+                <span class="chat-time">17:30</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">500能買什麼啊 一手啤酒？</div>
+                <span class="chat-time">17:31</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">我的禮物已經準備好了。</div>
+                <span class="chat-time">17:33</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">你的預算超過了吧。</div>
+                <span class="chat-time">17:33</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">我說的是「已經準備好了」，沒說花了多少。</div>
+                <span class="chat-time">17:34</span>
+              </div>
+              <div class="chat-date-divider">— 交換禮物結束 —</div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">誰送的急救包 給我出來</div>
+                <span class="chat-time">22:41</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">根據你過去一個月的受傷紀錄，這是最實用的禮物。</div>
+                <span class="chat-time">22:42</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">我要的是聖誕禮物 不是醫療資源</div>
+                <span class="chat-time">22:42</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">我抽到一瓶紅酒 這絕對不只500</div>
+                <span class="chat-time">22:43</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">我拿到一束花？雖然不知道是誰，但品味還行。</div>
+                <span class="chat-time">22:43</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">那我送的那個誰抽到了</div>
+                <span class="chat-time">22:44</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">在我這裡。一隻會尖叫的橡膠雞。</div>
+                <span class="chat-time">22:46</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">😂</div>
+                <span class="chat-time">22:46</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">很適合你啊醫官 每次我遲到你也是這樣叫</div>
+                <span class="chat-time">22:47</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">明天提早半小時報到。不准遲到。</div>
+                <span class="chat-time">22:47</span>
+              </div>
+            </div>
+
+            <!-- s10 -->
+            <div class="chat-session" id="chat-s10">
+              <div class="chat-date-divider">2022 · 01 · 01</div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">新年快樂 各位有什麼新年願望</div>
+                <span class="chat-time">11:20</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">不要再被凱恩罰跑</div>
+                <span class="chat-time">11:21</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">那你需要的是準時，不是願望。</div>
+                <span class="chat-time">11:21</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">好 那我的願望是凱恩今年不要再管我</div>
+                <span class="chat-time">11:22</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">駁回。</div>
+                <span class="chat-time">11:22</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">我希望今年能少聽到一點噪音。</div>
+                <span class="chat-time">11:24</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">你在說誰</div>
+                <span class="chat-time">11:24</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">你覺得呢？</div>
+                <span class="chat-time">11:25</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">我的願望是你們少吵一點 讓我好好睡覺</div>
+                <span class="chat-time">11:26</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">你昨晚三點才回來。</div>
+                <span class="chat-time">11:26</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">……你怎麼知道</div>
+                <span class="chat-time">11:27</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">我睡眠很淺。你的靴子很吵。</div>
+                <span class="chat-time">11:27</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">還有香水味，從電梯一路飄到八樓。</div>
+                <span class="chat-time">11:28</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">隊長跨年夜去哪了😏</div>
+                <span class="chat-time">11:28</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">值班</div>
+                <span class="chat-time">11:29</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">你那晚沒有排班。</div>
+                <span class="chat-time">11:29</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">新年快樂 晚安</div>
+                <span class="chat-time">11:30</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">現在是早上11點🙄</div>
+                <span class="chat-time">11:30</span>
+              </div>
+            </div>
+
+            <!-- s11 -->
+            <div class="chat-session" id="chat-s11">
+              <div class="chat-date-divider">2022 · 01 · 25</div>
+              <div class="chat-date-divider">⚠️ 系統通知：B4 煙霧警報觸發</div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">里歐。</div>
+                <span class="chat-time">15:02</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">不是我</div>
+                <span class="chat-time">15:02</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">我還沒說是什麼事。</div>
+                <span class="chat-time">15:02</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">……</div>
+                <span class="chat-time">15:03</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">監視器畫面我調出來了。需要發到群組嗎？</div>
+                <span class="chat-time">15:03</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">不用不用不用不用</div>
+                <span class="chat-time">15:03</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">天花板還在嗎</div>
+                <span class="chat-time">15:05</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">大部分還在</div>
+                <span class="chat-time">15:05</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">「大部分」。</div>
+                <span class="chat-time">15:06</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">就一小塊 我會修好啦！！</div>
+                <span class="chat-time">15:06</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">修好之前不准碰炸藥</div>
+                <span class="chat-time">15:07</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">老大😭 你不如叫我去死吧😭</div>
+                <span class="chat-time">15:07</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">就按照這提議進行。</div>
+                <span class="chat-time">15:08</span>
+              </div>
+            </div>
+
+            <!-- s12 -->
+            <div class="chat-session" id="chat-s12">
+              <div class="chat-date-divider">2022 · 02 · 14</div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">樓下秘書今天是不是有發巧克力</div>
+                <span class="chat-time">18:10</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">我收到七盒</div>
+                <span class="chat-time">18:11</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">？？？</div>
+                <span class="chat-time">18:11</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">我收到三盒，已經轉送給清潔人員了。</div>
+                <span class="chat-time">18:12</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">你好歹也吃一顆吧</div>
+                <span class="chat-time">18:12</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">我不吃來路不明的東西。</div>
+                <span class="chat-time">18:13</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">我收到一盒，已經還回去了。</div>
+                <span class="chat-time">18:15</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">為什麼要還？？？</div>
+                <span class="chat-time">18:15</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">我不想讓對方產生不必要的期待。</div>
+                <span class="chat-time">18:16</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">凱恩 你這樣會孤老一生</div>
+                <span class="chat-time">18:16</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">那是我的自由。</div>
+                <span class="chat-time">18:17</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble"><i>@傑克</i> 老哥 分我一盒</div>
+                <span class="chat-time">18:17</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">不行 這是人家的心意</div>
+                <span class="chat-time">18:18</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">他把四盒轉送給其他女人了。剩下三盒被他塞到我的抽屜。</div>
+                <span class="chat-time">18:18</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">席奧 你就這種時候特別多話^^</div>
+                <span class="chat-time">18:19</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">我的私人櫃子不是你的儲物間，「隊長」</div>
+                <span class="chat-time">18:19</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">你們兩個夠了🤮</div>
+                <span class="chat-time">18:19</span>
+              </div>
+            </div>
+
+            <!-- s13 -->
+            <div class="chat-session" id="chat-s13">
+              <div class="chat-date-divider">2022 · 03 · 21</div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">你們回來了？？</div>
+                <span class="chat-time">09:40</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">72小時欸 你們到底去哪了</div>
+                <span class="chat-time">09:40</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">機密</div>
+                <span class="chat-time">09:52</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">我也是夜梟的人欸</div>
+                <span class="chat-time">09:52</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">Level 4。你是 Level 2。</div>
+                <span class="chat-time">09:53</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">……那至少說一下好不好玩</div>
+                <span class="chat-time">09:53</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">不好玩</div>
+                <span class="chat-time">09:54</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">不好玩。</div>
+                <span class="chat-time">09:54</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">同一分鐘、同樣的答案。默契真好。</div>
+                <span class="chat-time">09:55</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">隊長跟凱恩單獨出去三天 我是不是被排擠了</div>
+                <span class="chat-time">09:55</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">你一直都是。</div>
+                <span class="chat-time">09:55</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">幹 你閉嘴</div>
+                <span class="chat-time">09:56</span>
+              </div>
+            </div>
+
+            <!-- s14 -->
+            <div class="chat-session" id="chat-s14">
+              <div class="chat-date-divider">2022 · 04 · 01</div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">誰動了我的桌子。</div>
+                <span class="chat-time">07:12</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">什麼桌子 沒人動啊</div>
+                <span class="chat-time">07:13</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">往左移了2.3公分。筆筒轉了15度。</div>
+                <span class="chat-time">07:13</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">你用尺量的？</div>
+                <span class="chat-time">07:14</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">這種事目測即可。</div>
+                <span class="chat-time">07:14</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">建議你順便檢查一下抽屜。</div>
+                <span class="chat-time">07:15</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">……</div>
+                <span class="chat-time">07:16</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">為什麼我的抽屜裡有一隻橡膠雞。</div>
+                <span class="chat-time">07:16</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">愚人節快樂🐔</div>
+                <span class="chat-time">07:16</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">我把它鎖在儲物櫃裡了。你怎麼拿出來的。</div>
+                <span class="chat-time">07:17</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">鑰匙是我給他的。</div>
+                <span class="chat-time">07:17</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">席奧。</div>
+                <span class="chat-time">07:17</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">我只提供工具，執行的人是他。這是很基本的責任劃分。</div>
+                <span class="chat-time">07:18</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">愚人節快樂 我覺得很好笑😍</div>
+                <span class="chat-time">07:20</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble"><i>@傑克</i> 你的季度報告提前到今天。</div>
+                <span class="chat-time">07:20</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">……</div>
+                <span class="chat-time">07:31</span>
+              </div>
+            </div>
+
+            <!-- s15 -->
+            <div class="chat-session" id="chat-s15">
+              <div class="chat-date-divider">2022 · 06 · 05</div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">明天席奧生日 蛋糕要買哪家</div>
+                <span class="chat-time">22:14</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">我想說Bonnie的莓果蛋糕 那個裝模作樣的傢伙應該會喜歡吧</div>
+                <span class="chat-time">22:14</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">還是巧克力的</div>
+                <span class="chat-time">22:15</span>
+              </div>
+              <div class="chat-date-divider">— 已讀 3 —</div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">幹</div>
+                <span class="chat-time">22:16</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">傳錯群組了</div>
+                <span class="chat-time">22:16</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">我對莓果沒什麼意見。</div>
+                <span class="chat-time">22:17</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">不過「裝模作樣」這部分，我們明天可以好好聊聊。</div>
+                <span class="chat-time">22:17</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">😂😂😂</div>
+                <span class="chat-time">22:18</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">驚喜失敗率百分之百。</div>
+                <span class="chat-time">22:18</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">那你們就當作沒看到！！！</div>
+                <span class="chat-time">22:19</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">好。我什麼都沒看到。</div>
+                <span class="chat-time">22:19</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">蠟燭不要插太多，我不喜歡收拾。</div>
+                <span class="chat-time">22:20</span>
+              </div>
+            </div>
+            <!-- s16 年度體檢 -->
+            <div class="chat-session" id="chat-s16">
+              <div class="chat-date-divider">2021 · 12 · 10</div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">明天上午九點，B7 年度體檢。需空腹。</div>
+                <span class="chat-time">21:30</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">空腹是幾點開始不能吃</div>
+                <span class="chat-time">21:31</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">建議醫官順便幫他加驗智力。</div>
+                <span class="chat-time">23:35</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">你先去驗你的良心 看看有沒有 ^^凸</div>
+                <span class="chat-time">23:35</span>
+              </div>
+              <div class="chat-date-divider">— 隔日 —</div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">醫官剛剛為什麼一直盯著我的刺青看</div>
+                <span class="chat-time">10:12</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">我在找可以下針的位置。</div>
+                <span class="chat-time">10:13</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">找了五分鐘。</div>
+                <span class="chat-time">10:13</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">結論？</div>
+                <span class="chat-time">10:14</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">最後從腳背抽的。</div>
+                <span class="chat-time">10:14</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">😂😂😂 我們家大狗應該沒哭吧</div>
+                <span class="chat-time">10:15</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">你們都給我閉嘴!!</div>
+                <span class="chat-time">10:16</span>
+              </div>
+            </div>
+
+            <!-- s17 靶場對決 -->
+            <div class="chat-session" id="chat-s17">
+              <div class="chat-date-divider">2022 · 01 · 08</div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">B2 現在擠爆 隊長跟席奧又在比槍 🙄</div>
+                <span class="chat-time">19:20</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">不然來下注好了 我押隊長 一千</div>
+                <span class="chat-time">19:20</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">部隊內禁止賭博。</div>
+                <span class="chat-time">19:21</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">那一手啤酒</div>
+                <span class="chat-time">19:21</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">實物也算。</div>
+                <span class="chat-time">19:21</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">那我押凱恩笑一次 反正不存在的東西不算賭博</div>
+                <span class="chat-time">19:22</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">第三輪結束。98 比 97。</div>
+                <span class="chat-time">19:30</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">剛剛有人在旁邊打噴嚏 不算</div>
+                <span class="chat-time">19:30</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">戰場上的敵人也會打噴嚏。需要我幫你寫進報告嗎？</div>
+                <span class="chat-time">19:31</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">再一輪</div>
+                <span class="chat-time">19:31</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">這是你今晚第五次說「再一輪」。</div>
+                <span class="chat-time">19:31</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">你有沒有想過我是故意輸你的？</div>
+                <span class="chat-time">19:32</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble"><i>@傑克</i> 部隊內禁止調情。</div>
+                <span class="chat-time">19:32</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">我他媽真的要吐了🤮</div>
+                <span class="chat-time">19:32</span>
+              </div>
+            </div>
+
+            <!-- s18 農曆新年 -->
+            <div class="chat-session" id="chat-s18">
+              <div class="chat-date-divider">2022 · 02 · 01</div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">新年快樂！！！老闆們 紅包呢🧧</div>
+                <span class="chat-time">10:02</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">我是隊長 不是老闆</div>
+                <span class="chat-time">10:15</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">隊「長」也是長 長輩就要發紅包</div>
+                <span class="chat-time">10:15</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">我才大你幾歲 叫哥</div>
+                <span class="chat-time">10:16</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">依照傳統，紅包是已婚者發給未婚者。</div>
+                <span class="chat-time">10:17</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">那我們全部單身 誰發</div>
+                <span class="chat-time">10:17</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">我可以發。</div>
+                <span class="chat-time">10:18</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">？？？真假 尊貴的副隊長殿下 席奧哥 新年快樂🙏</div>
+                <span class="chat-time">10:18</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">金額依你去年的遲到次數計算。基本額三千，每遲到一次扣一千。</div>
+                <span class="chat-time">10:19</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">那我拿多少</div>
+                <span class="chat-time">10:19</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">你倒欠我九千。轉帳或現金都可以。</div>
+                <span class="chat-time">10:20</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">操 大過年的給我滾!!!</div>
+                <span class="chat-time">10:20</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">好啦 晚上HALO我請 當紅包</div>
+                <span class="chat-time">10:22</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">你上個月也說要請。帳單最後是我付的。</div>
+                <span class="chat-time">10:22</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">凱恩 新年快樂❤️</div>
+                <span class="chat-time">10:23</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">轉帳。</div>
+                <span class="chat-time">10:23</span>
+              </div>
+            </div>
+
+            <!-- s19 開戰術車買宵夜 -->
+            <div class="chat-session" id="chat-s19">
+              <div class="chat-date-divider">2022 · 03 · 05</div>
+              <div class="chat-date-divider">⚠️ 系統通知：B1 車輛 NOW-V07 於 01:42 駛離</div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">01:42，NOW-V07 駛離 B1。誰。</div>
+                <span class="chat-time">01:44</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">我有 GPS。</div>
+                <span class="chat-time">01:47</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">目前位置：鹹酥雞攤。</div>
+                <span class="chat-time">01:47</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">一輛裝甲車停在鹹酥雞攤前。畫面應該很和諧。</div>
+                <span class="chat-time">01:48</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">老闆說他第一次看到有人開這種車來買鹹酥雞 還送我一包甜不辣ㄟ</div>
+                <span class="chat-time">01:48</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">幫我加一份雞排 不要辣</div>
+                <span class="chat-time">01:49</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">傑克，身為隊長不應該鼓吹這種事。</div>
+                <span class="chat-time">01:49</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">還有百頁豆腐</div>
+                <span class="chat-time">01:49</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">車上有實彈和戰術裝備。這是國家財產。</div>
+                <span class="chat-time">01:50</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">我有鎖門啦 我又不是笨蛋</div>
+                <span class="chat-time">01:50</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">這句話的後半段有待商確。</div>
+                <span class="chat-time">01:50</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">回來後到 5F 報到。接下來一週，我會盯著你。</div>
+                <span class="chat-time">01:51</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">一週？？？盯什麼</div>
+                <span class="chat-time">01:51</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">出入紀錄、裝備登記、用餐時間、就寢時間。</div>
+                <span class="chat-time">01:52</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">恭喜，你有專屬保母了。</div>
+                <span class="chat-time">01:52</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">老大你剛剛也點餐 你是共犯！！</div>
+                <span class="chat-time">01:53</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">我只是點餐 我是無辜的消費者</div>
+                <span class="chat-time">01:53</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">傑克，你也一起。</div>
+                <span class="chat-time">01:53</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">……雞排記得帶回來</div>
+                <span class="chat-time">01:54</span>
+              </div>
+            </div><!-- /s19 -->
+
+            <!-- s20 白色情人節 -->
+            <div class="chat-session" id="chat-s20">
+              <div class="chat-date-divider">2022 · 03 · 14</div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">溫馨提醒，今天是白色情人節。</div>
+                <span class="chat-time">08:01</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble"><i>@傑克</i> 七盒。</div>
+                <span class="chat-time">08:01</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">我記得 早就準備好了</div>
+                <span class="chat-time">08:10</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">你昨晚十一點在問我附近哪裡還有開著的甜點店。</div>
+                <span class="chat-time">08:11</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">凱恩 你能不能有一次站在我這邊</div>
+                <span class="chat-time">08:11</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">我站在事實那邊。</div>
+                <span class="chat-time">08:12</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">欸我知道一家 Bonnie 超好吃 莓果蛋糕必點</div>
+                <span class="chat-time">08:13</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">……聽說的啦 我沒去過</div>
+                <span class="chat-time">08:13</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">上週你回來的時候，身上有莓果醬的味道。</div>
+                <span class="chat-time">08:14</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">你屬狗的喔 鼻子這麼靈</div>
+                <span class="chat-time">08:14</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">狗是你。</div>
+                <span class="chat-time">08:14</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">那家在哪 我午休去買</div>
+                <span class="chat-time">08:15</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">秘書們會互相比較。建議七份不要一樣。</div>
+                <span class="chat-time">08:16</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">哇 醫官你很懂欸？</div>
+                <span class="chat-time">08:16</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">常識。</div>
+                <span class="chat-time">08:16</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">這是理論，或是實戰經驗？</div>
+                <span class="chat-time">08:17</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">下一個話題。</div>
+                <span class="chat-time">08:17</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">買七種口味會被店員記住臉吧</div>
+                <span class="chat-time">08:18</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">算了 長這麼帥 被記住也是應該的</div>
+                <span class="chat-time">08:18</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">🤮</div>
+                <span class="chat-time">08:18</span>
+              </div>
+            </div><!-- /s20 -->
+
+            <!-- s21 隊長的盆栽 -->
+            <div class="chat-session" id="chat-s21">
+              <div class="chat-date-divider">2022 · 04 · 20</div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">隊長辦公室窗台上那盆是什麼</div>
+                <span class="chat-time">13:05</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">什麼盆</div>
+                <span class="chat-time">13:06</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">綠綠的 有葉子 旁邊還有噴水器跟一本《新手園藝入門》</div>
+                <span class="chat-time">13:06</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">別人送的</div>
+                <span class="chat-time">13:07</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">那本書的借閱紀錄在 9F 系統裡。借閱人是你。</div>
+                <span class="chat-time">13:07</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">……我們有借書系統？</div>
+                <span class="chat-time">13:08</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">有。你是建置以來第一位使用者。</div>
+                <span class="chat-time">13:08</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">而且已經續借第三次了。</div>
+                <span class="chat-time">13:08</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">哈啊 夜梟隊長 在辦公室種花🌸 純情男子 </div>
+                <span class="chat-time">13:09</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">我現在就去跟全隊講</div>
+                <span class="chat-time">13:09</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">你講出去 B4 鎖一個月</div>
+                <span class="chat-time">13:09</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">我什麼都沒看到</div>
+                <span class="chat-time">13:09</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">乖狗狗</div>
+                <span class="chat-time">13:10</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">葉緣發黃，是水澆太多了。</div>
+                <span class="chat-time">13:11</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">……真的？</div>
+                <span class="chat-time">13:11</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">一週兩次就夠了。它要的是散射光，不是直射。再這樣下去，它撐不過五月。</div>
+                <span class="chat-time">13:12</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">你怎麼連這個都懂</div>
+                <span class="chat-time">13:12</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">生與死，我一向很有研究。</div>
+                <span class="chat-time">13:13</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">……媽的神經病</div>
+                <span class="chat-time">13:13</span>
+              </div>
+            </div><!-- /s21 -->
+
+            <!-- s22 保時捷事件 -->
+            <div class="chat-session" id="chat-s22">
+              <div class="chat-date-divider">2022 · 05 · 10</div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">新停車場 C-12，我的車。</div>
+                <span class="chat-time">18:40</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">右後保險桿，有一道 3 公分的刮痕。</div>
+                <span class="chat-time">18:40</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">我給這個人十分鐘自首。</div>
+                <span class="chat-time">18:41</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">不是我 我今天整天都在 B4</div>
+                <span class="chat-time">18:41</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">B4 今天停用維修。</div>
+                <span class="chat-time">18:42</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">……</div>
+                <span class="chat-time">18:43</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">我只是想近看一下你的車 然後滑板車有點沒控制好 幹不是我的問題啊!!</div>
+                <span class="chat-time">18:45</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">滑板車？</div>
+                <span class="chat-time">18:45</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">新買的 電動的 超爆帥</div>
+                <span class="chat-time">18:45</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">你騎電動滑板車、在地下停車場、撞上一輛 Porche 911</div>
+                <span class="chat-time">18:46</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">是擦到！！不是撞！！</div>
+                <span class="chat-time">18:46</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">很好。我會用同樣的精準度，在你身上也留一道 3 公分。</div>
+                <span class="chat-time">18:47</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">只是我用的不會是滑板車。</div>
+                <span class="chat-time">18:47</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">老大救我</div>
+                <span class="chat-time">18:47</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">放過他吧 他還只是個孩子</div>
+                <span class="chat-time">18:48</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">你他媽...</div>
+                <span class="chat-time">18:50</span>
+              </div>
+            </div><!-- /s22 -->
+
+            <!-- s23 凱恩準時下班 -->
+            <div class="chat-session" id="chat-s23">
+              <div class="chat-date-divider">2022 · 05 · 18</div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">凱恩今天五點就走了？？</div>
+                <span class="chat-time">17:20</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">他平常不是都待到半夜</div>
+                <span class="chat-time">17:20</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">嗯</div>
+                <span class="chat-time">17:25</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">約會？？？？？？？？</div>
+                <span class="chat-time">17:25</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">每個月第三個星期三。</div>
+                <span class="chat-time">17:26</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">你怎麼知道</div>
+                <span class="chat-time">17:26</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">席奧</span>
+                <div class="chat-bubble">觀察。他出門前會換掉戰術靴，還會順路買一束花。</div>
+                <span class="chat-time">17:27</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">哇靠 真的是約會</div>
+                <span class="chat-time">17:27</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble"><i>@里歐</i> 別問了</div>
+                <span class="chat-time">17:28</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">為什麼</div>
+                <span class="chat-time">17:28</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">傑克</span>
+                <div class="chat-bubble">公務</div>
+                <span class="chat-time">17:28</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">帶花的公務？？？</div>
+                <span class="chat-time">17:29</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">是公務。</div>
+                <span class="chat-time">17:31</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">靠北 你在線上喔 哪個女人 長怎樣 什麼來頭</div>
+                <span class="chat-time">17:31</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">明早六點，加練五公里。</div>
+                <span class="chat-time">17:31</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">里歐</span>
+                <div class="chat-bubble">喂！！我又沒說什麼！！</div>
+                <span class="chat-time">17:32</span>
+              </div>
+              <div class="chat-msg left">
+                <span class="chat-sender">凱恩</span>
+                <div class="chat-bubble">現在是十公里。</div>
+                <span class="chat-time">17:32</span>
+              </div>
+            </div><!-- /s23 -->
+              </div><!-- /chat-body -->
         </div><!-- /chat-window -->
       </div><!-- /secret-chat -->
 
@@ -1762,6 +3148,49 @@
             <!-- 傑克 -->
             <div class="diary-person-panel active" id="diary-jack">
               <div class="diary-jack-wrap">
+                <div class="diary-jack-item">
+                  <div class="diary-jack-date">2022 · 06 · ??</div>
+                  <div class="diary-jack-title">刺青</div>
+                  <div class="diary-jack-doodle">— — —</div>
+                  <div class="diary-jack-text">
+                    從左手臂一路到胸口，一頭用墨水雕刻的狼。<br><br>
+                    師傅問我意涵，我說沒有意思，好看而已。<br>
+                    這樣就不會忘了。
+                  </div>
+                  <div class="diary-jack-corner">♡</div>
+                </div>
+                <div class="diary-jack-item">
+                  <div class="diary-jack-date">2023 · 08 · 20</div>
+                  <div class="diary-jack-title">野狗咬人<span class="diary-jack-pink"> ✦</span></div>
+                  <div class="diary-jack-doodle">— — —</div>
+                  <div class="diary-jack-text">
+                    一早被叫去局裡挨罵，說我管教不力。<br>
+                    我說是，下次一定好好管。三角洲那邊的人一直盯著我，大概在等我道歉。<br><br>
+                    沒有道歉。我的人，當然我自己罵。<br><br>
+                    里歐的報告寫了三千字，有兩千字在罵對方，剩下一千字在跟凱恩道歉。<br>
+                    凱恩看完說「文法錯誤四十七處」，然後把報告收進了抽屜。<br>
+                    唉，隊長真難當。
+                    <span class="diary-jack-pink"> ···</span>
+                  </div>
+                  <div class="diary-jack-corner">♡</div>
+                </div>
+                <div class="diary-jack-item">
+                  <div class="diary-jack-date">2024 · 05 · 09</div>
+                  <div class="diary-jack-title">花開了</div>
+                  <div class="diary-jack-doodle">— — —</div>
+                  <div class="diary-jack-text">
+                    陽台那盆梔子花開了。<br>
+                    養了兩年，第一次開。<br><br>
+                    早上五點半起床，打開落地窗就能聞到。<br>
+                    花很美。站在那邊看了很久，差點忘記要去健身。<br><br>
+                    這件事不能讓里歐知道，他會笑一整年。<br>
+                    凱恩應該早就知道了，他上次來我家盯著那些花看了幾秒，什麼都沒說。<br>
+                    好的副手就是這樣。<br><br>
+                    能看見她像花一樣盛開嗎？
+                    <span class="diary-jack-pink"> ···</span>
+                  </div>
+                  <div class="diary-jack-corner">♡</div>
+                </div>
                 <div class="diary-jack-item">
                   <div class="diary-jack-date">2025 · 02 · 07</div>
                   <div class="diary-jack-title">凱恩好像有秘密<span class="diary-jack-pink"> ✦</span></div>
@@ -1788,6 +3217,8 @@
                   </div>
                   <div class="diary-jack-corner">♡</div>
                 </div>
+
+
               </div>
             </div>
 
@@ -1797,6 +3228,54 @@
                 <div class="diary-kane-header-bar">
                   <span class="diary-kane-header-title">PERSONAL LOG — KANE</span>
                   <span class="diary-kane-header-stamp">ENCRYPTED · LV.3</span>
+                </div>
+                <div class="diary-kane-item">
+                  <div class="diary-kane-meta">
+                    <span class="diary-kane-date">2022 · 12 · 15</span>
+                    <span class="diary-kane-id">LOG-K-003</span>
+                  </div>
+                  <div class="diary-kane-title">交接</div>
+                  <div class="diary-kane-text">
+                    今天把醫療箱交給新來的醫療人員。<br><br>
+                    清點項目：止血帶 24 條、縫合包 12 組、嗎啡 8 支、骨科固定板 6 片。<br>
+                    全數無誤。<br><br>
+                    他問我會不會捨不得，我說醫療器材沒有情感價值。<br><br>
+                    回到辦公室後，我發現抽屜裡還留著一把剪刀。<br>
+                    陳玥受傷那天，我用它剪開了她的戰術背心。<br><br>
+                    一切都已成為過去，或許吧。
+                  </div>
+                </div>
+                <div class="diary-kane-item">
+                  <div class="diary-kane-meta">
+                    <span class="diary-kane-date">2021 · 11 · 21</span>
+                    <span class="diary-kane-id">LOG-K-003</span>
+                  </div>
+                  <div class="diary-kane-title">新進人員觀察紀錄</div>
+                  <div class="diary-kane-text">
+                    對象：里歐。入隊第二天。<br><br>
+                    遲到：1 次。<br>
+                    損壞公物：2 件（八樓寢室門、群組名稱）。<br>
+                    廚房使用後未清理：3 次。<br>
+                    射擊成績：優異。<br><br>
+                    結論：能力與紀律呈現極端負相關。<br>
+                    預估適應期：無法預估。
+                  </div>
+                </div>
+                <div class="diary-kane-item">
+                  <div class="diary-kane-meta">
+                    <span class="diary-kane-date">2024 · 04 · 05</span>
+                    <span class="diary-kane-id">LOG-K-005</span>
+                  </div>
+                  <div class="diary-kane-title">物種鑑定</div>
+                  <div class="diary-kane-text">
+                    經比對文獻，6F 通風管捕獲之個體仍無法確認物種。<br><br>
+                    已知特徵：日行性、雜食、具攻擊性、會偷吃里歐的零食。<br>
+                    最後一項讓我對牠產生了些許好感。<br><br>
+                    牠堅持睡在我的文件盒裡。我嘗試移置三次，失敗三次。<br>
+                    目前文件改放在第二個抽屜。<br><br>
+                    秩序被破壞了。<br>
+                    奇怪的是，我沒有想像中那麼在意。
+                  </div>
                 </div>
                 <div class="diary-kane-item">
                   <div class="diary-kane-meta">
@@ -1834,6 +3313,66 @@
                 <div class="diary-leo-topbar">
                   <span class="diary-leo-topbar-icon">🐰</span>
                   <span class="diary-leo-topbar-text">LEO'S DIARY · PRIVATE · <b>DO NOT READ</b></span>
+                </div>
+                <div class="diary-leo-item">
+                  <div class="diary-leo-header">
+                    <span class="diary-leo-bunny">🐰</span>
+                    <span class="diary-leo-date">2022 · 07 · 01</span>
+                  </div>
+                  <div class="diary-leo-title">幹</div>
+                  <div class="diary-leo-text">
+                    席奧退群了<br>
+                    房間也清空了 連一根頭髮都沒留 那個潔癖神經病<br><br>
+                    問隊長 隊長說沒什麼好說的 問凱恩 凱恩說不要問<br>
+                    幹 我才進來半年多耶 說好的兄弟情資訊公開透明呢<br>
+                    上個月才幫他買蛋糕 他嘴巴上嫌廉價 結果還是吃了兩口<br>
+                    算了 我才不在乎<br>
+                    走了就走了 少一個人跟我搶靶場 笨蛇一條<br>
+                    <br>
+                    ……今天沙包打破了三個 又要被罵了（^-^凸）
+                  </div>
+                  <div class="diary-leo-footer">
+                    <span class="diary-leo-stamp">今日心情 ☆☆☆☆☆</span>
+                    <span class="diary-leo-mood">💢</span>
+                  </div>
+                </div>
+                <div class="diary-leo-item">
+                  <div class="diary-leo-header">
+                    <span class="diary-leo-bunny">🐰</span>
+                    <span class="diary-leo-date">20?? · 0? · ??</span>
+                  </div>
+                  <div class="diary-leo-title">我沒錯</div>
+                  <div class="diary-leo-text">
+                    三角洲那群垃圾先講的 說夜梟是養在大樓裡的寵物<br>
+                    還說我是靠關係上位？<br>
+                    我只打斷那蠢貨兩顆牙已經很客氣了好嗎！！<br><br>
+                    傑克要我寫反省報告 還不能用GPT生成 簡直欺人太甚<br>
+                  </div>
+                  <div class="diary-leo-footer">
+                    <span class="diary-leo-stamp">今日心情 ★☆☆☆☆</span>
+                    <span class="diary-leo-mood">😤</span>
+                  </div>
+                </div>
+                <div class="diary-leo-item">
+                  <div class="diary-leo-header">
+                    <span class="diary-leo-bunny">🐰</span>
+                    <span class="diary-leo-date">20?? · 0? · ??</span>
+                  </div>
+                  <div class="diary-leo-title">被小東西咬了</div>
+                  <div class="diary-leo-text">
+                    虎口兩個洞 打了一針破傷風<br>
+                    B7 的醫療兵在偷笑 我看到了 給我等著<br><br>
+                    最扯的是那隻小東西咬完我 跑去凱恩腳邊蹭來蹭去<br>
+                    現在睡在他的文件盒裡 凱恩居然沒有把牠丟出去！！！<br>
+                    我把咖啡杯放錯位置他都要唸十分鐘欸！！！<br><br>
+                    憑什麼！！！<br><br>
+                    ……不過牠睡覺的樣子滿可愛的啦<br>
+                    明天帶肉乾給牠 不是因為我喜歡牠 是要訓練牠不准再咬我😠
+                  </div>
+                  <div class="diary-leo-footer">
+                    <span class="diary-leo-stamp">今日心情 ★★★☆☆</span>
+                    <span class="diary-leo-mood">🩹</span>
+                  </div>
                 </div>
                 <div class="diary-leo-item">
                   <div class="diary-leo-header">
@@ -1896,6 +3435,62 @@
                     里歐那隻瘋狗說幫我慶生？還買了蛋糕。<br>
                     廉價的奶油真的很配休息室那種破爛地方。<br>
                     其實 ███████
+                  </div>
+                </div>
+                <div class="diary-theo-item">
+                  <div class="diary-theo-date">2021 · 11 · 15</div>
+                  <div class="diary-theo-title">新人</div>
+                  <div class="diary-theo-text">
+                    傑克帶回來一條狗。<br>
+                    金髮，滿身刺青，傭兵出身，進門第一句話是「這裡哪裡可以抽菸」。<br>
+                    凱恩的表情很值得記錄。<br>
+                    靶場測試，我讓了他三發。他沒發現。他贏了之後很得意，說要請我喝酒。<br>
+                    單純的人很好預測。好預測的東西，通常活不久。<br><br>
+                    傑克似乎很喜歡他？<br>
+                    這點，值得觀察。
+                  </div>
+                </div>
+                <div class="diary-theo-item">
+                  <div class="diary-theo-date">2022 · 09 · 22</div>
+                  <div class="diary-theo-title">新的視野</div>
+                  <div class="diary-theo-text">
+                    新辦公室在四十二樓，三面玻璃。<br>
+                    這個高度看下去，人群的移動很有規律，像螞蟻。<br><br>
+                    今晚的交易很順利。對方在最後一刻想壓價，我讓他看了一下他女兒的照片。真有趣，人總是會因為血緣、親情和關係而改變。<br><br>
+                    聽說傑克最近很少去 HALO 了。<br>
+                    ████████<br>
+                    無所謂。
+                  </div>
+                </div>
+                <div class="diary-theo-item">
+                  <div class="diary-theo-date">2023 · 08 · 21</div>
+                  <div class="diary-theo-title">情報</div>
+                  <div class="diary-theo-text">
+                    線人回報：夜梟與三角洲在交流會上鬥毆。<br>
+                    凱恩骨裂。里歐打斷對方兩顆牙。<br><br>
+                    以前我總說那條狗遲早會咬錯人。<br>
+                    看來這次他咬對了。<br><br>
+                    凱恩替他擋了。這很不像凱恩。<br>
+                    一個醫官，用自己的手去換一場毫無意義的鬥毆。<br><br>
+                    他們管這叫兄弟情誼。<br>
+                    真令人作嘔。<br><br>
+                    ████████████████
+                  </div>
+                </div>
+                <div class="diary-theo-item">
+                  <div class="diary-theo-date">2024 · 06 · 06</div>
+                  <div class="diary-theo-title">無題</div>
+                  <div class="diary-theo-text">
+                    維爾準備了一瓶 1982 年的波爾多。<br>
+                    我不記得我有告訴過他日期。<br><br>
+                    一個人喝完了。酒很好。<br><br>
+                    又夢到那片沙漠。<br>
+                    風很大，耳機裡有人在喊我的名字。<br>
+                    ████████████<br><br>
+                    醒來的時候是凌晨三點。<br>
+                    城市很安靜。<br><br>
+                    HALO 的燈應該還亮著吧。<br>
+                    ——無關緊要的聯想。刪除。
                   </div>
                 </div>
               </div>
@@ -2015,6 +3610,13 @@
       document.querySelectorAll('.chat-session-btn').forEach(el => el.classList.remove('active'));
       document.getElementById('chat-' + id).classList.add('active');
       btn.classList.add('active');
+
+      // 讓被點的日期捲到中間
+      const bar = document.getElementById('chatSessions');
+      bar.scrollTo({
+        left: btn.offsetLeft - (bar.clientWidth - btn.offsetWidth) / 2,
+        behavior: 'smooth'
+      });
     }
 
     function switchDiaryPerson(name, btn) {
@@ -2023,6 +3625,73 @@
       document.getElementById('diary-' + name).classList.add('active');
       btn.classList.add('active');
     }
+
+    /* ── 聊天日期列：滑鼠拖曳 / 手指滑動 / 滾輪 ── */
+    (function () {
+      const bar = document.getElementById('chatSessions');
+      if (!bar) return;
+      const wrap = bar.parentElement;
+
+      let isDown = false, startX = 0, startLeft = 0, moved = false;
+
+      // 左右漸層顯示與否
+      function updateFade() {
+        const max = bar.scrollWidth - bar.clientWidth;
+        wrap.classList.toggle('can-left', bar.scrollLeft > 2);
+        wrap.classList.toggle('can-right', bar.scrollLeft < max - 2);
+      }
+
+      // 電腦：滑鼠按住拖曳（手機用原生滑動，比較順）
+      bar.addEventListener('pointerdown', e => {
+        moved = false;
+        if (e.pointerType !== 'mouse' || e.button !== 0) return;
+        isDown = true;
+        startX = e.clientX;
+        startLeft = bar.scrollLeft;
+      });
+
+      window.addEventListener('pointermove', e => {
+        if (!isDown) return;
+        const dx = e.clientX - startX;
+        if (!moved && Math.abs(dx) > 5) {   // 移動超過 5px 才算拖曳
+          moved = true;
+          bar.classList.add('is-dragging');
+        }
+        if (moved) bar.scrollLeft = startLeft - dx;
+      });
+
+      window.addEventListener('pointerup', () => {
+        if (!isDown) return;
+        isDown = false;
+        bar.classList.remove('is-dragging');
+      });
+
+      // 拖曳結束時不要誤觸按鈕
+      bar.addEventListener('click', e => {
+        if (moved) {
+          e.stopPropagation();
+          e.preventDefault();
+          moved = false;
+        }
+      }, true);
+
+      // 電腦：滑鼠滾輪也能左右捲，捲到底就交還給頁面
+      bar.addEventListener('wheel', e => {
+        if (bar.scrollWidth <= bar.clientWidth) return;
+        if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+        const max = bar.scrollWidth - bar.clientWidth;
+        if ((e.deltaY < 0 && bar.scrollLeft <= 0) ||
+            (e.deltaY > 0 && bar.scrollLeft >= max - 1)) return;
+        e.preventDefault();
+        bar.scrollLeft += e.deltaY;
+      }, { passive: false });
+
+      bar.addEventListener('scroll', updateFade, { passive: true });
+      window.addEventListener('resize', updateFade);
+      // 「秘聞」分頁一開始是隱藏的，顯示出來時要重新計算
+      if ('ResizeObserver' in window) new ResizeObserver(updateFade).observe(bar);
+      updateFade();
+    })();
   </script>
 
 </body>
